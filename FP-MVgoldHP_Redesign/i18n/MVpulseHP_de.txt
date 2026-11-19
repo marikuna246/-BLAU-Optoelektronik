@@ -1,0 +1,162 @@
+<html lang="en"> ==> <html lang="de">
+<title>MVpulseHP – Datasheet</title> ==> <title>MVpulseHP – Datenblatt</title>
+<div class="eb">Datasheet</div> ==> <div class="eb">Datenblatt</div>
+Technical Explanation · White Paper ==> Technische Erläuterung · White Paper
+<div class="lead">MVpulseHP Series with Pulse Control</div> ==> <div class="lead">MVpulseHP-Serie mit Pulssteuerung</div>
+A COMPACT LASER MODULE WITH HIGH PEAK POWER AND SMALL SIZE ==> EIN KOMPAKTES LASERMODUL MIT HOHER SPITZENLEISTUNG UND KLEINER BAUGRÖSSE
+The MVpulseHP offers high peak powers (up to 500&nbsp;mW for 525&nbsp;nm, 660&nbsp;nm, 808&nbsp;nm and even 1000&nbsp;mW at 445&nbsp;nm), while the diameter remains 19&nbsp;mm and the housing has a small size. Active cooling can be avoided, due to the pulsing function. Higher power and therefore higher light intensity can support decreased exposure time and higher throughput (more frames per second, more parts to be inspected per second). ==> Das MVpulseHP bietet hohe Spitzenleistungen (bis zu 500&nbsp;mW bei 525&nbsp;nm, 660&nbsp;nm, 808&nbsp;nm und sogar 1000&nbsp;mW bei 445&nbsp;nm), während der Durchmesser bei 19&nbsp;mm bleibt und das Gehäuse klein ist. Dank der Pulsfunktion kann auf eine aktive Kühlung verzichtet werden. Eine höhere Leistung und damit eine höhere Lichtintensität kann kürzere Belichtungszeiten und einen höheren Durchsatz unterstützen (mehr Bilder pro Sekunde, mehr geprüfte Teile pro Sekunde).
+The pulse frequency and duty cycle can be adjusted to the needs of the application. The MVpulseHP is available as standard (ST) and 2-Housing (2H) separating the housing for optics and electronics. There is also a variety of fan angles and two different focus options available. ==> Pulsfrequenz und Tastgrad können an die Anforderungen der Anwendung angepasst werden. Das MVpulseHP ist als Standardausführung (ST) und als 2-Gehäuse-Ausführung (2H) mit getrennten Gehäusen für Optik und Elektronik erhältlich. Zudem stehen verschiedene Öffnungswinkel und zwei unterschiedliche Fokusoptionen zur Verfügung.
+>FEATURES< ==> >MERKMALE<
+>APPLICATIONS< ==> >ANWENDUNGEN<
+Pulsed laser module at 4 wavelengths up to 1&nbsp;W for 445&nbsp;nm and 500&nbsp;mW for 525&nbsp;nm, 660&nbsp;nm and 808&nbsp;nm ==> Gepulstes Lasermodul in 4 Wellenlängen mit bis zu 1&nbsp;W bei 445&nbsp;nm und 500&nbsp;mW bei 525&nbsp;nm, 660&nbsp;nm und 808&nbsp;nm
+High pulse power without active cooling ==> Hohe Pulsleistung ohne aktive Kühlung
+Small laser module for high intensity illumination ==> Kleines Lasermodul für Beleuchtung mit hoher Intensität
+Adjustable pulse width, depending on the needs of the application ==> Einstellbare Pulsbreite, abhängig von den Anforderungen der Anwendung
+Pulse control by integrated microcontroller ==> Pulssteuerung durch integrierten Mikrocontroller
+Over-temperature protection ==> Übertemperaturschutz
+3D machine vision ==> 3D-Bildverarbeitung
+Outdoor industrial inspection ==> Industrielle Inspektion im Außenbereich
+Rail inspection ==> Schieneninspektion
+Steel inspection ==> Stahlinspektion
+Wavelength [nm] ==> Wellenlänge [nm]
+max. peak power<span>at 445 nm</span> ==> max. Spitzenleistung<span>bei 445 nm</span>
+<div class="l">Diameter</div> ==> <div class="l">Durchmesser</div>
+>Pulse length< ==> >Pulslänge<
+Laser protection class ==> Laserschutzklasse
+<b>Series</b> ==> <b>Serie</b>
+<h2>Specifications</h2> ==> <h2>Technische Daten</h2>
+<span class="de">continued</span> ==> <span class="de">Fortsetzung</span>
+<th class="k">Model</th> ==> <th class="k">Modell</th>
+Line laser with uniform power distribution (FOV correction available) ==> Linienlaser mit homogener Leistungsverteilung (FOV-Korrektur verfügbar)
+Wavelength tolerance (typ.) [nm] ==> Wellenlängentoleranz (typ.) [nm]
+Wavelength Drift [nm/K] ==> Wellenlängendrift [nm/K]
+Output power (max. peak power) [mW] ==> Ausgangsleistung (max. Spitzenleistung) [mW]
+Power stability at 25&nbsp;°C (after warm up) [%] ==> Leistungsstabilität bei 25&nbsp;°C (nach Aufwärmphase) [%]
+Operating temperature (housing temp.) [°C] ==> Betriebstemperatur (Gehäusetemp.) [°C]
+-10 to +50 ==> -10 bis +50
+-10 to +30 ==> -10 bis +30
+Output power <span>(max. peak power)</span> ==> Ausgangsleistung <span>(max. Spitzenleistung)</span>
+[mW] · Visualisation of the table above ==> [mW] · Visualisierung der Tabelle oben
+Fan angle [°] ==> Öffnungswinkel [°]
+Geometry to scale · values from the specifications ==> Geometrie maßstäblich · Werte aus den technischen Daten
+<h2>Pulse operation</h2> ==> <h2>Pulsbetrieb</h2>
+Duty cycle and pulse length for peak power increase compared to cw mode to avoid shut off of laser due to heat generation ==> Tastgrad und Pulslänge für die Erhöhung der Spitzenleistung gegenüber dem cw-Betrieb, um eine Abschaltung des Lasers durch Wärmeentwicklung zu vermeiden
+>Duty cycle< ==> >Tastgrad<
+>Mod. Frequency< ==> >Mod.-Frequenz<
+(higher frequency on request) ==> (höhere Frequenz auf Anfrage)
+Low 0&nbsp;V, high 5&nbsp;V = defined peak power, input impedance of 10&nbsp;kOhm at 5&nbsp;V ==> Low 0&nbsp;V, High 5&nbsp;V = definierte Spitzenleistung, Eingangsimpedanz von 10&nbsp;kOhm bei 5&nbsp;V
+Low 0&nbsp;V, high 5&nbsp;V, input impedance of 10&nbsp;kOhm at 5&nbsp;V ==> Low 0&nbsp;V, High 5&nbsp;V, Eingangsimpedanz von 10&nbsp;kOhm bei 5&nbsp;V
+Focussing range [mm] ==> Fokussierbereich [mm]
+Line intensity variation (typ) ==> Homogenität der Linienintensität (typ)
+related to average power (within 80&nbsp;% of the line) ==> bezogen auf die mittlere Leistung (innerhalb von 80&nbsp;% der Linie)
+Line straightness<sup>4</sup> [%] ==> Geradheit der Linie<sup>4</sup> [%]
+Pointing stability [µrad/K] ==> Richtungsstabilität [µrad/K]
+Boresight deviation [mrad] ==> Strahlrichtungsfehler [mrad]
+Operating voltage [VDC] ==> Betriebsspannung [VDC]
+Communication interface ==> Kommunikationsschnittstelle
+Digital Modulation ≤ 4&nbsp;kHz active high ==> Digitale Modulation ≤ 4&nbsp;kHz active high
+Delay + Rise time [µs] ==> Verzögerung + Anstiegszeit [µs]
+Additional protections ==> Zusätzliche Schutzfunktionen
+<br>Over-temperature<sup>5</sup> ==> <br>Übertemperatur<sup>5</sup>
+Over-voltage up to 26 VDC ==> Überspannung bis 26 VDC
+Reverse polarity up to 30 VDC ==> Verpolung bis 30 VDC
+Shock tolerance ==> Schockfestigkeit
+<span class="en">Housing</span> ==> <span class="en">Gehäuse</span>
+Aluminium (blue anodized, potential free) ==> Aluminium (blau eloxiert, potentialfrei)
+(standard) or ==> (Standard) oder
+(separate housing for optics and electronics) ==> (getrennte Gehäuse für Optik und Elektronik)
+Accessories available ==> Erhältliches Zubehör
+(optional, order separately) ==> (optional, separat zu bestellen)
+<td class="v">Mount</td> ==> <td class="v">Halterung</td>
+<span class="en">Connector</span> ==> <span class="en">Anschluss</span>
+Open leads (500&nbsp;mm) ==> Offene Litzen (500&nbsp;mm)
+Red: +VDC; Black: GND; Green: MOD; Yellow: RX; Blue: TX; Brown: GND COM ==> Rot: +VDC; Schwarz: GND; Grün: MOD; Gelb: RX; Blau: TX; Braun: GND COM
+Purple/Orange: Reserved - not for customer use ==> Lila/Orange: Reserviert - nicht zur Verwendung durch den Kunden
+150&nbsp;mm cable between housings for 2H ==> 150&nbsp;mm Kabel zwischen den Gehäusen bei 2H
+>Foot Note</b> ==> >Fußnoten</b>
+The output power is defined behind optics which means at the beam exit of the laser module ==> Die Ausgangsleistung ist hinter der Optik definiert, d.&nbsp;h. am Strahlaustritt des Lasermoduls
+Below 0&nbsp;°C condensate formation must be avoided (due to optical and electronic components) ==> Unter 0&nbsp;°C muss Kondensatbildung vermieden werden (aufgrund optischer und elektronischer Komponenten)
+Fan angle: Defined by the ends of the laser line using FWHM based on the average power (within 80&nbsp;% of line) ==> Öffnungswinkel: Definiert durch die Enden der Laserlinie mittels FWHM bezogen auf die mittlere Leistung (innerhalb von 80&nbsp;% der Linie)
+Line intensity variation and line straightness are measured at 80&nbsp;% of the fan angle ==> Homogenität der Linienintensität und Geradheit der Linie werden bei 80&nbsp;% des Öffnungswinkels gemessen
+Over temperature: The laser is switched off automatically if the temperature in the laser diode exceeds a defined temperature. Switching back on takes place with a hysteresis of 5K ==> Übertemperatur: Der Laser wird automatisch abgeschaltet, wenn die Temperatur in der Laserdiode eine definierte Temperatur überschreitet. Das Wiedereinschalten erfolgt mit einer Hysterese von 5K
+<h2>Line Thickness and Depth of Focus (DOF)</h2> ==> <h2>Liniendicke und Tiefenschärfe (DOF)</h2>
+for Standard (STD) Focus Option at 660&nbsp;nm ==> für die Standard-Fokusoption (STD) bei 660&nbsp;nm
+Standard laser line characteristics (short range)</div> ==> Kennlinie Standard-Laserlinie (kurzer Bereich)</div>
+Standard laser line characteristics (long range)</div> ==> Kennlinie Standard-Laserlinie (großer Bereich)</div>
+<h2>Focus Options</h2> ==> <h2>Fokusoptionen</h2>
+MVpulseHP is available with different focus options to achieve the right combination of line thickness and depth of focus depending on the application. ==> Das MVpulseHP ist mit verschiedenen Fokusoptionen erhältlich, um je nach Anwendung die passende Kombination aus Liniendicke und Tiefenschärfe zu erreichen.
+The values shown in the table below are the factors which should be used in combination with the graph above. ==> Die in der folgenden Tabelle angegebenen Werte sind Faktoren, die in Kombination mit dem obigen Diagramm zu verwenden sind.
+P<sub>out</sub> and λ ==> P<sub>out</sub> und λ
+Focus options<br><span>(conversion factor related to standard laser marked in red)</span> ==> Fokusoptionen<br><span>(Umrechnungsfaktor bezogen auf den rot markierten Standardlaser)</span>
+Foot Note / Abbreviations ==> Fußnote / Abkürzungen
+= Standard, good compromise between Line Thickness and Depth of Focus ==> = Standard, guter Kompromiss zwischen Liniendicke und Tiefenschärfe
+= Line Thickness ==> = Liniendicke (Line Thickness)
+= Depth of Focus ==> = Tiefenschärfe (Depth of Focus)
+= Thin Line ==> = Dünne Linie (Thin Line)
+= Focus Distance ==> = Fokusabstand (Focus Distance)
+Pulse and Monitor / Control Features ==> Puls- und Überwachungs-/Steuerungsfunktionen
+Current standard for pulse function: Every modulation signal will result in a laser pulse but pulse lenght / duty cycle will be adjusted for temperature control which means the pulse length can be shorter than the modulation signal ==> Aktueller Standard der Pulsfunktion: Jedes Modulationssignal führt zu einem Laserpuls, Pulslänge / Tastgrad werden jedoch zur Temperaturregelung angepasst, d.&nbsp;h. die Pulslänge kann kürzer sein als das Modulationssignal
+Duty cycle and pulse length will be preset at the factory and can be adjusted to your application ==> Tastgrad und Pulslänge werden werkseitig voreingestellt und können an Ihre Anwendung angepasst werden
+Pulse control can be adjusted on request ==> Die Pulssteuerung kann auf Anfrage angepasst werden
+alt="Pulse scheme modulation signal versus laser output" style="width:100%"></div> ==> alt="Pulsschema" style="width:100%"></div><div class="cap">Diagrammbeschriftung: Modulation Signal = Modulationssignal · Laser Output = Laserausgang · Time = Zeit · Up to 1000 mW = bis zu 1000 mW · Laser Output = Mod. Signal = Laserausgang entspricht Modulationssignal · Laser Output cut by Pulse Control = Laserausgang durch Pulssteuerung begrenzt</div>
+<h2>Pulse Control Features</h2> ==> <h2>Funktionen der Pulssteuerung</h2>
+The MVpulseHP driver electronics automatically monitors and controls the pulse modulation function. Within the factory preset limits of duty cycle and pulse length, the modulation control reliably detects rising and falling edges so that the laser signal follows the modulation signal. If the user applies a higher duty cycle or a longer pulse length to the modulation input of the laser which would exceed the factory preset maximum parameter, the driver electronics will limit the pulse length automatically. Refer to the examples below ==> Die Treiberelektronik des MVpulseHP überwacht und steuert die Pulsmodulationsfunktion automatisch. Innerhalb der werkseitig voreingestellten Grenzen für Tastgrad und Pulslänge erkennt die Modulationssteuerung zuverlässig steigende und fallende Flanken, sodass das Lasersignal dem Modulationssignal folgt. Legt der Anwender an den Modulationseingang des Lasers einen höheren Tastgrad oder eine längere Pulslänge an, die den werkseitig voreingestellten Maximalparameter überschreiten würde, begrenzt die Treiberelektronik die Pulslänge automatisch. Siehe die Beispiele unten
+Modulation signal: on time | off time | duty cycle ==> Modulationssignal: Einschaltzeit | Ausschaltzeit | Tastgrad
+Laser signal factory preset: maximum on time | maximum duty cycle ==> Lasersignal, werkseitige Voreinstellung: maximale Einschaltzeit | maximaler Tastgrad
+Calculation duty cycle ==> Berechnung Tastgrad
+<b>Figure 1:</b> Pulse scheme modulation input versus laser output with standard operation within factory preset parameters and versus laser output. ==> <b>Abbildung 1:</b> Pulsschema Modulationseingang gegenüber Laserausgang bei Standardbetrieb innerhalb der werkseitig voreingestellten Parameter und gegenüber Laserausgang.
+Maximum Time for t<sub>p,on</sub> is 20 ms ==> Maximale Zeit für t<sub>p,on</sub> beträgt 20 ms
+Maximum Time for t<sub>p,on</sub> = 20 ms ==> Maximale Zeit für t<sub>p,on</sub> = 20 ms
+<b>Figure 2:</b> Pulse scheme modulation input versus laser output with pulse length control by factory preset maximum pulse length for a use case with long t<sub>m,off</sub> ==> <b>Abbildung 2:</b> Pulsschema Modulationseingang gegenüber Laserausgang mit Pulslängenbegrenzung durch die werkseitig voreingestellte maximale Pulslänge für einen Anwendungsfall mit langem t<sub>m,off</sub>
+The duty cycle and pulse function is factory set but will be aligned with your applications e.g. your camera settings. In case the indicated pulse function does not meet your expectations we are happy to discuss alternative programming.</p></div> ==> Tastgrad und Pulsfunktion sind werkseitig eingestellt, werden aber auf Ihre Anwendung, z.&nbsp;B. Ihre Kameraeinstellungen, abgestimmt. Sollte die angegebene Pulsfunktion nicht Ihren Erwartungen entsprechen, besprechen wir gerne eine alternative Programmierung.</p></div><div class="cap">Diagrammbeschriftung Abb. 1 und 2: Modulation Signal = Modulationssignal · Laser Output = Laserausgang · Time = Zeit · Laser Output = mod. Signal = Laserausgang entspricht Modulationssignal · Laser Output Cut by Pulse Control = Laserausgang durch Pulssteuerung begrenzt</div>
+<h2>Electronic Protection (overheating)</h2> ==> <h2>Elektronischer Schutz (Überhitzung)</h2>
+The module has integrated electronic protection against overheating. This is activated when the temperature of the laser diode exceeds the factory preset maximum temperature of the laser diode. The switch-on and switch-off process of the electronic protection is subject to a hysteresis with a temperature difference of 5 Kelvin and is used for the cooling phase. If the temperature falls below the switch-on temperature after the electronic protection is triggered, the module switches on again automatically. ==> Das Modul verfügt über einen integrierten elektronischen Überhitzungsschutz. Dieser wird aktiviert, wenn die Temperatur der Laserdiode die werkseitig voreingestellte Maximaltemperatur der Laserdiode überschreitet. Das Ein- und Ausschalten des elektronischen Schutzes unterliegt einer Hysterese mit einer Temperaturdifferenz von 5 Kelvin, die für die Abkühlphase genutzt wird. Fällt die Temperatur nach dem Auslösen des elektronischen Schutzes unter die Einschalttemperatur, schaltet sich das Modul automatisch wieder ein.
+Over-temperature electronic protection: laser on | laser off ==> Elektronischer Übertemperaturschutz: Laser ein | Laser aus
+<b>Figure 3:</b> Scheme of laser diode temperature versus time with electronic protection by factory preset maximum laser diode temperature. ==> <b>Abbildung 3:</b> Schema der Laserdiodentemperatur über der Zeit mit elektronischem Schutz durch die werkseitig voreingestellte maximale Laserdiodentemperatur.<br><span style="color:var(--muted)">Diagrammbeschriftung: Temperature Laser Diode = Temperatur Laserdiode · Laser Output = Laserausgang · Laser Output Cut by Electronic Protection = Laserausgang durch elektronischen Schutz unterbrochen · Time = Zeit</span>
+The pulse function is designed to avoid overheating of the laser diode. The risk of overheating can be further minimized by mounting / clamping the module according to the drawing and applying a metal clamping and a thermal paste. Allow adequate heat dissipation within your application. ==> Die Pulsfunktion ist so ausgelegt, dass eine Überhitzung der Laserdiode vermieden wird. Das Risiko einer Überhitzung lässt sich weiter minimieren, indem das Modul gemäß Zeichnung montiert / geklemmt wird und eine Metallklemmung sowie Wärmeleitpaste verwendet werden. Sorgen Sie in Ihrer Anwendung für eine ausreichende Wärmeableitung. (Clamping Area = Klemmbereich)
+<h2>Communication</h2> ==> <h2>Kommunikation</h2>
+The module provides an RS-232 with 0-5 V interface (RS485 optional) to read out parameters and change them. A specific serial number between 1 and 255 can be assigned to an MVpulseHP module by the user. The factory preset serial number is 1. With the RS485 option, the modules can be connected to a bus system and addressed via their specific serial number. The serial number must be assigned individually to each module before using it in the bus system during set-up of the bus. ==> Das Modul verfügt über eine RS-232-Schnittstelle mit 0-5 V (RS485 optional), um Parameter auszulesen und zu ändern. Einem MVpulseHP-Modul kann vom Anwender eine eigene Seriennummer zwischen 1 und 255 zugewiesen werden. Die werkseitig voreingestellte Seriennummer ist 1. Mit der RS485-Option können die Module an ein Bussystem angeschlossen und über ihre jeweilige Seriennummer adressiert werden. Die Seriennummer muss jedem Modul vor dem Einsatz im Bussystem bei der Einrichtung des Busses individuell zugewiesen werden.
+RS-232/RS485 parameters: ==> RS-232/RS485-Parameter:
+<td>Parity bit</td> ==> <td>Paritätsbit</td>
+= None ==> = Keine
+<td>Data bit</td> ==> <td>Datenbit</td>
+<td>Stop bit</td> ==> <td>Stoppbit</td>
+<td>Flow control</td> ==> <td>Flusskontrolle</td>
+<h2>Command structure</h2> ==> <h2>Befehlsstruktur</h2>
+Command structure: All commands start either with “#” followed by the 3-digit serial number defined by the customer or with “#000”, which works for every module regardless of the serial number. All send commands end with the character NULL \0. Each response ends with the character \r. ==> Befehlsstruktur: Alle Befehle beginnen entweder mit „#“, gefolgt von der vom Kunden festgelegten 3-stelligen Seriennummer, oder mit „#000“, das unabhängig von der Seriennummer für jedes Modul funktioniert. Alle gesendeten Befehle enden mit dem Zeichen NULL \0. Jede Antwort endet mit dem Zeichen \r.
+<th>Command</th><th>Explanation</th><th>Example</th><th>Answer</th><th>Explanation Answer</th> ==> <th>Befehl</th><th>Erläuterung</th><th>Beispiel</th><th>Antwort</th><th>Erläuterung Antwort</th>
+returns the current through the laser diode of the last pulse in mA ==> gibt den Strom durch die Laserdiode beim letzten Puls in mA zurück
+returns the temperature of the laser diode in °C*100 ==> gibt die Temperatur der Laserdiode in °C*100 zurück
+returns the 3 digit serial number of the module ==> gibt die 3-stellige Seriennummer des Moduls zurück
+returns the duration the laser module was connected to a voltage supply in hours ==> gibt die Dauer in Stunden zurück, die das Lasermodul an einer Spannungsversorgung angeschlossen war
+returns an error code ==> gibt einen Fehlercode zurück
+sets the serial number to 255 ==> setzt die Seriennummer auf 255
+sets the serial number</td> ==> setzt die Seriennummer</td>
+<td>serial number 233</td> ==> <td>Seriennummer 233</td>
+module was connected to power supply for 3400 hours ==> Modul war 3400 Stunden an die Spannungsversorgung angeschlossen
+0: laser ok,<br>1: laser over temperature ==> 0: Laser ok,<br>1: Laser Übertemperatur
+<h2>Focusing mechanism</h2> ==> <h2>Fokussiermechanismus</h2>
+The focal distance of the uniform laser line can be adjusted with the provided pin tool. Stick the pin into one of the holes of the inner ring and turn it clockwise/counterclockwise. The focal distance decreases/increases.</p></div> ==> Der Fokusabstand der homogenen Laserlinie kann mit dem mitgelieferten Stiftwerkzeug eingestellt werden. Stecken Sie den Stift in eine der Bohrungen des Innenrings und drehen Sie ihn im/gegen den Uhrzeigersinn. Der Fokusabstand verringert/vergrößert sich.</p><div class="cap">Bildbeschriftung: Bore in focus slit = Bohrung im Fokusschlitz · Clockwise: Near = Im Uhrzeigersinn: nah · Counter-clockwise: Far = Gegen den Uhrzeigersinn: fern</div></div>
+<h2>Installation and Operation</h2> ==> <h2>Installation und Betrieb</h2>
+<b>Attention!</b> Please pay attention to the clamping area and refer to the data sheet while fitting the laser module. Clamping areas vary for different laser module types. Please take care of sufficient heat dissipation by clamping at the indicated position and using thermal paste on the surface overlap of module and mount. If you are unsure about mounting of the module under the applied condition (e.g. ambient temperature, surrounding equipment, etc.) please contact us. ==> <b>Achtung!</b> Bitte beachten Sie beim Einbau des Lasermoduls den Klemmbereich und das Datenblatt. Die Klemmbereiche unterscheiden sich je nach Lasermodultyp. Sorgen Sie für eine ausreichende Wärmeableitung, indem Sie an der angegebenen Position klemmen und Wärmeleitpaste auf die Kontaktfläche zwischen Modul und Halterung auftragen. Wenn Sie sich bei der Montage des Moduls unter den gegebenen Bedingungen (z.&nbsp;B. Umgebungstemperatur, umgebende Geräte usw.) unsicher sind, kontaktieren Sie uns bitte.
+<h2>Technical Drawing</h2> ==> <h2>Technische Zeichnung</h2>
+MVpulseHP with standard housing and focusing mechanics ==> MVpulseHP mit Standardgehäuse und Fokussiermechanik
+MVpulseHP with 2 housings, focusable ==> MVpulseHP mit 2 Gehäusen, fokussierbar
+Units: mm ==> Einheiten: mm
+For optimal heat dissipation in a mount, we recommend to apply thermal paste on the surface overlap.<br> ==> Für eine optimale Wärmeableitung in einer Halterung empfehlen wir, Wärmeleitpaste auf die Kontaktfläche aufzutragen.<br>Zeichnungsbeschriftung: Clamping Area = Klemmbereich<br>
+<h2>Ordering Code</h2> ==> <h2>Bestellschlüssel</h2>
+<div class="h">Housing</div> ==> <div class="h">Gehäuse</div>
+Wavelength<br>[nm] ==> Wellenlänge<br>[nm]
+Peak Power [mW] ==> Spitzenleistung [mW]
+(445&nbsp;nm only) ==> (nur 445&nbsp;nm)
+Digital Modulation inverted, active high ==> Digitale Modulation invertiert, active high
+Fan Angle<br>[°] ==> Öffnungswinkel<br>[°]
+Focus<br>[mm] ==> Fokus<br>[mm]
+<div class="h">Optics</div> ==> <div class="h">Optik</div>
+<span>Example:</span> ==> <span>Beispiel:</span>
+Content basis: ==> Inhaltliche Grundlage:
+ and White Paper MVpulseHP ==>  und White Paper MVpulseHP
+Interested in the MVpulseHP? ==> Interesse an MVpulseHP?
+Contact us for further information, technical advice or an individual quotation. ==> Kontaktieren Sie uns für weitere Informationen, technische Beratung oder ein individuelles Angebot.
+<b>Contact</b> ==> <b>Kontakt</b>
+<div class="sh" style="margin-top:8mm"><span class="no">05</span> ==> <div class="cap" style="margin-top:2mm">Diagrammbeschriftung: Line Thickness = Liniendicke · Depth of Focus = Tiefenschärfe · Focus Distance = Fokusabstand</div><div class="sh" style="margin-top:6mm"><span class="no">05</span>

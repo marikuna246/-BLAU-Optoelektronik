@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>FP-MVgoldHP – Datenblatt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/datasheet.css">
+<link rel="stylesheet" href="assets/extra.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 12c2.5-5 5-5 7.5 0s5 5 7.5 0 3.5-4 5-2"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></symbol>
+  <symbol id="i-amp" viewBox="0 0 24 24"><path d="M2 12h4l2-5 4 10 2-5h8"/></symbol>
+  <symbol id="i-therm" viewBox="0 0 24 24"><path d="M10 4a2 2 0 1 1 4 0v10a4 4 0 1 1-4 0z"/><path d="M12 9v6"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M2 18h4V6h4v12h4V6h4v12h4"/></symbol>
+  <symbol id="i-stab" viewBox="0 0 24 24"><path d="M3 9c3-3 6 3 9 0s6 3 9 0M3 16h18"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></symbol>
+  <symbol id="i-weight" viewBox="0 0 24 24"><path d="M6 8h12l2 13H4z"/><circle cx="12" cy="5" r="2.5"/></symbol>
+  <symbol id="i-line" viewBox="0 0 24 24"><path d="M3 12h18M3 8v8M21 8v8"/></symbol>
+  <symbol id="i-focus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 8V3h5M16 3h5v5M21 16v5h-5M8 21H3v-5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></symbol>
+  <symbol id="i-fan" viewBox="0 0 24 24"><path d="M12 20 4 6M12 20l8-14M4 6h16"/></symbol>
+  <symbol id="i-thick" viewBox="0 0 24 24"><path d="M3 8h18M3 12h18M3 16h18"/></symbol>
+  <symbol id="i-cable" viewBox="0 0 24 24"><path d="M4 4v6a4 4 0 0 0 4 4h8a4 4 0 0 1 4 4v2"/><path d="M2 4h4M18 20h4"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3 2 21h20z"/><path d="M12 10v5M12 18v.5"/></symbol>
+</svg>
+
+<!-- ============ PAGE 1 · COVER ============ -->
+<section class="page">
+  <div class="ctop"><div class="eb">Datenblatt</div><img src="assets/blau-logo.png" alt="BLAU Optoelektronik"></div>
+  <div class="title">
+    <div class="kick">Artikelnummer · FP-MVgoldHP</div>
+    <h1>FP-MVgoldHP</h1>
+    <div class="lead">Laserlinie mit homogener Leistungsverteilung</div>
+  </div>
+  <div class="hero" style="height:70mm">
+    <svg class="schem" viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;height:100%">
+      <defs>
+        <linearGradient id="hous" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E7389"/><stop offset="0.35" stop-color="#C9D3DE"/><stop offset="0.55" stop-color="#8FA0B3"/><stop offset="1" stop-color="#2F4258"/></linearGradient>
+        <linearGradient id="fanG" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#E51837" stop-opacity="0.45"/><stop offset="1" stop-color="#E51837" stop-opacity="0.05"/></linearGradient>
+      </defs>
+      <!-- laser fan -->
+      <polygon points="300,130 70,40 70,220" fill="url(#fanG)"/>
+      <line x1="70" y1="40" x2="70" y2="220" stroke="#E51837" stroke-width="4" stroke-linecap="round"/>
+      <!-- housing Ø48 x 146 (to scale: 2.4 px/mm) -->
+      <rect x="300" y="72.4" width="350.4" height="115.2" fill="url(#hous)"/>
+      <ellipse cx="650.4" cy="130" rx="16" ry="57.6" fill="#2F4258"/>
+      <ellipse cx="300" cy="130" rx="16" ry="57.6" fill="#22344A" stroke="#90A2B5" stroke-width="1.5"/>
+      <ellipse cx="300" cy="130" rx="7" ry="22" fill="#0B1522"/>
+      <!-- dimensions -->
+      <g stroke="#738093" stroke-width="1" fill="none">
+        <line x1="300" y1="62" x2="300" y2="30"/><line x1="650.4" y1="62" x2="650.4" y2="30"/>
+        <line x1="304" y1="38" x2="646.4" y2="38"/>
+        <line x1="662" y1="72.4" x2="680" y2="72.4"/><line x1="662" y1="187.6" x2="680" y2="187.6"/>
+        <line x1="674" y1="76" x2="674" y2="184"/>
+      </g>
+      <g fill="#738093"><path d="M300 38l8-3.5v7z"/><path d="M650.4 38l-8-3.5v7z"/><path d="M674 72.4l-3.5 8h7z"/><path d="M674 187.6l-3.5-8h7z"/></g>
+      <text x="475" y="30" text-anchor="middle" font-size="13" font-weight="600" fill="#003368">146mm ±1mm</text>
+      <text x="693" y="130" text-anchor="middle" font-size="13" font-weight="600" fill="#003368" transform="rotate(-90 693 130)">Ø48mm</text>
+    </svg>
+    <div class="schem-note">Schematische Darstellung · Abmessungen Ø48x146mm ±1mm</div>
+  </div>
+  <div class="ident">
+    <div class="b"><div class="k"><b>Artikelnummer</b></div><div class="v">FP-MVgoldHP</div></div>
+    <div class="b"><div class="k"><b>Bezeichnung</b></div><div class="v">FP-MVgoldHP Produktdatenblatt</div></div>
+  </div>
+  <div class="wl">
+    <div class="lbl">Wellenlänge<span>bei 25°C</span></div>
+    <div class="chips">
+      <span class="chip"><i style="background:#3D5AFE"></i>445nm ±10nm</span>
+      <span class="chip"><i style="background:#1FA64A"></i>525nm ±7nm</span>
+      <span class="chip"><i style="background:#F4511E"></i>638nm ±7nm</span>
+      <span class="chip"><i style="background:#E3192C"></i>660nm ±7nm</span>
+      <span class="chip"><i style="background:#7A5C5C"></i>808nm ±10nm</span>
+    </div>
+  </div>
+  <div class="facts" style="grid-template-columns:1.25fr 1fr 1fr 1.2fr 0.9fr">
+    <div class="fact"><svg viewBox="0 0 24 24"><use href="#i-bolt"/></svg><div class="v">500mW - 2W</div><div class="l">Ausgangsleistung<span>445nm</span></div></div>
+    <div class="fact"><svg viewBox="0 0 24 24"><use href="#i-bolt"/></svg><div class="v">300mW - 1W</div><div class="l">Ausgangsleistung<span>525nm, 638nm, 660nm, 808nm</span></div></div>
+    <div class="fact"><svg viewBox="0 0 24 24"><use href="#i-pulse"/></svg><div class="v">0 Hz - 1 MHz</div><div class="l">Digitale Modulation</div></div>
+    <div class="fact"><svg viewBox="0 0 24 24"><use href="#i-box"/></svg><div class="v">Ø48x146mm</div><div class="l">Abmessungen<span>±1mm</span></div></div>
+    <div class="fact"><svg viewBox="0 0 24 24"><use href="#i-warn"/></svg><div class="v">3B/4</div><div class="l">Laserklasse</div></div>
+  </div>
+  <div class="ftr"><div class="m"><span><b>Datum</b>03.07.2025</span><span><b>Rev</b>0</span></div><div class="w">www.blauoptoelektronik.de</div><div class="p">Seite 1 von 4</div></div>
+</section>
+
+<!-- ============ PAGE 2 · BASIC PROPERTIES ============ -->
+<section class="page">
+  <div class="hdr"><div><div class="eb">Datenblatt</div><div class="pn">FP-MVgoldHP</div></div><img src="assets/blau-logo.png" alt="BLAU Optoelektronik"></div>
+  <div class="sh"><span class="no">01</span><h2>Allgemeine Eigenschaften</h2></div>
+  <table class="spec tight">
+    <tr><td class="ic"><svg><use href="#i-wave"/></svg></td><td class="k"><span class="en">Wellenlänge</span></td><td class="v"><b>445nm</b> ±10nm bei 25°C, <b>525nm</b> ±7nm bei 25°C,<br><b>638nm</b> ±7nm bei 25°C, <b>660nm</b> ±7nm bei 25°C,<br><b>808nm</b> ±10nm bei 25°C</td></tr>
+    <tr><td class="ic"><svg><use href="#i-bolt"/></svg></td><td class="k"><span class="en">Ausgangsleistung</span></td><td class="v">445nm: <b>500mW - 2W</b><br>525nm, 638nm, 660nm, 808nm: <b>300mW - 1W</b><br>(maximale Leistung nach der Optik)</td></tr>
+    <tr><td class="ic"><svg><use href="#i-plug"/></svg></td><td class="k"><span class="en">Versorgungsspannung</span></td><td class="v"><b>20-24V</b></td></tr>
+    <tr><td class="ic"><svg><use href="#i-amp"/></svg></td><td class="k"><span class="en">Stromverbrauch</span></td><td class="v"><b>≤ 4A@20V</b></td></tr>
+    <tr><td class="ic"><svg><use href="#i-therm"/></svg></td><td class="k"><span class="en">Betriebstemperatur</span></td><td class="v"><b>-10°C bis +50°C</b><br>(Gehäusetemperatur, Kondensation muss vermieden werden)</td></tr>
+    <tr><td class="ic"><svg><use href="#i-box"/></svg></td><td class="k"><span class="en">Lagertemperatur</span></td><td class="v"><b>-20°C bis +60°C</b></td></tr>
+    <tr><td class="ic"><svg><use href="#i-pulse"/></svg></td><td class="k"><span class="en">Modulation</span></td><td class="v"><b>Digitale Modulation: 0 Hz - 1 MHz</b> (höhere Frequenz auf Anfrage)<br>Active high (MI) oder active low (M)<br>MI: 0V = Aus, 5V = Ein (Eingangsimpedanz von 10k Ohm bei 5V)<br>Tastgrad: <b>0-100 %</b><br>Pulslänge <b>&gt; 500 ns</b><br>Verzögerung + Anstiegszeit <b>&lt; 200ns</b></td></tr>
+    <tr><td class="ic"><svg><use href="#i-stab"/></svg></td><td class="k"><span class="en">Leistungsstabilität</span></td><td class="v"><b>≤ 5%</b> bei 25°C (nach Aufwärmphase)</td></tr>
+    <tr><td class="ic"><svg><use href="#i-chip"/></svg></td><td class="k"><span class="en">Kommunikation</span></td><td class="v"><b>RS-232 (0-5V)</b> (Standard), <b>RS-485</b> (optional), siehe Befehle</td></tr>
+    <tr><td class="ic"><svg><use href="#i-shield"/></svg></td><td class="k"><span class="en">Schutzmechanismen</span></td><td class="v">ESD, Übertemperatur, Überspannung bis 26 VDC,<br>Verpolung bis 30 VDC</td></tr>
+    <tr><td class="ic"><svg><use href="#i-code"/></svg></td><td class="k"><span class="en">Befehle</span></td><td class="v"><span class="cmdchips"><code>getldcurrent</code><code>getldtemp</code><code>getserial</code><code>gethours</code><code>geterror</code><code>setserial[1-255]</code></span></td></tr>
+    <tr><td class="ic"><svg><use href="#i-weight"/></svg></td><td class="k"><span class="en">Gewicht</span></td><td class="v"><b>&lt; 450g</b></td></tr>
+  </table>
+  <div class="panel" style="margin-top:6mm">
+    <div class="sub"><div class="t">Ausgangsleistung <span>(maximale Leistung nach der Optik)</span></div><div class="tag">Visualisierung „Ausgangsleistung“</div></div>
+    <div class="pw">
+      <div class="pw-row"><div class="lb"><i style="background:#3D5AFE"></i>445nm</div><div class="pw-tr"><span class="g" style="left:25%"></span><span class="g" style="left:50%"></span><span class="g" style="left:75%"></span><span class="bar" style="left:25%;width:75%;background:#3D5AFE"></span><span class="val" style="right:75%;padding-left:0;padding-right:2mm">500mW - 2W</span></div></div>
+      <div class="pw-row"><div class="lb"><i style="background:#1FA64A"></i>525nm</div><div class="pw-tr"><span class="g" style="left:25%"></span><span class="g" style="left:50%"></span><span class="g" style="left:75%"></span><span class="bar" style="left:15%;width:35%;background:#1FA64A"></span><span class="val" style="left:50%">300mW - 1W</span></div></div>
+      <div class="pw-row"><div class="lb"><i style="background:#F4511E"></i>638nm</div><div class="pw-tr"><span class="g" style="left:25%"></span><span class="g" style="left:50%"></span><span class="g" style="left:75%"></span><span class="bar" style="left:15%;width:35%;background:#F4511E"></span><span class="val" style="left:50%">300mW - 1W</span></div></div>
+      <div class="pw-row"><div class="lb"><i style="background:#E3192C"></i>660nm</div><div class="pw-tr"><span class="g" style="left:25%"></span><span class="g" style="left:50%"></span><span class="g" style="left:75%"></span><span class="bar" style="left:15%;width:35%;background:#E3192C"></span><span class="val" style="left:50%">300mW - 1W</span></div></div>
+      <div class="pw-row"><div class="lb"><i style="background:#7A5C5C"></i>808nm</div><div class="pw-tr"><span class="g" style="left:25%"></span><span class="g" style="left:50%"></span><span class="g" style="left:75%"></span><span class="bar" style="left:15%;width:35%;background:#7A5C5C"></span><span class="val" style="left:50%">300mW - 1W</span></div></div>
+      <div class="pw-ax"><div></div><div class="t"><span style="left:0">0</span><span style="left:25%">500mW</span><span style="left:50%">1W</span><span style="left:75%">1,5W</span><span style="left:100%">2W</span></div></div>
+    </div>
+  </div>
+
+  <div class="ftr"><div class="m"><span><b>Datum</b>03.07.2025</span><span><b>Rev</b>0</span></div><div class="w">www.blauoptoelektronik.de</div><div class="p">Seite 2 von 4</div></div>
+</section>
+
+<!-- ============ PAGE 3 · OUTPUT POWER + BEAM PROPERTIES ============ -->
+<section class="page">
+  <div class="hdr"><div><div class="eb">Datenblatt</div><div class="pn">FP-MVgoldHP</div></div><img src="assets/blau-logo.png" alt="BLAU Optoelektronik"></div>
+  <div class="sh"><span class="no">02</span><h2>Optische Eigenschaften</h2></div>
+  <table class="spec tight">
+    <tr><td class="ic"><svg><use href="#i-line"/></svg></td><td class="k"><span class="en">Strahlcharakteristik</span></td><td class="v"><b>Laserlinie mit homogener Leistungsverteilung</b></td></tr>
+    <tr><td class="ic"><svg><use href="#i-focus"/></svg></td><td class="k"><span class="en">Fokussabstand</span></td><td class="v">Fokussierbereich: <b>50mm - 5000mm</b></td></tr>
+    <tr><td class="ic"><svg><use href="#i-target"/></svg></td><td class="k"><span class="en">Strahlrichtungsfehler</span></td><td class="v"><b>≤ 10mrad</b></td></tr>
+    <tr><td class="ic"><svg><use href="#i-target"/></svg></td><td class="k"><span class="en">Punktstabilität</span></td><td class="v"><b>≤ 10μrad/K</b> (verbesserte Punktstabilität optional)</td></tr>
+    <tr><td class="ic"><svg><use href="#i-fan"/></svg></td><td class="k"><span class="en">Öffnungswinkel</span></td><td class="v"><b>5°, 10°, 30°, 45°, 60°, 75°</b></td></tr>
+    <tr><td class="ic"><svg><use href="#i-thick"/></svg></td><td class="k"><span class="en">Liniendicke</span></td><td class="v"><b>STD, DL</b></td></tr>
+    <tr><td class="ic"><svg><use href="#i-line"/></svg></td><td class="k"><span class="en">Homogenität</span></td><td class="v"><b>≤30%</b> bezogen auf die mittlere Leistung (innerhalb von 80% der Linie)</td></tr>
+    <tr><td class="ic"><svg><use href="#i-line"/></svg></td><td class="k"><span class="en">Geradheit</span></td><td class="v"><b>±0.1%</b></td></tr>
+  </table>
+  <div class="panel" style="margin-top:5mm">
+    <div class="sub"><div class="t">Öffnungswinkel</div><div class="tag">Geometrie maßstäblich · Werte aus „Öffnungswinkel“</div></div>
+    <div class="fans" id="fans" data-angles="5,10,30,45,60,75"></div>
+  </div>
+  <div class="ftr"><div class="m"><span><b>Datum</b>03.07.2025</span><span><b>Rev</b>0</span></div><div class="w">www.blauoptoelektronik.de</div><div class="p">Seite 3 von 4</div></div>
+</section>
+
+<!-- ============ PAGE 4 · MECHANICAL PROPERTIES + CONTACT ============ -->
+<section class="page">
+  <div class="hdr"><div><div class="eb">Datenblatt</div><div class="pn">FP-MVgoldHP</div></div><img src="assets/blau-logo.png" alt="BLAU Optoelektronik"></div>
+  <div class="sh"><span class="no">03</span><h2>Mechanische Eigenschaften</h2></div>
+  <table class="spec tight">
+    <tr><td class="ic"><svg><use href="#i-box"/></svg></td><td class="k"><span class="en">Gehäusematerial</span></td><td class="v"><b>Aluminium</b> (eloxiert, potentialfrei)</td></tr>
+    <tr><td class="ic"><svg><use href="#i-ruler"/></svg></td><td class="k"><span class="en">Abmessungen</span></td><td class="v"><b>Ø48x146mm ±1mm</b> (andere Schnittstellen auf Anfrage)</td></tr>
+    <tr><td class="ic"><svg><use href="#i-cable"/></svg></td><td class="k"><span class="en">Anschlussbelegung</span></td><td class="v">M12-Stecker 4-polig: Pin1: +VDC, Pin2: MOD, Pin3: GND, Pin4: Reserviert<br>M12-Stecker 8-polig: Pin1: RX (RS-232/RS-485), Pin2: TX (RS-232/RS485), Pin3: GND, Pin4-Pin8: Reserviert</td></tr>
+    <tr><td class="ic"><svg><use href="#i-warn"/></svg></td><td class="k"><span class="en">Laserklasse</span></td><td class="v"><b>3B/4</b> (IEC 60825-1:2014, EN 60825-1:2014+A11:2021)</td></tr>
+  </table>
+  <div class="sub" style="margin-top:6mm"><div class="t">Anschlussbelegung <span>· Übersicht</span></div></div>
+  <div class="pins">
+    <div class="pinc"><div class="h">M12-Stecker 4-polig</div>
+      <div class="r"><b>Pin1</b><span>+VDC</span></div>
+      <div class="r"><b>Pin2</b><span>MOD</span></div>
+      <div class="r"><b>Pin3</b><span>GND</span></div>
+      <div class="r res"><b>Pin4</b><span>Reserviert</span></div>
+    </div>
+    <div class="pinc"><div class="h">M12-Stecker 8-polig</div>
+      <div class="r"><b>Pin1</b><span>RX (RS-232/RS-485)</span></div>
+      <div class="r"><b>Pin2</b><span>TX (RS-232/RS485)</span></div>
+      <div class="r"><b>Pin3</b><span>GND</span></div>
+      <div class="r res"><b>Pin4-Pin8</b><span>Reserviert</span></div>
+    </div>
+  </div>
+
+  <div class="contact2">
+    <div class="top"><div class="logo"><img src="assets/blau-logo.png" alt="BLAU Optoelektronik"></div>
+      <div class="t"><b>FP-MVgoldHP</b>Datum 03.07.2025 · Rev 0</div></div>
+    <div class="co">
+      <div><b>Kontakt</b>Telefon +49 (0) 7551/93748-0<br>Telefax +49 (0) 7551/93748-29<br>E-MAIL info@blauoptoelektronik.de<br>WEB www.blauoptoelektronik.de</div>
+      <div><b>Geschäftsführer</b>Dr.-Ing. Ingmar Blau,<br>Dipl.-Ing. (FH) Eugen Romasew<br><span style="display:block;margin-top:1.4mm">HANDELSREGISTER: Freiburg HRB 580681<br>UST-IDNR. DE 169489277</span></div>
+      <div><b>Bankverbindung</b>Sparkasse Bodensee<br>IBAN DE 40 6905 0001 0001 0270 28<br>BIC/SWIFT SOLADES1KNZ</div>
+    </div>
+  </div>
+  <div class="ftr"><div class="m"><span><b>Datum</b>03.07.2025</span><span><b>Rev</b>0</span></div><div class="w">www.blauoptoelektronik.de</div><div class="p">Seite 4 von 4</div></div>
+</section>
+<script src="assets/ds.js"></script>
+</body>
+</html>

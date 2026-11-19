@@ -1,0 +1,272 @@
+
+===== lc page 1 (595x842pt) =====
+[y113] (x59)MVpulseHP SERIES WITH PULSE CONTROL
+[y124] (x118)®
+[y127] (x59)FLEXPOINT (x123)Machine Vision Laser
+[y337] (x59)A COMPACT LASER MODULE WITH HIGH PEAK POWER AND SMALL SIZE
+[y356] (x59)The MVpulseHP offers high peak powers (up to 500 mW for 525 nm, 660 nm, 808 nm and even
+[y370] (x59)1000 mW at 445 nm), while the diameter remains 19 mm and the housing has a small size. Active (x533)cooling
+[y384] (x59)can be avoided, due to the pulsing function. Higher power and therefore higher light intensity can
+[y398] (x59)support decreased exposure time and higher throughput (more frames per second, more parts to be
+[y412] (x59)inspected per second).
+[y432] (x59)The pulse frequency and duty cycle can be adjusted to the needs of the application. The MVpulseHP is
+[y446] (x59)available as standard (ST) and 2-Housing (2H) separating the housing for optics and electronics. There
+[y460] (x59)is also a variety of fan angles and two different focus options available.
+[y499] (x59)FEATURES
+[y519] (x59)/ (x70)Pulsed laser module at 4 wavelengths up to 1 W for 445 nm
+[y533] (x70)and 500 mW for 525 nm, 660 nm and 808 nm
+[y547] (x59)/ (x70)High pulse power without active cooling
+[y561] (x59)/ (x70)Small laser module for high intensity illumination
+[y575] (x59)/ (x70)Adjustable pulse width, depending on the needs of the application
+[y589] (x59)/ (x70)Pulse control by integrated microcontroller
+[y603] (x59)/ (x70)Over-temperature protection
+[y629] (x59)APPLICATIONS
+[y648] (x59)/ (x70)3D machine vision
+[y662] (x59)/ (x70)Outdoor industrial inspection
+[y676] (x59)/ (x70)Rail inspection
+[y690] (x59)/ (x70)Steel inspection
+[y763] (x59)/ Germany and Other Countries (x169)LASER COMPONENTS Germany GmbH (x304)Tel +49 8142 2864 – 0 (x379)info@lasercomponents.com (x475)www.lasercomponents.com
+[y772] (x59)/ France (x93)LASER COMPONENTS S.A.S. (x194)Tel +33 1 39 59 52 25 (x267)info@lasercomponents.fr (x355)www.lasercomponents.fr
+[y781] (x59)/ United Kingdom (x124)LASER COMPONENTS (UK) Ltd. (x236)Tel +44 1245 491 499 (x310)info@lasercomponents.co.uk (x410)www.lasercomponents.co.uk
+[y790] (x59)/ Nordic Countries (x126)LASER COMPONENTS Nordic AB (x242)Tel +46 31 703 71 73 (x313)info@lasercomponents.se (x402)www.lasercomponents.se
+[y799] (x59)/ USA (x85)LASER COMPONENTS USA, Inc. (x196)Tel +1 603 821 – 7040 (x270)info@laser-components.com (x369)www.laser-components.com
+[y816] (x59)/ 1
+[y819] (x25)03/25 / V02 / KS-MaL / laser-modules/flexpoint-mvpulsehp-machine-vision-laser
+
+===== lc page 2 (595x842pt) =====
+[y58] (x59)F (x68)LE (x86)x (x96)POINT (x142)® Ma (x174)CHINE (x224)V (x235)ISION (x280)La (x299)SER
+[y72] (x59)MVpulseHP Series with Pulse Control
+[y110] (x59)SPECIFICATIONS
+[y129] (x63)Model (x269)Line laser with uniform power distribution (FOV correction available)
+[y144] (x63)Wavelength [nm] (x279)445 (x360)525 (x440)660 (x521)808
+[y159] (x63)Wavelength tolerance (typ.) [nm] (x280)±10 (x362)±7 (x443)±7 (x523)±10
+[y174] (x63)Wavelength Drift [nm/K] (x279)≤ (x284)0.1 (x360)≤ (x365)0.1 (x440)≤ (x444)0.3 (x521)≤ (x525)0.3
+[y186] (x220)1
+[y189] (x63)Output power (max. peak power) [mW] (x265)500 – 1000 (x348)300 – 500 (x429)300 – 500 (x510)300 – 500
+[y204] (x63)Power stability at 25 °C (after warm up) [%] (x402)≤ (x409)5
+[y216] (x238)2
+[y219] (x63)Operating temperature (housing temp.) [°C] (x266)-10 to +50 (x347)-10 to +30 (x428)-10 to +30 (x509)-10 to +30
+[y243] (x63)Duty cycle and pulse length for peak power increase compared to cw mode to avoid shut off of laser due to heat generation
+[y257] (x63)Duty cycle (x250)0 – 10 %
+[y272] (x63)Pulse length (x250)20 μs – 20 ms
+[y287] (x250)0 Hz – 4 kHz (higher frequency on request)
+[y292] (x63)Mod. Frequency
+[y296] (x250)Low 0 V, high 5 V = defined peak power, input impedance of 10 kOhm at 5 V
+[y323] (x114)3
+[y326] (x63)Fan angle [°] (x250)5, 10, 30, 45, 60, 75
+[y341] (x63)Focussing range [mm] (x250)50 – 5000
+[y353] (x174)4
+[y356] (x63)Line intensity variation (typ) (x179)[%] (x250)≤ (x257)30 related to average power (within 80 % of the line)
+[y368] (x129)4
+[y371] (x63)Line straightness (x135)[%] (x250)±0.1
+[y386] (x63)Pointing stability [μrad/K] (x250)≤ (x257)10
+[y401] (x63)Boresight deviation [mrad] (x250)≤ (x257)10
+[y415] (x63)Operating voltage [VDC] (x250)20 – 24
+[y430] (x63)Communication interface (x250)RS-232 (0 – 5 V) (optional RS-485)
+[y445] (x250)Digital Modulation (x324)≤ (x331)4 kHz active high (higher frequency on request)
+[y450] (x63)Modulation
+[y454] (x250)Low 0 V, high 5 V, input impedance of 10 kOhm at 5 V
+[y469] (x63)Delay + Rise time [μs] (x250)<20
+[y484] (x63)Laser protection class (x250)3B (IEC 60825-1:2014, EN 60825-1:2014+A11:2021)
+[y499] (x250)ESD
+[y505] (x321)5
+[y508] (x250)Over-temperature
+[y512] (x63)Additional protections
+[y517] (x250)Over-voltage up to 26 VDC
+[y526] (x250)Reverse polarity up to 30 VDC
+[y541] (x250)30 G, 6 ms
+[y545] (x63)Shock tolerance
+[y550] (x250)75 G, 4 ms
+[y565] (x250)Aluminium (blue anodized, potential free)
+[y569] (x63)Housing
+[y574] (x250)ST-F (standard) or 2H-F (separate housing for optics and electronics)
+[y589] (x63)Accessories available
+[y593] (x250)Mount
+[y598] (x63)(optional, order separately)
+[y613] (x250)Open leads (500 mm)
+[y622] (x250)Red: +VDC; Black: GND; Green: MOD; Yellow: RX; Blue: TX; Brown: GND COM
+[y626] (x63)Connector
+[y631] (x250)Purple/Orange: Reserved - not for customer use
+[y640] (x250)150 mm cable between housings for 2H
+[y675] (x59)Foot Note
+[y684] (x59)1 (x73)The output power is defined behind optics which means at the beam exit of the laser module
+[y693] (x59)2 (x73)Below 0 °C condensate formation must be avoided (due to optical and electronic components)
+[y702] (x59)3 (x73)Fan angle: Defined by the ends of the laser line using FWHM based on the average power (within 80 % of line)
+[y711] (x59)4 (x73)Line intensity variation and line straightness are measured at 80 % of the fan angle
+[y720] (x59)5 (x73)Over temperature: The laser is switched off automatically if the temperature in the laser diode exceeds a defined temperature.
+[y729] (x73)Switching back on takes place with a hysteresis of 5K
+[y763] (x59)/ Germany and Other Countries (x169)LASER COMPONENTS Germany GmbH (x304)Tel +49 8142 2864 – 0 (x379)info@lasercomponents.com (x475)www.lasercomponents.com
+[y772] (x59)/ France (x93)LASER COMPONENTS S.A.S. (x194)Tel +33 1 39 59 52 25 (x267)info@lasercomponents.fr (x355)www.lasercomponents.fr
+[y781] (x59)/ United Kingdom (x124)LASER COMPONENTS (UK) Ltd. (x236)Tel +44 1245 491 499 (x310)info@lasercomponents.co.uk (x410)www.lasercomponents.co.uk
+[y790] (x59)/ Nordic Countries (x126)LASER COMPONENTS Nordic AB (x242)Tel +46 31 703 71 73 (x313)info@lasercomponents.se (x402)www.lasercomponents.se
+[y799] (x59)/ USA (x85)LASER COMPONENTS USA, Inc. (x196)Tel +1 603 821 – 7040 (x270)info@laser-components.com (x369)www.laser-components.com
+[y816] (x59)/ 2
+[y819] (x25)03/25 / V02 / KS-MaL / laser-modules/flexpoint-mvpulsehp-machine-vision-laser
+
+===== lc page 3 (595x842pt) =====
+[y58] (x59)F (x68)LE (x86)x (x96)POINT (x142)® Ma (x174)CHINE (x224)V (x235)ISION (x280)La (x299)SER
+[y72] (x59)MVpulseHP Series with Pulse Control
+[y110] (x59)Line Thickness and Depth of Focus (DOF) for Standard (STD) Focus Option at 660 nm
+[y142] (x74)200 (x275)50 (x336)1800 (x539)5000
+[y152] (x75)180 (x275)45 (x336)1600 (x539)4500
+[y160] (x104)Line Thickness
+[y162] (x75)160 (x275)40 (x379)Line Thickness (x539)4000
+[y165] (x104)Depth of Focus (x336)1400
+[y167] (x379)Depth of Focus
+[y173] (x75)140 (x275)35 (x539)3500
+[y176] (x71)[μm] (x333)[μm] (x336)1200
+[y179] (x70)2 (x332)2
+[y183] (x75)120 (x275)30 (x539)3000
+[y188] (x336)1000
+[y194] (x75)100 (x275)25 (x539)2500
+[y199] (x337)800
+[y204] (x76)80 (x275)20 (x539)2000
+[y211] (x337)600
+[y215] (x76)60 (x275)15 (x539)1500
+[y217] (x287)Depth of Focus [mm] (x555)Depth of Focus [mm]
+[y220] (x71)Line Thickness 1/e (x333)Line Thickness 1/e
+[y222] (x337)400
+[y225] (x76)40 (x275)10 (x539)1000
+[y234] (x76)20 (x275)5 (x337)200 (x539)500
+[y246] (x78)0 (x275)0 (x342)0 (x539)0
+[y251] (x83)0 (x113)100 (x151)200 (x190)300 (x229)400 (x268)500 (x344)500 (x386)1500 (x428)2500 (x470)3500 (x512)4500
+[y258] (x154)Focus Distance [mm] (x418)Focus Distance [mm]
+[y272] (x105)Standard laser line characteristics (short range) (x370)Standard laser line characteristics (long range)
+[y298] (x59)Focus Options
+[y317] (x59)MVpulseHP is available with different focus options to achieve the right combination of line thickness
+[y331] (x59)and depth of focus depending on the application.
+[y351] (x59)The values shown in the table below are the factors which should be used in combination with the
+[y365] (x59)graph above.
+[y384] (x395)Focus options
+[y389] (x149)P (x165)and λ
+[y391] (x155)out (x309)(conversion factor related to standard laser marked in red)
+[y408] (x93)λ (x156)P_out (x236)Δλ (x343)STD (x491)DL
+[y423] (x85)[nm] (x156)[mW] (x231)[nm] (x310)LT (x378)DOF (x456)LT (x524)DOF
+[y438] (x87)445 (x147)500 – 1000 (x235)±10 (x306)0.97 (x380)1.39 (x451)0.69 (x526)0.71
+[y453] (x88)525 (x149)300 – 500 (x236)±7 (x308)1.15 (x380)1.68 (x452)0.78 (x525)0.78
+[y468] (x87)660 (x149)300 – 500 (x236)±7 (x306)1.00 (x379)1.00 (x452)0.76 (x525)0.58
+[y483] (x87)808 (x149)300 – 500 (x235)±10 (x307)1.27 (x380)1.32 (x452)0.98 (x525)0.79
+[y497] (x63)Foot Note / Abbreviations
+[y506] (x63)LT = Line Thickness (x135)DOF = Depth of Focus (x243)STD = Standard, good compromise between Line Thickness and Depth of Focus
+[y515] (x63)DL = Thin Line (x135)FD = Focus Distance
+[y763] (x59)/ Germany and Other Countries (x169)LASER COMPONENTS Germany GmbH (x304)Tel +49 8142 2864 – 0 (x379)info@lasercomponents.com (x475)www.lasercomponents.com
+[y772] (x59)/ France (x93)LASER COMPONENTS S.A.S. (x194)Tel +33 1 39 59 52 25 (x267)info@lasercomponents.fr (x355)www.lasercomponents.fr
+[y781] (x59)/ United Kingdom (x124)LASER COMPONENTS (UK) Ltd. (x236)Tel +44 1245 491 499 (x310)info@lasercomponents.co.uk (x410)www.lasercomponents.co.uk
+[y790] (x59)/ Nordic Countries (x126)LASER COMPONENTS Nordic AB (x242)Tel +46 31 703 71 73 (x313)info@lasercomponents.se (x402)www.lasercomponents.se
+[y799] (x59)/ USA (x85)LASER COMPONENTS USA, Inc. (x196)Tel +1 603 821 – 7040 (x270)info@laser-components.com (x369)www.laser-components.com
+[y816] (x59)/ 3
+[y819] (x25)03/25 / V02 / KS-MaL / laser-modules/flexpoint-mvpulsehp-machine-vision-laser
+
+===== lc page 4 (595x842pt) =====
+[y58] (x59)F (x68)LE (x86)x (x96)POINT (x142)® Ma (x174)CHINE (x224)V (x235)ISION (x280)La (x299)SER
+[y72] (x59)MVpulseHP Series with Pulse Control
+[y110] (x59)Pulse and Monitor / Control Features
+[y124] (x59)/ (x70)Current standard for pulse function: Every modulation signal will result in a laser pulse but pulse
+[y138] (x70)lenght / duty cycle will be adjusted for temperature control which means the pulse length can be
+[y152] (x70)shorter than the modulation signal
+[y166] (x59)/ (x70)Duty cycle and pulse length will be preset at the factory and can be adjusted to your application
+[y180] (x59)/ (x70)Pulse control can be adjusted on request
+[y229] (x238)t (x252)| t (x270)| k (x323)Modulation signal: on time | off time | duty cycle
+[y231] (x86)Modulation (x241)m,on (x259)m,off (x278)m,dc
+[y241] (x238)t (x251)| k (x323)Laser signal factory preset: maximum on time | maximum duty cycle
+[y243] (x86)Signal (x241)p,on (x258)p,dc
+[y252] (x238)k (x253)= t (x273)/ (t (x295)+ t (x314)) (x323)Calculation duty cycle
+[y255] (x242)m,dc (x262)m,on (x284)m,on (x304)m,off
+[y272] (x131)t (x272)t (x289)max = 20 ms (x366)t
+[y275] (x134)m,on (x276)p,on (x369)p,on
+[y308] (x160)t
+[y311] (x163)m,off
+[y327] (x448)Time
+[y344] (x84)Laser
+[y356] (x84)Output
+[y368] (x285),
+[y384] (x131)t
+[y386] (x135)p,on (x215)Up to
+[y398] (x215)1000 mW
+[y436] (x449)Time
+[y467] (x117)𝑘𝑘 (x134)< 𝑘𝑘 (x264)𝑘𝑘 (x282)> 𝑘𝑘
+[y470] (x122)𝑚𝑚𝑚𝑚𝑚𝑚𝑚 (x150)𝑝𝑝 (x153)𝑚𝑚𝑚𝑚𝑚 (x270)𝑚𝑚𝑚𝑚𝑚𝑚𝑚 (x298)𝑝𝑝 (x301)𝑚𝑚𝑚𝑚𝑚
+[y479] (x117)𝑡𝑡 (x133)< 𝑡𝑡 (x264)𝑡𝑡 (x281)> 𝑡𝑡
+[y482] (x121)𝑚𝑚𝑚𝑚𝑚𝑚𝑚 (x147)𝑝𝑝 (x150)𝑚𝑚𝑚𝑚𝑚 (x268)𝑚𝑚𝑚𝑚𝑚𝑚𝑚 (x295)𝑝𝑝 (x298)𝑚𝑚𝑚𝑚𝑚
+[y494] (x117)Laser Output = Mod. Signal (x264)Laser Output cut by Pulse Control
+[y763] (x59)/ Germany and Other Countries (x169)LASER COMPONENTS Germany GmbH (x304)Tel +49 8142 2864 – 0 (x379)info@lasercomponents.com (x475)www.lasercomponents.com
+[y772] (x59)/ France (x93)LASER COMPONENTS S.A.S. (x194)Tel +33 1 39 59 52 25 (x267)info@lasercomponents.fr (x355)www.lasercomponents.fr
+[y781] (x59)/ United Kingdom (x124)LASER COMPONENTS (UK) Ltd. (x236)Tel +44 1245 491 499 (x310)info@lasercomponents.co.uk (x410)www.lasercomponents.co.uk
+[y790] (x59)/ Nordic Countries (x126)LASER COMPONENTS Nordic AB (x242)Tel +46 31 703 71 73 (x313)info@lasercomponents.se (x402)www.lasercomponents.se
+[y799] (x59)/ USA (x85)LASER COMPONENTS USA, Inc. (x196)Tel +1 603 821 – 7040 (x270)info@laser-components.com (x369)www.laser-components.com
+[y816] (x59)/ 4
+[y819] (x25)03/25 / V02 / KS-MaL / laser-modules/flexpoint-mvpulsehp-machine-vision-laser
+
+===== lc page 5 (595x842pt) =====
+[y58] (x59)F (x68)LE (x86)x (x96)POINT (x142)® Ma (x174)CHINE (x224)V (x235)ISION (x280)La (x299)SER
+[y72] (x59)MVpulseHP Series with Pulse Control
+[y110] (x59)TECHNICAL DRAWING
+[y130] (x59)MVpulseHP with standard housing and focusing mechanics
+[y363] (x347)90 (x360)±1
+[y388] (x268)9.0
+[y391] (x165)-0.05
+[y394] (x139)ø (x147)19.0 (x165)-0.02
+[y406] (x433)1
+[y408] (x89)ø (x97)4.8 (x374)Clamping Area
+[y483] (x277)19.0
+[y607] (x74)MVpulseHP ST-F
+[y622] (x74)1
+[y625] (x77)For optimal heat dissipation in a mount, we recommend to apply thermal paste on the surface overlap.
+[y649] (x74)Units: mm
+[y763] (x59)/ Germany and Other Countries (x169)LASER COMPONENTS Germany GmbH (x304)Tel +49 8142 2864 – 0 (x379)info@lasercomponents.com (x475)www.lasercomponents.com
+[y772] (x59)/ France (x93)LASER COMPONENTS S.A.S. (x194)Tel +33 1 39 59 52 25 (x267)info@lasercomponents.fr (x355)www.lasercomponents.fr
+[y781] (x59)/ United Kingdom (x124)LASER COMPONENTS (UK) Ltd. (x236)Tel +44 1245 491 499 (x310)info@lasercomponents.co.uk (x410)www.lasercomponents.co.uk
+[y790] (x59)/ Nordic Countries (x126)LASER COMPONENTS Nordic AB (x242)Tel +46 31 703 71 73 (x313)info@lasercomponents.se (x402)www.lasercomponents.se
+[y799] (x59)/ USA (x85)LASER COMPONENTS USA, Inc. (x196)Tel +1 603 821 – 7040 (x270)info@laser-components.com (x369)www.laser-components.com
+[y816] (x59)/ 5
+[y819] (x25)03/25 / V02 / KS-MaL / laser-modules/flexpoint-mvpulsehp-machine-vision-laser
+
+===== lc page 6 (595x842pt) =====
+[y58] (x59)F (x68)LE (x86)x (x96)POINT (x142)® Ma (x174)CHINE (x224)V (x235)ISION (x280)La (x299)SER
+[y72] (x59)MVpulseHP Series with Pulse Control
+[y110] (x59)TECHNICAL DRAWING
+[y130] (x59)MVpulseHP with 2 housings, focusable
+[y394] (x235)40 (x248)±1 (x426)70 (x439)±1
+[y399] (x165)-0.05
+[y402] (x139)ø (x147)19.0 (x165)-0.02
+[y416] (x89)ø (x97)4.8 (x356)1
+[y420] (x297)Clamping Area
+[y493] (x106)-0.05 (x216)19.0 (x320)ø (x328)4.5
+[y498] (x81)ø (x88)19.0 (x106)-0.02
+[y607] (x74)MVpulseHP 2H-F
+[y622] (x74)1
+[y625] (x77)For optimal heat dissipation in a mount, we recommend to apply thermal paste on the surface overlap.
+[y649] (x74)Units: mm
+[y763] (x59)/ Germany and Other Countries (x169)LASER COMPONENTS Germany GmbH (x304)Tel +49 8142 2864 – 0 (x379)info@lasercomponents.com (x475)www.lasercomponents.com
+[y772] (x59)/ France (x93)LASER COMPONENTS S.A.S. (x194)Tel +33 1 39 59 52 25 (x267)info@lasercomponents.fr (x355)www.lasercomponents.fr
+[y781] (x59)/ United Kingdom (x124)LASER COMPONENTS (UK) Ltd. (x236)Tel +44 1245 491 499 (x310)info@lasercomponents.co.uk (x410)www.lasercomponents.co.uk
+[y790] (x59)/ Nordic Countries (x126)LASER COMPONENTS Nordic AB (x242)Tel +46 31 703 71 73 (x313)info@lasercomponents.se (x402)www.lasercomponents.se
+[y799] (x59)/ USA (x85)LASER COMPONENTS USA, Inc. (x196)Tel +1 603 821 – 7040 (x270)info@laser-components.com (x369)www.laser-components.com
+[y816] (x59)/ 6
+[y819] (x25)03/25 / V02 / KS-MaL / laser-modules/flexpoint-mvpulsehp-machine-vision-laser
+
+===== lc page 7 (595x842pt) =====
+[y58] (x59)F (x68)LE (x86)x (x96)POINT (x142)® Ma (x174)CHINE (x224)V (x235)ISION (x280)La (x299)SER
+[y72] (x59)MVpulseHP Series with Pulse Control
+[y110] (x59)ORDERING CODE
+[y128] (x189)Wavelength (x436)Fan Angle (x495)Focus
+[y138] (x138)Housing (x189)[nm] (x254)Peak Power [mW] (x337)Modulation (x436)[°] (x495)[mm] (x538)Optics
+[y161] (x62)FP-MVpulseHP (x128)- (x152)X (x179)- (x210)X (x244)- (x291)X (x375)X (x426)- (x454)X (x485)- (x505)X (x528)- (x549)X
+[y178] (x337)MI (x349)| (x353)Digital
+[y181] (x150)ST (x205)445 (x274)300 – 500 (x455)5 (x505)F (x544)STD
+[y188] (x353)Modulation
+[y191] (x150)2H (x206)525 (x255)1000 (x278)(445 nm only) (x452)10 (x546)DL
+[y198] (x353)inverted, active
+[y201] (x205)660 (x452)30
+[y208] (x353)high
+[y211] (x205)808 (x452)45
+[y221] (x452)60
+[y231] (x452)75
+[y251] (x59)Example: FP-MVpulseHP-ST-660-500MI-60-F-STD
+[y763] (x59)/ Germany and Other Countries (x169)LASER COMPONENTS Germany GmbH (x304)Tel +49 8142 2864 – 0 (x379)info@lasercomponents.com (x475)www.lasercomponents.com
+[y772] (x59)/ France (x93)LASER COMPONENTS S.A.S. (x194)Tel +33 1 39 59 52 25 (x267)info@lasercomponents.fr (x355)www.lasercomponents.fr
+[y781] (x59)/ United Kingdom (x124)LASER COMPONENTS (UK) Ltd. (x236)Tel +44 1245 491 499 (x310)info@lasercomponents.co.uk (x410)www.lasercomponents.co.uk
+[y790] (x59)/ Nordic Countries (x126)LASER COMPONENTS Nordic AB (x242)Tel +46 31 703 71 73 (x313)info@lasercomponents.se (x402)www.lasercomponents.se
+[y799] (x59)/ USA (x85)LASER COMPONENTS USA, Inc. (x196)Tel +1 603 821 – 7040 (x270)info@laser-components.com (x369)www.laser-components.com
+[y816] (x59)/ 7
+[y819] (x25)03/25 / V02 / KS-MaL / laser-modules/flexpoint-mvpulsehp-machine-vision-laser

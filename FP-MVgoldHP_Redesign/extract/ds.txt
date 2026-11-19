@@ -1,0 +1,70 @@
+
+===== ds page 1 (595x842pt) =====
+[y64] (x32)Datasheet/ Datenblatt
+[y109] (x30)Order number/ Artikelnummer (x241)FP-MVgoldHP
+[y126] (x30)Module/ Bezeichnung (x241)FP-MVgoldHP Produktdatenblatt
+[y148] (x30)Basic properties/ Allgemeine Eigenschaften:
+[y169] (x30)Spectral range/ Wellenlänge (x241)445nm ±10nm at 25°C, 525nm ±7nm at 25°C,
+[y183] (x241)638nm ±7nm at 25°C, 660nm ±7nm at 25°C,
+[y196] (x241)808nm ±10nm at 25°C
+[y212] (x30)Output power/ Ausgangsleistung (x241)445nm: 500mW - 2W |
+[y225] (x241)525nm, 638nm, 660nm, 808nm: 300mW - 1W
+[y239] (x241)(maximum power after optics)
+[y254] (x30)Operating voltage/ Versorgungsspannung (x241)20-24V
+[y271] (x30)Current consumption/ Stromverbrauch (x241)≤ 4A@20V
+[y289] (x30)Operating temperature/ Betriebstemperatur (x241)-10°C to +50°C
+[y302] (x241)(housing temperature, condensation must be avoided)
+[y317] (x30)Storage temperature/ Lagertemperatur (x241)-20°C to +60°C
+[y335] (x30)Modulation/ Modulation (x241)Digital Modulation: 0 Hz - 1 MHz (higher frequency on request)
+[y348] (x241)Active high (MI) or active low (M)
+[y362] (x241)MI: 0V = Off, 5V = On (input impedance of 10k ohms at 5V)
+[y375] (x241)Duty cycle: 0-100 %
+[y389] (x241)Pulse length > 500 ns
+[y402] (x241)Delay + rise time < 200ns
+[y417] (x30)Power stability/ Leistungsstabilität (x241)≤ 5% at 25°C (after warm up)
+[y435] (x30)Communication / Kommunikation (x241)RS-232 (0-5V) (Standard), RS-485 (Optional), see commands
+[y452] (x30)Protections / Schutzmechanismen (x241)ESD, over-temperature, over-voltage up to 26 VDC,
+[y465] (x241)reverse polarity up to 30 VDC
+[y481] (x30)Commands / Befehle (x241)getldcurrent, getldtemp, getserial, gethours, geterror,
+[y494] (x241)setserial[1-255]
+[y510] (x30)Weight/ Gewicht (x241)< 450g
+[y531] (x30)Beam properties/ Optische Eigenschaften:
+[y553] (x30)Beam profile/ Strahlcharakteristik (x241)Laser line with uniform power distribution
+[y570] (x30)Focus distance/ Fokussabstand (x241)Focussing range: 50mm - 5000mm
+[y588] (x30)Boresight deviation/ Strahlrichtungsfehler (x241)≤ 10mrad
+[y605] (x30)Pointing stability/ Punktstabilität (x241)≤ 10μrad/K (improved pointing stability as option)
+[y622] (x30)Fan angle/ Öffnungswinkel (x241)5°, 10°, 30°, 45°, 60°, 75°
+[y639] (x30)Line thickness/ Liniendicke (x241)STD, DL
+[y657] (x30)Line intensity variation/ Homogenität (x241)≤30% related to average power (within 80% of the line)
+[y674] (x30)Line straightness/ Geradheit (x241)±0.1%
+[y716] (x356)GESCHÄFTSFÜHRER Dr.-Ing. Ingmar Blau,
+[y725] (x356)Dipl.-Ing. (FH) Eugen Romasew
+[y733] (x356)Telefon +49 (0) 7551/93748-0
+[y742] (x356)Telefax +49 (0) 7551/93748-29
+[y750] (x356)E-MAIL info@blauoptoelektronik.de
+[y759] (x356)WEB www.blauoptoelektronik.de
+[y767] (x356)HANDELSREGISTER: Freiburg HRB 580681 UST-
+[y776] (x356)IDNR. DE 169489277
+[y786] (x33)Date (x108)03.07.2025
+[y793] (x356)BANKVERBINDUNG Sparkasse Bodensee
+[y801] (x356)IBAN DE 40 6905 0001 0001 0270 28
+[y804] (x33)Rev (x108)0
+[y810] (x356)BIC/SWIFT SOLADES1KNZ
+[y821] (x32)page 1 of 2
+
+===== ds page 2 (595x842pt) =====
+[y64] (x32)Datasheet/ Datenblatt
+[y91] (x30)Line straightness/ Geradheit
+[y113] (x30)Mechanical properties/ Mechanische Eigenschaften:
+[y135] (x30)Housing material/ Gehäusematerial (x241)Aluminium (anodized, potential free)
+[y152] (x30)Housing size/ Abmessungen (x241)Ø48x146mm ±1mm (different interfaces on request)
+[y169] (x30)Pin defintion/ Anschlussbelegung (x241)M12 connector 4-pin:
+[y183] (x241)Pin1: +VDC, Pin2: MOD, Pin3: GND, Pin4: Reserved
+[y196] (x241)M12 connector 8-pin:
+[y210] (x241)Pin1: RX (RS-232/RS-485), Pin2: TX (RS-232/RS485),
+[y223] (x241)Pin3: GND, Pin4-Pin8: Reserved
+[y239] (x30)Laser class/ Laserklasse (x241)3B/4 (IEC 60825-1:2014, EN 60825-1:2014+A11:2021)
+[y261] (x30)-
+[y786] (x33)Date (x108)03.07.2025
+[y804] (x33)Rev (x108)0
+[y821] (x32)page 2 of 2

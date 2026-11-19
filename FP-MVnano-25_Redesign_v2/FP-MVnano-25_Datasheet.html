@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FP-MVnano-25 Datasheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#003368;      /* BLAU logo blue  */
+    --navy-2:#0D4C8F;
+    --red:#E51837;       /* BLAU logo red   */
+    --ink:#101B2B;
+    --ink-2:#3A4757;
+    --muted:#738093;
+    --rule:#DCE2EA;
+    --rule-2:#EEF1F5;
+    --panel:#F4F6F9;
+  }
+  @page{ size:A4; margin:0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ background:#CED5DE; }
+  body{
+    font-family:"Inter","Segoe UI",Arial,sans-serif; color:var(--ink);
+    font-size:9pt; line-height:1.45;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    font-variant-ligatures:none;
+    font-feature-settings:"liga" 0,"clig" 0,"calt" 0,"dlig" 0;
+  }
+  .page{ position:relative; width:210mm; height:297mm; overflow:hidden; background:#fff;
+         margin:8mm auto; padding:0 17mm; break-after:page; page-break-after:always; }
+  .page:last-child{ break-after:auto; page-break-after:auto; }
+  @media print{ html,body{ background:#fff; } .page{ margin:0; } }
+  .tight{ font-family:"Inter Tight","Inter",Arial,sans-serif; }
+  .nw{ white-space:nowrap; }
+
+  /* ---------- header ---------- */
+  .hdr{ height:31mm; display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:5mm; border-bottom:0.25mm solid var(--rule); position:relative; }
+  .hdr::after{ content:""; position:absolute; left:0; bottom:-0.25mm; width:18mm; height:0.8mm; background:var(--red); }
+  .hdr .doc .eb{ font-size:7.4pt; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
+  .hdr .doc .pn{ font-family:"Inter Tight"; font-size:15pt; font-weight:600; color:var(--navy); line-height:1.15; margin-top:1mm; }
+  .hdr img{ height:12.5mm; display:block; }
+
+  /* ---------- footer ---------- */
+  .ftr{ position:absolute; left:17mm; right:17mm; bottom:10mm; height:8mm; border-top:0.25mm solid var(--rule);
+        display:flex; justify-content:space-between; align-items:center; font-size:7.2pt; color:var(--muted); }
+  .ftr .m{ display:flex; gap:6mm; }
+  .ftr .m b{ font-weight:600; color:var(--ink-2); margin-right:1.6mm; }
+  .ftr .w{ font-weight:600; color:var(--navy); letter-spacing:0.02em; }
+  .ftr .p{ font-weight:600; color:var(--navy); }
+
+  /* ---------- section heading ---------- */
+  .sh{ display:flex; align-items:baseline; gap:3mm; margin:9mm 0 3.5mm; }
+  .sh .no{ font-family:"Inter Tight"; font-weight:700; font-size:9pt; color:var(--red); letter-spacing:0.08em; }
+  .sh h2{ font-family:"Inter Tight"; font-weight:600; font-size:17pt; color:var(--navy); letter-spacing:-0.005em; line-height:1.1; }
+  .sh .de{ font-family:"Inter Tight"; font-weight:500; font-size:12.5pt; color:var(--muted); }
+  .sh .de::before{ content:"/"; margin:0 2mm 0 0.5mm; color:var(--rule); }
+
+  .kick{ font-size:7.2pt; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
+  .sub{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:2.5mm; }
+  .sub .t{ font-family:"Inter Tight"; font-weight:600; font-size:10.5pt; color:var(--navy); }
+  .sub .t span{ color:var(--muted); font-weight:500; }
+  .sub .tag{ font-size:6.6pt; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+
+  /* ---------- spec table ---------- */
+  table.spec{ width:100%; border-collapse:collapse; }
+  table.spec tr{ break-inside:avoid; }
+  table.spec td{ padding:2.3mm 0; vertical-align:top; border-bottom:0.2mm solid var(--rule); }
+  table.spec tr:first-child td{ border-top:0.5mm solid var(--navy); }
+  table.spec td.ic{ width:8mm; padding-top:2.5mm; }
+  table.spec td.ic svg{ width:4.6mm; height:4.6mm; display:block; stroke:var(--navy); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  table.spec td.k{ width:54mm; padding-right:5mm; }
+  table.spec td.k .en{ display:block; font-weight:600; font-size:8.9pt; color:var(--ink); line-height:1.3; }
+  table.spec td.k .dl{ display:block; font-size:7.9pt; color:var(--muted); line-height:1.3; margin-top:0.3mm; }
+  table.spec td.v{ font-size:8.9pt; color:var(--ink-2); line-height:1.5; }
+  table.spec td.v b{ font-weight:600; color:var(--ink); }
+  table.spec tr:nth-child(even) td{ background:#FAFBFC; }
+
+  .panel{ background:var(--panel); border-radius:2.5mm; padding:4.5mm 5mm; }
+  .cap{ font-size:7pt; color:var(--muted); margin-top:2mm; }
+
+  /* ---------- cover ---------- */
+  .ctop{ height:34mm; display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:2mm; }
+  .ctop .eb{ font-family:"Inter Tight"; font-size:13pt; font-weight:500; color:var(--navy); }
+  .ctop .eb span{ color:var(--muted); }
+  .ctop img{ height:17mm; }
+  .title{ margin-top:10mm; }
+  .title .kick{ color:var(--red); }
+  .title h1{ font-family:"Inter Tight"; font-weight:700; font-size:46pt; line-height:1; color:var(--navy); letter-spacing:-0.02em; margin-top:2.5mm; }
+  .title .lead{ font-size:12.5pt; font-weight:400; color:var(--ink-2); line-height:1.4; margin-top:4mm; max-width:150mm; }
+  .title .lead span{ display:block; font-size:9.5pt; color:var(--muted); margin-top:0.8mm; }
+
+  .title .intro{ font-size:9.6pt; line-height:1.55; color:var(--ink-2); margin-top:2.5mm; max-width:150mm; padding-left:3.5mm; border-left:0.8mm solid var(--red); }
+  .hero{ margin:6mm -17mm 0; height:72mm; position:relative;
+         background:linear-gradient(180deg,#FFFFFF 0%,#F2F5F8 55%,#E9EEF3 100%); overflow:hidden; }
+  .hero .row{ position:absolute; inset:0 6mm; display:flex; justify-content:center; align-items:center; gap:0; }
+  .hero img{ width:72mm; height:72mm; object-fit:contain; mix-blend-mode:multiply; display:block; }
+  .hero img.mid{ width:82mm; height:82mm; margin:0 -11mm; }
+  .hero::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:0.6mm; background:linear-gradient(90deg,var(--navy) 0 70%, var(--red) 70% 100%); }
+
+  .facts{ margin-top:7mm; display:grid; grid-template-columns:repeat(5,1fr); }
+  .fact{ padding:0 3mm; border-left:0.2mm solid var(--rule); }
+  .fact:first-child{ padding-left:0; border-left:none; }
+  .fact svg{ width:5.6mm; height:5.6mm; stroke:var(--red); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; display:block; }
+  .fact .v{ font-family:"Inter Tight"; font-weight:600; font-size:14pt; color:var(--navy); line-height:1.1; margin-top:2.4mm; white-space:nowrap; }
+  .fact .l{ font-size:7.3pt; font-weight:600; color:var(--ink-2); margin-top:1.2mm; line-height:1.3; }
+  .fact .l span{ display:block; color:var(--muted); font-weight:400; }
+
+  .wl{ margin-top:6.5mm; padding-top:4.5mm; border-top:0.2mm solid var(--rule); display:flex; gap:4mm; align-items:flex-start; }
+  .wl .lbl{ width:30mm; flex:none; font-size:7.3pt; font-weight:600; color:var(--ink-2); line-height:1.3; padding-top:0.8mm; }
+  .wl .lbl span{ display:block; color:var(--muted); font-weight:400; }
+  .chips{ display:flex; flex-wrap:wrap; gap:1.6mm; }
+  .chip{ display:inline-flex; align-items:center; gap:1.5mm; border:0.2mm solid var(--rule); border-radius:10mm; padding:0.9mm 2.6mm 0.9mm 1.5mm; font-size:7.9pt; font-weight:500; color:var(--ink); background:#fff; white-space:nowrap; }
+  .chip i{ width:2.7mm; height:2.7mm; border-radius:50%; display:block; }
+  .chip.note{ border-style:dashed; color:var(--muted); padding-left:2.6mm; }
+
+  .ident{ margin-top:6mm; display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
+  .ident .b{ background:var(--panel); border-radius:2mm; padding:3.2mm 4mm; border-left:0.9mm solid var(--navy); }
+  .ident .k{ font-size:7.2pt; color:var(--muted); }
+  .ident .k b{ color:var(--ink-2); font-weight:600; }
+  .ident .v{ font-family:"Inter Tight"; font-weight:600; font-size:11.5pt; color:var(--navy); margin-top:0.6mm; }
+
+  .company{ position:absolute; left:17mm; right:17mm; bottom:21mm; display:grid; grid-template-columns:1.25fr 1fr 1fr; gap:6mm;
+            font-size:6.7pt; line-height:1.55; color:var(--muted); padding-top:3.5mm; border-top:0.2mm solid var(--rule); }
+  .company b{ color:var(--ink-2); font-weight:600; letter-spacing:0.02em; }
+
+  /* charts */
+  .chart svg{ width:100%; height:54mm; display:block; }
+  .chart text, svg text{ font-family:"Inter",Arial,sans-serif; }
+
+  .fans{ display:grid; grid-template-columns:repeat(10,1fr); gap:1.4mm; }
+  .fans .c{ background:#fff; border-radius:1.6mm; padding:2.6mm 0 2.2mm; text-align:center; }
+  .fans svg{ width:100%; height:20mm; display:block; }
+  .fans .a{ font-family:"Inter Tight"; font-weight:600; font-size:9pt; color:var(--navy); margin-top:0.6mm; }
+
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
+  .opts{ display:flex; flex-wrap:wrap; gap:1.6mm; margin-top:1mm; }
+  .opt{ font-family:"Inter Tight"; font-weight:600; font-size:9.5pt; color:var(--navy); background:#fff; border:0.25mm solid var(--rule); border-radius:1.4mm; padding:1.4mm 3mm; }
+
+  /* overview page */
+  .ov-h{ font-family:"Inter Tight"; font-weight:600; font-size:12pt; line-height:1.3; color:var(--navy); letter-spacing:0.01em; max-width:160mm; }
+  .cols2{ display:grid; grid-template-columns:1fr 1fr; gap:8mm; margin-top:4mm; }
+  .lang{ display:inline-block; font-size:6.6pt; font-weight:700; letter-spacing:0.14em; color:#fff; background:var(--navy); border-radius:0.8mm; padding:0.5mm 1.6mm; margin-bottom:2.5mm; }
+  .lang.de{ background:var(--red); }
+  .txt p{ font-size:8.4pt; line-height:1.5; color:var(--ink-2); margin-bottom:2mm; }
+  .txt p.lead2{ font-size:8.9pt; color:var(--ink); font-weight:500; }
+  .txt h4{ font-family:"Inter Tight"; font-weight:600; font-size:9.2pt; color:var(--navy); margin:2.6mm 0 1mm; }
+  .lists{ display:grid; grid-template-columns:1.25fr 1fr; gap:5mm; margin-top:4mm; }
+  .lists ul{ list-style:none; }
+  .lists li{ display:flex; gap:2.6mm; align-items:flex-start; font-size:8.3pt; color:var(--ink); padding:1.1mm 0; border-bottom:0.2mm solid var(--rule); line-height:1.4; }
+  .lists li:last-child{ border-bottom:none; }
+  .lists li svg{ width:4mm; height:4mm; flex:none; margin-top:0.3mm; stroke:var(--red); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .lists .apps li svg{ stroke:var(--navy); }
+
+  /* focus page */
+  .stat{ display:flex; gap:5mm; align-items:center; }
+  .stat .big{ font-family:"Inter Tight"; font-weight:600; font-size:20pt; color:var(--navy); line-height:1; white-space:nowrap; }
+  .stat .big small{ font-size:10pt; color:var(--muted); font-weight:500; margin-left:1mm; }
+  .chartimg{ background:#fff; border-radius:1.6mm; padding:2.5mm; }
+  .chartimg img{ width:100%; display:block; }
+  .scale{ display:grid; grid-template-columns:repeat(6,1fr); gap:1.6mm; margin-top:3mm; }
+  .scale .o{ background:#fff; border-radius:1.6mm; padding:2.4mm 2.4mm 2.6mm; border-top:1mm solid var(--navy); }
+  .scale .o b{ display:block; font-family:"Inter Tight"; font-weight:700; font-size:11pt; color:var(--navy); }
+  .scale .o span{ display:block; font-size:7.2pt; color:var(--ink-2); line-height:1.35; margin-top:1mm; }
+  .axis{ display:flex; justify-content:space-between; font-size:7.2pt; color:var(--muted); margin-top:2mm; position:relative; padding-top:2.4mm; }
+  .axis::before{ content:""; position:absolute; left:0; right:0; top:0; height:0.6mm; background:linear-gradient(90deg,var(--navy),var(--red)); border-radius:1mm; }
+
+  /* drawings */
+  .dw{ border:0.25mm solid var(--rule); border-radius:2.5mm; padding:4mm 5mm 4.5mm; margin-top:5mm; }
+  .dw-h{ display:flex; align-items:center; gap:4mm; padding-bottom:3mm; border-bottom:0.2mm solid var(--rule-2); margin-bottom:3.5mm; }
+  .dw-h img{ width:17mm; height:17mm; object-fit:contain; background:var(--panel); border-radius:1.6mm; mix-blend-mode:multiply; }
+  .dw-h .n{ font-family:"Inter Tight"; font-weight:700; font-size:13pt; color:var(--navy); line-height:1.1; }
+  .dw-h .d{ font-size:8.4pt; color:var(--ink-2); margin-top:0.6mm; }
+  .dw-h .len{ margin-left:auto; text-align:right; }
+  .dw-h .len b{ display:block; font-family:"Inter Tight"; font-weight:600; font-size:13pt; color:var(--red); }
+  .dw-h .len span{ font-size:6.6pt; letter-spacing:0.14em; color:var(--muted); text-transform:uppercase; font-weight:600; }
+  .dw > img.drw{ width:100%; display:block; }
+  .fn{ font-size:7.6pt; color:var(--ink-2); margin-top:3mm; line-height:1.5; }
+  .hopts{ display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; }
+  .hopt{ background:var(--panel); border-radius:2mm; padding:3.4mm 3.8mm; }
+  .hopt b{ display:block; font-family:"Inter Tight"; font-weight:600; font-size:9.6pt; color:var(--navy); }
+  .hopt span{ display:block; font-size:7.8pt; color:var(--ink-2); line-height:1.45; margin-top:1mm; }
+  table.spec.small td.v{ font-size:8.6pt; }
+
+  /* focus factor + modulation tables, ordering code */
+  .ftxt{ font-size:8.7pt; line-height:1.5; color:var(--ink-2); margin-top:3mm; }
+  table.ft, table.mt{ width:100%; border-collapse:collapse; margin-top:3mm; font-size:7.6pt; text-align:center; }
+  table.ft th, table.mt th{ font-weight:600; color:var(--navy); padding:1.2mm 0.6mm; border-bottom:0.2mm solid var(--rule); }
+  table.ft th.g, table.mt th.g{ font-size:8.2pt; border-bottom:0.5mm solid var(--navy); line-height:1.3; }
+  table.ft th.g span, table.mt th.g span{ font-weight:400; color:var(--muted); font-size:6.9pt; }
+  table.ft tr.u th, table.mt tr.u th{ color:var(--muted); font-weight:500; border-bottom:0.5mm solid var(--navy); }
+  table.ft td, table.mt td{ padding:1.05mm 0.4mm; border-bottom:0.2mm solid var(--rule-2); color:var(--ink-2); }
+  table.ft td:nth-child(-n+3){ color:var(--ink); font-weight:600; }
+  table.ft td:nth-child(3){ border-right:0.25mm solid var(--rule); font-weight:400; color:var(--ink-2); }
+  table.ft td.dof{ border-right:0.2mm solid var(--rule-2); }
+  table.ft tbody tr:nth-child(even) td{ background:#FAFBFC; }
+  table.ft td.ref{ background:var(--red) !important; color:#fff; font-weight:700; }
+  table.mt{ font-size:8.4pt; margin-top:5mm; }
+  table.mt td{ padding:1.8mm 1mm; }
+  table.mt td.k{ text-align:left; font-weight:600; color:var(--ink); width:52mm; }
+  .chartimg.bord{ border:0.25mm solid var(--rule); }
+  .oc{ display:flex; gap:1.6mm; align-items:flex-start; }
+  .oc-col{ flex:0.7; text-align:center; }
+  .oc-col.wide{ flex:1.9; }
+  .oc-col.first{ flex:1.25; }
+  .oc-col .h{ font-size:7.6pt; color:var(--ink-2); line-height:1.3; height:13mm; display:flex; align-items:flex-end; justify-content:center; padding-bottom:1.2mm; }
+  .oc-col .box{ border:0.3mm solid var(--navy); border-radius:1.2mm; height:9mm; display:flex; align-items:center; justify-content:center; font-family:"Inter Tight"; font-weight:700; color:var(--red); font-size:10pt; }
+  .oc-col .box.red{ background:var(--navy); color:#fff; font-size:9pt; }
+  .oc-col ul{ list-style:none; margin-top:2mm; }
+  .oc-col li{ font-size:7.8pt; line-height:1.55; color:var(--ink-2); }
+  .oc-col li b{ color:var(--navy); font-weight:700; }
+  .oc-col ul.l li{ text-align:left; padding:0.4mm 0; }
+  .oc-ex{ margin-top:7mm; background:var(--panel); border-radius:2mm; padding:3.5mm 5mm; font-family:"Inter Tight"; font-weight:600; font-size:11pt; color:var(--navy); }
+  .oc-ex span{ font-family:Inter; font-weight:500; font-size:8.5pt; color:var(--muted); margin-right:2mm; }
+
+  /* cover (LC page-1 layout) */
+  .title.c1{ margin-top:6mm; }
+  .title.c1 h1{ font-size:40pt; margin-top:0; }
+  .title.c1 .lead{ margin-top:2.5mm; font-size:12pt; color:var(--muted); }
+  .hero.c1{ height:64mm; margin-top:4mm; }
+  .hero.c1 img{ width:64mm; height:64mm; }
+  .hero.c1 img.mid{ width:72mm; height:72mm; margin:0 -9mm; }
+  .cv{ margin-top:6.5mm; }
+  .cv h3{ font-family:"Inter"; font-weight:500; font-size:10pt; letter-spacing:0.03em; color:var(--navy); line-height:1.4; margin-bottom:2.2mm; }
+  .cv p{ font-size:8.9pt; line-height:1.55; color:var(--ink-2); margin-bottom:2.2mm; font-weight:400; }
+  .cvl{ display:grid; grid-template-columns:1.35fr 1fr; gap:8mm; margin-top:4.5mm; }
+  .cvl ul{ list-style:none; }
+  .cvl li{ font-size:8.7pt; line-height:1.45; color:var(--ink); padding:0.75mm 0 0.75mm 5mm; position:relative; }
+  .cvl li::before{ content:"/"; position:absolute; left:0; color:var(--red); font-weight:600; }
+  .de2 .dcols{ display:grid; grid-template-columns:1fr 1fr; gap:8mm; }
+  .de2 p.lead2{ font-size:10.5pt; line-height:1.5; max-width:165mm; margin-bottom:3mm; }
+
+  .contact{ position:absolute; left:17mm; right:17mm; bottom:24mm; border-radius:2.5mm; background:var(--navy); color:#fff;
+            padding:6mm 7mm; display:grid; grid-template-columns:auto 1fr 1.25fr; gap:8mm; align-items:center; }
+  .contact .logo{ background:#fff; border-radius:1.6mm; padding:2.6mm 3.4mm; }
+  .contact .logo img{ height:11mm; display:block; }
+  .contact .col{ font-size:7.6pt; line-height:1.65; color:#C9D6E6; }
+  .contact .col b{ color:#fff; font-weight:600; margin-right:1mm; }
+</style>
+</head>
+<body>
+
+<!-- ================================================================ -->
+<!-- PAGE 1 — COVER (layout after LC datasheet p.1)                   -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="ctop">
+    <div class="eb">Datasheet<span>/ Datenblatt</span></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+
+  <div class="title c1">
+    <h1>FP-MVnano-25</h1>
+    <p class="lead">laser line with uniform power distribution</p>
+  </div>
+
+  <!-- original product photographs (unaltered) -->
+  <div class="hero c1">
+    <div class="row">
+      <img src="assets/product-a.png" alt="FP-MVnano-25">
+      <img class="mid" src="assets/product-2h.png" alt="FP-MVnano-25">
+      <img src="assets/product-b.png" alt="FP-MVnano-25">
+    </div>
+  </div>
+
+  <div class="cv">
+    <h3>A COMPACT AND FLEXIBLE LASER MODULE SUITABLE AS STAND-ALONE SOLUTION OR FOR INTEGRATION</h3>
+    <p>MVnano line lasers have a diameter of 11.5 mm and are 54 mm long. They are therefore suitable as a stand-alone solution with a camera for 3D triangulation or for integration in intelligent 3D vision sensors. They provide great flexibility with various wavelength (405 – 850 nm), output powers up to 100 mW, fixed as well as adjustable focus and different versions of modulation e.g. 24 V.</p>
+    <p>The MVnano with new focus mechanics (Edition 2025) offers improved dust- and moisture proofness, an even shorter design and an improved beam drift while focusing the laser. The established, easy focusing method will remain untouched.</p>
+    <p>A variety of options of optics provide the right combination of line thickness and depth of focus for various applications. Different housing versions are available e.g. 2H (separate housing for optics and electronics).</p>
+
+    <div class="cvl">
+      <div>
+        <h3>FEATURES</h3>
+        <ul>
+          <li>Superior line quality for a variety of wavelengths</li>
+          <li>Fixed and adjustable focus available</li>
+          <li>Improved focus mechanics for the adjustable focus</li>
+          <li>Many optics options for the right match of line thickness and depth of focus</li>
+          <li>Modular housing options available (Standard, 2H = 2 Housing, OH = Optical Head)</li>
+          <li>24 V Modulation available</li>
+        </ul>
+      </div>
+      <div>
+        <h3>APPLICATIONS</h3>
+        <ul>
+          <li>3D machine vision</li>
+          <li>Integration in 3D sensors</li>
+          <li>3D Triangulation</li>
+          <li>Industrial inspection</li>
+          <li>Structured lighting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 1 of 11</div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- PAGE 2 — PRODUCT OVERVIEW (DE: blauoptoelektronik.de/produkte/1) + key data (Blau datasheet) -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+
+  <div class="sh" style="margin:8mm 0 4mm"><h2>Product overview</h2><span class="de">Produktbeschreibung</span></div>
+
+  <div class="txt de2">
+    <p class="lead2">Im 11,5 x 54 mm Gehäuse ist der MVnano ein Stand-Alone-Produkt oder ein Lasermodul zur Integration in verschiedenste Anwendungen bei optimierten Kosten.</p>
+    <div class="dcols">
+      <div>
+        <h4>FLEXPOINT® MVnano Linienlaser</h4>
+        <p>Der FLEXPOINT® MVnano-Linienlaser ist der Standardlaser für die industrielle Bildverarbeitung. Mit einer Länge von 54 mm und einem Durchmesser von 11,5 mm eignet er sich ideal als Stand-Alone-Produkt oder für die platzsparende Integration in Sensoren oder 3D-Scanner.</p>
+        <p>Bei der Edition 2025 wurde die Fokussiermechanik grundlegend überarbeitet. Dadurch sind die Module zuverlässig gegen Staub, Spritzwasser und das Eindringen von Feuchtigkeit geschützt. Gleichzeitig wurde die Strahlabweichung bei der Fokussierung auf ein Minimum reduziert.</p>
+      </div>
+      <div>
+        <h4>Homogene Leistungsverteilung und perfekte Linienqualität</h4>
+        <p>Die Linienlaser der FLEXPOINT® MVnano-Serie bieten dank der hochpräzisen Powell-Linse aus eigener Produktion eine hervorragende homogene Linienqualität über eine Vielzahl von Wellenlängen hinweg.</p>
+        <p>Mehrere Optiken stehen zur Auswahl und ermöglichen für jede Anwendung das optimale Verhältnis zwischen Liniendicke und Tiefenschärfe.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="facts" style="margin-top:9mm; padding-top:6mm; border-top:0.5mm solid var(--navy)">
+    <div class="fact">
+      <svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+      <div class="v">1mW-100mW</div><div class="l">Output power<span>Ausgangsleistung</span></div></div>
+    <div class="fact">
+      <svg viewBox="0 0 24 24"><path d="M12 2v6M8 4v4M16 4v4"/><rect x="6" y="8" width="12" height="7" rx="1.5"/><path d="M12 15v7"/></svg>
+      <div class="v">4,5-30V</div><div class="l">Operating voltage<span>Versorgungsspannung</span></div></div>
+    <div class="fact">
+      <svg viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>
+      <div class="v">&lt; 200mA</div><div class="l">Current consumption<span>Stromverbrauch</span></div></div>
+    <div class="fact">
+      <svg viewBox="0 0 24 24"><path d="M2 12c2.5-5 5-5 7.5 0s5 5 7.5 0 3.5-3 5-1"/></svg>
+      <div class="v">&lt;0.25nm/K</div><div class="l">Wavelength stability:<span>&nbsp;</span></div></div>
+    <div class="fact">
+      <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div class="v">IP67 Rating</div><div class="l">Housing material<span>Gehäusematerial</span></div></div>
+  </div>
+
+  <div class="wl">
+    <div class="lbl">Spectral range<span>Wellenlänge</span></div>
+    <div class="chips">
+      <span class="chip"><i style="background:#7B2FD9"></i>405nm</span>
+      <span class="chip"><i style="background:#2B5CFF"></i>450nm</span>
+      <span class="chip"><i style="background:#18A84B"></i>520nm</span>
+      <span class="chip"><i style="background:#FF4A1C"></i>640nm</span>
+      <span class="chip"><i style="background:#E8131E"></i>660nm</span>
+      <span class="chip"><i style="background:#B30F22"></i>685nm</span>
+      <span class="chip"><i style="background:#7A5F64"></i>785nm</span>
+      <span class="chip"><i style="background:#5C4B4F"></i>830nm</span>
+      <span class="chip"><i style="background:#3D3336"></i>845nm</span>
+      <span class="chip note">(other wavelengths on request)</span>
+    </div>
+  </div>
+
+  <div class="ident">
+    <div class="b"><div class="k"><b>Order number</b>/ Artikelnummer</div><div class="v">FP-MVnano-25</div></div>
+    <div class="b"><div class="k"><b>Module</b>/ Bezeichnung</div><div class="v">FP-MVnano-25 Produktdatenblatt</div></div>
+  </div>
+
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 2 of 11</div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- PAGE 2 — BASIC PROPERTIES                                        -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+
+  <div class="sh"><span class="no">01</span><h2>Basic properties</h2><span class="de">Allgemeine Eigenschaften</span></div>
+  <table class="spec">
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M2 12c2.5-5 5-5 7.5 0s5 5 7.5 0 3.5-3 5-1"/></svg></td>
+        <td class="k"><span class="en">Spectral range</span><span class="dl">Wellenlänge</span></td>
+        <td class="v"><span class="nw">405nm (1-100mW),</span> <span class="nw">450nm (1-75mW),</span> <span class="nw">520nm (1-80mW),</span> <span class="nw">640nm (1-100mW),</span> <span class="nw">660nm (1-100mW),</span> <span class="nw">685nm (1-40mW),</span> <span class="nw">785nm (1-100mW),</span> <span class="nw">830nm (1-80mW),</span> <span class="nw">845nm (1-40mW)</span><br>(other wavelengths on request)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M2 12c2.5-5 5-5 7.5 0s5 5 7.5 0 3.5-3 5-1"/><path d="M7 4v3M17 4v3"/></svg></td>
+        <td class="k"><span class="en">Wavelength tolerance (typ.) [nm]</span></td>
+        <td class="v"><span class="nw">405: ± 5,</span> <span class="nw">450: ± 10,</span> <span class="nw">520: ± 10,</span> <span class="nw">640: ± 5,</span> <span class="nw">660: ± 5,</span> <span class="nw">685: ± 10,</span> <span class="nw">785: ± 10,</span> <span class="nw">830: ± 10,</span> <span class="nw">845: ± 10</span></td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></td>
+        <td class="k"><span class="en">Output power</span><span class="dl">Ausgangsleistung</span></td>
+        <td class="v"><b>1mW-100mW</b> (depending on wavelength)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v6M8 4v4M16 4v4"/><rect x="6" y="8" width="12" height="7" rx="1.5"/><path d="M12 15v7"/></svg></td>
+        <td class="k"><span class="en">Operating voltage</span><span class="dl">Versorgungsspannung</span></td>
+        <td class="v"><b>4,5-30V</b> (10-30V for 405/450/520nm);<br>(405/450/520nm available with 5V electronics on request) | no electronics for optical heads</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></td>
+        <td class="k"><span class="en">Current consumption</span><span class="dl">Stromverbrauch</span></td>
+        <td class="v"><b>&lt; 200mA</b> (supply current)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M14 14.8V4a2 2 0 0 0-4 0v10.8a4 4 0 1 0 4 0z"/><path d="M12 9v7"/></svg></td>
+        <td class="k"><span class="en">Operating temperature</span><span class="dl">Betriebstemperatur</span></td>
+        <td class="v"><b>-10° to +50°C</b> (case temperature, depending on wavelength and heat sink)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></td>
+        <td class="k"><span class="en">Storage temperature</span><span class="dl">Lagertemperatur</span></td>
+        <td class="v"><b>-20°C to +60°C</b> (depends on wavelength)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M2 17h4V7h5v10h4V7h5v10h2"/></svg></td>
+        <td class="k"><span class="en">Modulation</span><span class="dl">Modulation</span></td>
+        <td class="v"><b>digital</b> (high/low active 0-5V, &lt; 20kHz; on request: 0-24V, higher freq.),<br><b>analog</b> (high/low active by control wire 0-5V, see technical note)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M3 12h18" stroke-dasharray="2 2.5"/><path d="M3 12c3 0 3-1.5 6-1.5s3 3 6 3 3-1.5 6-1.5"/></svg></td>
+        <td class="k"><span class="en">Power stability</span><span class="dl">Leistungsstabilität</span></td>
+        <td class="v"><b>≤5%</b> at 25°C (after warm up, only for modules with driver electronics)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M2 12c2.5-5 5-5 7.5 0s5 5 7.5 0 3.5-3 5-1"/><path d="M4 20h16"/></svg></td>
+        <td class="k"><span class="en">Wavelength stability:</span></td>
+        <td class="v"><b>&lt;0.25nm/K</b></td></tr>
+  </table>
+
+  <div class="panel chart" style="margin-top:5mm; padding:3.5mm 5mm">
+    <div class="sub"><div class="t">Spectral range <span>/ Wellenlänge</span></div><div class="tag">Output power [mW]</div></div>
+    <svg viewBox="0 0 660 262" xmlns="http://www.w3.org/2000/svg">
+      <!-- grid: x = 150 + mW*4.4 -->
+      <g stroke="#D6DDE6" stroke-width="0.8">
+        <line x1="150" y1="4" x2="150" y2="236"/><line x1="260" y1="4" x2="260" y2="236"/>
+        <line x1="370" y1="4" x2="370" y2="236"/><line x1="480" y1="4" x2="480" y2="236"/>
+        <line x1="590" y1="4" x2="590" y2="236"/>
+      </g>
+      <g font-size="10" fill="#738093" text-anchor="middle">
+        <text x="150" y="252">0</text><text x="260" y="252">25</text><text x="370" y="252">50</text><text x="480" y="252">75</text><text x="590" y="252">100</text>
+      </g>
+      <g font-size="11.5">
+        <!-- rows: pitch 25, first centre y=18 -->
+        <g transform="translate(0,18)"><circle cx="6" cy="0" r="4.5" fill="#7B2FD9"/><text x="18" y="4" font-weight="600" fill="#101B2B">405nm</text><rect x="154.4" y="-6.5" width="435.6" height="13" rx="3" fill="#7B2FD9"/><text x="598" y="4" fill="#3A4757">1-100mW</text></g>
+        <g transform="translate(0,43)"><circle cx="6" cy="0" r="4.5" fill="#2B5CFF"/><text x="18" y="4" font-weight="600" fill="#101B2B">450nm</text><rect x="154.4" y="-6.5" width="325.6" height="13" rx="3" fill="#2B5CFF"/><text x="488" y="4" fill="#3A4757">1-75mW</text></g>
+        <g transform="translate(0,68)"><circle cx="6" cy="0" r="4.5" fill="#18A84B"/><text x="18" y="4" font-weight="600" fill="#101B2B">520nm</text><rect x="154.4" y="-6.5" width="347.6" height="13" rx="3" fill="#18A84B"/><text x="510" y="4" fill="#3A4757">1-80mW</text></g>
+        <g transform="translate(0,93)"><circle cx="6" cy="0" r="4.5" fill="#FF4A1C"/><text x="18" y="4" font-weight="600" fill="#101B2B">640nm</text><rect x="154.4" y="-6.5" width="435.6" height="13" rx="3" fill="#FF4A1C"/><text x="598" y="4" fill="#3A4757">1-100mW</text></g>
+        <g transform="translate(0,118)"><circle cx="6" cy="0" r="4.5" fill="#E8131E"/><text x="18" y="4" font-weight="600" fill="#101B2B">660nm</text><rect x="154.4" y="-6.5" width="435.6" height="13" rx="3" fill="#E8131E"/><text x="598" y="4" fill="#3A4757">1-100mW</text></g>
+        <g transform="translate(0,143)"><circle cx="6" cy="0" r="4.5" fill="#B30F22"/><text x="18" y="4" font-weight="600" fill="#101B2B">685nm</text><rect x="154.4" y="-6.5" width="171.6" height="13" rx="3" fill="#B30F22"/><text x="334" y="4" fill="#3A4757">1-40mW</text></g>
+        <g transform="translate(0,168)"><circle cx="6" cy="0" r="4.5" fill="#7A5F64"/><text x="18" y="4" font-weight="600" fill="#101B2B">785nm</text><rect x="154.4" y="-6.5" width="435.6" height="13" rx="3" fill="#7A5F64"/><text x="598" y="4" fill="#3A4757">1-100mW</text></g>
+        <g transform="translate(0,193)"><circle cx="6" cy="0" r="4.5" fill="#5C4B4F"/><text x="18" y="4" font-weight="600" fill="#101B2B">830nm</text><rect x="154.4" y="-6.5" width="347.6" height="13" rx="3" fill="#5C4B4F"/><text x="510" y="4" fill="#3A4757">1-80mW</text></g>
+        <g transform="translate(0,218)"><circle cx="6" cy="0" r="4.5" fill="#3D3336"/><text x="18" y="4" font-weight="600" fill="#101B2B">845nm</text><rect x="154.4" y="-6.5" width="171.6" height="13" rx="3" fill="#3D3336"/><text x="334" y="4" fill="#3A4757">1-40mW</text></g>
+      </g>
+    </svg>
+    <div class="cap">Visualisation of “Spectral range / Wellenlänge” · (other wavelengths on request)</div>
+  </div>
+
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 3 of 11</div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- PAGE 3 — BEAM PROPERTIES                                         -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+
+  <div class="sh"><span class="no">02</span><h2>Beam properties</h2><span class="de">Optische Eigenschaften</span></div>
+  <table class="spec">
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M5 9v6M19 9v6"/></svg></td>
+        <td class="k"><span class="en">Beam profile</span><span class="dl">Strahlcharakteristik</span></td>
+        <td class="v"><b>laser line with uniform power distribution</b><br>(thin lines, TS versions and FOV correction available)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg></td>
+        <td class="k"><span class="en">Focus distance</span><span class="dl">Fokusabstand</span></td>
+        <td class="v">adjustable by pin tool (see instruction manual for details) |<br>factory focused for FIX versions</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M3 12l18-4" stroke-dasharray="2 2"/></svg></td>
+        <td class="k"><span class="en">Boresight deviation</span><span class="dl">Strahlrichtungsfehler</span></td>
+        <td class="v"><b>≤10 mrad</b> (≤3 or 5mrad as option)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></td>
+        <td class="k"><span class="en">Pointing stability</span><span class="dl">Punktstabilität</span></td>
+        <td class="v"><b>≤10μrad/K</b> (improved pointing stability available on request)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M3 20 21 6M3 20 21 20"/><path d="M14 20a9 9 0 0 0-2-6"/></svg></td>
+        <td class="k"><span class="en">Fan angle</span><span class="dl">Öffnungswinkel</span></td>
+        <td class="v"><b>1°, 5°, 10°, 15°, 20°, 30°, 45°, 60°, 75°, 90°</b></td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M3 7h18" stroke-width="1"/><path d="M3 12h18" stroke-width="2"/><path d="M3 18h18" stroke-width="3.2"/></svg></td>
+        <td class="k"><span class="en">Line thickness</span><span class="dl">Liniendicke</span></td>
+        <td class="v"><b>STD, DL, DLE, DLSE, TS1, TS2</b></td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M3 18V8h18v10"/><path d="M3 6h18M3 10h18" stroke-dasharray="2 2"/></svg></td>
+        <td class="k"><span class="en">Line intensity variation</span><span class="dl">Homogenität</span></td>
+        <td class="v"><b>±20%</b> (opt. ± 10%) related to average power (within 80% of the line)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M4 9h16M4 15h16" stroke-dasharray="1.5 2.5"/></svg></td>
+        <td class="k"><span class="en">Line straightness</span><span class="dl">Geradheit</span></td>
+        <td class="v"><b>±0,1%</b> ( ±0,05 as option)</td></tr>
+  </table>
+
+  <div class="panel" style="margin-top:6mm">
+    <div class="sub"><div class="t">Fan angle <span>/ Öffnungswinkel</span></div><div class="tag">1°, 5°, 10°, 15°, 20°, 30°, 45°, 60°, 75°, 90°</div></div>
+    <div class="fans" id="fans"></div>
+  </div>
+
+  <div class="two" style="margin-top:4mm">
+    <div class="panel">
+      <div class="sub"><div class="t">Line intensity variation <span>/ Homogenität</span></div></div>
+      <svg viewBox="0 0 300 120" style="width:100%;display:block" xmlns="http://www.w3.org/2000/svg">
+        <!-- line extent 20..280 ; 80% zone 46..254 -->
+        <rect x="46" y="30" width="208" height="40" fill="#E51837" fill-opacity="0.08"/>
+        <line x1="20" y1="50" x2="280" y2="50" stroke="#003368" stroke-width="0.8" stroke-dasharray="3 3"/>
+        <line x1="46" y1="30" x2="254" y2="30" stroke="#E51837" stroke-width="0.8" stroke-dasharray="2 2"/>
+        <line x1="46" y1="70" x2="254" y2="70" stroke="#E51837" stroke-width="0.8" stroke-dasharray="2 2"/>
+        <path d="M20,96 C26,60 34,52 46,50 C80,46 110,54 150,49 C190,45 220,54 254,50 C266,52 274,60 280,96" fill="none" stroke="#E51837" stroke-width="2"/>
+        <line x1="20" y1="96" x2="280" y2="96" stroke="#9AA6B5" stroke-width="0.8"/>
+        <line x1="46" y1="102" x2="254" y2="102" stroke="#3A4757" stroke-width="0.8"/>
+        <line x1="46" y1="98" x2="46" y2="106" stroke="#3A4757" stroke-width="0.8"/>
+        <line x1="254" y1="98" x2="254" y2="106" stroke="#3A4757" stroke-width="0.8"/>
+        <text x="150" y="116" text-anchor="middle" font-size="9.5" fill="#3A4757">(within 80% of the line)</text>
+        <text x="258" y="27" font-size="9.5" font-weight="600" fill="#E51837">±20%</text>
+        <text x="150" y="22" text-anchor="middle" font-size="9" fill="#738093">related to average power</text>
+      </svg>
+      <div class="cap">Schematic · not to scale</div>
+    </div>
+    <div class="panel">
+      <div class="sub"><div class="t">Line thickness <span>/ Liniendicke</span></div></div>
+      <div class="opts">
+        <span class="opt">STD</span><span class="opt">DL</span><span class="opt">DLE</span>
+        <span class="opt">DLSE</span><span class="opt">TS1</span><span class="opt">TS2</span>
+      </div>
+      <div class="sub" style="margin-top:4.5mm"><div class="t">Line straightness <span>/ Geradheit</span></div></div>
+      <div style="font-family:'Inter Tight';font-weight:600;font-size:13pt;color:var(--navy)">±0,1% <span style="font-family:Inter;font-weight:400;font-size:9pt;color:var(--ink-2)">( ±0,05 as option)</span></div>
+    </div>
+  </div>
+
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 4 of 11</div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- PAGE — FOCUS OPTIONS (LC datasheet p.3)                          -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+  <div class="sh" style="margin:7mm 0 3mm"><span class="no">03</span><h2>Focus Options</h2><span class="de">Fokusoptionen</span></div>
+
+  <div class="panel" style="padding:3.5mm 4.5mm">
+    <div class="sub" style="margin-bottom:2mm"><div class="t">Line Thickness and Depth of Focus (DOF) for Standard (STD) Focus Option at 660 nm</div></div>
+    <div class="two" style="gap:3mm">
+      <div class="chartimg"><img src="assets/dof-short.png" alt="Standard laser line characteristics (short range)"></div>
+      <div class="chartimg"><img src="assets/dof-long.png" alt="Standard laser line characteristics (long range)"></div>
+    </div>
+  </div>
+
+  <p class="ftxt">MVnano is available with different focus options to achieve the right combination of line thickness and depth of focus depending on the application.</p>
+  <p class="ftxt">The values shown in the table below are the factors which should be used in combination with the graph above.</p>
+    <table class="ft">
+      <thead>
+        <tr><th colspan="3" class="g">P<sub>out</sub> and λ</th><th colspan="12" class="g">Focus options<br><span>(conversion factor related to reference laser marked in red<br>left side - optimized for thin line / right side - optimized for high DOF)</span></th></tr>
+        <tr><th>λ</th><th>P_out</th><th>Δλ</th><th colspan="2">DLSE</th><th colspan="2">DLE</th><th colspan="2">DL</th><th colspan="2">STD</th><th colspan="2">TS1</th><th colspan="2">TS2</th></tr>
+        <tr class="u"><th>[nm]</th><th>[mW]</th><th>[nm]</th><th>LT</th><th>DOF</th><th>LT</th><th>DOF</th><th>LT</th><th>DOF</th><th>LT</th><th>DOF</th><th>LT</th><th>DOF</th><th>LT</th><th>DOF</th></tr>
+      </thead>
+      <tbody>
+      <tr><td class="">405</td><td class="">1 – 30</td><td class="">±5</td><td class="lt">0.27</td><td class="dof">0.12</td><td class="lt">0.35</td><td class="dof">0.20</td><td class="lt">0.49</td><td class="dof">0.39</td><td class="lt">0.71</td><td class="dof">0.81</td><td class="lt">1.04</td><td class="dof">1.76</td><td class="lt">1.53</td><td class="dof">3.80</td></tr>
+      <tr><td class="">405</td><td class="">30 – 100</td><td class="">±6</td><td class="lt">0.27</td><td class="dof">0.12</td><td class="lt">0.35</td><td class="dof">0.20</td><td class="lt">0.49</td><td class="dof">0.39</td><td class="lt">0.71</td><td class="dof">0.81</td><td class="lt">1.04</td><td class="dof">1.76</td><td class="lt">1.53</td><td class="dof">3.80</td></tr>
+      <tr><td class="">450</td><td class="">1 – 75</td><td class="">±10</td><td class="lt">0.25</td><td class="dof">0.10</td><td class="lt">0.33</td><td class="dof">0.16</td><td class="lt">0.45</td><td class="dof">0.30</td><td class="lt">0.69</td><td class="dof">0.69</td><td class="lt">1.49</td><td class="dof">3.25</td><td class="lt">2.20</td><td class="dof">7.06</td></tr>
+      <tr><td class="">520</td><td class="">1 – 10</td><td class="">±10</td><td class="lt">0.29</td><td class="dof">0.11</td><td class="lt">0.39</td><td class="dof">0.19</td><td class="lt">0.53</td><td class="dof">0.36</td><td class="lt">0.78</td><td class="dof">0.78</td><td class="lt">1.71</td><td class="dof">3.69</td><td class="lt">2.55</td><td class="dof">8.23</td></tr>
+      <tr><td class="">520</td><td class="">11 – 40</td><td class="">±10</td><td class="lt">0.29</td><td class="dof">0.11</td><td class="lt">0.39</td><td class="dof">0.19</td><td class="lt">0.53</td><td class="dof">0.36</td><td class="lt">0.78</td><td class="dof">0.78</td><td class="lt">1.71</td><td class="dof">3.69</td><td class="lt">2.55</td><td class="dof">8.23</td></tr>
+      <tr><td class="">640</td><td class="">1 – 20</td><td class="">±5</td><td class="lt">0.39</td><td class="dof">0.16</td><td class="lt">0.51</td><td class="dof">0.27</td><td class="lt">0.69</td><td class="dof">0.48</td><td class="lt">1.02</td><td class="dof">1.07</td><td class="lt">1.65</td><td class="dof">2.79</td><td class="lt">2.43</td><td class="dof">6.08</td></tr>
+      <tr><td class="">640</td><td class="">21 – 30</td><td class="">±5</td><td class="lt">0.39</td><td class="dof">0.16</td><td class="lt">0.51</td><td class="dof">0.27</td><td class="lt">0.69</td><td class="dof">0.48</td><td class="lt">1.02</td><td class="dof">1.07</td><td class="lt">1.47</td><td class="dof">2.23</td><td class="lt">2.18</td><td class="dof">4.87</td></tr>
+      <tr><td class="">640</td><td class="">31 – 100</td><td class="">±5</td><td class="lt">0.47</td><td class="dof">0.23</td><td class="lt">0.59</td><td class="dof">0.36</td><td class="lt">0.80</td><td class="dof">0.67</td><td class="lt">1.20</td><td class="dof">1.47</td><td class="lt">1.65</td><td class="dof">2.79</td><td class="lt">2.43</td><td class="dof">6.08</td></tr>
+      <tr><td class="">660</td><td class="">1 – 30</td><td class="">±5</td><td class="lt">0.39</td><td class="dof">0.15</td><td class="lt">0.49</td><td class="dof">0.24</td><td class="lt">0.67</td><td class="dof">0.44</td><td class="lt ref">1.00</td><td class="dof ref">1.00</td><td class="lt">1.51</td><td class="dof">2.27</td><td class="lt">2.25</td><td class="dof">5.07</td></tr>
+      <tr><td class="">660</td><td class="">31 – 100</td><td class="">±5</td><td class="lt">0.51</td><td class="dof">0.26</td><td class="lt">0.65</td><td class="dof">0.42</td><td class="lt">0.88</td><td class="dof">0.78</td><td class="lt">1.31</td><td class="dof">1.72</td><td class="lt">1.51</td><td class="dof">2.27</td><td class="lt">2.25</td><td class="dof">5.07</td></tr>
+      <tr><td class="">685</td><td class="">1 – 40</td><td class="">±10</td><td class="lt">0.45</td><td class="dof">0.20</td><td class="lt">0.57</td><td class="dof">0.31</td><td class="lt">0.76</td><td class="dof">0.56</td><td class="lt">1.14</td><td class="dof">1.24</td><td class="lt">1.43</td><td class="dof">1.97</td><td class="lt">2.12</td><td class="dof">4.31</td></tr>
+      <tr><td class="">785</td><td class="">1 – 10</td><td class="">±10</td><td class="lt">0.35</td><td class="dof">0.10</td><td class="lt">0.45</td><td class="dof">0.17</td><td class="lt">0.61</td><td class="dof">0.31</td><td class="lt">0.90</td><td class="dof">0.68</td><td class="lt">1.65</td><td class="dof">2.28</td><td class="lt">2.43</td><td class="dof">4.96</td></tr>
+      <tr><td class="">785</td><td class="">11 – 100</td><td class="">±10</td><td class="lt">0.65</td><td class="dof">0.35</td><td class="lt">0.82</td><td class="dof">0.57</td><td class="lt">1.12</td><td class="dof">1.05</td><td class="lt">1.65</td><td class="dof">2.28</td><td class="lt">2.00</td><td class="dof">3.36</td><td class="lt">2.98</td><td class="dof">7.45</td></tr>
+      <tr><td class="">830</td><td class="">1 – 40</td><td class="">±10</td><td class="lt">0.69</td><td class="dof">0.37</td><td class="lt">0.88</td><td class="dof">0.62</td><td class="lt">1.22</td><td class="dof">1.17</td><td class="lt">1.78</td><td class="dof">2.53</td><td class="lt">2.29</td><td class="dof">4.18</td><td class="lt">3.39</td><td class="dof">9.13</td></tr>
+      <tr><td class="">845</td><td class="">1 – 40</td><td class="">±10</td><td class="lt">0.35</td><td class="dof">0.10</td><td class="lt">0.45</td><td class="dof">0.16</td><td class="lt">0.61</td><td class="dof">0.29</td><td class="lt">0.90</td><td class="dof">0.63</td><td class="lt">1.63</td><td class="dof">2.05</td><td class="lt">2.41</td><td class="dof">4.51</td></tr>
+      </tbody>
+    </table>
+  <div class="fn" style="margin-top:2mm">Foot Note / Abbreviations<br>
+    DLSE = Thin Line Super Enhanced · DLE = Thin Line Enhanced · DL = Thin Line · STD = Standard, good compromise for Line Thickness and Depth of Focus · LT = Line Thickness · DOF = Depth of Focus · TS1 = Enhanced Depth of Focus · TS2 = Enhanced Depth of Focus, higher factor</div>
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 5 of 11</div>
+  </div></section>
+
+<!-- ================================================================ -->
+<!-- PAGE — FOCUS RANGE / OPTICS + MODULATION OPTIONS (LC p.2–4)       -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+  <div class="two" style="margin-top:8mm">
+    <div class="panel stat">
+      <svg viewBox="0 0 24 24" style="width:9mm;height:9mm;flex:none;stroke:var(--red);fill:none;stroke-width:1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>
+      <div><div class="kick">Focussing range [mm]</div><div class="big">50 – 5000</div></div>
+    </div>
+    <div class="panel" style="display:flex;align-items:center">
+      <div><div class="kick">Focus</div><div style="font-size:8.9pt;color:var(--ink);margin-top:1mm;line-height:1.45">Fixed focus (fixed at factory to defined working distance) or adjustable focus</div></div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:4mm; padding:3.5mm 4.5mm">
+    <div class="sub" style="margin-bottom:0"><div class="t">Line thickness <span>/ Liniendicke</span></div></div>
+    <div class="scale" style="margin-top:2mm">
+      <div class="o"><b>DLSE</b><span>Thin Line Super Enhanced</span></div>
+      <div class="o"><b>DLE</b><span>Thin Line Enhanced</span></div>
+      <div class="o"><b>DL</b><span>Thin Line</span></div>
+      <div class="o" style="border-top-color:var(--red)"><b>STD</b><span>Standard, good compromise for Line Thickness and Depth of Focus</span></div>
+      <div class="o"><b>TS1</b><span>Enhanced Depth of Focus</span></div>
+      <div class="o"><b>TS2</b><span>Enhanced Depth of Focus, higher factor</span></div>
+    </div>
+    <div class="axis"><span>left side - optimized for thin line</span><span>right side - optimized for high DOF</span></div>
+  </div>
+
+  <div class="sh" style="margin:8mm 0 2mm"><span class="no">04</span><h2>Modulation Options</h2><span class="de">Modulation</span></div>
+  <p class="ftxt" style="margin-top:0">The standard module comes without modulation and power adjustment.</p>
+
+  <div class="two" style="gap:3mm; margin-top:3mm">
+    <div class="chartimg bord"><img src="assets/mod-digital.png" alt="Digital Modulation (typical TTL)"></div>
+    <div class="chartimg bord"><img src="assets/mod-analog.png" alt="Analog Modulation"></div>
+  </div>
+
+  <table class="mt">
+    <thead>
+      <tr><th></th><th colspan="2" class="g">Digital Modulation<br><span>&lt; 20 kHz active high and active low available 0 / 5 V<br>24 V Version available (0 / 24 V)</span></th><th colspan="2" class="g">Analog Modulation<br><span>high/low by control wire 0 – 5 V</span></th></tr>
+      <tr class="u"><th></th><th>M active low</th><th>MI active high</th><th>D active low</th><th>DI active high</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="k">Delay + Rise time (max.) [μs]</td><td>10</td><td>10</td><td></td><td></td></tr>
+      <tr><td class="k">On [V]</td><td>0 – 0.5</td><td>4.5 – 5</td><td>0</td><td>5</td></tr>
+      <tr><td class="k">Off [V]</td><td>4.5 – 5</td><td>0 – 0.5</td><td>5</td><td>0</td></tr>
+      <tr><td class="k">Linear range [V]</td><td></td><td></td><td>&gt; 3</td><td>&gt; 3</td></tr>
+    </tbody>
+  </table>
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 6 of 11</div>
+  </div></section>
+
+<!-- ================================================================ -->
+<!-- PAGE — MODULATION COMBINATIONS (LC p.5, original table)           -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+  <div class="sh" style="margin:8mm 0 2mm"><span class="no">04</span><h2>Modulation Options</h2><span class="de">Kombinationen</span></div>
+  <p class="ftxt" style="margin-top:0">Available combinations of options M and D are listed in the table below. For the combined modulations (last four columns), the properties of the modulation components apply according to the columns of M, MI, D and DI. The standard module comes without modulation and power adjustment.</p>
+  <div style="margin-top:4mm"><img src="assets/mod-combinations.png" alt="Modulation options" style="width:100%;display:block"></div>
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 7 of 11</div>
+  </div></section>
+<!-- ================================================================ -->
+<!-- PAGE 4 — MECHANICAL PROPERTIES                                   -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+
+  <div class="sh"><span class="no">05</span><h2>Mechanical properties</h2><span class="de">Mechanische Eigenschaften</span></div>
+  <table class="spec">
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2"/><path d="M7 8v8M17 8v8"/></svg></td>
+        <td class="k"><span class="en">Housing material</span><span class="dl">Gehäusematerial</span></td>
+        <td class="v">Aluminum (blue anodised; potential free), <b>IP67 Rating</b></td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M5 19 19 5"/></svg></td>
+        <td class="k"><span class="en">Housing size</span><span class="dl">Abmessungen</span></td>
+        <td class="v"><b>Ø=11,5 × Length</b> (see product map for length --&gt; depending on chosen features)</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M2 12h8"/><path d="M10 12c3 0 4-5 7-5h5M10 12h12M10 12c3 0 4 5 7 5h5"/></svg></td>
+        <td class="k"><span class="en">Pin definition</span><span class="dl">Anschlussbelegung</span></td>
+        <td class="v"><b>Brown: +VDC, Blue: GND, Black: modulation</b><br>3 core cable, 2 m length, wires tin-coated at ends | no wires for optical heads | 150mm cable between housing for 2H versions</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20z"/><circle cx="12" cy="15" r="2"/><path d="M12 9v2M8 15H6M18 15h-2"/></svg></td>
+        <td class="k"><span class="en">Laser class</span><span class="dl">Laserklasse</span></td>
+        <td class="v"><b>IEC 60825-1:2014, EN 60825-1:2014+A11:2021</b></td></tr>
+  </table>
+
+  <div class="panel" style="margin-top:7mm; padding-bottom:3mm">
+    <div class="sub"><div class="t">Pin definition <span>/ Anschlussbelegung</span></div><div class="tag">schematic · not to scale</div></div>
+    <svg viewBox="0 0 640 140" style="width:100%;display:block" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0B3F84"/><stop offset="0.28" stop-color="#4F95E0"/>
+          <stop offset="0.55" stop-color="#1F64BC"/><stop offset="1" stop-color="#062A5C"/>
+        </linearGradient>
+      </defs>
+      <!-- end view -->
+      <g transform="translate(44,78)">
+        <circle r="26" fill="url(#alu)"/><circle r="12" fill="#20242B"/><circle r="5" fill="#E51837"/>
+        <line x1="-26" y1="-38" x2="26" y2="-38" stroke="#738093" stroke-width="0.8"/>
+        <line x1="-26" y1="-43" x2="-26" y2="-31" stroke="#738093" stroke-width="0.8"/>
+        <line x1="26" y1="-43" x2="26" y2="-31" stroke="#738093" stroke-width="0.8"/>
+        <text y="-46" text-anchor="middle" font-size="11" font-weight="600" fill="#101B2B">Ø=11,5</text>
+      </g>
+      <!-- side view -->
+      <g transform="translate(104,52)">
+        <rect x="0" y="12" width="18" height="28" rx="2" fill="#2A2F38"/>
+        <rect x="16" y="0" width="186" height="52" rx="3" fill="url(#alu)"/>
+        <line x1="0" y1="-12" x2="202" y2="-12" stroke="#738093" stroke-width="0.8"/>
+        <line x1="0" y1="-17" x2="0" y2="-5" stroke="#738093" stroke-width="0.8"/>
+        <line x1="202" y1="-17" x2="202" y2="-5" stroke="#738093" stroke-width="0.8"/>
+        <text x="101" y="-18" text-anchor="middle" font-size="11" font-weight="600" fill="#101B2B">Length</text>
+        <text x="101" y="72" text-anchor="middle" font-size="9.5" fill="#738093">Aluminum (blue anodised; potential free), IP67 Rating</text>
+        <rect x="202" y="20" width="112" height="12" rx="2" fill="#15171B"/>
+        <text x="258" y="13" text-anchor="middle" font-size="9.5" fill="#738093">3 core cable, 2 m length</text>
+        <path d="M314,23 C334,23 338,-2 360,-2 H380" fill="none" stroke="#7A4A26" stroke-width="5" stroke-linecap="round"/>
+        <path d="M314,26 H380" fill="none" stroke="#2B5CFF" stroke-width="5" stroke-linecap="round"/>
+        <path d="M314,29 C334,29 338,54 360,54 H380" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+        <rect x="380" y="-4.5" width="12" height="5" rx="1.5" fill="#B8BEC6"/>
+        <rect x="380" y="23.5" width="12" height="5" rx="1.5" fill="#B8BEC6"/>
+        <rect x="380" y="51.5" width="12" height="5" rx="1.5" fill="#B8BEC6"/>
+        <g font-size="11.5" fill="#101B2B">
+          <text x="402" y="2"><tspan font-weight="600">Brown:</tspan> +VDC</text>
+          <text x="402" y="30"><tspan font-weight="600">Blue:</tspan> GND</text>
+          <text x="402" y="58"><tspan font-weight="600">Black:</tspan> modulation</text>
+          <text x="402" y="76" font-size="9.5" fill="#738093">wires tin-coated at ends</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="sub" style="margin-top:7mm"><div class="t">Additional information <span>/ Weitere Angaben</span></div></div>
+  <table class="spec small">
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></td>
+        <td class="k"><span class="en">Shock tolerance</span></td>
+        <td class="v"><b>30 G, 6 ms</b><br><b>75 G, 4 ms</b></td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2"/><path d="M7 8v8M17 8v8"/></svg></td>
+        <td class="k"><span class="en">Housing</span></td>
+        <td class="v">Standard, 2H (separate housing for optics and electronics) or OH (without electronics)<br>Fixed focus (fixed at factory to defined working distance) or adjustable focus</td></tr>
+    <tr><td class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></td>
+        <td class="k"><span class="en">Accessories available</span><span class="dl">(optional, order separately)</span></td>
+        <td class="v">Mount; Mobile power pack for modules ≥ 640 nm; Power supply for 5 V (≥ 640 nm); Power supply for 12 V</td></tr>
+  </table>
+  <div class="fn">
+    Output power: The output power is defined behind optics which means at the beam exit of the laser module<br>
+    5 V Option available (»StepUp« electronics 4.5 – 6 V) for 405 nm, 450 nm and 520 nm, no standard product but available on request<br>
+    Below 0 °C condensate formation must be avoided (due to optical and electronic components)<br>
+    Fan angle: Defined by the ends of the laser line using FWHM based on the average power (within 80 % of line)<br>
+    Line intensity variation and line straightness are measured at 80 % of the fan angle
+  </div>
+
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 8 of 11</div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- PAGE — TECHNICAL DRAWINGS 1 (LC datasheet p.6–7)                 -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+
+  <div class="sh" style="margin-bottom:0"><span class="no">06</span><h2>Technical drawing</h2><span class="de">Technische Zeichnung</span></div>
+
+  <div class="dw">
+    <div class="dw-h"><img src="assets/product-a.png" alt="">
+      <div><div class="n">MVnano ST-F</div><div class="d">MVnano 2025 standard housing, focusable (ST-F)</div></div>
+      <div class="len"><span>Units: mm</span><b>54 ±1</b></div></div>
+    <img class="drw" src="assets/drawing-st-f.png" alt="MVnano ST-F">
+  </div>
+
+  <div class="dw">
+    <div class="dw-h"><img src="assets/product-2h.png" alt="">
+      <div><div class="n">MVnano 2H-F</div><div class="d">MVnano 2025 with 2 housings, focusable (2H-F)</div></div>
+      <div class="len"><span>Units: mm</span><b>29 ±1 · 38 ±1</b></div></div>
+    <img class="drw" src="assets/drawing-2h-f.png" alt="MVnano 2H-F">
+  </div>
+
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 9 of 11</div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- PAGE — TECHNICAL DRAWINGS 2 (LC datasheet p.8) + housing options (website) -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+
+  <div class="dw" style="margin-top:8mm">
+    <div class="dw-h"><img src="assets/product-b.png" alt="">
+      <div><div class="n">MVnano ST-FIX</div><div class="d">MVnano 2025 standard housing, fixed focus (ST-FIX)</div></div>
+      <div class="len"><span>Units: mm</span><b>60 ±1</b></div></div>
+    <img class="drw" src="assets/drawing-st-fix.png" alt="MVnano ST-FIX">
+  </div>
+  <div class="fn"><sup>1</sup>For optimal heat dissipation in a mount, we recommend to apply thermal paste on the surface overlap.<br>Units: mm</div>
+
+  <div class="sub" style="margin-top:6mm"><div class="t">Gehäuse Optionen</div></div>
+  <div class="hopts">
+    <div class="hopt"><b>FP-MVnano-25-ST</b><span>Standard Gehäuseoption bei der Optik und Elektronik zusammen in einem einzigen Gehäuse untergebracht sind (Standard, ST).</span></div>
+    <div class="hopt"><b>FP-MVnano-25-OH</b><span>Gehäuse mit Optik ohne Elektronik (Optical Head, OH)</span></div>
+    <div class="hopt"><b>FP-MVnano-25-2H</b><span>Bei dieser Gehäuseoption sind Optik und Elektronik jeweils in einem separaten Gehäuse untergebracht (2 Housing, 2H).</span></div>
+  </div>
+
+
+
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 10 of 11</div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- PAGE — ORDERING CODE (LC p.9)                                    -->
+<!-- ================================================================ -->
+<section class="page">
+  <div class="hdr">
+    <div class="doc"><div class="eb">Datasheet/ Datenblatt</div><div class="pn">FP-MVnano-25</div></div>
+    <img src="assets/blau-logo.png" alt="BLAU Optoelektronik">
+  </div>
+  <div class="sh" style="margin:8mm 0 5mm"><span class="no">07</span><h2>Ordering code</h2><span class="de">Bestellschlüssel</span></div>
+
+  <div class="oc">
+    <div class="oc-col first"><div class="h">&nbsp;</div><div class="box red">FP-MVnano-25</div></div>
+    <div class="oc-col"><div class="h">Housing</div><div class="box">X</div>
+      <ul><li><b>ST</b></li><li><b>2H</b></li><li><b>OH</b></li></ul></div>
+    <div class="oc-col"><div class="h">Wavelength<br>[nm]</div><div class="box">X</div>
+      <ul><li><b>405</b></li><li><b>450</b></li><li><b>520</b></li><li><b>640</b></li><li><b>660</b></li><li><b>685</b></li><li><b>785</b></li><li><b>830</b></li><li><b>845</b></li></ul></div>
+    <div class="oc-col"><div class="h">Output<br>Power<br>[mW]</div><div class="box">X</div>
+      <ul><li><b>1 – 100</b></li><li><b>1 – 75</b></li><li><b>1 – 80</b></li><li><b>1 – 100</b></li><li><b>1 – 100</b></li><li><b>1 – 40</b></li><li><b>1 – 100</b></li><li><b>1 – 80</b></li><li><b>1 – 40</b></li></ul></div>
+    <div class="oc-col wide"><div class="h">Modulation /<br>Power Adjustment</div><div class="box">X</div>
+      <ul class="l"><li><b>M</b> | Digital Modulation, active low</li><li><b>MI</b> | Digital Modulation inverted, active high</li><li><b>D</b> | Dimmable, active low</li><li><b>DI</b> | Dimmable inverted, active high</li></ul></div>
+    <div class="oc-col"><div class="h">Fan<br>Angle<br>[°]</div><div class="box">X</div>
+      <ul><li><b>1</b></li><li><b>5</b></li><li><b>10</b></li><li><b>15</b></li><li><b>20</b></li><li><b>30</b></li><li><b>45</b></li><li><b>60</b></li><li><b>75</b></li><li><b>90</b></li></ul></div>
+    <div class="oc-col wide"><div class="h">Focus<br>[mm]</div><div class="box">X</div>
+      <ul class="l"><li><b>F</b> | Focusable</li><li><b>FYYY</b> | Prefocused to YYY mm, but still focusable</li><li><b>FIXYYY</b> | Fixed focus to YYY mm</li></ul></div>
+    <div class="oc-col"><div class="h">Optics</div><div class="box">X</div>
+      <ul><li><b>STD</b></li><li><b>DL</b></li><li><b>DLE</b></li><li><b>DLSE</b></li><li><b>TS1</b></li><li><b>TS2</b></li></ul></div>
+  </div>
+
+  <div class="oc-ex"><span>Example:</span> FP-MVnano-25-ST-785-50M-30-F-DL</div>
+  <p class="ftxt" style="margin-top:4mm">Not all combinations which can be created by the ordering code above are possible. For the output power please refer to the table on page 3 (possible combinations wavelength and output power) and for Modulation refer to the table on page 7. Please contact us for any additional combinations you may require.</p>
+
+  <div class="contact">
+    <div class="logo"><img src="assets/blau-logo.png" alt="BLAU Optoelektronik"></div>
+    <div class="col"><b>Telefon</b> +49 (0) 7551/93748-0<br><b>Telefax</b> +49 (0) 7551/93748-29<br><b>E-MAIL</b> info@blauoptoelektronik.de<br><b>WEB</b> www.blauoptoelektronik.de</div>
+    <div class="col"><b>GESCHÄFTSFÜHRER</b> Dr.-Ing. Ingmar Blau, Dipl.-Ing. (FH) Eugen Romasew<br><b>HANDELSREGISTER:</b> Freiburg HRB 580681<br><b>UST-IDNR.</b> DE 169489277<br><b>BANKVERBINDUNG</b> Sparkasse Bodensee<br><b>IBAN</b> DE 40 6905 0001 0001 0270 28<br><b>BIC/SWIFT</b> SOLADES1KNZ</div>
+  </div>
+  <div class="ftr">
+    <div class="m"><span><b>Date</b>24.03.2026</span><span><b>Rev</b>0</span></div>
+    <div class="w">www.blauoptoelektronik.de</div>
+    <div class="p">page 11 of 11</div>
+  </div></section>
+<script>
+  // Fan-angle small multiples — exact geometry (half-angle = angle/2)
+  (function(){
+    var angles=[1,5,10,15,20,30,45,60,75,90], host=document.getElementById('fans');
+    angles.forEach(function(a){
+      var h=34, cx=40, ay=60, hw=h*Math.tan(a*Math.PI/360), ty=ay-h;
+      var x1=(cx-hw).toFixed(2), x2=(cx+hw).toFixed(2);
+      var svg='<svg viewBox="0 6 80 60" xmlns="http://www.w3.org/2000/svg">'+
+        '<polygon points="'+cx+','+ay+' '+x1+','+ty+' '+x2+','+ty+'" fill="#E51837" fill-opacity="0.14"/>'+
+        '<line x1="'+cx+'" y1="'+ay+'" x2="'+x1+'" y2="'+ty+'" stroke="#E51837" stroke-width="0.8" stroke-opacity="0.6"/>'+
+        '<line x1="'+cx+'" y1="'+ay+'" x2="'+x2+'" y2="'+ty+'" stroke="#E51837" stroke-width="0.8" stroke-opacity="0.6"/>'+
+        '<line x1="'+(cx-hw-0.6).toFixed(2)+'" y1="'+ty+'" x2="'+(cx+hw+0.6).toFixed(2)+'" y2="'+ty+'" stroke="#E51837" stroke-width="2.4" stroke-linecap="round"/>'+
+        '<rect x="'+(cx-4)+'" y="'+ay+'" width="8" height="4" rx="1" fill="#003368"/></svg>';
+      var d=document.createElement('div'); d.className='c';
+      d.innerHTML=svg+'<div class="a">'+a+'°</div>'; host.appendChild(d);
+    });
+  })();
+</script>
+</body>
+</html>

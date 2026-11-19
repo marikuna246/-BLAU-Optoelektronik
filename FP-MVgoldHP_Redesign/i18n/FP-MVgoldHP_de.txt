@@ -1,0 +1,71 @@
+<html lang="en"> ==> <html lang="de">
+<title>FP-MVgoldHP – Datasheet</title> ==> <title>FP-MVgoldHP – Datenblatt</title>
+<div class="eb">Datasheet</div> ==> <div class="eb">Datenblatt</div>
+<div class="kick">Order number · FP-MVgoldHP</div> ==> <div class="kick">Artikelnummer · FP-MVgoldHP</div>
+<div class="lead">Laser line with uniform power distribution</div> ==> <div class="lead">Laserlinie mit homogener Leistungsverteilung</div>
+Schematic illustration · housing size Ø48x146mm ±1mm ==> Schematische Darstellung · Abmessungen Ø48x146mm ±1mm
+<b>Order number</b> ==> <b>Artikelnummer</b>
+<b>Module</b> ==> <b>Bezeichnung</b>
+<div class="lbl">Spectral range<span>at 25°C</span></div> ==> <div class="lbl">Wellenlänge<span>bei 25°C</span></div>
+<div class="l">Output power<span>445nm</span></div> ==> <div class="l">Ausgangsleistung<span>445nm</span></div>
+<div class="l">Output power<span>525nm, 638nm, 660nm, 808nm</span></div> ==> <div class="l">Ausgangsleistung<span>525nm, 638nm, 660nm, 808nm</span></div>
+<div class="l">Digital Modulation</div> ==> <div class="l">Digitale Modulation</div>
+<div class="l">Housing size<span>±1mm</span></div> ==> <div class="l">Abmessungen<span>±1mm</span></div>
+<div class="l">Laser class</div> ==> <div class="l">Laserklasse</div>
+<b>Date</b> ==> <b>Datum</b>
+<h2>Basic properties</h2> ==> <h2>Allgemeine Eigenschaften</h2>
+<span class="en">Spectral range</span> ==> <span class="en">Wellenlänge</span>
+ at 25°C ==>  bei 25°C
+<span class="en">Output power</span> ==> <span class="en">Ausgangsleistung</span>
+(maximum power after optics) ==> (maximale Leistung nach der Optik)
+<span class="en">Operating voltage</span> ==> <span class="en">Versorgungsspannung</span>
+<span class="en">Current consumption</span> ==> <span class="en">Stromverbrauch</span>
+<span class="en">Operating temperature</span> ==> <span class="en">Betriebstemperatur</span>
+-10°C to +50°C ==> -10°C bis +50°C
+(housing temperature, condensation must be avoided) ==> (Gehäusetemperatur, Kondensation muss vermieden werden)
+<span class="en">Storage temperature</span> ==> <span class="en">Lagertemperatur</span>
+-20°C to +60°C ==> -20°C bis +60°C
+<b>Digital Modulation: 0 Hz - 1 MHz</b> (higher frequency on request) ==> <b>Digitale Modulation: 0 Hz - 1 MHz</b> (höhere Frequenz auf Anfrage)
+Active high (MI) or active low (M) ==> Active high (MI) oder active low (M)
+MI: 0V = Off, 5V = On (input impedance of 10k ohms at 5V) ==> MI: 0V = Aus, 5V = Ein (Eingangsimpedanz von 10k Ohm bei 5V)
+Duty cycle: <b>0-100 %</b> ==> Tastgrad: <b>0-100 %</b>
+Pulse length <b>&gt; 500 ns</b> ==> Pulslänge <b>&gt; 500 ns</b>
+Delay + rise time <b>&lt; 200ns</b> ==> Verzögerung + Anstiegszeit <b>&lt; 200ns</b>
+<span class="en">Power stability</span> ==> <span class="en">Leistungsstabilität</span>
+(after warm up) ==> (nach Aufwärmphase)
+<span class="en">Communication</span> ==> <span class="en">Kommunikation</span>
+(Standard), <b>RS-485</b> (Optional), see commands ==> (Standard), <b>RS-485</b> (optional), siehe Befehle
+<span class="en">Protections</span> ==> <span class="en">Schutzmechanismen</span>
+ESD, over-temperature, over-voltage up to 26 VDC,<br>reverse polarity up to 30 VDC ==> ESD, Übertemperatur, Überspannung bis 26 VDC,<br>Verpolung bis 30 VDC
+<span class="en">Commands</span> ==> <span class="en">Befehle</span>
+<span class="en">Weight</span> ==> <span class="en">Gewicht</span>
+<div class="t">Output power <span>(maximale Leistung nach der Optik)</span></div><div class="tag">Visualisation of “Output power”</div> ==> <div class="t">Ausgangsleistung <span>(maximale Leistung nach der Optik)</span></div><div class="tag">Visualisierung „Ausgangsleistung“</div>
+<span style="left:75%">1.5W</span> ==> <span style="left:75%">1,5W</span>
+<h2>Beam properties</h2> ==> <h2>Optische Eigenschaften</h2>
+<span class="en">Beam profile</span> ==> <span class="en">Strahlcharakteristik</span>
+<b>Laser line with uniform power distribution</b> ==> <b>Laserlinie mit homogener Leistungsverteilung</b>
+<span class="en">Focus distance</span> ==> <span class="en">Fokussabstand</span>
+Focussing range: <b>50mm - 5000mm</b> ==> Fokussierbereich: <b>50mm - 5000mm</b>
+<span class="en">Boresight deviation</span> ==> <span class="en">Strahlrichtungsfehler</span>
+<span class="en">Pointing stability</span> ==> <span class="en">Punktstabilität</span>
+(improved pointing stability as option) ==> (verbesserte Punktstabilität optional)
+<span class="en">Fan angle</span> ==> <span class="en">Öffnungswinkel</span>
+<span class="en">Line thickness</span> ==> <span class="en">Liniendicke</span>
+<span class="en">Line intensity variation</span> ==> <span class="en">Homogenität</span>
+related to average power (within 80% of the line) ==> bezogen auf die mittlere Leistung (innerhalb von 80% der Linie)
+<span class="en">Line straightness</span> ==> <span class="en">Geradheit</span>
+<div class="sub"><div class="t">Fan angle</div><div class="tag">Geometry to scale · values from “Fan angle”</div></div> ==> <div class="sub"><div class="t">Öffnungswinkel</div><div class="tag">Geometrie maßstäblich · Werte aus „Öffnungswinkel“</div></div>
+<h2>Mechanical properties</h2> ==> <h2>Mechanische Eigenschaften</h2>
+<span class="en">Housing material</span> ==> <span class="en">Gehäusematerial</span>
+<b>Aluminium</b> (anodized, potential free) ==> <b>Aluminium</b> (eloxiert, potentialfrei)
+<span class="en">Housing size</span> ==> <span class="en">Abmessungen</span>
+(different interfaces on request) ==> (andere Schnittstellen auf Anfrage)
+<span class="en">Pin defintion</span> ==> <span class="en">Anschlussbelegung</span>
+M12 connector 4-pin: Pin1: +VDC, Pin2: MOD, Pin3: GND, Pin4: Reserved<br>M12 connector 8-pin: Pin1: RX (RS-232/RS-485), Pin2: TX (RS-232/RS485), Pin3: GND, Pin4-Pin8: Reserved ==> M12-Stecker 4-polig: Pin1: +VDC, Pin2: MOD, Pin3: GND, Pin4: Reserviert<br>M12-Stecker 8-polig: Pin1: RX (RS-232/RS-485), Pin2: TX (RS-232/RS485), Pin3: GND, Pin4-Pin8: Reserviert
+<span class="en">Laser class</span> ==> <span class="en">Laserklasse</span>
+<div class="t">Pin assignment <span>· overview of “Pin defintion”</span></div> ==> <div class="t">Anschlussbelegung <span>· Übersicht</span></div>
+<div class="h">M12 connector 4-pin</div> ==> <div class="h">M12-Stecker 4-polig</div>
+<div class="h">M12 connector 8-pin</div> ==> <div class="h">M12-Stecker 8-polig</div>
+<span>Reserved</span> ==> <span>Reserviert</span>
+<b>FP-MVgoldHP</b>Date 03.07.2025 · Rev 0 ==> <b>FP-MVgoldHP</b>Datum 03.07.2025 · Rev 0
+<b>Contact</b> ==> <b>Kontakt</b>

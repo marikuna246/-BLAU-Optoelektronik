@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "website-redesign",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "Website_Redesign/serve.ps1"],
+      "port": 8770
+    },
+    {
+      "name": "alte-website-design",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-Command", "$env:Path = \"$env:LOCALAPPDATA\\nodejs;$env:Path\"; Set-Location 'C:\\Users\\Mariam\\Desktop\\Projekt-Nr48-Neue-Webseite-main'; pnpm.cmd vite --config vite.design-preview.config.ts --port 5180 --strictPort"],
+      "port": 5180
+    }
+  ]
+}

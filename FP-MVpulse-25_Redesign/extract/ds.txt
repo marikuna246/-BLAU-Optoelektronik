@@ -1,0 +1,69 @@
+
+===== ds page 1 (595x842pt) =====
+[y64] (x32)Datasheet/ Datenblatt
+[y109] (x30)Order number/ Artikelnummer (x241)FP-MVpulse-25
+[y126] (x30)Module/ Bezeichnung (x241)FP-MVpulse-25 Produktdatenblatt
+[y148] (x30)Basic properties/ Allgemeine Eigenschaften:
+[y169] (x30)Spectral range/ Wellenlänge (x241)450nm, 520nm, 640nm, 660nm, 785nm
+[y187] (x30)Output power/ Ausgangsleistung (x241)640nm, 660nm, 785nm: 10 - 100 mW
+[y200] (x241)450nm, 520nm: 10 - 80 mW (peak power)
+[y215] (x30)Operating voltage/ Versorgungsspannung (x241)640nm, 660nm, 785nm: 4,5 - 30 V | 450nm, 520nm: 10 - 30 V
+[y233] (x30)Current consumption/ Stromverbrauch (x241)< 200 mA @ 5 V (supply current)
+[y250] (x30)Operating temperature/ Betriebstemperatur (x241)450nm, 520nm, 640nm: 0°C to +50°C
+[y264] (x241)660nm, 785nm: 0°C to +60°C (housing temperature)
+[y279] (x30)Storage temperature/ Lagertemperatur (x241)-20°C to +60°C
+[y296] (x30)Modulation/ Modulation (x241)digital high/low active, 0 - 20 kHz,
+[y310] (x241)pulse length and duty cycle limited
+[y323] (x241)low = 0 V, high = 5 V, input impedance of 10 kOhm at 5 V
+[y338] (x30)Power stability/ Leistungsstabilität (x241)≤ 5 % at 25°C (after warm up)
+[y356] (x30)peak power increase compared to cw mode (x241)5x @ pulse length < 0,38 ms, off time between pulses > 1,52 ms,
+[y369] (x30)in same laser class (x241)4x @ pulse length < 0,9 ms, off time between pulses > 2,7 ms,
+[y383] (x241)3x @ pulse length < 2,9 ms, off time between pulses > 5,8 ms
+[y396] (x241)2x @ pulse length < 15 ms, off time between pulses > 15 ms
+[y410] (x241)higher frequencies on request
+[y425] (x30)Temperature coefficient of wavelength / (x241)< 0,25 nm/K
+[y439] (x30)Temperaturkoeffizient der Wellenlänge
+[y476] (x30)Beam properties/ Optische Eigenschaften:
+[y497] (x30)Beam profile/ Strahlcharakteristik (x241)laser line with uniform power distribution
+[y515] (x30)Focus distance/ Fokussabstand (x241)F: focusable by pin tool (see instruction manual for details)
+[y528] (x241)FYYY: factory pre-focused to YYY mm, but still focusable
+[y542] (x241)FIXYYY: fixed focus to YYY mm
+[y557] (x30)Boresight deviation/ Strahlrichtungsfehler (x241)≤ 10 mrad (≤ 3 mrad as option)
+[y574] (x30)Pointing stability/ Punktstabilität (x241)≤ 10 μrad/K (improved pointing stabillity as option)
+[y592] (x30)Fan angle/ Öffnungswinkel (x241)5°, 10°, 15°, 20°, 30°, 45°, 60°, 75°, 90°
+[y609] (x30)Line thickness/ Liniendicke (x241)STD, DL, DLE, DLSE, TS1, TS2
+[y626] (x30)Line intensity variation/ Homogenität (x241)± 20 % (± 10 % as option) related to average power
+[y640] (x241)(within 80 % of the line)
+[y655] (x30)Line straightness/ Geradheit (x241)± 0,1 % (± 0,05 % as option)
+[y716] (x356)GESCHÄFTSFÜHRER Dr.-Ing. Ingmar Blau,
+[y725] (x356)Dipl.-Ing. (FH) Eugen Romasew
+[y733] (x356)Telefon +49 (0) 7551/93748-0
+[y742] (x356)Telefax +49 (0) 7551/93748-29
+[y750] (x356)E-MAIL info@blauoptoelektronik.de
+[y759] (x356)WEB www.blauoptoelektronik.de
+[y767] (x356)HANDELSREGISTER: Freiburg HRB 580681 UST-
+[y776] (x356)IDNR. DE 169489277
+[y786] (x33)Date (x108)12.02.2026
+[y793] (x356)BANKVERBINDUNG Sparkasse Bodensee
+[y801] (x356)IBAN DE 40 6905 0001 0001 0270 28
+[y804] (x33)Rev (x108)0
+[y810] (x356)BIC/SWIFT SOLADES1KNZ
+[y821] (x32)page 1 of 2
+
+===== ds page 2 (595x842pt) =====
+[y64] (x32)Datasheet/ Datenblatt
+[y91] (x30)Line straightness/ Geradheit
+[y113] (x30)Mechanical properties/ Mechanische Eigenschaften:
+[y135] (x30)Housing material/ Gehäusematerial (x241)Aluminum (blue anodized, potential free)
+[y152] (x30)Housing size/ Abmessungen (x241)ST-F/ST-FIX: Ø19x90 mm
+[y166] (x241)2H-F: Ø11,5x36 mm (optics) + Ø19x58 mm (electronics),
+[y179] (x241)connected by 150 mm wire
+[y193] (x241)2H-FIX: Ø11,5x29 mm (optics) + Ø19x58 mm (electronics),
+[y206] (x241)connected by 150 mm wire
+[y221] (x30)Pin defintion/ Anschlussbelegung (x241)open leads: +VDC (brown), MOD (black), GND (blue)
+[y235] (x241)(M12 connector on request)
+[y250] (x30)Laser class/ Laserklasse (x241)2 (IEC 60825-1:2014, EN 60825-1:2014+A11:2021)
+[y273] (x30)-
+[y786] (x33)Date (x108)12.02.2026
+[y804] (x33)Rev (x108)0
+[y821] (x32)page 2 of 2

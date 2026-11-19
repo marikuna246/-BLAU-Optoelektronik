@@ -1,0 +1,47 @@
+<main id="main">
+  <section class="page-hero page-hero--compact" aria-labelledby="page-title">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Brotkrumen"><ol><li><a href="index.html">Start</a></li><li><a href="https://blauoptoelektronik.de/tools">Tools</a></li><li aria-current="page">Modul-Konfigurator</li></ol></nav>
+      <p class="eyebrow">Modul-Konfigurator</p>
+      <h1 id="page-title">In wenigen Schritten zu Ihrem Lasermodul.</h1>
+      <p class="lead">Wählen Sie Serie, Wellenlänge, Leistung, Optik und Elektrik – und fordern Sie direkt Ihr Angebot an.</p>
+    </div>
+  </section>
+
+  <div class="cfg-stepper-bar">
+    <div class="wrap">
+      <ol class="cfg-stepper" aria-label="Schritte">
+        <li><button type="button" data-step="group"><b>1</b><span>Produktgruppe</span></button></li>
+        <li><button type="button" data-step="series"><b>2</b><span>Serie</span></button></li>
+        <li><button type="button" data-step="wlpower"><b>3</b><span>Wellenlänge &amp; Leistung</span></button></li>
+        <li><button type="button" data-step="optics"><b>4</b><span>Optik</span></button></li>
+        <li><button type="button" data-step="electrical"><b>5</b><span>Elektrik</span></button></li>
+        <li><button type="button" data-step="options"><b>6</b><span>Optionen</span></button></li>
+        <li><button type="button" data-step="summary"><b>7</b><span>Angebot</span></button></li>
+      </ol>
+      <div class="cfg-progress" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
+
+  <section class="section cfg-section" aria-label="Konfiguration">
+    <div class="wrap cfg-layout">
+      <div class="cfg-main" id="cfg-main" tabindex="-1" aria-live="polite"></div>
+      <aside class="cfg-aside" aria-label="Ihre Konfiguration">
+        <div class="cfg-card">
+          <p class="label">Ihre Konfiguration</p>
+          <div class="cfg-key" id="cfg-key">–</div>
+          <dl class="cfg-list" id="cfg-list"></dl>
+          <div class="cfg-nav">
+            <button class="btn btn--ghost btn--sm" type="button" data-prev>Zurück</button>
+            <button class="btn btn--accent btn--sm" type="button" data-next>Weiter <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+        <p class="cfg-note">Prototyp im neuen Design. Preis, Laserklasse und Lebensdauer berechnet der bestehende Konfigurator für freigeschaltete Kunden.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+<div class="mobile-cta cfg-mobile-nav is-visible">
+  <button class="btn btn--ghost" type="button" data-prev>Zurück</button>
+  <button class="btn btn--accent" type="button" data-next>Weiter</button>
+</div>

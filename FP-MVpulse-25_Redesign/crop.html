@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>crop</title></head><body><pre id="log"></pre>
+<script>
+// Crops original-resolution regions out of the 4x page renders (extract/*.png) -> assets/*.png
+// boxes are given in the 1414-px (portrait) or 2000-px (landscape) preview coordinate frame.
+const S=2381/1414, SL=3367/2000;
+const jobs=[
+ ['lc-p1','photo-left',[220,355,740,712],S],['lc-p1','photo-right',[785,370,1300,602],S],
+ ['lc-p3','dof-short',[150,320,700,622],S],['lc-p3','dof-long',[775,320,1325,622],S],
+ ['lc-p4','pulse-viz',[145,495,1330,1052],S],['lc-p4','pulse-curve',[195,1150,1222,1768],S],
+ ['lc-p5','mod-diagram',[190,735,1290,1262],S],
+ ['pc1-p1','pc1',[100,235,1945,1200],SL],['pc2-p1','pc2',[180,80,1850,1312],SL],
+];
+for(const p of [6,7,8,9,10]){ jobs.push(['lc-p'+p,'drw'+p+'-iso',[380,330,1220,745],S]); jobs.push(['lc-p'+p,'drw'+p+'-2d',[160,905,1300,1268],S]); }
+window.run=async function(){
+  const only=new URLSearchParams(location.search).get('only');
+  for(const [src,name,b,s] of jobs){
+    if(only && !only.split(',').includes(name)) continue;
+    const img=new Image(); img.src='extract/'+src+'.png'; await img.decode();
+    const x=Math.round(b[0]*s), y=Math.round(b[1]*s), w=Math.round((b[2]-b[0])*s), h=Math.round((b[3]-b[1])*s);
+    const c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(img,x,y,w,h,0,0,w,h);
+    await fetch('/api/put?name=assets/'+name+'.png',{method:'POST',body:c.toDataURL('image/png').split(',')[1]});
+    document.getElementById('log').textContent+=name+' '+w+'x'+h+'\n';
+  }
+  return document.getElementById('log').textContent;
+};
+</script></body></html>

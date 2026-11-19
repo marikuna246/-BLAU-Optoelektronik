@@ -1,0 +1,8 @@
+﻿MVpulseHP EN  <- LASER COMPONENTS datasheet        82 distinct values, missing as text: none | contained in original chart/drawing images: 0.02, 0.05, 120, 1200, 140, 1400, 1500, 160, 1600, 180, 1800, 19.0, 200, 2000, 2500, 3000, 35, 3500, 4.5, 4.8, 400, 4000, 4500, 600, 70, 800, 9.0, 90
+MVpulseHP EN  <- White Paper                       17 distinct values, missing: none
+FP-MVgoldHP EN <- BLAU datasheet                   53 distinct values, missing: none
+MVpulseHP_Datenblatt_DE vs EN                    EN 288 / DE 288 numeric tokens, differences: none
+FP-MVgoldHP_Datenblatt_DE vs EN                  EN 198 / DE 198 numeric tokens, differences: none
+MVpulseHP_Datasheet_EN (verbatim)                17 verbatim strings, missing: none
+FP-MVgoldHP_Datasheet_EN (verbatim)              23 verbatim strings, missing: none
+RESULT: all checks passed

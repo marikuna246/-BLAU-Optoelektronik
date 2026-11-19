@@ -1,0 +1,53 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>extract</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head><body><pre id="log"></pre>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+const files={lc:'src/flexpoint-mvpulsehp-machine-vision-laser.pdf',ds:'src/FP-MVgoldHP_Datasheet.pdf',wp:'src/white-paper-mvpulsehp-series.pdf'};
+const log=s=>document.getElementById('log').textContent+=s+'\n';
+async function put(name,body){await fetch('/api/put?name='+encodeURIComponent(name),{method:'POST',body});}
+window.run=async function(scale){
+  for(const [k,f] of Object.entries(files)){
+    const pdf=await pdfjsLib.getDocument(f).promise; let txt='';
+    for(let i=1;i<=pdf.numPages;i++){
+      const pg=await pdf.getPage(i); const vp=pg.getViewport({scale});
+      const c=document.createElement('canvas'); c.width=vp.width; c.height=vp.height;
+      await pg.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+      await put(`extract/${k}-p${i}.png`, c.toDataURL('image/png').split(',')[1]);
+      const tc=await pg.getTextContent(); const v1=pg.getViewport({scale:1});
+      txt+=`\n===== ${k} page ${i} (${v1.width.toFixed(0)}x${v1.height.toFixed(0)}pt) =====\n`;
+      const items=tc.items.filter(t=>t.str.trim()!=='').map(t=>({s:t.str,x:t.transform[4],y:v1.height-t.transform[5],h:t.height}));
+      items.sort((a,b)=>a.y-b.y||a.x-b.x); let line=[],ly=null;
+      const flush=()=>{ if(line.length){ line.sort((a,b)=>a.x-b.x); txt+=`[y${ly.toFixed(0)}] `+line.map(t=>`(x${t.x.toFixed(0)})${t.s}`).join(' ')+'\n'; } line=[]; };
+      for(const t of items){ if(ly===null||Math.abs(t.y-ly)>2){ flush(); ly=t.y; } line.push(t); } flush();
+      log(`${k} p${i} done`);
+    }
+    await put(`extract/${k}.txt`, txt);
+  }
+  log('ALL DONE'); return 'done';
+};
+// crop helper: crop(src page png, x,y,w,h in px of that png, outName)
+window.crop=async function(srcPng,x,y,w,h,out){
+  const img=new Image(); img.src=srcPng; await img.decode();
+  const c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(img,x,y,w,h,0,0,w,h);
+  await put('assets/'+out, c.toDataURL('image/png').split(',')[1]); return out;
+};
+// extract embedded raster images of a page at native resolution
+window.images=async function(key,pageNo){
+  const pdf=await pdfjsLib.getDocument(files[key]).promise; const pg=await pdf.getPage(pageNo);
+  const ops=await pg.getOperatorList(); const res=[];
+  for(let i=0;i<ops.fnArray.length;i++){
+    if(ops.fnArray[i]===pdfjsLib.OPS.paintImageXObject){
+      const id=ops.argsArray[i][0];
+      const im=await new Promise(r=>{ const o=pg.objs.has(id)?pg.objs:pg.commonObjs; o.get(id,r); });
+      if(!im) continue; const c=document.createElement('canvas'); c.width=im.width; c.height=im.height; const ctx=c.getContext('2d');
+      if(im.bitmap){ ctx.drawImage(im.bitmap,0,0); }
+      else { const d=ctx.createImageData(im.width,im.height); const s=im.data; const n=im.width*im.height;
+        if(s.length===n*4) d.data.set(s); else if(s.length===n*3){ for(let j=0;j<n;j++){d.data[j*4]=s[j*3];d.data[j*4+1]=s[j*3+1];d.data[j*4+2]=s[j*3+2];d.data[j*4+3]=255;} } else continue; ctx.putImageData(d,0,0); }
+      const name=`img-${key}-p${pageNo}-${res.length}.png`; await put('extract/'+name, c.toDataURL('image/png').split(',')[1]); res.push(name+' '+im.width+'x'+im.height);
+    }
+  }
+  return res;
+};
+</script></body></html>

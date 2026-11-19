@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "datenblatt-editor",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "FP-MVnano-25_Redesign/serve.ps1"],
+      "port": 8765
+    },
+    {
+      "name": "mvpulse",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "FP-MVpulse-25_Redesign/serve.ps1"],
+      "port": 8766
+    },
+    {
+      "name": "mvgoldhp",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "FP-MVgoldHP_Redesign/serve.ps1"],
+      "port": 8767
+    },
+    {
+      "name": "website-redesign",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "Website_Redesign/serve.ps1"],
+      "port": 8770
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+
+===== wp page 1 (595x842pt) =====
+[y121] (x59)WHITE PAPER
+[y150] (x59)MVpulseHP
+[y174] (x59)Technical Explanation and Instructions for easy handling of the MVpulseHP
+[y382] (x59)Pulse Control Features
+[y403] (x59)The MVpulseHP (x139)driver electronics automatically monitors and controls the pulse modulation function.
+[y416] (x59)Within the factory preset limits of duty cycle and pulse length, the modulation control reliably detects
+[y429] (x59)rising and falling edges so that the laser signal follows the modulation signal. If the user applies a higher
+[y441] (x59)duty cycle or a longer pulse length to the modulation input of the laser which would exceed the factory
+[y454] (x59)preset maximum parameter, the driver electronics will limit the pulse length automatically. Refer to the
+[y467] (x59)e (x64)xample (x100)s below
+[y491] (x64)𝑡𝑡 (x68)𝑚𝑚 (x73), (x75)𝑜𝑜𝑜𝑜 (x86)| (x92)𝑡𝑡 (x96)𝑚𝑚 (x101), (x103)𝑜𝑜 (x106)ff (x113)| (x119)k (x125)𝑚𝑚 (x130), (x132)dc (x156)M (x165)odulation signal: on time | off time | duty cycle
+[y508] (x64)𝑡𝑡 (x68)p (x72), (x74)𝑜𝑜𝑜𝑜 (x84)| (x90)k (x95)p (x99), (x101)dc (x156)L (x162)aser signal factory preset: maximum on time | maximum duty cycle
+[y519] (x107)t (x110)m (x116), (x117)on
+[y525] (x64)k (x69)m,dc (x84)= (x156)Calculation duty cycle
+[y530] (x94)𝑡𝑡 (x97)𝑚𝑚 (x103), (x104)𝑜𝑜𝑜𝑜 (x112)+ (x117)𝑡𝑡 (x120)𝑚𝑚 (x126), (x128)𝑜𝑜𝑜𝑜𝑜𝑜
+[y566] (x447)Figure 1: (x494)Pulse scheme
+[y579] (x447)modulation input
+[y592] (x447)versus laser output with
+[y605] (x27)series (x447)standard operation
+[y608] (x27)-
+[y618] (x447)within factory preset
+[y631] (x447)parameter (x498)s and versus
+[y641] (x27)mvpulsehp
+[y643] (x27)- (x447)laser output (x507).
+[y661] (x27)paper
+[y663] (x27)-
+[y670] (x447)Maximum Time for
+[y682] (x447)t (x451)p,on (x469)is 20 ms
+[y708] (x27)modules/white
+[y710] (x27)-
+[y744] (x27)MaL / laser
+[y746] (x27)-
+[y756] (x59)/ Germany and Other Countries (x160)LASER COMPONENTS Germany GmbH (x282)Tel +49 8142 2864 – 0 (x353)info@lasercomponents.com (x440)www.lasercomponents.com
+[y763] (x59)/ France (x90)LASER COMPONENTS S.A.S. (x181)Tel +33 1 39 59 52 25 (x249)info@lasercomponents.fr (x328)www.lasercomponents.fr
+[y771] (x59)/ United Kingdom (x118)LASER COMPONENTS (UK) Ltd. (x220)Tel +44 1245 491 499 (x288)info@lasercomponents.co.uk (x379)www.lasercomponents.co.uk
+[y778] (x59)/ Nordic Countries (x120)LASER COMPONENTS Nordic AB (x226)Tel +46 31 703 71 73 (x290)info@lasercomponents.se (x372)www.lasercomponents.se
+[y785] (x59)/ USA (x82)LASER COMPONENTS USA, Inc. (x183)Tel +1 603 821 – 7040 (x253)info@laser-components.com (x343)www.laser-components.com
+[y795] (x27)09/24 / V1 / KS
+[y804] (x59)/ 1
+
+===== wp page 2 (595x842pt) =====
+[y126] (x64)𝑡𝑡 (x68)𝑚𝑚 (x73), (x75)𝑜𝑜𝑜𝑜 (x86)| (x92)𝑡𝑡 (x96)𝑚𝑚 (x101), (x103)𝑜𝑜 (x106)ff (x113)| (x119)k (x125)𝑚𝑚 (x130), (x132)dc (x156)M (x165)odulation signal: on time | off time | duty (x368)cycle
+[y142] (x64)𝑡𝑡 (x68)p (x72), (x74)𝑜𝑜𝑜𝑜 (x84)| (x90)k (x95)p (x99), (x101)dc (x156)L (x162)aser signal factory preset: maximum on time | maximum duty cycle
+[y153] (x107)t (x110)m (x116), (x117)on
+[y159] (x64)k (x69)m,dc (x84)= (x156)Calculation duty cycle
+[y164] (x94)𝑡𝑡 (x97)𝑚𝑚 (x103), (x104)𝑜𝑜𝑜𝑜 (x112)+ (x117)𝑡𝑡 (x120)𝑚𝑚 (x126), (x128)𝑜𝑜𝑜𝑜𝑜𝑜
+[y324] (x289)Maximum Time for t (x388)p,on (x405)= 20 ms
+[y350] (x59)Figure 2: Pulse scheme modulation input versus laser output with pulse length control by factory
+[y363] (x59)preset maximum pulse length (x207)for a use case with long t (x331)m,off
+[y384] (x59)The duty cycle and pulse function is factory set but will be aligned with your applications e.g. your
+[y397] (x59)camera settings. In case the indicated pulse function does not meet your expectations (x487)we are happy to
+[y410] (x59)discuss alternative programming.
+[y452] (x59)Electronic Protection (overheating)
+[y473] (x59)The module has integrated electronic protection against overheating. This is activated when the
+[y486] (x59)temperature of the laser diode exceeds the factory preset maximum temperature of the laser diode.
+[y499] (x59)The switch (x112)- (x116)on and switch (x185)- (x189)off process of the electronic protection is subject to a hysteresis with a
+[y511] (x59)temperature difference of 5 Kelvin and is used for the cooling phase. If the temperature falls below the
+[y524] (x59)switch (x90)- (x95)on temperature after the electronic protection is triggered, the module switches on again
+[y537] (x59)automatically.
+[y606] (x27)series
+[y608] (x27)-
+[y641] (x27)mvpulsehp
+[y643] (x27)-
+[y661] (x27)paper
+[y663] (x27)-
+[y708] (x27)modules/white
+[y710] (x27)-
+[y744] (x27)MaL / laser
+[y746] (x27)-
+[y756] (x59)/ Germany and Other Countries (x160)LASER COMPONENTS Germany GmbH (x282)Tel +49 8142 2864 – 0 (x353)info@lasercomponents.com (x440)www.lasercomponents.com
+[y763] (x59)/ France (x90)LASER COMPONENTS S.A.S. (x181)Tel +33 1 39 59 52 25 (x249)info@lasercomponents.fr (x328)www.lasercomponents.fr
+[y771] (x59)/ United Kingdom (x118)LASER COMPONENTS (UK) Ltd. (x220)Tel +44 1245 491 499 (x288)info@lasercomponents.co.uk (x379)www.lasercomponents.co.uk
+[y778] (x59)/ Nordic Countries (x120)LASER COMPONENTS Nordic AB (x226)Tel +46 31 703 71 73 (x290)info@lasercomponents.se (x372)www.lasercomponents.se
+[y785] (x59)/ USA (x82)LASER COMPONENTS USA, Inc. (x183)Tel +1 603 821 – 7040 (x253)info@laser-components.com (x343)www.laser-components.com
+[y795] (x27)09/24 / V1 / KS
+[y804] (x59)/ 2
+
+===== wp page 3 (595x842pt) =====
+[y126] (x64)T (x70)e (x73), (x75)𝑜𝑜𝑜𝑜 (x85)| (x91)T (x97)e (x100), (x102)𝑜𝑜 (x106)ff (x149)Over- (x177)temperature electronic protection: laser on | (x399)laser off
+[y142] (x64)T (x70)e (x73), (x75)𝑜𝑜 (x78)ff (x85)- (x93)T (x99)e,on (x112)= 5K
+[y288] (x59)Figure 3: Scheme of laser diode temperature versus time with electronic protection by factory preset
+[y301] (x59)maximum laser diode temperature.
+[y322] (x59)The pulse function is designed to avoid overheating of the laser diode. The risk of overheating can be
+[y335] (x59)further minimized by mounting / clamping the module (x331)according to the drawing and applying a metal
+[y348] (x59)clamping and a thermal paste. Allow adequate heat dissipation within your application.
+[y464] (x59)Communication
+[y485] (x59)The module provides an (x181)RS- (x198)232 with 0 (x249)- (x254)5 V interface (RS485 optional (x399)) (x406)to read out parameters and
+[y498] (x59)change them. (x129)A specific serial number between 1 and 255 can be assigned to an MVpulseHP module
+[y511] (x59)by (x74)the (x93)user. The factory preset serial number is 1. With the RS485 option, the modules can be
+[y524] (x59)connected to a bus system and addressed via their specific serial number. The serial number must be
+[y537] (x59)assigned individually to each module before using it in the bus syst (x388)em during set- (x460)up of the bus.
+[y558] (x59)RS- (x76)232/RS485 parameters:
+[y579] (x59)Baudrate (x130)= 115200 1/s
+[y592] (x59)Parity bit (x130)= None
+[y604] (x27)series (x59)Data bit (x130)= 8
+[y608] (x27)-
+[y617] (x59)Stop bit (x130)= 1
+[y630] (x59)Flow control (x130)= None
+[y641] (x27)mvpulsehp
+[y643] (x27)-
+[y661] (x27)paper
+[y663] (x27)-
+[y708] (x27)modules/white
+[y710] (x27)-
+[y744] (x27)MaL / laser
+[y746] (x27)-
+[y756] (x59)/ Germany and Other Countries (x160)LASER COMPONENTS Germany GmbH (x282)Tel +49 8142 2864 – 0 (x353)info@lasercomponents.com (x440)www.lasercomponents.com
+[y763] (x59)/ France (x90)LASER COMPONENTS S.A.S. (x181)Tel +33 1 39 59 52 25 (x249)info@lasercomponents.fr (x328)www.lasercomponents.fr
+[y771] (x59)/ United Kingdom (x118)LASER COMPONENTS (UK) Ltd. (x220)Tel +44 1245 491 499 (x288)info@lasercomponents.co.uk (x379)www.lasercomponents.co.uk
+[y778] (x59)/ Nordic Countries (x120)LASER COMPONENTS Nordic AB (x226)Tel +46 31 703 71 73 (x290)info@lasercomponents.se (x372)www.lasercomponents.se
+[y785] (x59)/ USA (x82)LASER COMPONENTS USA, Inc. (x183)Tel +1 603 821 – 7040 (x253)info@laser-components.com (x343)www.laser-components.com
+[y795] (x27)09/24 / V1 / KS
+[y804] (x59)/ 3
+
+===== wp page 4 (595x842pt) =====
+[y123] (x59)Command structure: All commands start either with “#” followed by the 3 (x421)-digit serial number defined
+[y136] (x59)by the customer or with “#000”, which works for every module regardless of the serial number. All send
+[y149] (x59)commands end with the character NULL (x261)\ (x267)0. Each response ends with the character (x473)\ (x478)r.
+[y174] (x65)Command (x157)Explanation (x242)Example (x341)Answer (x455)Explanation (x516)Answer
+[y193] (x65)getIdcurrent (x157)returns the (x242)#000getldcurrent (x341)1300 (x365)\ (x370)r (x455)1300mA
+[y205] (x157)current
+[y217] (x157)through the
+[y229] (x157)laser diode of
+[y241] (x157)the last pulse
+[y253] (x157)in (x168)mA
+[y272] (x65)getIdtemp (x157)returns the (x242)#000getldtemp (x341)3400 (x365)\r (x455)34.0°C
+[y284] (x157)temperature
+[y296] (x157)of the laser
+[y308] (x157)diode in
+[y320] (x157)°C*100
+[y340] (x65)g (x72)etseri (x99)al (x157)returns the (x242)#000getserial (x341)233 (x359)\r (x455)serial number 233
+[y352] (x157)3 digit
+[y364] (x157)serial number
+[y376] (x157)of the
+[y388] (x157)module
+[y407] (x65)g (x72)ethours (x157)returns the (x242)#000gethours (x341)3400 (x365)\r (x455)module was
+[y419] (x157)duration the (x455)connected to power
+[y431] (x157)laser module (x455)supply for 3400 hours
+[y443] (x157)was
+[y455] (x157)connected to
+[y467] (x157)a voltage
+[y479] (x157)supply in
+[y491] (x157)hours
+[y510] (x65)g (x72)eterror (x157)returns an (x242)#000geterror (x341)1 (x347)\r (x455)0: laser ok,
+[y522] (x157)error code (x455)1: laser (x492)over
+[y534] (x455)temperature
+[y554] (x65)setserial[1 (x116)- (x120)255] (x157)sets (x180)the (x242)#000setserial255 (x341)255 (x359)\r (x455)sets the serial number
+[y566] (x157)serial number (x455)to 255
+[y606] (x27)series
+[y608] (x27)-
+[y641] (x27)mvpulsehp
+[y643] (x27)-
+[y661] (x27)paper
+[y663] (x27)-
+[y708] (x27)modules/white
+[y710] (x27)-
+[y744] (x27)MaL / laser
+[y746] (x27)-
+[y756] (x59)/ Germany and Other Countries (x160)LASER COMPONENTS Germany GmbH (x282)Tel +49 8142 2864 – 0 (x353)info@lasercomponents.com (x440)www.lasercomponents.com
+[y763] (x59)/ France (x90)LASER COMPONENTS S.A.S. (x181)Tel +33 1 39 59 52 25 (x249)info@lasercomponents.fr (x328)www.lasercomponents.fr
+[y771] (x59)/ United Kingdom (x118)LASER COMPONENTS (UK) Ltd. (x220)Tel +44 1245 491 499 (x288)info@lasercomponents.co.uk (x379)www.lasercomponents.co.uk
+[y778] (x59)/ Nordic Countries (x120)LASER COMPONENTS Nordic AB (x226)Tel +46 31 703 71 73 (x290)info@lasercomponents.se (x372)www.lasercomponents.se
+[y785] (x59)/ USA (x82)LASER COMPONENTS USA, Inc. (x183)Tel +1 603 821 – 7040 (x253)info@laser-components.com (x343)www.laser-components.com
+[y795] (x27)09/24 / V1 / KS
+[y804] (x59)/ 4
+
+===== wp page 5 (595x842pt) =====
+[y123] (x59)Focusing mechanism
+[y144] (x59)The focal distance of the uniform laser line can be adjusted with the provided pin tool. Stick the pin (x551)into
+[y157] (x59)one of the holes of the inner ring and turn it clockwise/counterclockwise. The focal distance
+[y170] (x59)decreases (x108)/increase (x155)s (x160).
+[y321] (x59)Installation and Operation
+[y342] (x59)Attention! Please pay attention to the clamping area and refer to the data sheet while fitting the laser
+[y355] (x59)module (x96). C (x109)lamping areas vary for different laser (x293)module types. Please take care of sufficient heat
+[y368] (x59)dissipation (x114)by clamping at the indicated (x258)position and using thermal (x393)paste on the surface overlap of
+[y381] (x59)module and mount (x152). (x158)If you are unsure about mounting of the module under the applied condition (e.g.
+[y394] (x59)ambient temperature, surrounding equipment, etc.) please contact us.
+[y606] (x27)series
+[y608] (x27)-
+[y641] (x27)mvpulsehp
+[y643] (x27)-
+[y661] (x27)paper
+[y663] (x27)-
+[y708] (x27)modules/white
+[y710] (x27)-
+[y744] (x27)MaL / laser
+[y746] (x27)-
+[y756] (x59)/ Germany and Other Countries (x160)LASER COMPONENTS Germany GmbH (x282)Tel +49 8142 2864 – 0 (x353)info@lasercomponents.com (x440)www.lasercomponents.com
+[y763] (x59)/ France (x90)LASER COMPONENTS S.A.S. (x181)Tel +33 1 39 59 52 25 (x249)info@lasercomponents.fr (x328)www.lasercomponents.fr
+[y771] (x59)/ United Kingdom (x118)LASER COMPONENTS (UK) Ltd. (x220)Tel +44 1245 491 499 (x288)info@lasercomponents.co.uk (x379)www.lasercomponents.co.uk
+[y778] (x59)/ Nordic Countries (x120)LASER COMPONENTS Nordic AB (x226)Tel +46 31 703 71 73 (x290)info@lasercomponents.se (x372)www.lasercomponents.se
+[y785] (x59)/ USA (x82)LASER COMPONENTS USA, Inc. (x183)Tel +1 603 821 – 7040 (x253)info@laser-components.com (x343)www.laser-components.com
+[y795] (x27)09/24 / V1 / KS
+[y804] (x59)/ 5

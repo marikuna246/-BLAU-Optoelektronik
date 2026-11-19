@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>check</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script></head><body>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+// renders the finished PDF to extract/out-pN.png and dumps its text layer to extract/out.txt
+window.run=async function(scale){
+  const pdf=await pdfjsLib.getDocument('FP-MVpulse-25_Datasheet_BLAU.pdf?'+Date.now()).promise; let txt='';
+  for(let i=1;i<=pdf.numPages;i++){
+    const pg=await pdf.getPage(i); const vp=pg.getViewport({scale});
+    const c=document.createElement('canvas'); c.width=vp.width; c.height=vp.height;
+    await pg.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+    await fetch('/api/put?name=extract/out-p'+i+'.png',{method:'POST',body:c.toDataURL('image/png').split(',')[1]});
+    const tc=await pg.getTextContent(); txt+='\n===== page '+i+' =====\n'+tc.items.map(t=>t.str+(t.hasEOL?'\n':'')).join('');
+  }
+  await fetch('/api/put?name=extract/out.txt',{method:'POST',body:txt});
+  return pdf.numPages;
+};
+</script></body></html>
