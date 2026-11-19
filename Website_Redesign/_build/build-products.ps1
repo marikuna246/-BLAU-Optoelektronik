@@ -217,7 +217,11 @@ foreach ($p in $data.products) {
     A '        <p class="lead">Alle technischen Details zum Download.</p>'
     A '      </div>'
     A '      <div class="downloads">'
-    foreach ($d in $p.downloads) { A "        <a class=`"download`" href=`"$live`"><span class=`"ft`">PDF</span><span><b>$(Enc $d[0])</b><small>$(Enc $d[1])</small></span></a>" }
+    foreach ($d in $p.downloads) {
+      # Optionales 3. Feld = eigene Datei unter assets/downloads/ (sonst Link zur Live-Produktseite)
+      if ($d.Count -ge 3 -and $d[2]) { $href = $d[2]; $extra = ' target="_blank" rel="noopener"' } else { $href = $live; $extra = '' }
+      A "        <a class=`"download`" href=`"$href`"$extra><span class=`"ft`">PDF</span><span><b>$(Enc $d[0])</b><small>$(Enc $d[1])</small></span></a>"
+    }
     A '      </div>'
     A '    </div>'
     A '  </section>'
