@@ -1230,3 +1230,44 @@ table.matrix.spec { min-width: 0; }
 
 /* Sprachumschalter im Handy-Menü */
 .mobile-nav .mobile-lang { display: inline-flex; margin: 0 0 12px; }
+
+/* ===== Produktfinder ===== */
+.finder-layout { display: grid; gap: 28px; }
+@media (min-width: 980px) { .finder-layout { grid-template-columns: 320px minmax(0, 1fr); align-items: start; } .finder-form { position: sticky; top: calc(var(--header-h) + 16px); } }
+.finder-form { background: #fff; border: 1px solid var(--rule); border-radius: 20px; padding: 22px; display: grid; gap: 18px; }
+.finder-field { border: 0; padding: 0; margin: 0; min-width: 0; }
+.finder-field legend { font-weight: 600; font-size: .92rem; color: var(--ink); margin-bottom: 8px; padding: 0; }
+.finder-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.finder-chips label { cursor: pointer; }
+.finder-chips input { position: absolute; opacity: 0; pointer-events: none; }
+.finder-chips span { display: inline-block; padding: 7px 12px; border-radius: 99px; border: 1px solid var(--rule); background: #fff; font-size: .86rem; font-weight: 600; color: var(--ink); transition: all .2s; }
+.finder-chips input:checked + span { background: var(--navy); border-color: var(--navy); color: #fff; }
+.finder-chips input:focus-visible + span { outline: 3px solid rgba(0, 51, 104, .35); outline-offset: 2px; }
+.finder-row { display: grid; gap: 14px; }
+.finder-row .field { margin: 0; }
+.finder-checks { display: grid; gap: 8px; }
+.finder-checks label { display: flex; gap: 10px; align-items: center; font-size: .92rem; cursor: pointer; }
+.finder-checks input { width: 18px; height: 18px; accent-color: var(--navy); }
+.finder-reset { justify-self: start; }
+.finder-note { font-size: .82rem; color: var(--muted); margin: 0; }
+.finder-status { font-family: var(--font-head); font-weight: 650; color: var(--ink); margin: 0 0 14px; }
+.finder-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.finder-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+.finder-card:hover { border-color: #b9c6d6; box-shadow: var(--shadow-sm); }
+.finder-card.is-ask { background: var(--panel); }
+.finder-card__media { display: block; aspect-ratio: 16 / 10; background: #fff; border-bottom: 1px solid var(--rule); }
+.finder-card__media img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
+.finder-card__body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.finder-card .cat { font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--red); }
+.finder-card h2 { font-size: 1.2rem; margin: 0; }
+.finder-card h2 a { color: var(--ink); text-decoration: none; }
+.finder-facts { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.finder-facts li { font-size: .82rem; padding: 4px 9px; border-radius: 99px; background: var(--panel); border: 1px solid var(--rule); color: var(--text); display: inline-flex; align-items: center; gap: 6px; }
+.finder-facts li.feat { background: rgba(0, 51, 104, .07); color: var(--navy); font-weight: 600; }
+.finder-facts .wl { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.finder-actions { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+.btn--sm { padding: 8px 14px; font-size: .88rem; min-height: 38px; }
+.finder-empty { grid-column: 1 / -1; background: #fff; border: 1px dashed var(--rule); border-radius: 18px; padding: 24px; }
+.finder-more__title { font-size: 1.15rem; margin: 36px 0 6px; }
+.finder-more__lead { color: var(--muted); margin: 0 0 14px; font-size: .95rem; }
+.finder-cta { margin-top: 20px; }
