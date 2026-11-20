@@ -355,22 +355,28 @@
     document.getElementById("cfg-key").textContent = code();
     var rows = summaryRows().filter(function (r) { return r[0] !== (EN ? "Line length" : "Linienlänge"); });
     document.getElementById("cfg-list").innerHTML = rows.map(function (r) { return "<div><dt>" + esc(r[0]) + "</dt><dd>" + esc(r[1]) + "</dd></div>"; }).join("");
-    var idx = STEPS.indexOf(S.step), sr = series();
+    var idx = STEPS.indexOf(S.step), sr = series(), mv = S.g === "mv";
     stepBtns.forEach(function (b, i) {
-      var reachable = i <= 1 || (sr && !sr.request && S.g === "mv" && (i <= 2 || (S.wl && S.p)));
+      var reachable = i <= 1 || (sr && !sr.request && mv && (i <= 2 || (S.wl && S.p)));
       b.disabled = !reachable;
+      // Powell & Anfrage-Gruppen haben nur 2 Schritte – übrige Schritte ausblenden statt ausgrauen
+      b.parentNode.hidden = !mv && i >= 2;
+      if (i === 1) b.querySelector("span").textContent = S.g === "powell" ? (EN ? "Lens" : "Linse") : !mv ? (EN ? "Inquiry" : "Anfrage") : (EN ? "Series" : "Serie");
       b.classList.toggle("is-done", i < idx);
       if (i === idx) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current");
     });
-    document.querySelector(".cfg-progress i").style.transform = "scaleX(" + (idx / (STEPS.length - 1)) + ")";
+    document.querySelector(".cfg-progress i").style.transform = "scaleX(" + (mv ? idx / (STEPS.length - 1) : Math.min(idx, 1)) + ")";
     /* aktiven Schritt in der Leiste sichtbar halten (Smartphone) */
     var list = document.querySelector(".cfg-stepper"), act = stepBtns[idx];
     if (list && act && list.scrollWidth > list.clientWidth) list.scrollTo({ left: act.parentNode.offsetLeft - 20, behavior: "smooth" });
     document.querySelectorAll("[data-prev]").forEach(function (b) { b.disabled = idx === 0; });
+    var finish = !mv && S.step === "series"; // letzter Schritt bei Powell / Anfrage-Gruppen
     document.querySelectorAll("[data-next]").forEach(function (b) {
       var last = idx === STEPS.length - 1;
-      b.disabled = !canAdvance() || last || (S.step === "series" && S.g !== "mv");
+      b.disabled = finish ? false : (!canAdvance() || last);
       b.hidden = last;
+      var label = finish ? (S.g === "powell" ? (EN ? "Request a quote" : "Angebot anfordern") : (EN ? "Send inquiry" : "Anfrage senden")) : (EN ? "Next" : "Weiter");
+      b.innerHTML = esc(label) + " <svg aria-hidden='true'><use href='#i-arrow'/></svg>";
     });
   }
 
@@ -394,6 +400,7 @@
       if (k === "s" && S.s !== v) { S.f = ""; }
       S[k] = v;
       if (k === "s" && series() && !series().request) { render(); setTimeout(function () { go("wlpower"); }, 260); return; }
+      if (k === "g") { render(); setTimeout(function () { go("series"); }, 260); return; } // Gruppe gewählt -> direkt weiter
       render(); return;
     }
     var c = e.target.closest("[data-wlp]");
@@ -426,7 +433,10 @@
     if (tr && sr) tr.innerHTML = "<th scope='row'>" + (EN ? "L at " : "L bei ") + fmt(S.d) + " mm</th>" + sr.angles.map(function (a) { return "<td" + (a === S.fan ? " class='is-on'" : "") + ">" + fmt(lineLen(a, S.d)) + "</td>"; }).join("");
     updateAside(); saveUrl();
   }
-  document.querySelectorAll("[data-next]").forEach(function (b) { b.addEventListener("click", function () { var i = STEPS.indexOf(S.step); if (canAdvance() && i < STEPS.length - 1) go(STEPS[i + 1]); }); });
+  document.querySelectorAll("[data-next]").forEach(function (b) { b.addEventListener("click", function () {
+    if (S.g !== "mv" && S.step === "series") { location.href = S.g === "powell" ? requestHref() : "kontakt.html?produkt=" + encodeURIComponent(group().name); return; }
+    var i = STEPS.indexOf(S.step); if (canAdvance() && i < STEPS.length - 1) go(STEPS[i + 1]);
+  }); });
   document.querySelectorAll("[data-prev]").forEach(function (b) { b.addEventListener("click", function () { var i = STEPS.indexOf(S.step); if (i > 0) go(STEPS[i - 1]); }); });
   stepBtns.forEach(function (b) { b.addEventListener("click", function () { if (!b.disabled) go(b.dataset.step); }); });
 
