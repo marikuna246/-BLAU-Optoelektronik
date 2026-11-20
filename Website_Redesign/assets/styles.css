@@ -1227,3 +1227,6 @@ table.matrix.spec { min-width: 0; }
 .ls-legal p:last-child { margin: 0; }
 .section--deep h2, .section--deep h3 { color: #fff; }
 .section--deep .eyebrow { color: #ff6b81; }
+
+/* Sprachumschalter im Handy-Menü */
+.mobile-nav .mobile-lang { display: inline-flex; margin: 0 0 12px; }
