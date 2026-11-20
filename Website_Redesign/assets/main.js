@@ -351,6 +351,21 @@
     document.querySelectorAll("[data-gallery-thumb]").forEach(function (btn, _, all) {
       btn.addEventListener("click", function () {
         all.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+        var box = mainImg.parentElement;
+        if (btn.dataset.frame) {
+          var frame = box.querySelector("iframe[data-gallery-frame]");
+          if (!frame) {
+            frame = document.createElement("iframe");
+            frame.setAttribute("data-gallery-frame", "");
+            frame.setAttribute("allow", "fullscreen");
+            box.appendChild(frame);
+          }
+          frame.title = btn.dataset.alt || "";
+          if (frame.getAttribute("src") !== btn.dataset.frame) frame.src = btn.dataset.frame;
+          box.classList.add("is-frame");
+          return;
+        }
+        box.classList.remove("is-frame");
         if (mainImg.getAttribute("src") === btn.dataset.src) return;
         var swap = function () {
           mainImg.src = btn.dataset.src;

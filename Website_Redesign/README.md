@@ -23,6 +23,7 @@ powershell -NoProfile -Command "& ([scriptblock]::Create([IO.File]::ReadAllText(
 ## Animationen
 - Die Startseite zeigt beim ersten Aufruf pro Sitzung ein Intro (ca. 2 s, überspringbar). `index.html?intro=neu` spielt es erneut ab.
 - Der Hero der Startseite zeigt eine **live berechnete Laseranimation** (`assets/laser-scene.js`, Canvas, ohne Videodatei): Ein Linienlaser projiziert seine Linie auf ein Förderband, die Linie folgt der Kontur der Teile, dahinter entsteht eine 3D-Punktwolke. Sie reagiert leicht auf die Maus und pausiert automatisch, wenn sie nicht sichtbar ist.
+- Die Produktseite **MVnano** (DE/EN) hat in der Galerie ein Vorschaubild „360° 3D-Modell“. Es lädt `assets/3d/mvnano-360.html?embed` (drehbares Three.js-Modell mit Laserfächer, three.js r128 lokal in `assets/3d/`). Die Datei funktioniert auch allein im Browser. Weitere Produkte: Vorschaubild mit `data-frame="…"` in die Galerie setzen.
 - Der Abschnitt „Einblick“ zeigt das vorhandene Video `Hero.mp4`. Es wird aktuell von blauoptoelektronik.de geladen – vor dem Livegang lokal ablegen, komprimieren (z. B. 720p, ~3–5 MB) und ein Vorschaubild (`poster`) ergänzen.
 - Auf Wunsch laufen alle Animationen **immer**, auch wenn Besucher im System „Bewegung reduzieren“ aktiviert haben. Das ist eine bewusste Entscheidung gegen die Barrierefreiheits-Empfehlung (WCAG 2.3.3).
 

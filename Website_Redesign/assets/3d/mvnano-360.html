@@ -1,0 +1,358 @@
+<title>MVnano 3D-Ansicht | BLAU Optoelektronik</title>
+<meta name="robots" content="noindex">
+<script>(function(){var p=new URLSearchParams(location.search);var r=document.documentElement;if(p.has("embed"))r.classList.add("embed");r.lang=p.get("lang")==="en"?"en":"de";})();</script>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700&display=swap">
+<style>
+/* Layout: eine Bühne über die ganze Höhe, Kopfzeile oben, Bedienleiste unten. Bewusst dunkel, damit der Laserfächer leuchtet. */
+:root{
+  --stage:#07111f;
+  --panel:#0d1c30;
+  --line:#1f3550;
+  --fg:#e8eef5;
+  --muted:#8ea0b6;
+  --cyan:#1a9fc6;
+  --red:#e3242b;
+  --font-ui:Inter,"Segoe UI",Arial,sans-serif;
+  --font-data:"Inter Tight",Inter,"Segoe UI",Arial,sans-serif;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{margin:0;background:var(--stage);color:var(--fg);font-family:var(--font-ui);overflow:hidden}
+.app{height:100%;display:flex;flex-direction:column}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
+  padding-block:14px 10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  border-bottom:1px solid var(--line)}
+.kicker{font-size:11px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan);margin-bottom:4px}
+h1{margin:0;font-size:20px;font-weight:700;letter-spacing:-.3px;text-wrap:balance}
+.specs{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.specs b{display:block;color:var(--fg);font-family:var(--font-data);font-weight:500;font-size:13px}
+.stage{position:relative;flex:1;min-height:0}
+canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+canvas:active{cursor:grabbing}
+.angle{position:absolute;top:14px;right:max(16px,env(safe-area-inset-right,0px));text-align:right;pointer-events:none}
+.angle .v{font-family:var(--font-data);font-size:34px;font-variant-numeric:tabular-nums;line-height:1}
+.angle .l{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.hint{position:absolute;left:max(16px,env(safe-area-inset-left,0px));bottom:12px;font-size:12px;color:var(--muted);pointer-events:none}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;background:var(--panel);border-top:1px solid var(--line);
+  padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button{font:600 13px var(--font-ui);color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:6px;padding:8px 14px;cursor:pointer}
+button:hover{border-color:var(--cyan)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+button[aria-pressed="true"]{background:var(--cyan);border-color:var(--cyan);color:#04121f}
+#laser[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+label{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+input[type=range]{accent-color:var(--cyan);width:140px}
+/* Einbettung in die Produktgalerie (?embed): nur Bühne mit schwebender Bedienleiste */
+.embed .app{position:relative}
+.embed header,.embed .hint{display:none}
+.embed .angle{top:12px;right:14px}
+.embed .angle .v{font-size:26px}
+.embed .controls{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(rgba(7,17,31,0),rgba(7,17,31,.9) 45%);border:0;padding:28px 14px 12px;gap:8px 12px}
+.embed button{padding:6px 11px;font-size:12px}
+@media (max-width:520px){.embed .controls label,.embed #reset{display:none}}
+#speedOut{font-family:var(--font-data);color:var(--fg);min-width:5ch;font-variant-numeric:tabular-nums}
+</style>
+
+<div class="app">
+  <header>
+    <div>
+      <div class="kicker">BLAU Optoelektronik · Machine Vision</div>
+      <h1>MVnano Linienlaser</h1>
+    </div>
+    <div class="specs">
+      <div>Wellenlänge<b>660 nm</b></div>
+      <div>Öffnungswinkel<b>60°</b></div>
+      <div>Gehäuse<b>Ø 11,5 × 54 mm</b></div>
+    </div>
+  </header>
+  <div class="stage" id="stage">
+    <div class="angle"><div class="v" id="angle">0°</div><div class="l">Drehwinkel</div></div>
+    <div class="hint">Ziehen zum Drehen der Ansicht · Scrollen zum Zoomen</div>
+  </div>
+  <div class="controls">
+    <button id="play" aria-pressed="true">Pause</button>
+    <button id="laser" aria-pressed="true">Laser an</button>
+    <label for="speed">Umdrehung <input id="speed" type="range" min="2" max="30" step="1" value="10"> <span id="speedOut">10 s</span></label>
+    <button id="reset">Ansicht zurücksetzen</button>
+  </div>
+</div>
+
+<script src="three.min.js"></script>
+<script src="OrbitControls.js"></script>
+<script>
+(async function(){
+try { await document.fonts.load('800 100px Inter'); await document.fonts.load('600 40px Inter'); } catch(e){}
+
+const stage = document.getElementById('stage');
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+stage.prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+const HOME = new THREE.Vector3(1.2, 2.6, 12.5);
+camera.position.copy(HOME);
+
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enablePan = false; controls.enableDamping = true;
+controls.minDistance = 4; controls.maxDistance = 22;
+controls.maxPolarAngle = Math.PI * 0.62;
+controls.target.set(0, 0, 0);
+
+// Studio-Umgebung für Reflexe (Softboxen wie im Produktfoto)
+(function(){
+  const c = document.createElement('canvas'); c.width = 1024; c.height = 512;
+  const g = c.getContext('2d');
+  const sky = g.createLinearGradient(0,0,0,512);
+  sky.addColorStop(0,'#cfd6de'); sky.addColorStop(0.5,'#6d7682'); sky.addColorStop(1,'#1c2129');
+  g.fillStyle = sky; g.fillRect(0,0,1024,512);
+  g.fillStyle = '#ffffff';
+  g.fillRect(140,120,170,150); g.fillRect(620,90,240,110); g.fillRect(430,20,160,60);
+  g.fillStyle = 'rgba(255,255,255,0.6)'; g.fillRect(900,200,90,180);
+  const t = new THREE.CanvasTexture(c); t.mapping = THREE.EquirectangularReflectionMapping; t.encoding = THREE.sRGBEncoding;
+  const pm = new THREE.PMREMGenerator(renderer);
+  scene.environment = pm.fromEquirectangular(t).texture;
+})();
+
+scene.add(new THREE.HemisphereLight(0xdfe9ff, 0x0b1626, 0.5));
+const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(4, 6, 6); scene.add(key);
+const rim = new THREE.DirectionalLight(0x9fd8ff, 1.0); rim.position.set(-6, 2, -5); scene.add(rim);
+
+// Materialien nach Produktfoto MVnano
+const blue = new THREE.MeshStandardMaterial({color:0x0c46c8, metalness:0.2, roughness:0.36, envMapIntensity:0.35});
+const black = new THREE.MeshStandardMaterial({color:0x050506, metalness:0.1, roughness:0.55, envMapIntensity:0.35});
+const blackBore = new THREE.MeshStandardMaterial({color:0x050506, metalness:0.0, roughness:0.9, side:THREE.DoubleSide});
+const silver = new THREE.MeshStandardMaterial({color:0xc6ccd3, metalness:1.0, roughness:0.25});
+const groove = new THREE.MeshStandardMaterial({color:0x0e2c5c, metalness:0.4, roughness:0.5});
+const glass = new THREE.MeshPhysicalMaterial({color:0xdde8f2, metalness:0.0, roughness:0.02, transparent:true, opacity:0.35, clearcoat:1, envMapIntensity:2.2});
+const cableMat = new THREE.MeshStandardMaterial({color:0xeef0f2, metalness:0.0, roughness:0.55});
+// Farben sind als sRGB (wie im Foto) angegeben, Renderer rechnet linear
+[blue, black, silver, groove, cableMat].forEach(m=>m.color.convertSRGBToLinear());
+blue.metalness = 0.35; blue.envMapIntensity = 0.6;
+
+const spin = new THREE.Group(); scene.add(spin);
+const mod = new THREE.Group(); mod.rotation.z = -Math.PI/2; spin.add(mod);  // Achse entlang Y gebaut, dann nach vorn (+X) gelegt
+
+const R = 0.575;          // 11,5 mm / 2 (1 Einheit = 10 mm)
+const REAR = -2.7, FRONT = 2.7, CAP0 = 2.02;
+
+// Blaues Gehäuse mit Fasen
+const bodyProf = [
+  [0,REAR],[R-0.06,REAR],[R-0.015,REAR+0.03],[R,REAR+0.07],
+  [R,CAP0-0.02],[R-0.02,CAP0]
+].map(p=>new THREE.Vector2(p[0],p[1]));
+mod.add(new THREE.Mesh(new THREE.LatheGeometry(bodyProf, 128), blue));
+
+// Feine Trennfugen
+[1.1, 1.93].forEach(y=>{
+  const t = new THREE.Mesh(new THREE.TorusGeometry(R, 0.009, 8, 128), groove);
+  t.rotation.x = Math.PI/2; t.position.y = y; mod.add(t);
+});
+
+// Schwarze Frontkappe mit Linse
+const capProf = [
+  [R-0.01,CAP0],[R+0.005,CAP0+0.02],[R+0.005,FRONT-0.05],[R-0.03,FRONT],[0.42,FRONT],[0.4,FRONT-0.03],[0.4,FRONT-0.25]
+].map(p=>new THREE.Vector2(p[0],p[1]));
+mod.add(new THREE.Mesh(new THREE.LatheGeometry(capProf, 128), black));
+const bore = new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.4,0.01,64), blackBore); bore.position.y = FRONT-0.26; mod.add(bore);
+const lensRing = new THREE.Mesh(new THREE.TorusGeometry(0.33, 0.035, 12, 64), silver);
+lensRing.rotation.x = Math.PI/2; lensRing.position.y = FRONT-0.2; mod.add(lensRing);
+const lens = new THREE.Mesh(new THREE.SphereGeometry(0.6, 48, 16, 0, Math.PI*2, 0, 0.6), glass);
+lens.position.y = FRONT-0.2-0.6*Math.cos(0.6)+0.08; mod.add(lens);
+
+// Seitliche Fenster mit Metall-Innenteil und kleine Bohrung
+function slotTexture(){
+  const c = document.createElement('canvas'); c.width = 256; c.height = 512;
+  const g = c.getContext('2d');
+  const rr = (x,y,w,h,r)=>{ g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath(); };
+  rr(20,20,216,472,100);
+  const edge = g.createLinearGradient(0,0,256,0);
+  edge.addColorStop(0,'#8c96a3'); edge.addColorStop(0.5,'#e6ebf0'); edge.addColorStop(1,'#7c8592');
+  g.fillStyle = edge; g.fill();
+  rr(38,38,180,436,84);
+  const inner = g.createLinearGradient(0,0,256,0);
+  inner.addColorStop(0,'#14161a'); inner.addColorStop(0.25,'#6f6a5e'); inner.addColorStop(0.5,'#e2dccb'); inner.addColorStop(0.7,'#9c8f6c'); inner.addColorStop(1,'#14161a');
+  g.fillStyle = inner; g.fill();
+  g.fillStyle = 'rgba(0,0,0,0.55)'; g.fillRect(38,250,180,6);
+  const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; return t;
+}
+const slotMat = new THREE.MeshStandardMaterial({map:slotTexture(), transparent:true, alphaTest:0.5, metalness:0.7, roughness:0.3});
+[0.25, 0.25+Math.PI].forEach(th=>{
+  const s = new THREE.Mesh(new THREE.CylinderGeometry(R+0.002,R+0.002,0.62,24,1,true, th-0.38, 0.76), slotMat);
+  s.position.y = 1.53; mod.add(s);
+});
+(function(){
+  const c = document.createElement('canvas'); c.width = c.height = 128;
+  const g = c.getContext('2d');
+  g.fillStyle = '#a9b2bd'; g.beginPath(); g.arc(64,64,58,0,7); g.fill();
+  g.fillStyle = '#08090b'; g.beginPath(); g.arc(64,64,46,0,7); g.fill();
+  const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding;
+  const m = new THREE.MeshStandardMaterial({map:t, transparent:true, alphaTest:0.5, metalness:0.5, roughness:0.4});
+  [0.25+Math.PI/2, 0.25-Math.PI/2].forEach(th=>{
+    const h = new THREE.Mesh(new THREE.CylinderGeometry(R+0.002,R+0.002,0.17,12,1,true, th-0.15, 0.3), m);
+    h.position.y = 1.53; mod.add(h);
+  });
+})();
+
+// Lasergravur: BLAU-Logo, Seriennummer, DataMatrix (läuft längs der Achse)
+(function(){
+  const Y0 = -2.55, Y1 = 0.95, HGT = Y1 - Y0, CIRC = 2*Math.PI*(R+0.001);
+  const W = 2048, H = Math.round(W * HGT / CIRC);
+  const c = document.createElement('canvas'); c.width = W; c.height = H;
+  const g = c.getContext('2d');
+  const ink = 'rgba(214,226,240,0.92)';
+  g.save();
+  g.translate(W*0.5 + 70, 0); g.rotate(Math.PI/2);        // +x zeigt jetzt Richtung Kabel
+  // Logo
+  g.fillStyle = ink; g.textBaseline = 'alphabetic';
+  g.font = '800 128px Inter, Arial, sans-serif';
+  g.fillText('BLAU', 70, 0);
+  const lw = g.measureText('BLAU').width;
+  // Stern
+  const sx = 70 + lw + 22, sy = -78;
+  g.strokeStyle = ink; g.lineWidth = 5;
+  for(let k=0;k<12;k++){ const a = k/12*Math.PI*2, r1 = 9, r2 = k%2 ? 22 : 30;
+    g.beginPath(); g.moveTo(sx+Math.cos(a)*r1, sy+Math.sin(a)*r1); g.lineTo(sx+Math.cos(a)*r2, sy+Math.sin(a)*r2); g.stroke(); }
+  g.beginPath(); g.arc(sx, sy, 8, 0, 7); g.fill();
+  g.font = '600 30px Inter, Arial, sans-serif'; g.letterSpacing = '4px';
+  g.fillText('OPTOELEKTRONIK', 72, 46);
+  g.letterSpacing = '0px';
+  // Seriennummer
+  g.font = '500 74px "JetBrains Mono", Consolas, monospace';
+  g.fillText('3047454.BA0094551.021', 70 + lw + 70, -12);
+  // DataMatrix
+  const n = 16, cell = 13, dx = H - 300, dy = -170;
+  let seed = 7; const rnd = ()=> (seed = (seed*16807) % 2147483647) / 2147483647;
+  for(let i=0;i<n;i++) for(let j=0;j<n;j++){
+    const border = (i===0) || (j===n-1);
+    const clock = (i===n-1 && j%2===0) || (j===0 && i%2===1);
+    if(border || clock || rnd() > 0.52) g.fillRect(dx + i*cell, dy + j*cell, cell, cell);
+  }
+  g.restore();
+  const tex = new THREE.CanvasTexture(c); tex.encoding = THREE.sRGBEncoding; tex.anisotropy = 8;
+  const band = new THREE.Mesh(new THREE.CylinderGeometry(R+0.001,R+0.001,HGT,128,1,true),
+    new THREE.MeshStandardMaterial({map:tex, transparent:true, metalness:0.2, roughness:0.55, depthWrite:false}));
+  band.position.y = (Y0+Y1)/2; mod.add(band);
+})();
+
+// Weißes Kabel, gerade aus dem Gehäuseende
+const curve = new THREE.CatmullRomCurve3([
+  new THREE.Vector3(0,REAR+0.05,0), new THREE.Vector3(0,REAR-0.9,0),
+  new THREE.Vector3(0.35,REAR-1.8,0.1), new THREE.Vector3(1.1,REAR-2.5,0.35), new THREE.Vector3(1.75,REAR-2.9,0.55)
+]);
+mod.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 80, 0.17, 20, false), cableMat));
+
+// Laserfächer
+const FAN_L = 5.0, HALF = 30*Math.PI/180;
+const tip = FRONT - 0.05;
+const fanGeo = new THREE.BufferGeometry();
+const segs = 64, pos = [], uv = [];
+for(let i=0;i<segs;i++){
+  const a0 = -HALF + (i/segs)*2*HALF, a1 = -HALF + ((i+1)/segs)*2*HALF;
+  pos.push(tip,0,0, tip+FAN_L*Math.cos(a0), FAN_L*Math.sin(a0),0, tip+FAN_L*Math.cos(a1), FAN_L*Math.sin(a1),0);
+  uv.push(0,0.5, 1,i/segs, 1,(i+1)/segs);
+}
+fanGeo.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
+fanGeo.setAttribute('uv', new THREE.Float32BufferAttribute(uv,2));
+const fanMat = new THREE.ShaderMaterial({
+  transparent:true, depthWrite:false, side:THREE.DoubleSide, blending:THREE.AdditiveBlending,
+  uniforms:{uOn:{value:1}},
+  vertexShader:'varying vec2 vUv; void main(){vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+  fragmentShader:'uniform float uOn; varying vec2 vUv; void main(){ float d=vUv.x; float a=(0.55*exp(-d*2.2)+0.05)*smoothstep(1.0,0.82,d); gl_FragColor=vec4(1.0,0.13,0.1,a*uOn);}'
+});
+const fan = new THREE.Mesh(fanGeo, fanMat); spin.add(fan);
+
+const arcPts = [];
+for(let i=0;i<=80;i++){ const a=-HALF+i/80*2*HALF; arcPts.push(new THREE.Vector3(tip+FAN_L*0.82*Math.cos(a), FAN_L*0.82*Math.sin(a), 0)); }
+const lineMesh = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(arcPts),80,0.022,8,false),
+  new THREE.MeshBasicMaterial({color:0xff3b30, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false}));
+spin.add(lineMesh);
+
+const gc = document.createElement('canvas'); gc.width = gc.height = 128;
+const gg = gc.getContext('2d'); const grd = gg.createRadialGradient(64,64,0,64,64,64);
+grd.addColorStop(0,'rgba(255,220,210,1)'); grd.addColorStop(0.25,'rgba(255,60,40,0.8)'); grd.addColorStop(1,'rgba(255,0,0,0)');
+gg.fillStyle = grd; gg.fillRect(0,0,128,128);
+const glow = new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(gc), blending:THREE.AdditiveBlending, depthWrite:false, transparent:true}));
+glow.position.set(tip+0.08,0,0); glow.scale.set(0.8,0.8,1); spin.add(glow);
+
+// Drehteller mit Gradskala
+const plate = new THREE.Group(); plate.position.y = -2.0; scene.add(plate);
+const pc = document.createElement('canvas'); pc.width = pc.height = 1024;
+const pg = pc.getContext('2d');
+const pgr = pg.createRadialGradient(512,512,0,512,512,512);
+pgr.addColorStop(0,'rgba(26,159,198,0.18)'); pgr.addColorStop(0.7,'rgba(26,159,198,0.05)'); pgr.addColorStop(1,'rgba(26,159,198,0)');
+pg.fillStyle = pgr; pg.fillRect(0,0,1024,1024);
+pg.strokeStyle = 'rgba(142,160,182,0.55)'; pg.lineWidth = 2;
+pg.beginPath(); pg.arc(512,512,430,0,Math.PI*2); pg.stroke();
+for(let d=0; d<360; d+=5){
+  const a = d*Math.PI/180, r1 = 430, r2 = d%30===0 ? 395 : 415;
+  pg.beginPath(); pg.moveTo(512+Math.cos(a)*r1, 512+Math.sin(a)*r1); pg.lineTo(512+Math.cos(a)*r2, 512+Math.sin(a)*r2); pg.stroke();
+}
+pg.fillStyle = 'rgba(232,238,245,0.75)'; pg.font = '500 26px JetBrains Mono, monospace'; pg.textAlign='center'; pg.textBaseline='middle';
+for(let d=0; d<360; d+=30){ const a = -d*Math.PI/180; pg.fillText(d+'°', 512+Math.cos(a)*360, 512+Math.sin(a)*360); }
+const ptex = new THREE.CanvasTexture(pc); ptex.anisotropy = 8;
+const disc = new THREE.Mesh(new THREE.PlaneGeometry(8,8), new THREE.MeshBasicMaterial({map:ptex, transparent:true, depthWrite:false}));
+disc.rotation.x = -Math.PI/2; plate.add(disc);
+const pointer = new THREE.Mesh(new THREE.ConeGeometry(0.1,0.3,3), new THREE.MeshBasicMaterial({color:0xe3242b}));
+pointer.rotation.z = -Math.PI/2; pointer.position.set(3.55,0.01,0);
+const pointerArm = new THREE.Group(); pointerArm.add(pointer); plate.add(pointerArm);
+
+// UI
+const $ = id => document.getElementById(id);
+const EN = document.documentElement.lang === 'en';
+const T = EN ? {pause:'Pause', play:'Play', on:'Laser on', off:'Laser off'} : {pause:'Pause', play:'Abspielen', on:'Laser an', off:'Laser aus'};
+if (EN) {
+  document.querySelector('h1').textContent = 'MVnano line laser';
+  const sp = document.querySelectorAll('.specs > div');
+  [['Wavelength','660 nm'],['Fan angle','60°'],['Housing','Ø 11.5 × 54 mm']].forEach((v,i)=>{ sp[i].firstChild.textContent = v[0]; sp[i].querySelector('b').textContent = v[1]; });
+  document.querySelector('.angle .l').textContent = 'Rotation';
+  document.querySelector('.hint').textContent = 'Drag to rotate the view · Scroll to zoom';
+  document.querySelector('label[for=speed]').firstChild.textContent = 'Rotation ';
+  $('reset').textContent = 'Reset view';
+}
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let playing = true, laserOn = true, period = 10, angle = 0;
+function syncPlay(){ $('play').textContent = playing ? T.pause : T.play; $('play').setAttribute('aria-pressed', String(playing)); }
+syncPlay();
+$('play').onclick = () => { playing = !playing; syncPlay(); };
+$('laser').onclick = () => { laserOn = !laserOn; $('laser').textContent = laserOn ? T.on : T.off; $('laser').setAttribute('aria-pressed', String(laserOn)); };
+$('speed').oninput = e => { period = +e.target.value; $('speedOut').textContent = period + ' s'; };
+if (EN) $('laser').textContent = T.on;
+$('reset').onclick = () => { camera.position.copy(HOME); controls.target.set(0,0,0); controls.update(); };
+
+function resize(){
+  const w = stage.clientWidth, h = stage.clientHeight;
+  renderer.setSize(w, h, false); camera.aspect = w/h;
+  const emb = document.documentElement.classList.contains('embed');
+  camera.fov = w/h < 1 ? 50 : (emb ? 31 : (w < 600 ? 50 : 35)); camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(stage); resize();
+
+let last = performance.now(), fanLevel = 1, external = false;
+// Zugang für den Video-Export: rendert ein Einzelbild bei festem Winkel
+window.lasermodul = {
+  canvas: renderer.domElement,
+  setSize(w, h, fov){ external = true; renderer.setPixelRatio(1); renderer.setSize(w, h, false); camera.aspect = w/h; camera.fov = fov || 32; camera.updateProjectionMatrix(); },
+  renderAt(a){ spin.rotation.y = a; pointerArm.rotation.y = a; fanMat.uniforms.uOn.value = 1; lineMesh.material.opacity = 0.85; glow.material.opacity = 1; glow.scale.setScalar(0.8); camera.position.copy(HOME); controls.target.set(0,0,0); camera.lookAt(0,0,0); renderer.render(scene, camera); }
+};
+function frame(now){
+  if(external){ requestAnimationFrame(frame); return; }
+  const dt = Math.min(0.05, (now-last)/1000); last = now;
+  if(playing) angle = (angle + dt * 2*Math.PI/period) % (2*Math.PI);
+  spin.rotation.y = angle; pointerArm.rotation.y = angle;
+  fanLevel += ((laserOn?1:0) - fanLevel) * Math.min(1, dt*10);
+  fanMat.uniforms.uOn.value = fanLevel; lineMesh.material.opacity = 0.85*fanLevel; glow.material.opacity = fanLevel;
+  glow.scale.setScalar(0.8*(0.9 + 0.1*Math.sin(now*0.03)));
+  $('angle').textContent = Math.round(angle*180/Math.PI) % 360 + '°';
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+window.lasermodul.ready = true;
+})();
+</script>
