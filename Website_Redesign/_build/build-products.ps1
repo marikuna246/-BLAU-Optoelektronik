@@ -273,3 +273,8 @@ foreach ($p in $data.products) {
   [IO.File]::WriteAllText("$root\produkt-$($p.slug).html", $sb.ToString(), $utf8)
   "erzeugt: produkt-$($p.slug).html"
 }
+
+# Interaktive Produktauswahl wieder einfuegen (DE + EN)
+$node = (Get-Command node -ErrorAction SilentlyContinue).Source
+if (-not $node) { $node = Join-Path $env:LOCALAPPDATA 'nodejs/node.exe' }
+if (Test-Path $node) { & $node (Join-Path $root '_build/add-explorer.js') }

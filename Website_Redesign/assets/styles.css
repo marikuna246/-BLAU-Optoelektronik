@@ -1280,3 +1280,8 @@ table.matrix.spec { min-width: 0; }
 .cfg-powell__media figure { margin: 0; background: #fff; border: 1px solid var(--rule); border-radius: 14px; padding: 10px; }
 .cfg-powell__media svg { width: 100%; height: auto; display: block; }
 .cfg-powell__media figcaption { text-align: center; font-size: .78rem; color: var(--muted); }
+
+/* Produktseiten: interaktive Produktauswahl (eingebettet) */
+.pd-explorer__note { font-size: .9rem; color: var(--muted); margin-top: 6px; }
+.pd-explorer__app { background: #fff; border: 1px solid var(--rule); border-radius: 20px; padding: clamp(14px, 2.4vw, 28px); min-height: 220px; }
+.pd-explorer__loading { color: var(--muted); }

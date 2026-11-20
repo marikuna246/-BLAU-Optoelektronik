@@ -1,0 +1,56 @@
+// Fügt die interaktive Produktauswahl ("Produkt interaktiv zusammenstellen") in die Produktseiten ein (DE + EN).
+// Idempotent – kann nach build-products.ps1 beliebig oft laufen:  node Website_Redesign/_build/add-explorer.js
+// Das Skript assets/explorer/product-explorer.js wird im Projekt Projekt-Nr48-Website-Redesign-Konfigurator gebaut
+// (pnpm vite build --config vite.embed.config.ts) – ohne Preise, Laserklasse und MTTF.
+const fs = require("fs");
+const path = require("path");
+const root = path.resolve(__dirname, "..");
+
+// Prototyp-Seite -> Produkt-ID der echten Website (für die Serienzuordnung im Explorer)
+const PAGES = { mvnano: 1, mvfemto: 2, linienlaser: 3, punktlaser: 6, mvmicro: 8, mvpico: 9, mvpulse: 10, mvpulsehp: 11, mvsquare: 12, doe: 13 };
+
+const T = {
+  de: { eyebrow: "Interaktiv", h: "Produkt interaktiv zusammenstellen", lead: "Wählen Sie Wellenlänge, Leistung, Optik und Elektrik – mit Linienlänge, Leistungsverteilung, Liniendicke, Modulationspegeln und technischen Daten zu Ihrer Konfiguration.", note: "Preis und Laserklasse nennen wir Ihnen mit dem Angebot.", load: "Produktauswahl wird geladen …", nav: "Konfigurieren", noscript: "Bitte JavaScript aktivieren, um die Produktauswahl zu nutzen." },
+  en: { eyebrow: "Interactive", h: "Configure interactively", lead: "Choose wavelength, power, optics and electrics – with line length, power distribution, line thickness, modulation levels and technical data for your configuration.", note: "We will provide price and laser class with your quote.", load: "Loading product selection …", nav: "Configure", noscript: "Please enable JavaScript to use the product selection." },
+};
+
+let changed = 0;
+for (const lang of ["de", "en"]) {
+  const t = T[lang], dir = lang === "en" ? path.join(root, "en") : root, A = lang === "en" ? "../assets/" : "assets/";
+  for (const [slug, id] of Object.entries(PAGES)) {
+    const file = path.join(dir, `produkt-${slug}.html`);
+    if (!fs.existsSync(file)) continue;
+    let h = fs.readFileSync(file, "utf8");
+    const before = h;
+    // alte Einfügung entfernen (idempotent)
+    h = h.replace(/\s*<!-- explorer:start -->[\s\S]*?<!-- explorer:end -->/g, "");
+    h = h.replace(/\s*<script src="[^"]*explorer\/product-explorer\.js" defer><\/script>/g, "");
+    h = h.replace(/<li><a href="#produkt-interaktiv">[^<]*<\/a><\/li>/g, "");
+
+    const section = `
+  <!-- explorer:start -->
+  <section class="section section--panel pd-explorer" id="produkt-interaktiv" aria-labelledby="pe-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">${t.eyebrow}</p>
+        <h2 id="pe-title">${t.h}</h2>
+        <p class="lead">${t.lead}</p>
+        <p class="pd-explorer__note">${t.note}</p>
+      </div>
+      <div class="pd-explorer__app" data-product-explorer data-product-id="${id}" data-lang="${lang}"><p class="pd-explorer__loading">${t.load}</p></div>
+      <noscript><p>${t.noscript}</p></noscript>
+    </div>
+  </section>
+  <!-- explorer:end -->`;
+    h = h.replace(/(\n\s*<section class="section" id="technische-daten")/, section + "$1");
+    // In-Page-Navigation: Eintrag vor "Technische Daten"
+    h = h.replace(/(<li><a href="#technische-daten">)/, `<li><a href="#produkt-interaktiv">${t.nav}</a></li>$1`);
+    // "Jetzt konfigurieren" im Kopf springt zur Auswahl auf der Seite
+    h = h.replace(/href="konfigurator\.html\?g=mv&amp;s=[a-z0-9]+&amp;step=wlpower"/g, 'href="#produkt-interaktiv"');
+    // Skript laden
+    h = h.replace(/(<script src="[^"]*main\.js" defer><\/script>)/, `$1\n<script src="${A}explorer/product-explorer.js" defer></script>`);
+    if (!h.includes('id="produkt-interaktiv"')) { console.warn("Kein Einfügepunkt:", file); continue; }
+    if (h !== before) { fs.writeFileSync(file, h); changed++; }
+  }
+}
+console.log("Produktauswahl eingefügt/aktualisiert in", changed, "Seiten");
