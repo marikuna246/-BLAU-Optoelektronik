@@ -1271,3 +1271,12 @@ table.matrix.spec { min-width: 0; }
 .finder-more__title { font-size: 1.15rem; margin: 36px 0 6px; }
 .finder-more__lead { color: var(--muted); margin: 0 0 14px; font-size: .95rem; }
 .finder-cta { margin-top: 20px; }
+
+/* Konfigurator: Powell-Linsen */
+.cfg-powell { display: grid; gap: 24px; align-items: start; }
+@media (min-width: 900px) { .cfg-powell { grid-template-columns: minmax(0, 1fr) 340px; } }
+.cfg-powell__media { display: grid; gap: 12px; }
+.cfg-powell__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; border: 1px solid var(--rule); background: #fff; }
+.cfg-powell__media figure { margin: 0; background: #fff; border: 1px solid var(--rule); border-radius: 14px; padding: 10px; }
+.cfg-powell__media svg { width: 100%; height: auto; display: block; }
+.cfg-powell__media figcaption { text-align: center; font-size: .78rem; color: var(--muted); }

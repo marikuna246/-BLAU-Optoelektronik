@@ -29,8 +29,72 @@
     { id: "doe", name: (EN ? "Pattern laser (DOE)" : "Musterlaser (DOE)"), img: IMG + "13/images/FP-DOE-CX_Abbildung_4.jpeg", href: "produkt-doe.html",
       text: (EN ? "Laser with diffractive optical element (DOE): projects crosses, multiple lines, dot matrices, circles and more." : "Laser mit diffraktivem optischem Element (DOE): projiziert Kreuze, Linienscharen, Punktmatrizen, Kreise und mehr."),
       props: [(EN ? "More than 30 standard patterns" : "Über 30 Standardmuster"), (EN ? "Sharp patterns over a long working distance" : "Scharfe Muster über großen Arbeitsabstand"), (EN ? "Custom DOEs possible" : "Kundenspezifische DOEs möglich")],
-      apps: [(EN ? "Crosshair for alignment and aiming" : "Fadenkreuz zum Ausrichten und Zielen"), (EN ? "Structured illumination and 3D capture" : "Strukturierte Beleuchtung und 3D-Erfassung"), (EN ? "Calibration and distance measurement" : "Kalibrierung und Abstandsmessung")] }
+      apps: [(EN ? "Crosshair for alignment and aiming" : "Fadenkreuz zum Ausrichten und Zielen"), (EN ? "Structured illumination and 3D capture" : "Strukturierte Beleuchtung und 3D-Erfassung"), (EN ? "Calibration and distance measurement" : "Kalibrierung und Abstandsmessung")] },
+    { id: "powell", name: (EN ? "Powell lenses" : "Powell-Linsen"), img: IMG + "5/images/powelllinsen1.jpg", href: "produkt-powell-linsen.html",
+      text: (EN ? "Aspherical cylindrical lenses from in-house production: transform a Gaussian beam into a homogeneous laser line." : "Asphärische Zylinderlinsen aus eigener Fertigung: formen einen Gaußstrahl in eine homogene Laserlinie um."),
+      props: [(EN ? "Fan angle 1°–90°, Ø 6 or 9 mm" : "Fächerwinkel 1°–90°, Ø 6 oder 9 mm"), (EN ? "Intensity variation ≤20 % (80 % of the line)" : "Homogenität ≤20 % (80 % der Linie)"), (EN ? "Matched to the beam diameter" : "Auf den Strahldurchmesser abgestimmt")],
+      apps: [(EN ? "Camera-based measuring devices" : "Kamerabasierte Messgeräte"), (EN ? "Light-section and triangulation methods" : "Lichtschnitt- und Triangulationsverfahren"), (EN ? "Machine vision systems" : "Machine-Vision-Systeme")] }
   ];
+
+  /* ---------- Powell-Linsen (BO_AxBxDx) – nur öffentliche Datenblattwerte (Datenblatt Rev 4, 26.06.2024).
+     Die Linsenauslegung/Simulation ist vertraulich und läuft nur serverseitig im Live-Konfigurator – hier bewusst NICHT enthalten. ---------- */
+  var P_FANS = [1, 5, 10, 15, 20, 30, 45, 60, 75, 90];
+  var P_BEAMS = [5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 24, 28, 30]; // Strahldurchmesser 1/e² [mm] × 10
+  var P_DIAMS = [6, 9];
+  var P_GEO = { 1: [5.5, 8.1], 5: [5.2, 7.8], 10: [5.0, 7.5], 15: [4.8, 7.0], 20: [4.5, 6.7], 30: [4.0, 5.9], 45: [3.9, 4.6], 60: [3.5, 5.1], 75: [2.9, 4.3], 90: [2.3, 3.4] }; // EH [mm] für Ø6 / Ø9
+  var P_H = { 6: [5.5, 5.9], 9: [8.2, 8.9] };
+  var P_PHOTO = IMG + "5/images/powelllinsen2.jpg";
+  function num1(v) { return v.toLocaleString(EN ? "en-US" : "de-DE", { maximumFractionDigits: 1 }); }
+  function pCode() { return "BO_A" + S.pa + "B" + (S.pb < 10 ? "0" : "") + S.pb + "D" + S.pd; }
+  function pEH() { var g = P_GEO[S.pa]; return g ? (S.pd === 6 ? g[0] : g[1]) : 0; }
+  function pTol(f) { return f === 1 ? 1 : f <= 45 ? 3 : 5; }
+  function pSpecRows() {
+    var mat = S.pa <= 45 ? "BK7" : "SF6";
+    return [
+      [(EN ? "Product" : "Produkt"), (EN ? "Powell lens" : "Powell-Linse")],
+      [(EN ? "Fan angle" : "Fächerwinkel"), S.pa + "° (+" + pTol(S.pa) + "°) @660 nm"],
+      [(EN ? "Beam diameter (1/e²)" : "Strahldurchmesser (1/e²)"), num1(S.pb / 10) + " mm"],
+      [(EN ? "Lens diameter" : "Linsendurchmesser"), S.pd + " mm"],
+      [(EN ? "Line intensity variation" : "Homogenität"), (EN ? "≤20 % (80 % of the laser line)" : "≤20 % (80 % der Laserlinie)")],
+      [(EN ? "Line straightness" : "Geradheit"), (EN ? "≤0.1 %" : "≤0,1 %")],
+      [(EN ? "Material" : "Werkstoff"), mat === "SF6" ? (EN ? "SF6 or equivalent (AR coating plane surface)" : "SF6 o. glw. (AR-Beschichtung Planfläche)") : (EN ? "BK7 or equivalent" : "BK7 o. glw.")],
+      [(EN ? "Dimensions" : "Abmessungen"), S.pd === 6 ? (EN ? "Ø 5.9–6.0 mm, height 5.5–5.9 mm" : "Ø 5,9–6,0 mm, Höhe 5,5–5,9 mm") : (EN ? "Ø 8.9–9.0 mm, height 8.2–8.9 mm" : "Ø 8,9–9,0 mm, Höhe 8,2–8,9 mm")],
+      [(EN ? "Height cylindrical part EH" : "Höhe zylindrischer Teil EH"), num1(pEH()) + " mm"],
+      [(EN ? "Operating temperature" : "Betriebstemperatur"), (EN ? "-20 °C to +120 °C" : "-20 °C bis +120 °C")],
+      [(EN ? "Storage temperature" : "Lagertemperatur"), (EN ? "-20 °C to +120 °C" : "-20 °C bis +120 °C")]
+    ];
+  }
+  function powellSketch() {
+    var d = S.pd, eh = pEH(), h = P_H[d], hNom = (h[0] + h[1]) / 2, k = 120 / d, x0 = 70, cy = 95, hd = (d / 2) * k, xe = x0 + eh * k, xa = x0 + hNom * k, N = "#003368";
+    var arr = function (x1, y1, x2, y2) { return "<line x1='" + x1 + "' y1='" + y1 + "' x2='" + x2 + "' y2='" + y2 + "' stroke='" + N + "' stroke-width='1' marker-start='url(#ps-a)' marker-end='url(#ps-a)'/>"; };
+    return "<svg viewBox='0 0 330 230' role='img' aria-label='" + (EN ? "Dimensional sketch Powell lens" : "Maßskizze Powell-Linse") + "'><defs><marker id='ps-a' viewBox='0 0 10 10' refX='5' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0 0 L10 5 L0 10 z' fill='" + N + "'/></marker><marker id='ps-r' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='5' markerHeight='5' orient='auto'><path d='M0 0 L10 5 L0 10 z' fill='#e51837'/></marker></defs>" +
+      "<path d='M" + x0 + " " + (cy - hd) + " L" + xe + " " + (cy - hd) + " L" + xa + " " + cy + " L" + xe + " " + (cy + hd) + " L" + x0 + " " + (cy + hd) + " Z' fill='#e0e7ef' stroke='" + N + "' stroke-width='1.5'/>" +
+      "<line x1='" + (x0 - 10) + "' x2='" + (xa + 30) + "' y1='" + cy + "' y2='" + cy + "' stroke='" + N + "' stroke-width='.8' stroke-dasharray='8 3 2 3'/>" +
+      "<line x1='" + (x0 - 34) + "' x2='" + (x0 - 2) + "' y1='" + (cy - hd) + "' y2='" + (cy - hd) + "' stroke='#94a3b8' stroke-width='.8'/><line x1='" + (x0 - 34) + "' x2='" + (x0 - 2) + "' y1='" + (cy + hd) + "' y2='" + (cy + hd) + "' stroke='#94a3b8' stroke-width='.8'/>" +
+      arr(x0 - 26, cy - hd, x0 - 26, cy + hd) + "<text x='" + (x0 - 32) + "' y='" + cy + "' transform='rotate(-90 " + (x0 - 32) + " " + cy + ")' text-anchor='middle' font-size='12' fill='" + N + "'>Ø " + d + " mm</text>" +
+      "<line x1='" + x0 + "' x2='" + x0 + "' y1='" + (cy + hd + 2) + "' y2='" + (cy + hd + 62) + "' stroke='#94a3b8' stroke-width='.8'/><line x1='" + xe + "' x2='" + xe + "' y1='" + (cy + hd + 2) + "' y2='" + (cy + hd + 30) + "' stroke='#94a3b8' stroke-width='.8'/><line x1='" + xa + "' x2='" + xa + "' y1='" + (cy + 4) + "' y2='" + (cy + hd + 62) + "' stroke='#94a3b8' stroke-width='.8'/>" +
+      arr(x0, cy + hd + 22, xe, cy + hd + 22) + "<text x='" + ((x0 + xe) / 2) + "' y='" + (cy + hd + 17) + "' text-anchor='middle' font-size='11' fill='" + N + "'>EH " + num1(eh) + " mm</text>" +
+      arr(x0, cy + hd + 54, xa, cy + hd + 54) + "<text x='" + ((x0 + xa) / 2) + "' y='" + (cy + hd + 49) + "' text-anchor='middle' font-size='11' fill='" + N + "'>H " + num1(h[0]) + "–" + num1(h[1]) + " mm</text>" +
+      "<text x='" + (xa + 6) + "' y='" + (cy - hd + 4) + "' font-size='11' font-weight='600' fill='" + N + "'>" + (EN ? "Roof apex" : "Dachfirst") + "</text><line x1='" + (xa + 22) + "' y1='" + (cy - hd + 8) + "' x2='" + (xa + 2) + "' y2='" + (cy - 4) + "' stroke='" + N + "' stroke-width='.8'/>" +
+      "<line x1='" + (xa + 75) + "' x2='" + (xa + 8) + "' y1='" + cy + "' y2='" + cy + "' stroke='#e51837' stroke-width='2.5' marker-end='url(#ps-r)'/><text x='" + (xa + 42) + "' y='" + (cy - 8) + "' text-anchor='middle' font-size='10' fill='#e51837'>Laser</text></svg>";
+  }
+  function powellView() {
+    var pill = function (k, v, label) { return "<button type='button' class='cfg-pill" + (S[k] === v ? " is-selected" : "") + "' data-set='" + k + "' data-val='" + v + "' aria-pressed='" + (S[k] === v) + "'>" + label + "</button>"; };
+    return "<h2 class='cfg-h'>" + (EN ? "Configure your Powell lens" : "Powell-Linse zusammenstellen") + "</h2><p class='cfg-sub'>" + (EN ? "The lens is designed for the beam diameter of your laser. Order code: BO_A (fan angle) B (beam diameter × 10) D (lens diameter)." : "Die Linse wird auf den Strahldurchmesser Ihres Lasers ausgelegt. Bestellcode: BO_A (Fächerwinkel) B (Strahldurchmesser × 10) D (Linsendurchmesser).") + "</p>" +
+      "<div class='cfg-powell'><div>" +
+      "<h3 class='cfg-h3'>" + (EN ? "A – Fan angle" : "A – Fächerwinkel") + "</h3><div class='cfg-pills'>" + P_FANS.map(function (f) { return pill("pa", f, f + "°"); }).join("") + "</div>" +
+      "<h3 class='cfg-h3'>" + (EN ? "B – Beam diameter (1/e²)" : "B – Strahldurchmesser (1/e²)") + "</h3><div class='cfg-pills'>" + P_BEAMS.map(function (b) { return pill("pb", b, num1(b / 10) + " mm"); }).join("") + "</div>" +
+      "<p class='cfg-hint'>" + (EN ? "in mm; order code: value × 10" : "in mm; Bestellcode: Wert × 10") + "</p>" +
+      "<h3 class='cfg-h3'>" + (EN ? "D – Lens diameter" : "D – Linsendurchmesser") + "</h3><div class='cfg-pills'>" + P_DIAMS.map(function (d) { return pill("pd", d, "Ø " + d + " mm"); }).join("") + "</div>" +
+      "<div class='cfg-sumhead' style='margin-top:20px'><p class='label'>" + (EN ? "Order code" : "Bestellbezeichnung") + "</p><div class='cfg-code'><code>" + pCode() + "</code><button type='button' class='cfg-copy' data-copy aria-label='" + (EN ? "Copy order code" : "Bezeichnung kopieren") + "'>" + (EN ? "Copy" : "Kopieren") + "</button></div></div>" +
+      "</div><div><div class='cfg-powell__media'><img src='" + P_PHOTO + "' alt='" + (EN ? "Powell lens" : "Powell-Linse") + "' loading='lazy'><figure>" + powellSketch() + "<figcaption>" + (EN ? "Dimensional sketch (schematic)" : "Maßskizze (schematisch)") + "</figcaption></figure></div></div></div>" +
+      "<h3 class='cfg-h3'>" + (EN ? "Technical data" : "Technische Daten") + "</h3><div class='table-wrap'><table class='matrix spec'><tbody>" + pSpecRows().map(function (r) { return "<tr><th scope='row'>" + esc(r[0]) + "</th><td>" + esc(r[1]) + "</td></tr>"; }).join("") + "</tbody></table></div>" +
+      "<p class='cfg-hint'>" + (EN ? "Values according to the Powell lens datasheet; the datasheet supplied with the quote is binding." : "Werte laut Datenblatt Powell-Linsen; verbindlich ist das Datenblatt zum Angebot.") + "</p>" +
+      "<div class='cfg-order'><label class='cfg-field'><span>" + (EN ? "Quantity" : "Menge") + "</span><input type='number' min='1' max='9999' value='" + S.qty + "' data-input='qty'> <em>" + (EN ? "pcs" : "Stück") + "</em></label>" +
+      "<a class='btn btn--accent' id='cfg-request' href='" + requestHref() + "'>" + (EN ? "Request a quote" : "Angebot anfordern") + " <svg aria-hidden='true'><use href='#i-arrow'/></svg></a>" +
+      "<a class='btn btn--ghost' href='produkt-powell-linsen.html'>" + (EN ? "Product page Powell lenses" : "Produktseite Powell-Linsen") + "</a></div>" +
+      "<div class='cfg-callout cfg-callout--muted'><p>" + (EN ? "<b>Simulator:</b> The intensity distribution along the line for your laser (beam diameter, wavelength, distance) and prices are available to registered customers in the live configurator." : "<b>Simulator:</b> Die Intensitätsverteilung entlang der Linie für Ihren Laser (Strahldurchmesser, Wellenlänge, Abstand) und Preise stehen freigeschalteten Kunden im Live-Konfigurator zur Verfügung.") + "</p></div>";
+  }
 
   function m(cols, rows) { return { cols: cols, rows: rows }; }
   var M_NANO = m([1, 3, 5, 10, 20, 30, 35, 40, 50, 75, 80, 100], [[405, "YYYYYYYYYYYY"], [450, "YYYYYYYYYYNN"], [520, "YYYYYYYYYYYN"], [640, "YYYYYYYYYYYY"], [660, "YYYYYYYYYYYY"], [685, "YYYYYYYYNNNN"], [785, "YYYYYYYYYYYY"], [830, "YYYYYYYYYYYN"], [850, "YYYYYYYYNNNN"]]);
@@ -87,8 +151,12 @@
     g: q.get("g") || "mv", s: q.get("s") || "", wl: +q.get("wl") || 0, p: +q.get("p") || 0,
     fan: +q.get("fan") || 45, d: +q.get("d") || 500, o: q.get("o") || "STD", f: q.get("f") || "",
     h: q.get("h") || "ST", r: q.get("r") || "R0R0", mod: q.get("mod") || "none", lvl: q.get("lvl") || "5",
-    opt: (q.get("opt") || "").split(",").filter(Boolean), qty: +q.get("qty") || 1
+    opt: (q.get("opt") || "").split(",").filter(Boolean), qty: +q.get("qty") || 1,
+    pa: +q.get("pa") || 30, pb: +q.get("pb") || 10, pd: +q.get("pd") || 9
   };
+  if (P_FANS.indexOf(S.pa) < 0) S.pa = 30;
+  if (P_BEAMS.indexOf(S.pb) < 0) S.pb = 10;
+  if (P_DIAMS.indexOf(S.pd) < 0) S.pd = 9;
   function series() { for (var i = 0; i < SERIES.length; i++) if (SERIES[i].id === S.s) return SERIES[i]; return null; }
   function group() { for (var i = 0; i < GROUPS.length; i++) if (GROUPS[i].id === S.g) return GROUPS[i]; return GROUPS[0]; }
   function avail(sr, wl, p) {
@@ -115,6 +183,7 @@
     p.set("g", S.g); if (S.s) p.set("s", S.s); if (S.wl) p.set("wl", S.wl); if (S.p) p.set("p", S.p);
     p.set("fan", S.fan); p.set("d", S.d); p.set("o", S.o); if (S.f) p.set("f", S.f);
     var sr = series(); if (sr && sr.housings) p.set("h", S.h); if (sr && sr.variants) p.set("r", S.r);
+    if (S.g === "powell") { p.set("pa", S.pa); p.set("pb", S.pb); p.set("pd", S.pd); }
     p.set("mod", S.mod); if (S.opt.length) p.set("opt", S.opt.join(",")); p.set("qty", S.qty); p.set("step", S.step);
     history.replaceState(null, "", "?" + p.toString());
   }
@@ -125,6 +194,7 @@
   function fmt(n) { return Math.round(n).toLocaleString((EN ? "en-US" : "de-DE")); }
   function wlColor(w) { return { 405: "#7b2cff", 445: "#2a3cff", 450: "#1f4dff", 520: "#19b84a", 525: "#19b84a", 640: "#ff3b1f", 660: "#e3121b", 685: "#b00d1c" }[w] || "#6b7280"; }
   function code() {
+    if (S.g === "powell") return pCode();
     var sr = series(); if (!sr) return "–";
     if (sr.request) return sr.name + (EN ? " – on request" : " – auf Anfrage");
     var parts = ["FP", sr.name];
@@ -154,6 +224,7 @@
   };
   R.series = function () {
     var g = group();
+    if (g.id === "powell") return powellView();
     if (g.id !== "mv") {
       return "<h2 class='cfg-h'>" + esc(g.name) + "</h2><div class='cfg-callout'><p>" + (EN ? "For this product group, we put together your module individually. Briefly tell us about your application – we will get back to you with a proposal and quote." : "Für diese Produktgruppe stellen wir Ihr Modul individuell zusammen. Nennen Sie uns kurz Ihre Anwendung – wir melden uns mit einem Vorschlag und Angebot.") + "</p>" +
         "<div class='btn-row'><a class='btn btn--accent' href='kontakt.html?produkt=" + encodeURIComponent(g.name) + "'>" + (EN ? "Send inquiry" : "Anfrage senden") + "</a><a class='btn btn--ghost' href='" + g.href + "'>" + (EN ? "Go to product page" : "Zur Produktseite") + "</a></div></div>";
@@ -256,6 +327,7 @@
       "<div class='cfg-callout cfg-callout--muted'><p>" + (EN ? "<b>Note on the prototype:</b> Price, laser class (according to IEC 60825-1) and MTTF forecast are calculated by the existing configurator for authorised customers. These calculations will be adopted in the implementation." : "<b>Hinweis zum Prototyp:</b> Preis, Laserklasse (nach IEC 60825-1) und MTTF-Prognose berechnet der bestehende Konfigurator für freigeschaltete Kunden. Diese Berechnungen werden bei der Umsetzung übernommen.") + "</p></div>";
   };
   function summaryRows() {
+    if (S.g === "powell") return [[(EN ? "Product group" : "Produktgruppe"), group().name], [(EN ? "Fan angle" : "Fächerwinkel"), S.pa + "°"], [(EN ? "Beam Ø (1/e²)" : "Strahl-Ø (1/e²)"), num1(S.pb / 10) + " mm"], [(EN ? "Lens Ø" : "Linsen-Ø"), S.pd + " mm"], [(EN ? "Quantity" : "Menge"), S.qty + (EN ? " pcs" : " Stück")]];
     var sr = series(), md = modById(S.mod), rows = [[(EN ? "Product group" : "Produktgruppe"), group().name]];
     if (sr) rows.push([(EN ? "Series" : "Serie"), sr.name]);
     if (sr && sr.housings) rows.push([(EN ? "Housing" : "Gehäuse"), { ST: "Standard (ST)", "2H": (EN ? "Two housings (2H)" : "Zwei Gehäuse (2H)"), OH: (EN ? "Optical head (OH)" : "Optikkopf (OH)") }[S.h]]);
@@ -273,7 +345,8 @@
   function requestHref() {
     var sr = series();
     var text = (EN ? "Configuration: " : "Konfiguration: ") + code() + "\n" + summaryRows().map(function (r) { return r[0] + ": " + r[1]; }).join("\n");
-    return "kontakt.html?produkt=" + encodeURIComponent(sr ? sr.name : group().name) + "&konfig=" + encodeURIComponent(text);
+    var prod = S.g === "powell" ? (EN ? "Powell lens " : "Powell-Linse ") + pCode() : (sr ? sr.name : group().name);
+    return "kontakt.html?produkt=" + encodeURIComponent(prod) + "&konfig=" + encodeURIComponent(text);
   }
 
   /* ---------- Seitenleiste & Stepper ---------- */
@@ -316,7 +389,7 @@
     var b = e.target.closest("[data-set]");
     if (b && !b.disabled) {
       var k = b.dataset.set, v = b.dataset.val;
-      if (k === "fan") v = +v;
+      if (k === "fan" || k === "pa" || k === "pb" || k === "pd") v = +v;
       if (k === "g" && S.g !== v) { S.s = ""; S.wl = 0; S.p = 0; S.f = ""; }
       if (k === "s" && S.s !== v) { S.f = ""; }
       S[k] = v;
