@@ -8,7 +8,9 @@ const path = require("path");
 const root = path.resolve(__dirname, "..");
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, "products.json"), "utf8"));
 
-// ---- MVnano-Matrix aus der Produktseite lesen ----
+// MVnano-Tabelle (Stand der Produktseite vom 20.11.2026; die Seite zeigt sie inzwischen nur noch in der interaktiven Auswahl)
+const MVNANO_MATRIX = { cols: ["1","3","5","10","20","30","35","40","50","75","80","100"], rows: [["405","YYYYYYYYYYYY"],["450","YYYYYYYYYYNN"],["520","YYYYYYYYYYYN"],["640","YYYYYYYYYYYY"],["660","YYYYYYYYYYYY"],["685","YYYYYYYYNNNN"],["785","YYYYYYYYYYYY"],["830","YYYYYYYYYYYN"],["850","YYYYYYYYNNNN"]] };
+// ---- MVnano-Matrix aus der Produktseite lesen (falls Tabelle noch vorhanden) ----
 function readMatrixFromPage(file) {
   const h = fs.readFileSync(path.join(root, file), "utf8");
   const t = h.slice(h.indexOf('class="matrix"'));
@@ -61,7 +63,7 @@ const add = (p, extra) => {
 
 // MVnano (handgebaute Seite)
 add({ slug: "mvnano", name: "MVnano", cat: "Machine Vision", facts: [["Gehäuse", "Ø 11,5 × 54 mm"], ["Öffnungswinkel", "1° – 90°"]], focus: { angles: ["1", "5", "10", "20", "30", "45", "60", "75", "90"] } },
-  { matrix: readMatrixFromPage("produkt-mvnano.html") });
+  { matrix: (fs.readFileSync(path.join(root, "produkt-mvnano.html"), "utf8").includes('class="matrix"') ? readMatrixFromPage("produkt-mvnano.html") : MVNANO_MATRIX) });
 for (const p of data.products) add(p, p.slug === "linienlaser" ? { maxPower: 100 } : {});
 
 const allWl = [...new Set(products.flatMap(p => p.wls))].sort((a, b) => a - b);

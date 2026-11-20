@@ -42,9 +42,15 @@ for (const lang of ["de", "en"]) {
     </div>
   </section>
   <!-- explorer:end -->`;
-    h = h.replace(/(\n\s*<section class="section" id="technische-daten")/, section + "$1");
-    // In-Page-Navigation: Eintrag vor "Technische Daten"
-    h = h.replace(/(<li><a href="#technische-daten">)/, `<li><a href="#produkt-interaktiv">${t.nav}</a></li>$1`);
+    // Der Abschnitt "Technische Daten" (Wellenlänge/Leistung, Fokus, Öffnungswinkel, Muster) steckt jetzt in der
+    // interaktiven Auswahl -> wird durch sie ersetzt. Bei erneutem Lauf: vor "Downloads" bzw. dem Kontaktaufruf einfügen.
+    const td = /\n\s*<section class="section" id="technische-daten"[\s\S]*?<\/section>/;
+    if (td.test(h)) h = h.replace(td, section);
+    else if (/\n\s*<section class="section section--panel" id="downloads"/.test(h)) h = h.replace(/(\n\s*<section class="section section--panel" id="downloads")/, section + "$1");
+    else h = h.replace(/(\n\s*<section class="section"[^>]*aria-labelledby="(rel|cta)-title")/, section + "$1");
+    // In-Page-Navigation: "Technische Daten" -> "Konfigurieren"
+    h = h.replace(/<li><a href="#technische-daten">[^<]*<\/a><\/li>/, `<li><a href="#produkt-interaktiv">${t.nav}</a></li>`);
+    if (!h.includes('href="#produkt-interaktiv">' + t.nav)) h = h.replace(/(<li><a href="#downloads">)/, `<li><a href="#produkt-interaktiv">${t.nav}</a></li>$1`);
     // "Jetzt konfigurieren" im Kopf springt zur Auswahl auf der Seite
     h = h.replace(/href="konfigurator\.html\?g=mv&amp;s=[a-z0-9]+&amp;step=wlpower"/g, 'href="#produkt-interaktiv"');
     // Skript laden
