@@ -49,7 +49,7 @@ foreach ($p in $data.products) {
   A "  <script type=`"application/ld+json`">$ld</script>"
   A '</head>'
   A '<body class="dark-top">'
-  A $HEADER
+  A ($HEADER.Replace('href="en/produkte.html"', "href=`"en/produkt-$($p.slug).html`""))
   A ''
   A '<main id="main">'
   A '  <section class="pd-hero" aria-label="Produktübersicht">'
@@ -247,7 +247,7 @@ foreach ($p in $data.products) {
   A '    <div class="wrap">'
   A '      <div class="cta-band">'
   A '        <div>'
-  A "          <h2 id=`"cta-title`">Interesse an $nameH?</h2>"
+  A "          <h2 id=`"cta-title`">Interesse an $($nameH)?</h2>"
   A '          <p>Beschreiben Sie uns kurz Ihre Anwendung – wir beraten Sie zur passenden Ausführung und erstellen Ihnen ein Angebot.</p>'
   A "          <div class=`"btn-row`" style=`"margin-top:26px`"><a class=`"btn btn--accent`" href=`"kontakt.html?produkt=$q`">Angebot anfragen $arrow</a></div>"
   A '        </div>'

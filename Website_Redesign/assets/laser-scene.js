@@ -4,6 +4,7 @@
    Reines Canvas 2D, keine Bibliotheken. Pausiert automatisch außerhalb des Sichtbereichs. */
 (function () {
   "use strict";
+  var EN = (document.documentElement.lang || "").toLowerCase().indexOf("en") === 0; // eslint-disable-line no-unused-vars -- Szene enthält keine sichtbaren Texte
   var canvas = document.querySelector(".laser-scene");
   if (!canvas || !canvas.getContext) return;
   var ctx = canvas.getContext("2d");

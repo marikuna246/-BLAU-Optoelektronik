@@ -1,6 +1,7 @@
 /* BLAU Optoelektronik – kleine, abhängigkeitsfreie Interaktionen */
 (function () {
   "use strict";
+  var EN = (document.documentElement.lang || "").toLowerCase().indexOf("en") === 0;
   var doc = document.documentElement;
   doc.classList.add("js");
 
@@ -44,7 +45,7 @@
     var setOpen = function (open) {
       document.body.classList.toggle("nav-open", open);
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+      toggle.setAttribute("aria-label", open ? (EN ? "Close menu" : "Menü schließen") : (EN ? "Open menu" : "Menü öffnen"));
     };
     toggle.addEventListener("click", function () { setOpen(toggle.getAttribute("aria-expanded") !== "true"); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
@@ -196,7 +197,7 @@
     toggle.addEventListener("click", function () {
       stopped = !stopped;
       toggle.setAttribute("aria-pressed", String(stopped));
-      toggle.setAttribute("aria-label", stopped ? "Automatischen Wechsel starten" : "Automatischen Wechsel anhalten");
+      toggle.setAttribute("aria-label", stopped ? (EN ? "Start automatic rotation" : "Automatischen Wechsel starten") : (EN ? "Pause automatic rotation" : "Automatischen Wechsel anhalten"));
       root.classList.toggle("is-stopped", stopped);
       root.querySelector(".slider__info").setAttribute("aria-live", stopped ? "polite" : "off");
       /* Fortschrittsbalken neu starten */
@@ -227,7 +228,7 @@
     fetch(url, { cache: "no-store" }).then(function (r) {
       if (!r.ok) throw new Error("fehlt");
       var len = r.headers.get("content-length"), sz = card.querySelector("[data-size]");
-      if (len && sz) sz.textContent = "PDF · " + (len / 1048576).toFixed(2).replace(".", ",") + " MB";
+      if (len && sz) sz.textContent = "PDF · " + (len / 1048576).toFixed(2).replace(".", (EN ? "." : ",")) + " MB";
     }).catch(function () {
       card.classList.add("is-missing");
       var m = card.querySelector(".dl-missing"); if (m) m.hidden = false;
@@ -257,8 +258,8 @@
       frame.classList.add("is-playing");
     };
     btn.addEventListener("click", function () {
-      if (v.paused) { userPaused = false; play(); btn.setAttribute("aria-pressed", "false"); btn.setAttribute("aria-label", "Video pausieren"); }
-      else { userPaused = true; v.pause(); btn.setAttribute("aria-pressed", "true"); btn.setAttribute("aria-label", "Video abspielen"); }
+      if (v.paused) { userPaused = false; play(); btn.setAttribute("aria-pressed", "false"); btn.setAttribute("aria-label", (EN ? "Pause video" : "Video pausieren")); }
+      else { userPaused = true; v.pause(); btn.setAttribute("aria-pressed", "true"); btn.setAttribute("aria-label", (EN ? "Play video" : "Video abspielen")); }
     });
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (en) {
@@ -331,7 +332,7 @@
         }
       });
       intros.forEach(function (i) { i.classList.toggle("is-visible", i.dataset.intro === cat); });
-      if (status) status.textContent = shown + (shown === 1 ? " Produkt" : " Produkte") + " angezeigt";
+      if (status) status.textContent = shown + (shown === 1 ? (EN ? " product" : " Produkt") : (EN ? " products" : " Produkte")) + (EN ? " shown" : " angezeigt");
       if (push) {
         var url = new URL(window.location.href);
         if (cat === "alle") url.searchParams.delete("kategorie"); else url.searchParams.set("kategorie", cat);
@@ -388,16 +389,16 @@
     if (produkt) {
       var subj = form.querySelector("#betreff");
       var msg = form.querySelector("#nachricht");
-      if (subj) subj.value = "Anfrage zu " + produkt;
-      if (msg && !msg.value) msg.value = "Guten Tag,\n\nich interessiere mich für " + produkt + ".\n\nMeine Anwendung:\n";
+      if (subj) subj.value = (EN ? "Inquiry about " : "Anfrage zu ") + produkt;
+      if (msg && !msg.value) msg.value = (EN ? "Hello,\n\nI am interested in " : "Guten Tag,\n\nich interessiere mich für ") + produkt + (EN ? ".\n\nMy application:\n" : ".\n\nMeine Anwendung:\n");
     }
     /* Übergabe aus dem Modul-Konfigurator */
     var konfig = params.get("konfig");
     if (konfig) {
       var subj2 = form.querySelector("#betreff"), msg2 = form.querySelector("#nachricht"), sel = form.querySelector("#anliegen");
-      if (subj2) subj2.value = "Angebotsanfrage " + (produkt || "Lasermodul") + " (Konfigurator)";
-      if (sel) sel.value = "Angebot anfragen";
-      if (msg2) msg2.value = "Guten Tag,\n\nbitte senden Sie mir ein Angebot für folgende Konfiguration:\n\n" + konfig + "\n\nMeine Anwendung:\n";
+      if (subj2) subj2.value = (EN ? "Quote request " : "Angebotsanfrage ") + (produkt || (EN ? "laser module" : "Lasermodul")) + (EN ? " (configurator)" : " (Konfigurator)");
+      if (sel) sel.value = (EN ? "Request a quote" : "Angebot anfragen");
+      if (msg2) msg2.value = (EN ? "Hello,\n\nplease send me a quote for the following configuration:\n\n" : "Guten Tag,\n\nbitte senden Sie mir ein Angebot für folgende Konfiguration:\n\n") + konfig + (EN ? "\n\nMy application:\n" : "\n\nMeine Anwendung:\n");
     }
     form.addEventListener("submit", function (e) {
       e.preventDefault();
