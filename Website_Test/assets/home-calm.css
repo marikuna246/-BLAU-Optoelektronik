@@ -97,3 +97,78 @@
 .c-cta__box a.direct svg { width: 20px; height: 20px; color: var(--navy); }
 .c-cta__box a.direct:hover { color: var(--navy); }
 .c-cta__box small { color: var(--muted); }
+
+/* ===== Vollbild-Produktslideshow ===== */
+.c-stage { --delay: 6500ms; position: relative; overflow: hidden; background: radial-gradient(120% 90% at 70% 45%, #0a3d73 0%, var(--navy-900) 55%, #000d1c 100%); color: #c9d6e4; min-height: clamp(560px, calc(100svh - var(--header-h)), 820px); isolation: isolate; }
+.c-stage::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .35; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent); }
+.c-slide { position: absolute; inset: 0; display: grid; align-items: center; opacity: 0; visibility: hidden; transition: opacity .9s var(--ease), visibility 0s .9s; }
+.c-slide.is-active { opacity: 1; visibility: visible; transition: opacity .9s var(--ease); }
+
+/* Produkt rechts im Lichtkegel; weißer Bildhintergrund verschwindet durch "multiply" */
+.c-slide__media { position: absolute; top: 0; bottom: 0; right: 0; width: 58%; display: grid; place-items: center; }
+.c-slide__spot { position: absolute; width: min(48vw, 640px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #f4f7fb 0%, #e3ebf4 38%, rgba(227,235,244,.35) 58%, transparent 70%); }
+.c-slide__media img { position: relative; width: min(40vw, 560px); max-height: 62%; object-fit: contain; mix-blend-mode: multiply; transform: translateX(40px) scale(.96); opacity: 0; transition: transform 1.2s var(--ease), opacity 1s var(--ease); }
+.c-slide.is-active .c-slide__media img { transform: none; opacity: 1; transition-delay: .15s; }
+
+.c-slide__text { position: relative; z-index: 1; padding-left: calc(var(--gutter) + 44px); }
+.c-slide__text > * { max-width: 560px; }
+.c-slide__kicker { font-family: var(--font-head); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ff6b81; margin: 0 0 18px; }
+.c-slide__title { font-family: var(--font-head); color: #fff; font-size: clamp(2.4rem, 1.2rem + 4.4vw, 4.8rem); font-weight: 650; letter-spacing: -.04em; line-height: 1.02; margin: 0 0 22px; }
+.c-slide__lead { font-size: clamp(1.02rem, .95rem + .3vw, 1.2rem); margin: 0 0 28px; max-width: 44ch; }
+.c-slide__facts { list-style: none; margin: 0 0 32px; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 32px; }
+.c-slide__facts li { display: flex; flex-direction: column; border-left: 2px solid rgba(255,255,255,.18); padding-left: 12px; }
+.c-slide__facts b { font-family: var(--font-head); color: #fff; font-size: 1.05rem; }
+.c-slide__facts span { font-size: .82rem; color: #93a7bd; }
+.c-slide__text > * { transform: translateY(14px); opacity: 0; transition: transform .8s var(--ease), opacity .8s var(--ease); }
+.c-slide.is-active .c-slide__text > * { transform: none; opacity: 1; }
+.c-slide.is-active .c-slide__text > :nth-child(2) { transition-delay: .08s; }
+.c-slide.is-active .c-slide__text > :nth-child(3) { transition-delay: .16s; }
+.c-slide.is-active .c-slide__text > :nth-child(4) { transition-delay: .24s; }
+.c-slide.is-active .c-slide__text > :nth-child(5) { transition-delay: .32s; }
+
+/* Senkrechte Punkte links (wie eine Fortschrittsanzeige) */
+.c-stage__nav { position: absolute; z-index: 2; left: var(--gutter); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.c-stage__dots { display: flex; flex-direction: column; gap: 10px; }
+.c-stage__dots button { width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.c-stage__dots span { position: relative; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.35); transition: height .4s var(--ease), background .3s; overflow: hidden; }
+.c-stage__dots button:hover span { background: rgba(255,255,255,.7); }
+.c-stage__dots [aria-selected="true"] span { height: 34px; border-radius: 4px; background: rgba(255,255,255,.25); }
+.c-stage__dots [aria-selected="true"] span::after { content: ""; position: absolute; inset: 0; background: var(--red); transform-origin: top; transform: scaleY(1); }
+.c-stage.is-running .c-stage__dots [aria-selected="true"] span::after { animation: c-fill var(--delay) linear; }
+@keyframes c-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.c-stage__dots button:focus-visible, .c-stage__play:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 6px; }
+.c-stage__play { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #fff; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.c-stage__play svg { width: 12px; height: 12px; }
+.c-stage__play .i-play, .c-stage.is-stopped .c-stage__play .i-pause { display: none; }
+.c-stage.is-stopped .c-stage__play .i-play { display: block; }
+
+/* Handy: Bild oben, Text unten, Punkte waagerecht */
+@media (max-width: 859px) {
+  .c-stage { min-height: 0; height: 760px; }
+  .c-slide { align-items: end; padding-bottom: 72px; }
+  .c-slide__media { width: 100%; bottom: auto; height: 46%; }
+  .c-slide__spot { width: 92vw; max-width: 420px; }
+  .c-slide__media img { width: 78vw; max-width: 380px; max-height: 80%; }
+  .c-slide__text { padding-left: var(--gutter); }
+  .c-slide__title { font-size: clamp(2rem, 8.5vw, 2.6rem); margin-bottom: 14px; }
+  .c-slide__lead { margin-bottom: 18px; }
+  .c-slide__facts { margin-bottom: 22px; gap: 10px 20px; }
+  .c-stage__nav { top: auto; bottom: 22px; left: var(--gutter); transform: none; flex-direction: row; }
+  .c-stage__dots { flex-direction: row; }
+  .c-stage__dots [aria-selected="true"] span { height: 8px; width: 34px; }
+  .c-stage__dots [aria-selected="true"] span::after { transform-origin: left; }
+  .c-stage.is-running .c-stage__dots [aria-selected="true"] span::after { animation-name: c-fill-x; }
+}
+@keyframes c-fill-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .c-slide__media img, .c-slide__text > * { transform: none !important; transition: opacity .6s !important; } }
+/* Fotos mit eigenem Hintergrund (z. B. Powell-Linsen): als abgerundetes Bild statt Lichtkegel */
+.c-slide__media--photo .c-slide__spot { opacity: .25; }
+.c-slide__media--photo img { mix-blend-mode: normal; border-radius: 24px; aspect-ratio: 4 / 3; object-fit: cover; max-height: 66%; box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); }
+/* Folie selbst nicht transparent machen (sonst wird der weiße Bildhintergrund beim Überblenden sichtbar) –
+   stattdessen blenden Lichtkegel, Bild und Text einzeln */
+.c-slide, .c-slide.is-active { opacity: 1; }
+.c-slide { transition: visibility 0s .9s; }
+.c-slide.is-active { transition: none; }
+.c-slide__spot { opacity: 0; transition: opacity .9s var(--ease); }
+.c-slide.is-active .c-slide__spot { opacity: 1; }
+.c-slide.is-active .c-slide__media--photo .c-slide__spot { opacity: .25; }

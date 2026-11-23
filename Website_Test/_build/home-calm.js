@@ -12,6 +12,14 @@ const T = {
     lead: "Linienlaser, Punktlaser und Powell-Linsen für Bildverarbeitung, Maschinenbau, Medizintechnik und Forschung – als Standardprodukt oder genau nach Ihren Vorgaben.",
     b1: "Produkte entdecken", b2: "Beratung anfragen",
     tag: "MVnano – der Standard für Machine Vision", imgAlt: "MVnano Linienlaser",
+    sTitle: "BLAU Optoelektronik – Lasermodule aus Überlingen", sLabel: "Produkte im Überblick", sDots: "Folie wählen", sPause: "Automatischen Wechsel anhalten", sPlay: "Automatischen Wechsel starten", sView: "ansehen",
+    slides: [
+      ["mvnano", "hero-mvnano.png", "Machine Vision · FLEXPOINT®", "Der Standard für<br>Machine Vision", "MVnano: feine, gleichmäßig helle Laserlinie für 3D-Messung und Prüfung.", [["Ø 11,5 × 54 mm", "Gehäuse"], ["405–850 nm", "Wellenlängen"], ["bis 100 mW", "Leistung"]]],
+      ["mvpulse", "products/mvpulse-duo-wide.png", "Machine Vision · FLEXPOINT®", "Viel Licht.<br>Augensicher.", "MVpulse: hohe Leistung bei Laserklasse 2 durch gepulsten Betrieb.", [["bis 100 mW", "Leistung"], ["Klasse 2", "Laserklasse"], ["0,38–15 ms", "Pulslänge"]]],
+      ["mvsquare", "products/mvsquare-duo.png", "Machine Vision · FLEXPOINT®", "Einschrauben.<br>Fertig.", "MVsquare: ab Werk nach Ihren Vorgaben justiert – ohne Ausrichtung im System.", [["65 × 15 × 15 mm", "Gehäuse"], ["ab Werk", "justiert"], ["gerade / 90°", "Strahlaustritt"]]],
+      ["mvgoldhp", `${SB}/7/images/zz_FP-MVgoldHP_1.png`, "Machine Vision · FLEXPOINT®", "Bis 2 Watt<br>Laserlinie", "MVgoldHP: gleichmäßig helle Linie für schwierige Lichtverhältnisse – mit aktiver Kühlung.", [["bis 2 W", "bei 445 nm"], ["TEC", "aktive Kühlung"], ["RS-232 / RS-485", "Ansteuerung"]]],
+      ["powell-linsen", `${SB}/5/images/powelllinsen1.jpg`, "Optik · Eigenfertigung", "Powell-Linsen<br>aus Überlingen", "Spezialoptik für Laserlinien mit gleichmäßiger Helligkeit – seit 2019 in eigener Fertigung.", [["seit 2019", "Eigenfertigung"], ["gleichmäßig", "Helligkeit"], ["Made in Germany", "Herkunft"]]],
+    ],
     trust: [["Seit 1987", "Erfahrung in Optoelektronik"], ["Made in Germany", "Entwicklung &amp; Fertigung"], ["ISO 9001:2015", "zertifiziert"], ["Eigene Powell-Linsen", "aus eigener Fertigung"]],
     trustLabel: "Fakten über BLAU Optoelektronik",
     catK: "Sortiment", catH: "Was wir herstellen", catP: "Fünf Produktbereiche – alle in Überlingen entwickelt und gefertigt.", catAll: "Alle Produkte",
@@ -49,6 +57,14 @@ const T = {
     lead: "Line lasers, dot lasers and Powell lenses for machine vision, mechanical engineering, medical technology and research – as standard products or built to your specifications.",
     b1: "Explore products", b2: "Request consultation",
     tag: "MVnano – the standard for machine vision", imgAlt: "MVnano line laser",
+    sTitle: "BLAU Optoelektronik – laser modules from Überlingen", sLabel: "Product highlights", sDots: "Choose slide", sPause: "Pause automatic rotation", sPlay: "Start automatic rotation", sView: "View",
+    slides: [
+      ["mvnano", "hero-mvnano.png", "Machine vision · FLEXPOINT®", "The standard for<br>machine vision", "MVnano: a fine, evenly bright laser line for 3D measurement and inspection.", [["Ø 11.5 × 54 mm", "Housing"], ["405–850 nm", "Wavelengths"], ["up to 100 mW", "Power"]]],
+      ["mvpulse", "products/mvpulse-duo-wide.png", "Machine vision · FLEXPOINT®", "Plenty of light.<br>Eye-safe.", "MVpulse: high power at laser class 2 thanks to pulsed operation.", [["up to 100 mW", "Power"], ["Class 2", "Laser class"], ["0.38–15 ms", "Pulse length"]]],
+      ["mvsquare", "products/mvsquare-duo.png", "Machine vision · FLEXPOINT®", "Screw in.<br>Done.", "MVsquare: factory-aligned to your specifications – no alignment in the system.", [["65 × 15 × 15 mm", "Housing"], ["factory", "aligned"], ["straight / 90°", "Beam exit"]]],
+      ["mvgoldhp", `${SB}/7/images/zz_FP-MVgoldHP_1.png`, "Machine vision · FLEXPOINT®", "Up to 2 watts<br>laser line", "MVgoldHP: an evenly bright line for difficult lighting – with active cooling.", [["up to 2 W", "at 445 nm"], ["TEC", "active cooling"], ["RS-232 / RS-485", "Control"]]],
+      ["powell-linsen", `${SB}/5/images/powelllinsen1.jpg`, "Optics · in-house", "Powell lenses<br>from Überlingen", "Special optics for laser lines with uniform brightness – made in-house since 2019.", [["since 2019", "in-house"], ["uniform", "brightness"], ["Made in Germany", "Origin"]]],
+    ],
     trust: [["Since 1987", "Experience in optoelectronics"], ["Made in Germany", "Development &amp; production"], ["ISO 9001:2015", "certified"], ["Own Powell lenses", "made in-house"]],
     trustLabel: "Facts about BLAU Optoelektronik",
     catK: "Product range", catH: "What we make", catP: "Five product areas – all developed and manufactured in Überlingen.", catAll: "All products",
@@ -83,7 +99,10 @@ const T = {
   },
 };
 
-function main(t, A) {
+const NAMES = { mvnano: "MVnano", mvpulse: "MVpulse", mvsquare: "MVsquare", mvgoldhp: "MVgoldHP", "powell-linsen": "Powell-Linsen" };
+const productName = (slug) => NAMES[slug] || slug;
+
+function main(t, A, lang) {
   const [wide, ...cats] = t.cats;
   const cat = ([k, img, h, p, more], cls = "") => `
         <a class="c-cat${cls}" href="produkte.html?kategorie=${k}">
@@ -92,22 +111,23 @@ function main(t, A) {
         </a>`;
   return `<main id="main">
 
-  <!-- HERO -->
-  <section class="c-hero" aria-labelledby="hero-title">
-    <div class="wrap c-hero__grid">
-      <div>
-        <h1 id="hero-title">${t.h1}</h1>
-        <p class="c-hero__lead">${t.lead}</p>
-        <div class="btn-row">
-          <a class="btn" href="produkte.html">${t.b1} ${arrow}</a>
-          <a class="btn btn--ghost" href="kontakt.html">${t.b2}</a>
-        </div>
+  <!-- PRODUKT-SLIDESHOW (Vollbild) -->
+  <section class="c-stage" aria-roledescription="${lang === "en" ? "carousel" : "Karussell"}" aria-label="${t.sLabel}" data-stage>
+    <h1 class="sr-only">${t.sTitle}</h1>
+    ${t.slides.map(([slug, img, k, h, p, facts], i) => `
+    <div class="c-slide${i ? "" : " is-active"}" role="group" aria-roledescription="${lang === "en" ? "slide" : "Folie"}" aria-label="${i + 1} / ${t.slides.length}"${i ? ' aria-hidden="true"' : ""}>
+      <div class="c-slide__media${/.jpe?g$/.test(img) ? " c-slide__media--photo" : ""}" aria-hidden="true"><span class="c-slide__spot"></span><img src="${img.startsWith("http") ? img : A + img}" alt=""${i ? ' decoding="async"' : ""}></div>
+      <div class="wrap c-slide__text">
+        <p class="c-slide__kicker">${k}</p>
+        <p class="c-slide__title">${h}</p>
+        <p class="c-slide__lead">${p}</p>
+        <ul class="c-slide__facts">${facts.map(([b, s]) => `<li><b>${b}</b><span>${s}</span></li>`).join("")}</ul>
+        <a class="btn btn--accent" href="produkt-${slug}.html"${i ? ' tabindex="-1"' : ""}>${lang === "en" ? `${t.sView} ${productName(slug)}` : `${productName(slug)} ${t.sView}`} ${arrow}</a>
       </div>
-      <div class="c-hero__media">
-        <span class="c-hero__beam" aria-hidden="true"></span>
-        <img src="${A}hero-mvnano.png" alt="${t.imgAlt}" width="1083" height="727">
-        <a class="c-hero__tag" href="produkt-mvnano.html"><i aria-hidden="true"></i>${t.tag}</a>
-      </div>
+    </div>`).join("")}
+    <div class="c-stage__nav">
+      <div class="c-stage__dots" role="tablist" aria-label="${t.sDots}">${t.slides.map((s, i) => `<button type="button" role="tab" aria-selected="${!i}" aria-label="${productName(s[0])}" data-go="${i}"><span></span></button>`).join("")}</div>
+      <button class="c-stage__play" type="button" data-toggle aria-pressed="false" aria-label="${t.sPause}" data-l-pause="${t.sPause}" data-l-play="${t.sPlay}"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
     </div>
   </section>
 
@@ -181,12 +201,13 @@ for (const lang of ["de", "en"]) {
   const file = path.join(root, lang === "en" ? "en" : "", "index.html");
   const A = lang === "en" ? "../assets/" : "assets/";
   let h = fs.readFileSync(file, "utf8");
-  h = h.replace(/<main id="main">[\s\S]*?<\/main>/, () => main(T[lang], A));
+  h = h.replace(/<main id="main">[\s\S]*?<\/main>/, () => main(T[lang], A, lang));
   // kein dunkler Kopf, kein Intro, keine Laser-Animation
   h = h.replace(/<body class="home dark-top">/, '<body class="home calm">');
   h = h.replace(/\s*<script>\s*\/\*[^]*?intro[^]*?<\/script>/, "");
   h = h.replace(/<div class="intro" id="intro">[\s\S]*?<button class="intro__skip"[^>]*>[^<]*<\/button>\s*<\/div>\s*/, "");
   h = h.replace(/\s*<script src="[^"]*laser-scene\.js" defer><\/script>/, "");
+  if (!h.includes("home-slider.js")) h = h.replace(/(<script src="[^"]*main\.js" defer><\/script>)/, `$1\n<script src="${A}home-slider.js" defer></script>`);
   if (!h.includes("home-calm.css")) h = h.replace(/(<link rel="stylesheet" href="[^"]*styles\.css">)/, `$1\n  <link rel="stylesheet" href="${A}home-calm.css">`);
   fs.writeFileSync(file, h);
   console.log("Startseite neu:", path.relative(root, file));
