@@ -14,6 +14,10 @@ const T = {
   en: { eyebrow: "Interactive", h: "Configure interactively", lead: "Choose wavelength, power, optics and electrics – with line length, power distribution, line thickness, modulation levels and technical data for your configuration.", note: "We will provide price and laser class with your quote.", load: "Loading product selection …", nav: "Configure", noscript: "Please enable JavaScript to use the product selection." },
 };
 
+// Versionsparameter gegen Browser-Cache (Einstiegsdatei hat keinen Hash im Namen)
+const entryFile = path.join(root, "assets", "explorer", "product-explorer.js");
+const VER = fs.existsSync(entryFile) ? require("crypto").createHash("md5").update(fs.readFileSync(entryFile)).digest("hex").slice(0, 8) : "0";
+
 let changed = 0;
 for (const lang of ["de", "en"]) {
   const t = T[lang], dir = lang === "en" ? path.join(root, "en") : root, A = lang === "en" ? "../assets/" : "assets/";
@@ -24,7 +28,7 @@ for (const lang of ["de", "en"]) {
     const before = h;
     // alte Einfügung entfernen (idempotent)
     h = h.replace(/\s*<!-- explorer:start -->[\s\S]*?<!-- explorer:end -->/g, "");
-    h = h.replace(/\s*<script src="[^"]*explorer\/product-explorer\.js" defer><\/script>/g, "");
+    h = h.replace(/\s*<script (type="module" )?src="[^"]*explorer\/product-explorer\.js(\?v=\w+)?"( defer)?><\/script>/g, "");
     h = h.replace(/<li><a href="#produkt-interaktiv">[^<]*<\/a><\/li>/g, "");
 
     const section = `
@@ -54,7 +58,7 @@ for (const lang of ["de", "en"]) {
     // "Jetzt konfigurieren" im Kopf springt zur Auswahl auf der Seite
     h = h.replace(/href="konfigurator\.html\?g=mv&amp;s=[a-z0-9]+&amp;step=wlpower"/g, 'href="#produkt-interaktiv"');
     // Skript laden
-    h = h.replace(/(<script src="[^"]*main\.js" defer><\/script>)/, `$1\n<script src="${A}explorer/product-explorer.js" defer></script>`);
+    h = h.replace(/(<script src="[^"]*main\.js" defer><\/script>)/, `$1\n<script type="module" src="${A}explorer/product-explorer.js?v=${VER}"></script>`);
     if (!h.includes('id="produkt-interaktiv"')) { console.warn("Kein Einfügepunkt:", file); continue; }
     if (h !== before) { fs.writeFileSync(file, h); changed++; }
   }
