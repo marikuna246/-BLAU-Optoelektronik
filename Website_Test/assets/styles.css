@@ -1293,3 +1293,9 @@ table.matrix.spec { min-width: 0; }
 .pd-gallery .main.is-frame img { visibility: hidden; }
 .thumbs .thumb-3d { display: grid; place-items: center; background: #07111f; color: #fff; font: 700 15px/1.1 var(--font-head); text-align: center; }
 .thumbs .thumb-3d small { display: block; margin-top: 3px; font: 600 9.5px var(--font); letter-spacing: .08em; color: #ff6b81; }
+
+/* 360-spin */
+.pd-gallery .main iframe[data-spin] { background: #fff; }
+.thumbs .thumb-spin { background: #eef1f5; color: var(--navy); }
+.thumbs .thumb-spin small { color: var(--red); }
+.thumbs .thumb-spin svg { display: block; margin: 0 auto; }

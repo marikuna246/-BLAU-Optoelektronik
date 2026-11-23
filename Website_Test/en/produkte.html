@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://xtuwjizliuthdgytloju.supabase.co">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/pf.css">
 </head>
 <body class="dark-top">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -81,177 +82,19 @@
       <p class="eyebrow">Products</p>
       <h1 id="page-title">Laser modules and optics for your application</h1>
       <p class="lead">13 products in five categories. On request, we adapt many parameters – such as wavelength, power, optics and housing – to your task.</p>
-      <p class="finder-cta"><a class="btn btn--accent" href="produktfinder.html"><svg aria-hidden="true"><use href="#i-sliders"/></svg> Open product finder</a></p>
+      <p class="finder-cta"><a class="btn btn--accent" href="#produktfinder"><svg aria-hidden="true"><use href="#i-sliders"/></svg> Open product finder</a></p>
     </div>
   </section>
 
-  <div class="filter-bar">
-    <div class="wrap" role="group" aria-label="Filter products by category" data-filter>
-      <button type="button" data-value="alle" aria-pressed="true">All</button>
-      <button type="button" data-value="machine-vision" aria-pressed="false">Machine Vision</button>
-      <button type="button" data-value="linienlaser" aria-pressed="false">Line lasers</button>
-      <button type="button" data-value="punktlaser" aria-pressed="false">Dot lasers</button>
-      <button type="button" data-value="powell-linsen" aria-pressed="false">Powell lenses</button>
-      <button type="button" data-value="oem" aria-pressed="false">OEM modules</button>
-    </div>
-  </div>
-
-  <section class="section" style="padding-top:40px" aria-label="Product list">
+  <!-- pf:start -->
+  <section class="pf-sec" id="produktfinder" aria-labelledby="pf-title">
     <div class="wrap">
-      <p id="filter-status" class="sr-only" aria-live="polite"></p>
-
-      <div class="cat-intro" data-intro="machine-vision"><p><b>Machine Vision:</b> Line lasers for industrial machine vision. They project a fine, homogeneous laser line that is evaluated by a camera – e.g. for 3D measurement, profile and surface inspection.</p></div>
-      <div class="cat-intro" data-intro="linienlaser"><p><b>Line lasers:</b> High-quality laser lines and beam patterns for positioning and measurement tasks – in medical technology, industry and metrology.</p></div>
-      <div class="cat-intro" data-intro="punktlaser"><p><b>Dot lasers:</b> Laser modules with a round beam profile – optics and electronics to suit your application.</p></div>
-      <div class="cat-intro" data-intro="powell-linsen"><p><b>Powell lenses:</b> Special optics that fan a laser beam out into a line of uniform brightness. Made in-house.</p></div>
-      <div class="cat-intro" data-intro="oem"><p><b>OEM modules:</b> Laser modules built to your specifications – mechanics, optics and electronics, even in small series.</p></div>
-
-      <div class="product-grid">
-        <article class="product-card" id="mvnano" data-category="machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/14/images/MVnano2.jpg" alt="MVnano line laser" loading="lazy" width="600" height="600"><span class="cat">Machine Vision</span></div>
-          <div class="body">
-            <h2><a href="produkt-mvnano.html">MVnano</a></h2>
-            <p>The standard line laser for machine vision – as a stand-alone product or for integration into sensors and 3D scanners.</p>
-            <ul class="facts"><li>Ø 11.5 × 54 mm</li><li>405–850 nm</li><li>up to 100 mW</li></ul>
-            <div class="ds-links"><span>Datasheet</span><a href="../assets/downloads/datenblaetter/FP-MVnano-25_Datasheet_EN.pdf" target="_blank" rel="noopener">PDF</a></div>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="mvpulse" data-category="machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/15/images/MVpulse1.jpg" alt="MVpulse laser module" loading="lazy" width="1000" height="456"><span class="cat">Machine Vision</span></div>
-          <div class="body">
-            <h2><a href="produkt-mvpulse.html">MVpulse</a></h2>
-            <p>Plenty of light, yet eye-safe: high optical output power while maintaining laser class 2, thanks to pulsed operation.</p>
-            <ul class="facts"><li>up to 100 mW</li><li>Laser class 2</li><li>pulsed</li></ul>
-            <div class="ds-links"><span>Datasheet</span><a href="../assets/downloads/datenblaetter/FP-MVpulse-25_Datasheet_EN.pdf" target="_blank" rel="noopener">PDF</a></div>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="mvpulsehp" data-category="machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/16/images/MVpulseHP.jpg" alt="MVpulseHP laser module" loading="lazy"><span class="cat">Machine Vision</span></div>
-          <div class="body">
-            <h2><a href="produkt-mvpulsehp.html">MVpulseHP</a></h2>
-            <p>For very high power: due to the limited duty cycle, no active cooling is required.</p>
-            <ul class="facts"><li>up to 1 W</li><li>no active cooling</li></ul>
-            <div class="ds-links"><span>Datasheet</span><a href="../assets/downloads/datenblaetter/MVpulseHP_Datasheet_EN.pdf" target="_blank" rel="noopener">PDF</a></div>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="mvsquare" data-category="machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/17/images/MVsquare.jpg" alt="MVsquare laser module" loading="lazy"><span class="cat">Machine Vision</span></div>
-          <div class="body">
-            <h2><a href="produkt-mvsquare.html">MVsquare</a></h2>
-            <p>Rectangular housing for particularly easy installation – plug &amp; play.</p>
-            <ul class="facts"><li>65 × 15 × 15 mm</li><li>Plug &amp; Play</li></ul>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="mvfemto" data-category="machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/2/images/FP-MVfemto_2.jpg" alt="MVfemto line laser" loading="lazy"><span class="cat">Machine Vision</span></div>
-          <div class="body">
-            <h2><a href="produkt-mvfemto.html">MVfemto</a></h2>
-            <p>Our smallest line laser for machine vision – fits into the tightest installation spaces, with homogeneous line quality.</p>
-            <ul class="facts"><li>Ø 8 × 40 mm</li><li>smallest form factor</li></ul>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="mvpico" data-category="machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/9/images/MVpico.jpg" alt="MVpico laser module" loading="lazy"><span class="cat">Machine Vision</span></div>
-          <div class="body">
-            <h2><a href="produkt-mvpico.html">MVpico</a></h2>
-            <p>Compact module, developed for integration into intelligent 3D vision sensors.</p>
-            <ul class="facts"><li>10 × 50 mm</li><li>for 3D sensors</li></ul>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="mvgoldhp" data-category="machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/7/images/zz_FP-MVgoldHP_1.png" alt="MVgoldHP laser module" loading="lazy"><span class="cat">Machine Vision</span></div>
-          <div class="body">
-            <h2><a href="produkt-mvgoldhp.html">MVgoldHP</a></h2>
-            <p>High-power laser module for machine vision with uniform line intensity.</p>
-            <ul class="facts"><li>high power</li><li>uniform line</li></ul>
-            <div class="ds-links"><span>Datasheet</span><a href="../assets/downloads/datenblaetter/FP-MVgoldHP_Datasheet_EN.pdf" target="_blank" rel="noopener">PDF</a></div>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="mvmicro" data-category="machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/8/images/MVmicroMV18.jpg" alt="MVmicro / MV18 laser module" loading="lazy"><span class="cat">Machine Vision</span></div>
-          <div class="body">
-            <h2><a href="produkt-mvmicro.html">MVmicro / MV18</a></h2>
-            <p>For stand-alone image processing tasks: easy to focus, fine line with homogeneous power distribution.</p>
-            <ul class="facts"><li>easily focusable</li><li>fine line</li></ul>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="linienlaser" data-category="linienlaser">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/3/images/Linienlaser-main.jpg" alt="Line laser modules from BLAU Optoelektronik" loading="lazy"><span class="cat">Line lasers</span></div>
-          <div class="body">
-            <h2><a href="produkt-linienlaser.html">Line lasers</a></h2>
-            <p>For demanding positioning and measurement tasks – e.g. patient positioning, positioning systems and welding systems.</p>
-            <ul class="facts"><li>405–905 nm</li><li>up to 100 mW</li><li>Class 1 to 3R</li><li>modulation up to 1 MHz</li></ul>
-            <div class="ds-links"><span>Datasheet</span><a href="../assets/downloads/datenblaetter/FP-L-XXX-2026_Datasheet_EN.pdf" target="_blank" rel="noopener">PDF</a></div>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="doe" data-category="linienlaser">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/13/images/FP-DOE-CX_Abbildung_4.jpeg" alt="DOE laser module with projected beam pattern" loading="lazy"><span class="cat">Line lasers</span></div>
-          <div class="body">
-            <h2><a href="produkt-doe.html">DOE Laser Module</a></h2>
-            <p>Diffractive optical elements (DOEs) turn a simple laser dot into a variety of different beam patterns.</p>
-            <ul class="facts"><li>many beam patterns</li></ul>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="punktlaser" data-category="punktlaser">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/6/images/Punkt-Laser.jpg" alt="Dot laser modules" loading="lazy"><span class="cat">Dot lasers</span></div>
-          <div class="body">
-            <h2><a href="produkt-punktlaser.html">Dot lasers</a></h2>
-            <p>Dot laser modules with a round beam profile – with optics and electronics to suit your application.</p>
-            <ul class="facts"><li>round beam profile</li></ul>
-            <div class="ds-links"><span>Datasheet</span><a href="../assets/downloads/datenblaetter/FP-D-XXX-2026_Datasheet_EN.pdf" target="_blank" rel="noopener">PDF</a></div>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="powell" data-category="powell-linsen">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/5/images/powelllinsen1.jpg" alt="Powell lenses" loading="lazy" width="800" height="800"><span class="cat">Powell lenses</span></div>
-          <div class="body">
-            <h2><a href="produkt-powell-linsen.html">Powell lenses</a></h2>
-            <p>Generate laser lines with uniform brightness. Since 2019, we have been manufacturing several hundred per week in-house.</p>
-            <ul class="facts"><li>in-house manufacturing</li><li>various fan angles</li></ul>
-            <div class="ds-links"><span>Datasheet</span><a href="../assets/downloads/datenblaetter/Powell-Lenses_Datasheet_EN.pdf" target="_blank" rel="noopener">PDF</a></div>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <article class="product-card" id="oem" data-category="oem">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/4/images/Oem-Module.jpg" alt="OEM laser modules" loading="lazy"><span class="cat">OEM modules</span></div>
-          <div class="body">
-            <h2><a href="produkt-oem.html">OEM modules</a></h2>
-            <p>Mechanics, optics and electronics to your specifications – with reasonable development effort, even in small series.</p>
-            <ul class="facts"><li>customer-specific</li><li>small series too</li></ul>
-            <div class="foot">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></div>
-          </div>
-        </article>
-
-        <aside class="custom-card" data-category-any>
-          <h2>Not quite what you need?</h2>
-          <p>We adapt existing modules or develop a solution specifically for your application.</p>
-          <div><a class="btn btn--accent" href="kontakt.html">Custom inquiry <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
-        </aside>
-      </div>
+      <div class="pf-head"><h2 id="pf-title">Product finder</h2><p>Select the relevant criteria – we show you all laser modules and optics that match.</p></div>
+      <div data-pf aria-label="Product finder"><noscript><p>Please enable JavaScript to use the product finder.</p></noscript></div>
     </div>
   </section>
+  <!-- pf:end -->
+
 
   <section class="section section--panel" aria-labelledby="help-title">
     <div class="wrap">
@@ -325,5 +168,7 @@
 </footer>
 
 <script src="../assets/main.js" defer></script>
+<script src="../assets/finder-data.js" defer></script>
+<script src="../assets/pf.js" defer></script>
 </body>
 </html>
