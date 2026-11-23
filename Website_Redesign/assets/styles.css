@@ -1299,3 +1299,44 @@ table.matrix.spec { min-width: 0; }
 .thumbs .thumb-spin { background: #eef1f5; color: var(--navy); }
 .thumbs .thumb-spin small { color: var(--red); }
 .thumbs .thumb-spin svg { display: block; margin: 0 auto; }
+
+/* ===== BLAU-Kopfleiste auf allen Seiten (wie blauoptoelektronik.de): schwebende weiße Leiste, Menü in Großbuchstaben, türkiser Knopf ===== */
+:root { --header-h: 80px; }
+@media (min-width: 768px) { :root { --header-h: 96px; } }
+html body .site-header, html body .site-header.is-scrolled { position: fixed; left: 0; right: 0; top: 8px; height: 64px; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border: 0; box-shadow: none; }
+@media (min-width: 768px) { html body .site-header, html body .site-header.is-scrolled { top: 16px; } }
+html body .header-inner { max-width: min(1280px, calc(100% - 2 * var(--gutter))); padding: 0 20px; background: rgba(255, 255, 255, .96); border-radius: 10px; box-shadow: 0 10px 30px -14px rgba(0, 20, 45, .45); }
+html body .brand img { height: 34px; }
+@media (min-width: 768px) { html body .brand img { height: 38px; } }
+html body .main-nav a { text-transform: uppercase; font-family: var(--font); font-size: .875rem; font-weight: 500; letter-spacing: .01em; padding: 8px 9px; color: var(--ink); }
+html body .header-actions .btn--accent { background: #00a6c1; border-color: #00a6c1; text-transform: uppercase; font-size: .8rem; border-radius: 6px; }
+html body .header-actions .btn--accent:hover { filter: brightness(.92); }
+html body .lang span { background: #003d74; color: #fff; }
+html body .mobile-nav { inset: 0; padding-top: 96px; }
+html body .mobile-nav .btn--accent { background: #00a6c1; border-color: #00a6c1; }
+/* auf dunklen Seitenköpfen bleibt die Leiste trotzdem weiß mit dunkler Schrift und dunklem Logo */
+html body.dark-top:not(.nav-open) .site-header:not(.is-scrolled) { background: transparent; border: 0; box-shadow: none; }
+html body.dark-top:not(.nav-open) .site-header:not(.is-scrolled) .brand .logo-light { opacity: 0; }
+html body.dark-top:not(.nav-open) .site-header:not(.is-scrolled) .brand .logo-dark { opacity: 1; }
+html body.dark-top:not(.nav-open) .site-header:not(.is-scrolled) .main-nav a { color: var(--ink); }
+html body.dark-top:not(.nav-open) .site-header:not(.is-scrolled) .main-nav a:hover { background: var(--panel); color: var(--navy); }
+html body.dark-top:not(.nav-open) .site-header:not(.is-scrolled) .lang a { color: var(--muted); }
+html body.dark-top:not(.nav-open) .site-header:not(.is-scrolled) .lang span { color: #fff; background: #003d74; }
+html body.dark-top:not(.nav-open) .site-header:not(.is-scrolled) .nav-toggle { background: #fff; border-color: var(--rule); color: var(--navy); }
+/* Seiten ohne dunklen Kopf: Inhalt beginnt unter der schwebenden Leiste */
+body:not(.dark-top):not(.calm) main { padding-top: var(--header-h); }
+/* Leiste ist fest positioniert (nicht im Textfluss) – dunkle Köpfe beginnen deshalb ganz oben */
+html body.dark-top main { margin-top: 0; }
+html body .pd-hero { padding-top: calc(var(--header-h) + 16px); }
+html body .site-header .main-nav a[aria-current="page"], html body.dark-top:not(.nav-open) .site-header:not(.is-scrolled) .main-nav a[aria-current="page"] { color: #003d74; background: #e6f6fa; box-shadow: inset 0 -2px 0 #00a6c1; }
+
+/* ===== BLAU-Farben für dunkle Seitenköpfe (wie blauoptoelektronik.de): Dunkelblau #003d74 statt Fast-Schwarz, ohne Gitter ===== */
+html body .dark-top .page-hero, html body .pd-hero, html body.dark-top .page-hero { background: #003d74; }
+html body.dark-top .page-hero::before, html body .pd-hero::before { background: linear-gradient(90deg, rgba(0, 42, 82, .55), rgba(0, 61, 116, 0) 70%), #003d74; }
+html body.dark-top .page-hero::after, html body .pd-hero::after { background-image: none; }
+html body.dark-top .page-hero .lead, html body .pd-hero .tagline { color: #d4e1ee; }
+html body.dark-top .breadcrumb ol, html body.dark-top .breadcrumb a { color: #b9cbe0; }
+html body.dark-top .breadcrumb [aria-current] { color: #fff; }
+/* Filter- und Zwischenflächen in BLAU-Hellgrau */
+html body .filter-bar, html body .section--panel { background: #eceff2; }
+html body .pf-sec { background: #eceff2; }

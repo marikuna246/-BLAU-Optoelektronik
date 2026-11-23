@@ -1,9 +1,9 @@
 /* Produktseiten im Aufbau von z-laser.com (geteilter Kopf, Sechseck-Vorteile, graue Karten, dunkelblaue Abschlussfläche).
    Inhalte bleiben die echten Produktdaten der Seite. BLAU-Farben: Dunkelblau, Türkis, Cyan – ohne Rot. */
-.pd-z { --z-navy: #003d74; --z-navy-2: #002a52; --z-teal: #00a6c1; --z-cyan: #00cdda; --z-soft: #f3f5f8; --z-line: #d9dfe4; }
+.pd-z { --z-navy: #003d74; --z-navy-2: #002a52; --z-teal: #00a6c1; --z-cyan: #00cdda; --z-soft: #eceff2; --z-line: #d9dfe4; }
 
 /* 1 · Kopf: links dunkelblau mit Text, rechts heller Verlauf mit Produktbild – getrennt durch eine feine Linie */
-.pd-z .pd-hero::before { background: linear-gradient(90deg, var(--z-navy-2) 0%, var(--z-navy) 48%, #1d6aa8 74%, #cfe6f5 100%); }
+.pd-z .pd-hero::before { background: linear-gradient(90deg, var(--z-navy) 0 50%, #eceff2 50% 100%); }
 .pd-z .pd-hero::after { background-image: none; }
 @media (min-width: 1024px) {
   .pd-z .pd-top { grid-template-columns: 1fr 1.05fr; gap: 0; align-items: center; min-height: min(78vh, 720px); }
@@ -71,12 +71,12 @@
 .pd-z .product-grid .product-card .foot { border-top-color: var(--z-line); color: var(--z-teal); }
 
 /* 5 · Abschluss: dunkelblaue Fläche mit Verlauf wie das "Ergebnis" bei Z-Laser */
-.pd-z .cta-band { background: linear-gradient(115deg, var(--z-navy-2) 0%, var(--z-navy) 55%, #1d6aa8 100%); border-radius: 22px; color: #d4e1ee; }
+.pd-z .cta-band { background: var(--z-navy); border-radius: 22px; color: #d4e1ee; }
 .pd-z .cta-band::before { background: linear-gradient(90deg, transparent, rgba(0, 205, 218, .9), transparent); }
 .pd-z .cta-band .btn--accent { --bg: var(--z-teal); --bd: var(--z-teal); border-radius: 8px; }
 .pd-z .cta-contact .direct { color: #fff; }
 /* Handy/Tablet: Verlauf von oben nach unten (Text bleibt auf Dunkelblau), Kennwerte einspaltig */
 @media (max-width: 1023px) {
-  .pd-z .pd-hero::before { background: linear-gradient(180deg, var(--z-navy-2) 0%, var(--z-navy) 60%, #1d6aa8 100%); }
+  .pd-z .pd-hero::before { background: var(--z-navy); }
   .pd-z .pd-hero .keyfacts { grid-template-columns: 1fr; }
 }
