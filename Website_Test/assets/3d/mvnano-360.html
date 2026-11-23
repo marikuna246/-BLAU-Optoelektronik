@@ -12,7 +12,7 @@
   --fg:#e8eef5;
   --muted:#8ea0b6;
   --cyan:#1a9fc6;
-  --red:#e3242b;
+  --red:#00a6c1;
   --font-ui:Inter,"Segoe UI",Arial,sans-serif;
   --font-data:"Inter Tight",Inter,"Segoe UI",Arial,sans-serif;
   color-scheme:dark;
@@ -262,19 +262,19 @@ const fanMat = new THREE.ShaderMaterial({
   transparent:true, depthWrite:false, side:THREE.DoubleSide, blending:THREE.AdditiveBlending,
   uniforms:{uOn:{value:1}},
   vertexShader:'varying vec2 vUv; void main(){vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-  fragmentShader:'uniform float uOn; varying vec2 vUv; void main(){ float d=vUv.x; float a=(0.55*exp(-d*2.2)+0.05)*smoothstep(1.0,0.82,d); gl_FragColor=vec4(1.0,0.13,0.1,a*uOn);}'
+  fragmentShader:'uniform float uOn; varying vec2 vUv; void main(){ float d=vUv.x; float a=(0.55*exp(-d*2.2)+0.05)*smoothstep(1.0,0.82,d); gl_FragColor=vec4(0.0,0.78,0.86,a*uOn);}'
 });
 const fan = new THREE.Mesh(fanGeo, fanMat); spin.add(fan);
 
 const arcPts = [];
 for(let i=0;i<=80;i++){ const a=-HALF+i/80*2*HALF; arcPts.push(new THREE.Vector3(tip+FAN_L*0.82*Math.cos(a), FAN_L*0.82*Math.sin(a), 0)); }
 const lineMesh = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(arcPts),80,0.022,8,false),
-  new THREE.MeshBasicMaterial({color:0xff3b30, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false}));
+  new THREE.MeshBasicMaterial({color:0x00cdda, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false}));
 spin.add(lineMesh);
 
 const gc = document.createElement('canvas'); gc.width = gc.height = 128;
 const gg = gc.getContext('2d'); const grd = gg.createRadialGradient(64,64,0,64,64,64);
-grd.addColorStop(0,'rgba(255,220,210,1)'); grd.addColorStop(0.25,'rgba(255,60,40,0.8)'); grd.addColorStop(1,'rgba(255,0,0,0)');
+grd.addColorStop(0,'rgba(210,250,252,1)'); grd.addColorStop(0.25,'rgba(0,205,218,0.8)'); grd.addColorStop(1,'rgba(0,205,218,0)');
 gg.fillStyle = grd; gg.fillRect(0,0,128,128);
 const glow = new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(gc), blending:THREE.AdditiveBlending, depthWrite:false, transparent:true}));
 glow.position.set(tip+0.08,0,0); glow.scale.set(0.8,0.8,1); spin.add(glow);
@@ -297,7 +297,7 @@ for(let d=0; d<360; d+=30){ const a = -d*Math.PI/180; pg.fillText(d+'°', 512+Ma
 const ptex = new THREE.CanvasTexture(pc); ptex.anisotropy = 8;
 const disc = new THREE.Mesh(new THREE.PlaneGeometry(8,8), new THREE.MeshBasicMaterial({map:ptex, transparent:true, depthWrite:false}));
 disc.rotation.x = -Math.PI/2; plate.add(disc);
-const pointer = new THREE.Mesh(new THREE.ConeGeometry(0.1,0.3,3), new THREE.MeshBasicMaterial({color:0xe3242b}));
+const pointer = new THREE.Mesh(new THREE.ConeGeometry(0.1,0.3,3), new THREE.MeshBasicMaterial({color:0x00a6c1}));
 pointer.rotation.z = -Math.PI/2; pointer.position.set(3.55,0.01,0);
 const pointerArm = new THREE.Group(); pointerArm.add(pointer); plate.add(pointerArm);
 

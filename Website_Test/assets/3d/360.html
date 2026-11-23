@@ -12,16 +12,16 @@ html, body { height: 100%; margin: 0; }
 body { background: #fff; overflow: hidden; font-family: Inter, "Segoe UI", Arial, sans-serif; user-select: none; -webkit-user-select: none; }
 .stage { position: absolute; inset: 0; display: grid; place-items: center; cursor: grab; touch-action: pan-y; outline: none; }
 .stage:active { cursor: grabbing; }
-.stage:focus-visible { box-shadow: inset 0 0 0 2px #003368; }
+.stage:focus-visible { box-shadow: inset 0 0 0 2px #003d74; }
 canvas { width: 100%; height: 100%; display: block; }
 .ring { position: absolute; left: 50%; bottom: 7%; width: 62%; height: 11%; transform: translateX(-50%); pointer-events: none; }
 .ring ellipse { fill: none; stroke: #c9d3df; stroke-width: 1.2; }
-.ring circle { fill: #003368; }
-.icon { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 86px; height: 86px; border-radius: 50%; background: rgba(255,255,255,.85); box-shadow: 0 6px 24px -8px rgba(0,26,53,.35); display: grid; place-items: center; color: #003368; pointer-events: none; opacity: 0; transition: opacity .4s; }
+.ring circle { fill: #003d74; }
+.icon { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 86px; height: 86px; border-radius: 50%; background: rgba(255,255,255,.85); box-shadow: 0 6px 24px -8px rgba(0,26,53,.35); display: grid; place-items: center; color: #003d74; pointer-events: none; opacity: 0; transition: opacity .4s; }
 .icon.show { opacity: 1; }
 .icon svg { width: 56px; height: 34px; }
 .load { position: absolute; left: 50%; bottom: 3%; transform: translateX(-50%); width: 120px; height: 3px; background: #e6eaef; border-radius: 3px; overflow: hidden; transition: opacity .4s; }
-.load i { display: block; height: 100%; width: 0; background: #003368; }
+.load i { display: block; height: 100%; width: 0; background: #003d74; }
 .msg { position: absolute; inset: 0; display: grid; place-items: center; color: #5f6b7c; font-size: 14px; padding: 24px; text-align: center; }
 </style>
 </head>

@@ -161,5 +161,9 @@
   // Links wie produkte.html?kategorie=punktlaser wählen den Bereich vor
   var k = (location.search.match(/kategorie=([\w-]+)/) || [])[1];
   if (k && AREAS[k]) $("[data-area]").value = k;
+  // Suchwort von der Startseite (produkte.html?q=…) übernehmen und zum Finder springen
+  var qq = new URLSearchParams(location.search).get("q");
+  if (qq) { $("[data-q]").value = qq.slice(0, 80); setTimeout(function () { root.closest("section").scrollIntoView(); }, 50); }
+  if (k || qq) setTimeout(function () { var sec = root.closest("section"); if (sec && !qq) sec.scrollIntoView(); }, 50);
   syncSlider("range"); render();
 })();

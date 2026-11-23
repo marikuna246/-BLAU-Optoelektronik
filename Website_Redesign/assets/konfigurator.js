@@ -65,9 +65,9 @@
     ];
   }
   function powellSketch() {
-    var d = S.pd, eh = pEH(), h = P_H[d], hNom = (h[0] + h[1]) / 2, k = 120 / d, x0 = 70, cy = 95, hd = (d / 2) * k, xe = x0 + eh * k, xa = x0 + hNom * k, N = "#003368";
+    var d = S.pd, eh = pEH(), h = P_H[d], hNom = (h[0] + h[1]) / 2, k = 120 / d, x0 = 70, cy = 95, hd = (d / 2) * k, xe = x0 + eh * k, xa = x0 + hNom * k, N = "#003d74";
     var arr = function (x1, y1, x2, y2) { return "<line x1='" + x1 + "' y1='" + y1 + "' x2='" + x2 + "' y2='" + y2 + "' stroke='" + N + "' stroke-width='1' marker-start='url(#ps-a)' marker-end='url(#ps-a)'/>"; };
-    return "<svg viewBox='0 0 330 230' role='img' aria-label='" + (EN ? "Dimensional sketch Powell lens" : "Maßskizze Powell-Linse") + "'><defs><marker id='ps-a' viewBox='0 0 10 10' refX='5' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0 0 L10 5 L0 10 z' fill='" + N + "'/></marker><marker id='ps-r' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='5' markerHeight='5' orient='auto'><path d='M0 0 L10 5 L0 10 z' fill='#e51837'/></marker></defs>" +
+    return "<svg viewBox='0 0 330 230' role='img' aria-label='" + (EN ? "Dimensional sketch Powell lens" : "Maßskizze Powell-Linse") + "'><defs><marker id='ps-a' viewBox='0 0 10 10' refX='5' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0 0 L10 5 L0 10 z' fill='" + N + "'/></marker><marker id='ps-r' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='5' markerHeight='5' orient='auto'><path d='M0 0 L10 5 L0 10 z' fill='#00a6c1'/></marker></defs>" +
       "<path d='M" + x0 + " " + (cy - hd) + " L" + xe + " " + (cy - hd) + " L" + xa + " " + cy + " L" + xe + " " + (cy + hd) + " L" + x0 + " " + (cy + hd) + " Z' fill='#e0e7ef' stroke='" + N + "' stroke-width='1.5'/>" +
       "<line x1='" + (x0 - 10) + "' x2='" + (xa + 30) + "' y1='" + cy + "' y2='" + cy + "' stroke='" + N + "' stroke-width='.8' stroke-dasharray='8 3 2 3'/>" +
       "<line x1='" + (x0 - 34) + "' x2='" + (x0 - 2) + "' y1='" + (cy - hd) + "' y2='" + (cy - hd) + "' stroke='#94a3b8' stroke-width='.8'/><line x1='" + (x0 - 34) + "' x2='" + (x0 - 2) + "' y1='" + (cy + hd) + "' y2='" + (cy + hd) + "' stroke='#94a3b8' stroke-width='.8'/>" +
@@ -76,7 +76,7 @@
       arr(x0, cy + hd + 22, xe, cy + hd + 22) + "<text x='" + ((x0 + xe) / 2) + "' y='" + (cy + hd + 17) + "' text-anchor='middle' font-size='11' fill='" + N + "'>EH " + num1(eh) + " mm</text>" +
       arr(x0, cy + hd + 54, xa, cy + hd + 54) + "<text x='" + ((x0 + xa) / 2) + "' y='" + (cy + hd + 49) + "' text-anchor='middle' font-size='11' fill='" + N + "'>H " + num1(h[0]) + "–" + num1(h[1]) + " mm</text>" +
       "<text x='" + (xa + 6) + "' y='" + (cy - hd + 4) + "' font-size='11' font-weight='600' fill='" + N + "'>" + (EN ? "Roof apex" : "Dachfirst") + "</text><line x1='" + (xa + 22) + "' y1='" + (cy - hd + 8) + "' x2='" + (xa + 2) + "' y2='" + (cy - 4) + "' stroke='" + N + "' stroke-width='.8'/>" +
-      "<line x1='" + (xa + 75) + "' x2='" + (xa + 8) + "' y1='" + cy + "' y2='" + cy + "' stroke='#e51837' stroke-width='2.5' marker-end='url(#ps-r)'/><text x='" + (xa + 42) + "' y='" + (cy - 8) + "' text-anchor='middle' font-size='10' fill='#e51837'>Laser</text></svg>";
+      "<line x1='" + (xa + 75) + "' x2='" + (xa + 8) + "' y1='" + cy + "' y2='" + cy + "' stroke='#00a6c1' stroke-width='2.5' marker-end='url(#ps-r)'/><text x='" + (xa + 42) + "' y='" + (cy - 8) + "' text-anchor='middle' font-size='10' fill='#00a6c1'>Laser</text></svg>";
   }
   function powellView() {
     var pill = function (k, v, label) { return "<button type='button' class='cfg-pill" + (S[k] === v ? " is-selected" : "") + "' data-set='" + k + "' data-val='" + v + "' aria-pressed='" + (S[k] === v) + "'>" + label + "</button>"; };
@@ -289,13 +289,13 @@
   };
   function fanDiagram(fan) {
     var W = 320, H = 200, ax = 160, ay = 26, by = 176, half = Math.min(150, Math.tan((fan / 2) * Math.PI / 180) * (by - ay));
-    return "<svg viewBox='0 0 " + W + " " + H + "' role='img' aria-label='" + (EN ? "Laser fan with " : "Laserfächer mit ") + fan + (EN ? " degrees" : " Grad") + "'><defs><linearGradient id='cfg-fan' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#e51837' stop-opacity='.55'/><stop offset='1' stop-color='#e51837' stop-opacity='.08'/></linearGradient></defs>" +
+    return "<svg viewBox='0 0 " + W + " " + H + "' role='img' aria-label='" + (EN ? "Laser fan with " : "Laserfächer mit ") + fan + (EN ? " degrees" : " Grad") + "'><defs><linearGradient id='cfg-fan' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#00a6c1' stop-opacity='.55'/><stop offset='1' stop-color='#00a6c1' stop-opacity='.08'/></linearGradient></defs>" +
       "<rect x='" + (ax - 9) + "' y='0' width='18' height='" + (ay - 2) + "' rx='3' fill='#2d8de8'/><rect x='" + (ax - 10) + "' y='" + (ay - 8) + "' width='20' height='8' rx='2' fill='#111'/>" +
       "<polygon class='cfg-fan__poly' points='" + ax + "," + ay + " " + (ax - half) + "," + by + " " + (ax + half) + "," + by + "' fill='url(#cfg-fan)'/>" +
-      "<line x1='" + (ax - half) + "' y1='" + by + "' x2='" + (ax + half) + "' y2='" + by + "' stroke='#e51837' stroke-width='3' stroke-linecap='round' class='cfg-fan__line'/>" +
+      "<line x1='" + (ax - half) + "' y1='" + by + "' x2='" + (ax + half) + "' y2='" + by + "' stroke='#00a6c1' stroke-width='3' stroke-linecap='round' class='cfg-fan__line'/>" +
       "<line x1='12' y1='" + ay + "' x2='12' y2='" + by + "' stroke='#9fb0c4' stroke-dasharray='3 3'/><text x='18' y='" + ((ay + by) / 2) + "' font-size='11' fill='#5f6b7c'>d</text>" +
-      "<text x='" + ax + "' y='" + (by + 18) + "' font-size='12' text-anchor='middle' fill='#003368' font-weight='700'>L</text>" +
-      "<text x='" + (ax + 12) + "' y='" + (ay + 34) + "' font-size='11' fill='#e51837'>" + fan + "°</text></svg>";
+      "<text x='" + ax + "' y='" + (by + 18) + "' font-size='12' text-anchor='middle' fill='#003d74' font-weight='700'>L</text>" +
+      "<text x='" + (ax + 12) + "' y='" + (ay + 34) + "' font-size='11' fill='#00a6c1'>" + fan + "°</text></svg>";
   }
   R.electrical = function () {
     return "<h2 class='cfg-h'>" + (EN ? "Modulation, cable and connector" : "Modulation, Kabel und Stecker") + "</h2><div class='cfg-grid cfg-grid--3 cfg-grid--tight'>" + MODS.map(function (md) {
@@ -308,7 +308,7 @@
   function modById(id) { for (var i = 0; i < MODS.length; i++) if (MODS[i].id === id) return MODS[i]; return MODS[0]; }
   function modCurve(kind) {
     var path = { none: "M6 10 H54", dig: "M6 6 H24 V30 H54", digi: "M6 30 H24 V6 H54", ana: "M6 6 L14 6 L46 30 L54 30", anai: "M6 30 L14 30 L46 6 L54 6" }[kind];
-    return "<svg class='cfg-curve' viewBox='0 0 60 36' aria-hidden='true'><path d='M6 2 V32 H58' fill='none' stroke='#c9d3df'/><path d='" + path + "' fill='none' stroke='#e51837' stroke-width='2'/></svg>";
+    return "<svg class='cfg-curve' viewBox='0 0 60 36' aria-hidden='true'><path d='M6 2 V32 H58' fill='none' stroke='#c9d3df'/><path d='" + path + "' fill='none' stroke='#00a6c1' stroke-width='2'/></svg>";
   }
   R.options = function () {
     return "<h2 class='cfg-h'>" + (EN ? "Further options" : "Weitere Optionen") + "</h2><div class='cfg-checks'>" + OPTIONS.map(function (o) {

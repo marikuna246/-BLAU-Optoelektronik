@@ -1,0 +1,82 @@
+/* Produktseiten im Aufbau von z-laser.com (geteilter Kopf, Sechseck-Vorteile, graue Karten, dunkelblaue Abschlussfläche).
+   Inhalte bleiben die echten Produktdaten der Seite. BLAU-Farben: Dunkelblau, Türkis, Cyan – ohne Rot. */
+.pd-z { --z-navy: #003d74; --z-navy-2: #002a52; --z-teal: #00a6c1; --z-cyan: #00cdda; --z-soft: #f3f5f8; --z-line: #d9dfe4; }
+
+/* 1 · Kopf: links dunkelblau mit Text, rechts heller Verlauf mit Produktbild – getrennt durch eine feine Linie */
+.pd-z .pd-hero::before { background: linear-gradient(90deg, var(--z-navy-2) 0%, var(--z-navy) 48%, #1d6aa8 74%, #cfe6f5 100%); }
+.pd-z .pd-hero::after { background-image: none; }
+@media (min-width: 1024px) {
+  .pd-z .pd-top { grid-template-columns: 1fr 1.05fr; gap: 0; align-items: center; min-height: min(78vh, 720px); }
+  .pd-z .pd-info { order: -1; padding-right: 56px; }
+  .pd-z .pd-gallery { padding-left: 56px; border-left: 1px solid rgba(255, 255, 255, .28); }
+}
+.pd-z .pd-hero .eyebrow { color: var(--z-cyan); letter-spacing: .14em; }
+.pd-z .pd-hero h1 { font-weight: 650; font-size: clamp(2.6rem, 1.6rem + 3.6vw, 4.4rem); letter-spacing: -.035em; margin-bottom: 14px; }
+.pd-z .pd-hero .tagline { color: #d4e1ee; font-size: clamp(1.05rem, 1rem + .3vw, 1.22rem); max-width: 46ch; }
+/* Kennwerte als ruhige Zwei-Spalten-Liste (wie Datenblatt) */
+.pd-z .pd-hero .keyfacts { background: none; border: 0; border-radius: 0; gap: 0 28px; margin: 22px 0 30px; }
+.pd-z .pd-hero .keyfacts div { background: none; padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, .14); display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.pd-z .pd-hero .keyfacts dt { color: #a9c0d8; font-size: .88rem; }
+.pd-z .pd-hero .keyfacts dd { color: #fff; font-size: 1rem; text-align: right; margin: 0; }
+.pd-z .pd-hero .btn { border-radius: 8px; }
+.pd-z .pd-hero .btn--accent { --bg: var(--z-teal); --bd: var(--z-teal); }
+.pd-z .pd-hero .btn--ghost { --fg: #fff; --bd: rgba(255, 255, 255, .7); }
+.pd-z .pd-hero .btn--ghost:hover { --bg: #fff; --fg: var(--z-navy); color: var(--z-navy); }
+.pd-z .pd-hero .pd-gallery .main { border: 0; border-radius: 18px; box-shadow: 0 40px 80px -40px rgba(0, 26, 53, .7); }
+.pd-z .pd-hero .thumbs button { border-radius: 10px; border-color: rgba(255, 255, 255, .5); background: #fff; }
+.pd-z .pd-hero .thumbs button[aria-pressed="true"] { border-color: var(--z-cyan); box-shadow: 0 0 0 2px var(--z-cyan); }
+.pd-z .pd-note { color: #a9c0d8 !important; }
+
+/* Abschnitts-Navigation */
+.pd-z .subnav { background: #fff; border-bottom: 1px solid var(--z-line); }
+.pd-z .subnav a.is-active, .pd-z .subnav a:hover { color: var(--z-teal); }
+
+/* Überschriften zentriert wie bei Z-Laser */
+.pd-z main > .section .section-head, .pd-z #vorteile .two-col > div:first-child { text-align: center; margin-left: auto; margin-right: auto; max-width: 780px; }
+.pd-z main > .section h2 { color: var(--z-navy); font-weight: 650; }
+.pd-z main > .section .eyebrow { color: var(--z-teal); }
+.pd-z main > .section .lead { margin-left: auto; margin-right: auto; }
+
+/* 2 · Vorteile: Einleitung oben, darunter Kacheln mit Sechseck-Symbol */
+.pd-z #vorteile .two-col { display: block; }
+.pd-z #vorteile .two-col > div:first-child p:not(.eyebrow):not(.lead) { color: var(--muted); }
+.pd-z #vorteile .benefit-list { display: grid; gap: 18px; grid-template-columns: 1fr; margin-top: clamp(32px, 4vw, 52px); }
+@media (min-width: 720px) { .pd-z #vorteile .benefit-list { grid-template-columns: repeat(3, 1fr); } }
+.pd-z #vorteile .benefit { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; background: var(--z-soft); border: 0; border-radius: 18px; padding: 34px 26px; transition: transform .3s cubic-bezier(.22, .7, .2, 1), box-shadow .3s; }
+.pd-z #vorteile .benefit:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -32px rgba(0, 26, 53, .55); }
+.pd-z #vorteile .benefit .icon { width: 80px; height: 90px; border-radius: 0; background: linear-gradient(160deg, #0a5a9c, var(--z-navy)); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); display: grid; place-items: center; color: #fff; flex: none; }
+.pd-z #vorteile .benefit .icon svg { width: 34px; height: 34px; color: #fff; stroke: #fff; }
+.pd-z #vorteile .benefit h3 { color: var(--z-navy); font-size: 1.12rem; margin-bottom: 6px; }
+.pd-z #vorteile .benefit p { color: var(--muted); font-size: .95rem; margin: 0; }
+
+/* 3 · Varianten / Technische Daten: helle Karten */
+.pd-z .housing { background: var(--z-soft); border: 0; border-radius: 18px; overflow: hidden; transition: transform .3s, box-shadow .3s; }
+.pd-z .housing:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -32px rgba(0, 26, 53, .55); }
+.pd-z .housing .media { background: #fff; margin: 10px 10px 0; border-radius: 12px; }
+.pd-z .housing code { background: #e6f6fa; color: var(--z-navy); border-radius: 6px; padding: 3px 8px; }
+.pd-z .housing h3 { color: var(--z-navy); }
+.pd-z .section--panel { background: #fff; }
+.pd-z .section--panel + .section--panel { background: var(--z-soft); }
+
+/* Downloads: große Kachel mit Symbol */
+.pd-z #downloads .two-col { align-items: center; }
+.pd-z .download { border-radius: 14px; border: 1px solid var(--z-line); background: #fff; transition: border-color .2s, transform .25s; }
+.pd-z .download:hover { border-color: var(--z-teal); transform: translateY(-2px); }
+.pd-z .download .ft { background: var(--z-navy); color: #fff; border-radius: 8px; }
+
+/* 4 · Ähnliche Produkte: helle Karten mit "Mehr erfahren" in Türkis */
+.pd-z .product-grid .product-card { border: 0; border-radius: 18px; background: var(--z-soft); }
+.pd-z .product-grid .product-card .media { margin: 10px 10px 0; border-radius: 12px; border: 0; }
+.pd-z .product-grid .product-card h3 a { color: var(--z-navy); }
+.pd-z .product-grid .product-card .foot { border-top-color: var(--z-line); color: var(--z-teal); }
+
+/* 5 · Abschluss: dunkelblaue Fläche mit Verlauf wie das "Ergebnis" bei Z-Laser */
+.pd-z .cta-band { background: linear-gradient(115deg, var(--z-navy-2) 0%, var(--z-navy) 55%, #1d6aa8 100%); border-radius: 22px; color: #d4e1ee; }
+.pd-z .cta-band::before { background: linear-gradient(90deg, transparent, rgba(0, 205, 218, .9), transparent); }
+.pd-z .cta-band .btn--accent { --bg: var(--z-teal); --bd: var(--z-teal); border-radius: 8px; }
+.pd-z .cta-contact .direct { color: #fff; }
+/* Handy/Tablet: Verlauf von oben nach unten (Text bleibt auf Dunkelblau), Kennwerte einspaltig */
+@media (max-width: 1023px) {
+  .pd-z .pd-hero::before { background: linear-gradient(180deg, var(--z-navy-2) 0%, var(--z-navy) 60%, #1d6aa8 100%); }
+  .pd-z .pd-hero .keyfacts { grid-template-columns: 1fr; }
+}

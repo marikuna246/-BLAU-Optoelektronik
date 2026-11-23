@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>360°-Ansicht | BLAU Optoelektronik</title>
+<meta name="robots" content="noindex">
+<style>
+/* 360°-Ansicht aus einer Fotoserie (z. B. 36 Fotos, alle 10° auf dem Drehteller aufgenommen).
+   Dreht beim Öffnen einmal ganz herum, danach mit Maus/Finger ziehen oder Pfeiltasten. */
+html, body { height: 100%; margin: 0; }
+body { background: #fff; overflow: hidden; font-family: Inter, "Segoe UI", Arial, sans-serif; user-select: none; -webkit-user-select: none; }
+.stage { position: absolute; inset: 0; display: grid; place-items: center; cursor: grab; touch-action: pan-y; outline: none; }
+.stage:active { cursor: grabbing; }
+.stage:focus-visible { box-shadow: inset 0 0 0 2px #003d74; }
+canvas { width: 100%; height: 100%; display: block; }
+.ring { position: absolute; left: 50%; bottom: 7%; width: 62%; height: 11%; transform: translateX(-50%); pointer-events: none; }
+.ring ellipse { fill: none; stroke: #c9d3df; stroke-width: 1.2; }
+.ring circle { fill: #003d74; }
+.icon { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 86px; height: 86px; border-radius: 50%; background: rgba(255,255,255,.85); box-shadow: 0 6px 24px -8px rgba(0,26,53,.35); display: grid; place-items: center; color: #003d74; pointer-events: none; opacity: 0; transition: opacity .4s; }
+.icon.show { opacity: 1; }
+.icon svg { width: 56px; height: 34px; }
+.load { position: absolute; left: 50%; bottom: 3%; transform: translateX(-50%); width: 120px; height: 3px; background: #e6eaef; border-radius: 3px; overflow: hidden; transition: opacity .4s; }
+.load i { display: block; height: 100%; width: 0; background: #003d74; }
+.msg { position: absolute; inset: 0; display: grid; place-items: center; color: #5f6b7c; font-size: 14px; padding: 24px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="stage" id="stage" tabindex="0" role="img">
+  <canvas id="cv"></canvas>
+  <svg class="ring" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="100" cy="20" rx="98" ry="18"/><circle id="dot" cx="100" cy="38" r="3.5"/></svg>
+  <div class="icon" id="icon" aria-hidden="true"><svg viewBox="0 0 56 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="28" cy="17" rx="25" ry="9"/><path d="M44 8.5l5 3-5.5 2"/><text x="28" y="21" text-anchor="middle" font-family="Inter, Arial" font-size="11" font-weight="700" fill="currentColor" stroke="none">360°</text></svg></div>
+  <div class="load" id="load"><i id="bar"></i></div>
+</div>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search), EN = q.get("lang") === "en";
+  document.documentElement.lang = EN ? "en" : "de";
+  var folder = q.get("folder") || "", N = Math.max(2, Math.min(180, +q.get("n") || 36)), ext = (q.get("ext") || "jpg").replace(/[^a-z]/gi, "");
+  var stage = document.getElementById("stage"), cv = document.getElementById("cv"), g = cv.getContext("2d");
+  stage.setAttribute("aria-label", (q.get("alt") || "") + (EN ? " – 360° view. Drag or use the arrow keys to rotate." : " – 360°-Ansicht. Zum Drehen ziehen oder Pfeiltasten nutzen."));
+  // nur Fotoserien aus dem eigenen Ordner assets/360/
+  if (!/^(\.\.\/)*360\/[a-z0-9-]+\/?$/.test(folder)) { document.body.innerHTML = '<p class="msg">' + (EN ? "No 360° images available." : "Keine 360°-Bilder vorhanden.") + "</p>"; return; }
+  if (!/\/$/.test(folder)) folder += "/";
+
+  var frames = new Array(N), loaded = 0, cur = 0, ready = false;
+  function size() { var r = devicePixelRatio || 1; cv.width = stage.clientWidth * r; cv.height = stage.clientHeight * r; draw(); }
+  function draw() {
+    var im = frames[cur]; if (!im || !im.naturalWidth) return;
+    var W = cv.width, H = cv.height, s = Math.min(W / im.naturalWidth, H * .86 / im.naturalHeight);
+    var w = im.naturalWidth * s, h = im.naturalHeight * s;
+    g.clearRect(0, 0, W, H); g.drawImage(im, (W - w) / 2, (H - h) / 2 - H * .03, w, h);
+    var a = cur / N * Math.PI * 2, dot = document.getElementById("dot");
+    dot.setAttribute("cx", (100 + Math.sin(a) * 98).toFixed(1)); dot.setAttribute("cy", (20 + Math.cos(a) * 18).toFixed(1));
+  }
+  function show(i) { cur = ((i % N) + N) % N; draw(); }
+
+  // Bilder laden: zuerst Bild 1, dann der Rest
+  function load(i, cb) { var im = new Image(); im.decoding = "async"; im.onload = im.onerror = function () { loaded++; document.getElementById("bar").style.width = (loaded / N * 100) + "%"; cb && cb(); }; im.src = folder + (i + 1) + "." + ext; frames[i] = im; }
+  load(0, function () {
+    size();
+    var left = N - 1;
+    for (var i = 1; i < N; i++) load(i, function () { if (--left === 0) start(); });
+    if (N === 1) start();
+  });
+  addEventListener("resize", size);
+
+  // einmal herumdrehen (wie "play once"), dann von Hand
+  var spinning = false;
+  function start() {
+    ready = true; document.getElementById("load").style.opacity = 0;
+    // jedes Bild einzeln zeigen (kein Überspringen, auch wenn der Browser gerade langsam ist)
+    spinning = true; var k = 0;
+    (function tick() {
+      if (!spinning) return;
+      k++;
+      if (k >= N) { spinning = false; show(0); hint(); return; }
+      show(k); setTimeout(tick, 60);
+    })();
+  }
+  var icon = document.getElementById("icon"), hinted = false;
+  function hint() { if (hinted) return; hinted = true; icon.classList.add("show"); setTimeout(function () { icon.classList.remove("show"); }, 2200); }
+
+  // Ziehen: eine Bildbreite = ca. eine Umdrehung
+  var dragging = false, x0 = 0, f0 = 0;
+  stage.addEventListener("pointerdown", function (e) { if (!ready) return; spinning = false; icon.classList.remove("show"); dragging = true; x0 = e.clientX; f0 = cur; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener("pointermove", function (e) { if (!dragging) return; var per = stage.clientWidth / N * .9; show(f0 - Math.round((e.clientX - x0) / per)); });
+  function up() { dragging = false; }
+  stage.addEventListener("pointerup", up); stage.addEventListener("pointercancel", up);
+  stage.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") { spinning = false; show(cur + 1); e.preventDefault(); }
+    if (e.key === "ArrowRight") { spinning = false; show(cur - 1); e.preventDefault(); }
+  });
+})();
+</script>
+</body>
+</html>

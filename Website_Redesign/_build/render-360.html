@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Render 360° (Werkzeug)</title>
+<meta name="robots" content="noindex">
+<style>html,body{margin:0;background:#fff}canvas{display:block}</style>
+</head>
+<body>
+<!-- Werkzeug: rendert vereinfachte 3D-Modelle der BLAU-Produkte für die 360°-Ansicht.
+     Wird von _build/render-360.js (Chrome ohne Fenster) aufgerufen: ?p=<produkt>; window.frame(i, n) liefert ein JPEG. -->
+<script src="../assets/3d/three.min.js"></script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search), P = q.get("p") || "mvnano";
+  var W = +q.get("w") || 1200, H = +q.get("h") || 900;
+  var renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.setClearColor(0xffffff, 1);
+  renderer.outputEncoding = THREE.sRGBEncoding; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+  document.body.appendChild(renderer.domElement);
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(12, W / H, .1, 200); camera.position.set(0, 7, 31); camera.lookAt(0, -.45, 0);
+
+  (function () { // helle Studio-Umgebung
+    var c = document.createElement("canvas"); c.width = 1024; c.height = 512; var g = c.getContext("2d"), s = g.createLinearGradient(0, 0, 0, 512);
+    s.addColorStop(0, "#ffffff"); s.addColorStop(.5, "#c9d0d8"); s.addColorStop(1, "#7d8793"); g.fillStyle = s; g.fillRect(0, 0, 1024, 512);
+    g.fillStyle = "#fff"; g.fillRect(120, 110, 200, 160); g.fillRect(620, 80, 260, 120); g.fillRect(430, 10, 170, 60);
+    var t = new THREE.CanvasTexture(c); t.mapping = THREE.EquirectangularReflectionMapping; t.encoding = THREE.sRGBEncoding;
+    scene.environment = new THREE.PMREMGenerator(renderer).fromEquirectangular(t).texture;
+  })();
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x9aa4b0, .7));
+  var key = new THREE.DirectionalLight(0xffffff, 1.5); key.position.set(4, 7, 6); scene.add(key);
+  var fill = new THREE.DirectionalLight(0xdfe8ff, .6); fill.position.set(-6, 2, -4); scene.add(fill);
+
+  function mat(hex, metal, rough) { var m = new THREE.MeshStandardMaterial({ color: hex, metalness: metal, roughness: rough, envMapIntensity: .85 }); m.color.convertSRGBToLinear(); return m; }
+  var M = { blue: mat(0x0c46c8, .35, .32), black: mat(0x0a0a0c, .15, .5), silver: mat(0xc6ccd3, 1, .25), brass: mat(0xc9a35a, 1, .3), gold: mat(0xd4a64a, 1, .28),
+    groove: mat(0x0e2c5c, .4, .5), white: mat(0xf0f1f3, 0, .5), grey: mat(0x9aa1a9, 0, .6),
+    bore: new THREE.MeshStandardMaterial({ color: 0x050506, roughness: .9, side: THREE.DoubleSide }),
+    glass: new THREE.MeshPhysicalMaterial({ color: 0xe6f0f8, roughness: .03, transparent: true, opacity: .45, clearcoat: 1, envMapIntensity: 2.4 }) };
+
+  var spin = new THREE.Group(), mod = new THREE.Group(); mod.rotation.z = -Math.PI / 2; spin.add(mod);
+  function lathe(pts, m) { return new THREE.Mesh(new THREE.LatheGeometry(pts.map(function (p) { return new THREE.Vector2(p[0], p[1]); }), 128), m); }
+  function tube(R, y0, y1, m) { var c = Math.min(.06, R * .12); mod.add(lathe([[0, y0], [R - c, y0], [R, y0 + c], [R, y1 - c], [R - c * .4, y1]], m)); }
+  function ring(R, y, m, w) { var t = new THREE.Mesh(new THREE.TorusGeometry(R, w || .01, 8, 128), m); t.rotation.x = Math.PI / 2; t.position.y = y; mod.add(t); }
+  function front(R, y0, y1, m, lensR) {
+    var c = Math.min(.05, R * .1), lr = lensR || R * .7;
+    mod.add(lathe([[R - .01, y0], [R + .004, y0 + .02], [R + .004, y1 - c], [R - c * .6, y1], [lr + .02, y1], [lr, y1 - .03], [lr, y1 - .22]], m));
+    var b = new THREE.Mesh(new THREE.CylinderGeometry(lr, lr, .01, 48), M.bore); b.position.y = y1 - .23; mod.add(b);
+    var lens = new THREE.Mesh(new THREE.SphereGeometry(lr * 1.6, 40, 12, 0, Math.PI * 2, 0, .55), M.glass); lens.position.y = y1 - .2 - lr * 1.6 * Math.cos(.55) + .06; mod.add(lens);
+    ring(lr * .9, y1 - .16, M.silver, .025);
+  }
+  function cable(y, r, m, b) {
+    b = b == null ? 1 : b;
+    var cv = new THREE.CatmullRomCurve3([new THREE.Vector3(0, y + .05, 0), new THREE.Vector3(0, y - .9, 0), new THREE.Vector3(.3 * b, y - 1.7, .1 * b), new THREE.Vector3(.9 * b, y - 2.3, .3 * b), new THREE.Vector3(1.5 * b, y - 2.6, .5 * b)]);
+    mod.add(new THREE.Mesh(new THREE.TubeGeometry(cv, 80, r, 20, false), m));
+  }
+  function m12(y) {
+    mod.add(lathe([[0, y], [.5, y], [.5, y - .25], [.42, y - .3], [.42, y - .9], [0, y - .9]], M.silver));
+    for (var k = 0; k < 6; k++) ring(.43, y - .38 - k * .09, M.silver, .018);
+    var nut = new THREE.Mesh(new THREE.CylinderGeometry(.62, .62, .3, 6), M.silver); nut.position.y = y - .12; mod.add(nut);
+  }
+  function engrave(R, y0, y1) { // helle Lasergravur "BLAU OPTOELEKTRONIK" längs der Achse
+    var Hh = y1 - y0, C = 2 * Math.PI * R, Wc = 2048, hc = Math.max(128, Math.round(Wc * Hh / C));
+    var c = document.createElement("canvas"); c.width = Wc; c.height = hc; var g = c.getContext("2d");
+    g.fillStyle = "rgba(225,233,244,.95)"; g.translate(Wc * .25 + 60, hc * .1); g.rotate(Math.PI / 2);
+    var fs = Math.min(150, Wc * .07); g.font = "800 " + fs + "px Arial, sans-serif"; g.fillText("BLAU", 0, 0);
+    g.font = "700 " + fs * .26 + "px Arial, sans-serif"; g.fillText("OPTOELEKTRONIK", 3, fs * .42);
+    var t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 8;
+    var band = new THREE.Mesh(new THREE.CylinderGeometry(R + .002, R + .002, Hh, 128, 1, true), new THREE.MeshStandardMaterial({ map: t, transparent: true, depthWrite: false, roughness: .5 }));
+    band.position.y = (y0 + y1) / 2; mod.add(band);
+  }
+  function cyl(o) {
+    var R = o.d / 20, L = o.l / 10, y0 = -L / 2, y1 = L / 2, cap = o.cap || Math.min(.7, L * .13);
+    tube(R, y0, y1 - cap, o.body || M.blue);
+    ring(R, y0 + (L - cap) * .78, M.groove);
+    front(R, y1 - cap, y1, o.front || M.black, o.lens);
+    if (o.engrave !== false) engrave(R, y0 + .25, y0 + (L - cap) * .7);
+    if (o.band) { var b = new THREE.Mesh(new THREE.CylinderGeometry(R + .01, R + .01, o.band[1], 128), M.gold); b.position.y = y0 + (L - cap) * o.band[0]; mod.add(b); }
+    if (o.m12) m12(y0); else cable(y0, o.cableR || Math.max(.1, R * .28), o.cable || M.white, o.bend);
+  }
+  var MODELS = {
+    mvnano: function () { cyl({ d: 11.5, l: 54 }); },
+    mvfemto: function () { cyl({ d: 8, l: 40, cableR: .1 }); },
+    mvpico: function () { cyl({ d: 10, l: 50 }); },
+    mvmicro: function () { cyl({ d: 19, l: 65, m12: true, lens: .5 }); },
+    mvpulse: function () { cyl({ d: 12, l: 60, m12: true }); },
+    mvpulsehp: function () { cyl({ d: 16, l: 70, cableR: .18 }); },
+    mvgoldhp: function () { cyl({ d: 48, l: 146, cap: 2.2, lens: 1.2, band: [.55, .9], cableR: .5, bend: 2.5 }); },
+    linienlaser: function () { cyl({ d: 11.5, l: 55, body: M.black, front: M.silver, cable: M.grey, engrave: false }); },
+    punktlaser: function () { cyl({ d: 11.5, l: 55, body: M.black, front: M.brass, cable: M.grey, engrave: false, lens: .25 }); },
+    doe: function () { cyl({ d: 11.5, l: 55 }); },
+    mvsquare: function () {
+      var box = new THREE.Mesh(new THREE.BoxGeometry(1.5, 5.6, 1.5), M.blue); box.position.y = -.45; mod.add(box);
+      var cap = new THREE.Mesh(new THREE.BoxGeometry(1.52, .9, 1.52), M.black); cap.position.y = 2.8; mod.add(cap);
+      var lens = new THREE.Mesh(new THREE.CylinderGeometry(.42, .42, .04, 40), M.glass); lens.position.y = 3.26; mod.add(lens);
+      var lr = new THREE.Mesh(new THREE.TorusGeometry(.42, .03, 10, 48), M.silver); lr.rotation.x = Math.PI / 2; lr.position.y = 3.26; mod.add(lr);
+      [-1.6, .9].forEach(function (y) { var s = new THREE.Mesh(new THREE.CylinderGeometry(.12, .12, 1.54, 20), M.silver); s.rotation.z = Math.PI / 2; s.position.y = y; mod.add(s); });
+      cable(-3.25, .17, M.white);
+    },
+  };
+  (MODELS[P] || MODELS.mvnano)();
+
+  // zentrieren und auf gleiche Größe bringen; Drehachse = senkrecht durch die Mitte
+  var pivot = new THREE.Group(); scene.add(pivot); pivot.add(spin);
+  var box = new THREE.Box3().setFromObject(spin), size = box.getSize(new THREE.Vector3()), ctr = box.getCenter(new THREE.Vector3());
+  var s = 6.6 / Math.max(size.x, size.z, size.y * 2);
+  spin.scale.setScalar(s); spin.position.set(-ctr.x * s, -ctr.y * s, -ctr.z * s);
+  (function () { // weicher Bodenschatten
+    var c = document.createElement("canvas"); c.width = c.height = 256; var g = c.getContext("2d"), r = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+    r.addColorStop(0, "rgba(0,26,53,.16)"); r.addColorStop(1, "rgba(0,26,53,0)"); g.fillStyle = r; g.fillRect(0, 0, 256, 256);
+    var sh = new THREE.Mesh(new THREE.PlaneGeometry(6.5, 4.5), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false }));
+    sh.rotation.x = -Math.PI / 2; sh.position.y = -size.y * s / 2 - .12; scene.add(sh);
+  })();
+
+  var START = -0.55; // Bild 1: Schrägansicht von vorn
+  window.frame = function (i, n) { pivot.rotation.y = START - i / n * Math.PI * 2; renderer.render(scene, camera); return renderer.domElement.toDataURL("image/jpeg", .9); };
+  window.frame(0, 36); window.ready = true;
+})();
+</script>
+</body>
+</html>

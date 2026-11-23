@@ -107,7 +107,7 @@ function page(lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${T.title}</title>
   <meta name="description" content="${T.desc}">
-  <meta name="theme-color" content="#003368">
+  <meta name="theme-color" content="#003d74">
   <link rel="alternate" hreflang="de" href="${en ? "../" : ""}produktfinder.html">
   <link rel="alternate" hreflang="en" href="${en ? "" : "en/"}produktfinder.html">
   <link rel="icon" href="${A}blau-logo.png">

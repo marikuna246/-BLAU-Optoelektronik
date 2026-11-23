@@ -139,7 +139,7 @@
 
     // Laserfächer
     var fan = ctx.createLinearGradient(0, ey, 0, pts[0][1]);
-    fan.addColorStop(0, "rgba(255,40,70,.30)"); fan.addColorStop(1, "rgba(255,40,70,.05)");
+    fan.addColorStop(0, "rgba(0,205,218,.30)"); fan.addColorStop(1, "rgba(0,205,218,.05)");
     ctx.fillStyle = fan;
     ctx.beginPath(); ctx.moveTo(ex, ey);
     for (var q = 0; q < pts.length; q++) ctx.lineTo(pts[q][0], pts[q][1]);
@@ -156,7 +156,7 @@
     }
 
     // Laserlinie mit Glühen (mehrere Striche)
-    var strokes = [[14, "rgba(229,24,55,.10)"], [7, "rgba(255,40,70,.28)"], [3, "rgba(255,50,80,.95)"], [1.2, "rgba(255,220,228,.95)"]];
+    var strokes = [[14, "rgba(0,166,193,.10)"], [7, "rgba(0,205,218,.28)"], [3, "rgba(0,205,218,.95)"], [1.2, "rgba(220,250,252,.95)"]];
     for (var w = 0; w < strokes.length; w++) {
       ctx.lineWidth = strokes[w][0]; ctx.strokeStyle = strokes[w][1]; ctx.lineJoin = "round"; ctx.lineCap = "round";
       ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
@@ -175,7 +175,7 @@
     ctx.fillStyle = cap; roundRect(ex - mw * 0.55, ey - mw * 0.62, mw * 1.1, mw * 0.62, mw * 0.12); ctx.fill();
     ctx.globalCompositeOperation = "lighter";
     var glow = ctx.createRadialGradient(ex, ey, 0, ex, ey, mw * 1.4);
-    glow.addColorStop(0, "rgba(255,90,110,.95)"); glow.addColorStop(0.25, "rgba(255,40,70,.45)"); glow.addColorStop(1, "rgba(255,40,70,0)");
+    glow.addColorStop(0, "rgba(120,235,240,.95)"); glow.addColorStop(0.25, "rgba(0,205,218,.45)"); glow.addColorStop(1, "rgba(0,205,218,0)");
     ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(ex, ey, mw * 1.4, 0, 6.2832); ctx.fill();
     ctx.globalCompositeOperation = "source-over";
   }

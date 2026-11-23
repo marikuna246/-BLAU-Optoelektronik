@@ -1,5 +1,5 @@
-// Startseite im Stil "Hell & ruhig" (nur Testordner). Ersetzt <main> in index.html und en/index.html.
-// Aufruf:  node Website_Test/_build/home-calm.js   (kann beliebig oft laufen)
+// Startseite im Stil "Hell & ruhig" . Ersetzt <main> in index.html und en/index.html.
+// Aufruf:  node Website_Redesign/_build/home-calm.js   (kann beliebig oft laufen)
 const fs = require("fs");
 const path = require("path");
 const root = path.resolve(__dirname, "..");
@@ -12,9 +12,9 @@ const T = {
     lead: "Linienlaser, Punktlaser und Powell-Linsen für Bildverarbeitung, Maschinenbau, Medizintechnik und Forschung – als Standardprodukt oder genau nach Ihren Vorgaben.",
     b1: "Produkte entdecken", b2: "Beratung anfragen",
     tag: "MVnano – der Standard für Machine Vision", imgAlt: "MVnano Linienlaser",
-    vPill: "Präzision in Licht und Optik", vH1: "Optoelektronische Lösungen für höchste Ansprüche",
-    vLead: "Seit über 30 Jahren entwickeln und fertigen wir hochpräzise Lasermodule, optische Sensoren und kundenspezifische Optoelektronik für Industrie, Medizintechnik und Forschung.",
-    vB2: "Kontakt aufnehmen", vPause: "Video anhalten", vPlay: "Video abspielen",
+    vPill: "Lasermodule · Made in Germany", vH1: "Lasermodule für präzises Messen, Prüfen und Ausrichten",
+    vLead: "Wir entwickeln und fertigen Linienlaser, Punktlaser und Powell-Linsen – für Bildverarbeitung, Maschinenbau, Medizintechnik und Forschung. Als Standardprodukt oder genau nach Ihren Vorgaben, seit 1987 in Überlingen am Bodensee.",
+    vB2: "Beratung anfragen", vPause: "Video anhalten", vPlay: "Video abspielen",
     trust: [["Seit 1987", "Erfahrung in Optoelektronik"], ["Made in Germany", "Entwicklung &amp; Fertigung"], ["ISO 9001:2015", "zertifiziert"], ["Eigene Powell-Linsen", "aus eigener Fertigung"]],
     trustLabel: "Fakten über BLAU Optoelektronik",
     catK: "Sortiment", catH: "Was wir herstellen", catP: "Fünf Produktbereiche – alle in Überlingen entwickelt und gefertigt.", catAll: "Alle Produkte",
@@ -52,9 +52,9 @@ const T = {
     lead: "Line lasers, dot lasers and Powell lenses for machine vision, mechanical engineering, medical technology and research – as standard products or built to your specifications.",
     b1: "Explore products", b2: "Request consultation",
     tag: "MVnano – the standard for machine vision", imgAlt: "MVnano line laser",
-    vPill: "Precision in light and optics", vH1: "Optoelectronic solutions for the highest demands",
-    vLead: "For more than 30 years we have been developing and manufacturing high-precision laser modules, optical sensors and custom optoelectronics for industry, medical technology and research.",
-    vB2: "Get in touch", vPause: "Pause video", vPlay: "Play video",
+    vPill: "Laser modules · Made in Germany", vH1: "Laser modules for precise measuring, inspection and alignment",
+    vLead: "We develop and manufacture line lasers, dot lasers and Powell lenses – for machine vision, mechanical engineering, medical technology and research. As standard products or built to your specifications, in Überlingen on Lake Constance since 1987.",
+    vB2: "Request advice", vPause: "Pause video", vPlay: "Play video",
     trust: [["Since 1987", "Experience in optoelectronics"], ["Made in Germany", "Development &amp; production"], ["ISO 9001:2015", "certified"], ["Own Powell lenses", "made in-house"]],
     trustLabel: "Facts about BLAU Optoelektronik",
     catK: "Product range", catH: "What we make", catP: "Five product areas – all developed and manufactured in Überlingen.", catAll: "All products",
@@ -89,7 +89,40 @@ const T = {
   },
 };
 
-function main(t, A) {
+// Branchen-Abschnitt (Reiter mit Bild, Liste und passenden Produkten) 1:1 aus der Redesign-Startseite übernehmen
+function branchen(lang) {
+  const src = fs.readFileSync(path.join(root, "..", "Website_Redesign", lang === "en" ? "en" : "", "index.html"), "utf8");
+  const m = src.match(/<section class="section section--panel" id="anwendungen"[\s\S]*?<\/section>/);
+  if (!m) throw new Error("Branchen-Abschnitt im Redesign nicht gefunden");
+  return m[0];
+}
+
+// Produktsuche-Kreis (Idee von heidenhain.de): Kreis mit Frage, Produktbereich-Symbole, Suchfeld -> Produktfinder
+const SEARCH = {
+  de: { h: "Sie wissen genau, welches Produkt Sie benötigen?", label: "Produktsuche", ph: "Produktname, Wellenlänge oder Anwendung – z. B. MVpico, 660 nm", btn: "Suchen",
+    nodes: [["machine-vision", "Machine Vision"], ["punktlaser", "Punktlaser"], ["powell-linsen", "Powell-Linsen"], ["linienlaser", "Linienlaser"]],
+    hint: "Oder direkt zu:" },
+  en: { h: "You know exactly which product you need?", label: "Product search", ph: "Product name, wavelength or application – e.g. MVpico, 660 nm", btn: "Search",
+    nodes: [["machine-vision", "Machine vision"], ["punktlaser", "Dot lasers"], ["powell-linsen", "Powell lenses"], ["linienlaser", "Line lasers"]],
+    hint: "Or go straight to:" },
+};
+const ICONS = {
+  "machine-vision": '<rect x="-15" y="-6" width="14" height="12" rx="2"/><path d="M-1 0l16-9M-1 0l16 9M15-9v18"/>',
+  punktlaser: '<rect x="-15" y="-6" width="14" height="12" rx="2"/><path d="M-1 0h12"/><circle cx="14" cy="0" r="2.5"/>',
+  "powell-linsen": '<path d="M-6-14c-4 4-4 24 0 28M6-14c4 4 4 24 0 28M-6-14h12M-6 14h12"/>',
+  linienlaser: '<path d="M-14 0h28M0-14v28"/><circle cx="0" cy="0" r="4"/>',
+};
+const NAMES_ALL = ["MVnano","MVfemto","MVpico","MVmicro","MVpulse","MVpulseHP","MVgoldHP","MVsquare","DOE","Powell","405 nm","450 nm","520 nm","532 nm","640 nm","660 nm","685 nm","785 nm","808 nm","830 nm","850 nm","M12"];
+
+// Neuheiten-Banner unter dem Video (Idee von z-laser.com); Inhalt wie "Neues aus der Fertigung" auf blauoptoelektronik.de
+const NEWS = {
+  de: { tag: "Neu aus der Fertigung", h: "MVpulse – Augensicherheit und hohe Leistung", p: "Unser MVpulse verbindet zwei Kriterien der industriellen Bildverarbeitung: viel Licht mit bis zu 100 mW Ausgangsleistung – und Augensicherheit nach Laserklasse 2.", more: "Mehr erfahren", ds: "Datenblatt (PDF)", dsFile: "FP-MVpulse-25_Datenblatt_DE.pdf", alt: "MVpulse Lasermodule" },
+  en: { tag: "New from production", h: "MVpulse – eye safety and high power", p: "Our MVpulse combines two criteria of industrial machine vision: plenty of light with up to 100 mW output power – and eye safety according to laser class 2.", more: "Learn more", ds: "Datasheet (PDF)", dsFile: "FP-MVpulse-25_Datasheet_EN.pdf", alt: "MVpulse laser modules" },
+};
+
+function main(t, A, lang) {
+  const N = NEWS[lang];
+  const S = SEARCH[lang];
   const [wide, ...cats] = t.cats;
   const cat = ([k, img, h, p, more], cls = "") => `
         <a class="c-cat${cls}" href="produkte.html?kategorie=${k}">
@@ -124,6 +157,21 @@ function main(t, A) {
     <div class="wrap"><ul>${t.trust.map(([b, s]) => `<li><b>${b}</b><span>${s}</span></li>`).join("")}</ul></div>
   </section>
 
+  <!-- NEUHEIT -->
+  <section class="c-news-sec" aria-labelledby="news-title">
+    <div class="wrap">
+      <article class="c-news reveal">
+        <div class="c-news__txt">
+          <p class="c-news__tag">${N.tag}</p>
+          <h2 id="news-title">${N.h}</h2>
+          <p>${N.p}</p>
+          <p class="c-news__links"><a class="c-news__more" href="produkt-mvpulse.html">${N.more} ${arrow}</a><a class="c-news__ds" href="${A}downloads/datenblaetter/${N.dsFile}" target="_blank" rel="noopener">${N.ds}</a></p>
+        </div>
+        <div class="c-news__img"><img src="${A}products/mvpulse-duo-wide.png" alt="${N.alt}" loading="lazy"></div>
+      </article>
+    </div>
+  </section>
+
   <!-- SORTIMENT -->
   <section class="c-sec" id="sortiment" aria-labelledby="sortiment-title">
     <div class="wrap">
@@ -133,6 +181,29 @@ function main(t, A) {
       </div>
       <div class="c-cats reveal-stagger">${cat(wide, " c-cat--wide")}${cats.map((c) => cat(c)).join("")}
       </div>
+    </div>
+  </section>
+
+  <!-- PRODUKTSUCHE-KREIS -->
+  <section class="c-search" aria-labelledby="search-title">
+    <div class="wrap">
+      <div class="c-search__stage reveal">
+        <svg class="c-search__art" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <g class="c-search__ring"><circle cx="600" cy="200" r="150"/><path class="c-search__arc" d="M600 38 A162 162 0 0 1 762 200"/><path class="c-search__arc c-search__arc--2" d="M600 362 A162 162 0 0 1 438 200"/></g>
+          ${S.nodes.map((n, i) => { const [x, y] = [[170,110],[120,300],[1080,320],[1040,95]][i]; const dx = 600 - x, dy = 200 - y, L = Math.hypot(dx, dy), ex = 600 - dx / L * 150, ey = 200 - dy / L * 150, sx = x + dx / L * 34, sy = y + dy / L * 34;
+            return `<line class="c-search__line" style="--d:${i * .2}s" x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"/><g class="c-search__node" style="--d:${i * .2}s" transform="translate(${x} ${y})"><circle r="32"/><g class="c-search__ico">${ICONS[n[0]]}</g></g>`; }).join("")}
+        </svg>
+        <h2 class="c-search__title" id="search-title">${S.h}</h2>
+      </div>
+      <form class="c-search__form reveal" action="produkte.html" method="get" role="search">
+        <label class="c-search__label" for="c-search-q">${S.label}</label>
+        <div class="c-search__row">
+          <input id="c-search-q" name="q" type="search" list="c-search-list" placeholder="${S.ph}" autocomplete="off">
+          <button type="submit">${S.btn}</button>
+        </div>
+        <datalist id="c-search-list">${NAMES_ALL.map((n) => `<option value="${n}">`).join("")}</datalist>
+        <p class="c-search__chips"><span>${S.hint}</span>${S.nodes.map(([k, l]) => `<a href="produkte.html?kategorie=${k}#produktfinder">${l}</a>`).join("")}</p>
+      </form>
     </div>
   </section>
 
@@ -160,13 +231,8 @@ function main(t, A) {
     </div>
   </section>
 
-  <!-- ANWENDUNGEN -->
-  <section class="c-sec c-sec--soft" id="anwendungen" aria-labelledby="ind-title">
-    <div class="wrap">
-      <div class="c-head reveal"><div><p class="c-kicker">${t.indK}</p><h2 class="c-h2" id="ind-title">${t.indH}</h2></div></div>
-      <ul class="c-ind reveal-stagger">${t.inds.map(([h, p]) => `<li><h3>${h}</h3><p>${p}</p></li>`).join("")}</ul>
-    </div>
-  </section>
+  <!-- ANWENDUNGEN: Branchen-Abschnitt unverändert aus Website_Redesign -->
+  ${branchen(lang)}
 
   <!-- KONTAKT -->
   <section class="c-sec" aria-labelledby="cta-title">
@@ -190,7 +256,7 @@ for (const lang of ["de", "en"]) {
   const file = path.join(root, lang === "en" ? "en" : "", "index.html");
   const A = lang === "en" ? "../assets/" : "assets/";
   let h = fs.readFileSync(file, "utf8");
-  h = h.replace(/<main id="main">[\s\S]*?<\/main>/, () => main(T[lang], A));
+  h = h.replace(/<main id="main">[\s\S]*?<\/main>/, () => main(T[lang], A, lang));
   // kein dunkler Kopf, kein Intro, keine Laser-Animation
   h = h.replace(/<body class="home dark-top">/, '<body class="home calm">');
   h = h.replace(/\s*<script>\s*\/\*[^]*?intro[^]*?<\/script>/, "");

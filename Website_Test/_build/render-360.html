@@ -14,8 +14,9 @@
 (function () {
   var q = new URLSearchParams(location.search), P = q.get("p") || "mvnano";
   var W = +q.get("w") || 1200, H = +q.get("h") || 900;
-  var renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-  renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.setClearColor(0xffffff, 1);
+  var ALPHA = q.get("alpha") === "1"; // durchsichtiger Hintergrund (WebP) für freigestellte Darstellung
+  var renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: ALPHA });
+  renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.setClearColor(0xffffff, ALPHA ? 0 : 1);
   renderer.outputEncoding = THREE.sRGBEncoding; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
   document.body.appendChild(renderer.domElement);
   var scene = new THREE.Scene();
@@ -113,7 +114,7 @@
   })();
 
   var START = -0.55; // Bild 1: Schrägansicht von vorn
-  window.frame = function (i, n) { pivot.rotation.y = START - i / n * Math.PI * 2; renderer.render(scene, camera); return renderer.domElement.toDataURL("image/jpeg", .9); };
+  window.frame = function (i, n) { pivot.rotation.y = START - i / n * Math.PI * 2; renderer.render(scene, camera); return ALPHA ? renderer.domElement.toDataURL("image/webp", .9) : renderer.domElement.toDataURL("image/jpeg", .9); };
   window.frame(0, 36); window.ready = true;
 })();
 </script>

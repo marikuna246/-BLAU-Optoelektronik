@@ -10,26 +10,14 @@
   <meta property="og:title" content="BLAU Optoelektronik – Laser Modules Made in Germany">
   <meta property="og:description" content="Line lasers, dot lasers, Powell lenses and OEM modules from Überlingen on Lake Constance.">
   <meta property="og:image" content="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/15/images/MVpulse1.jpg">
-  <meta name="theme-color" content="#003368">
+  <meta name="theme-color" content="#003d74">
   <link rel="icon" href="../assets/blau-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://xtuwjizliuthdgytloju.supabase.co">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/styles.css">
-  <script>
-    /* Intro on the first visit of the home page per session (?intro=neu replays it) */
-    (function (d) {
-      var play = true;
-      try {
-        if (/intro=neu/.test(location.search)) sessionStorage.removeItem("blau-intro");
-        play = !sessionStorage.getItem("blau-intro");
-      } catch (e) {}
-      d.classList.add(play ? "intro-active" : "no-intro");
-      /* Safety net: if the script fails to load, end the intro after 4 s */
-      if (play) setTimeout(function () { d.classList.remove("intro-active"); }, 4000);
-    })(document.documentElement);
-  </script>
+  <link rel="stylesheet" href="../assets/home-calm.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,16 +32,7 @@
   }
   </script>
 </head>
-<body class="home dark-top">
-<div class="intro" id="intro">
-  <div class="intro__half intro__top" aria-hidden="true"></div>
-  <div class="intro__half intro__bottom" aria-hidden="true"></div>
-  <div class="intro__center" aria-hidden="true">
-    <img class="intro__logo" src="../assets/blau-logo-white.png" alt="" width="372" height="157">
-  </div>
-  <span class="intro__line" aria-hidden="true"></span>
-  <button class="intro__skip" type="button">Skip intro</button>
-</div>
+<body class="home calm">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
@@ -115,255 +94,139 @@
 
 <main id="main">
 
-  <!-- HERO: who we are, what we do, for whom -->
-  <section class="hero-dark hero-live" aria-labelledby="hero-title">
-    <div class="hero-dark__bg" aria-hidden="true"></div>
-    <canvas class="laser-scene" aria-hidden="true"></canvas>
-    <div class="hero-live__shade" aria-hidden="true"></div>
-    <div class="wrap hero-dark__grid">
-      <div class="hero-text">
-        <p class="eyebrow">Laser module manufacturer · Überlingen, Lake Constance</p>
-        <h1 id="hero-title">Laser modules for precise <span class="glow">measuring, inspection and positioning.</span></h1>
-        <p class="hero-rotator" aria-live="off">Used in <span class="rot" data-words="industrial machine vision|medical technology|automation|microelectronics|research">industrial machine vision</span></p>
-        <p class="lead">We develop and manufacture line lasers, dot lasers and Powell lenses for machine vision, mechanical engineering, medical technology and research – as standard products or built exactly to your specifications.</p>
-        <div class="btn-row">
-          <a class="btn btn--accent" href="produkte.html">Explore products <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--outline-light" href="kontakt.html">Request consultation</a>
-        </div>
+  <!-- HERO: BLAU-Video wie auf blauoptoelektronik.de -->
+  <section class="c-video" aria-labelledby="hero-title">
+    <div class="c-video__bg" aria-hidden="true">
+      <video src="https://blauoptoelektronik.de/Hero.mp4" autoplay muted loop playsinline preload="auto"></video>
+      <span class="c-video__shade"></span>
+    </div>
+    <div class="wrap c-video__text">
+      <p class="c-video__pill">Laser modules · Made in Germany</p>
+      <h1 id="hero-title">Laser modules for precise measuring, inspection and alignment</h1>
+      <p class="c-video__lead">We develop and manufacture line lasers, dot lasers and Powell lenses – for machine vision, mechanical engineering, medical technology and research. As standard products or built to your specifications, in Überlingen on Lake Constance since 1987.</p>
+      <div class="btn-row">
+        <a class="c-vbtn c-vbtn--fill" href="produkte.html">Explore products <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="c-vbtn c-vbtn--line" href="kontakt.html">Request advice</a>
       </div>
-      <aside class="hero-hud" aria-label="Live visualisation">
-        <div class="hud-card">
-          <p class="hud-live"><span class="dot" aria-hidden="true"></span>Live · Laser triangulation</p>
-          <p>How a line laser works in 3D machine vision: the laser line follows the contour of every part – the camera turns it into an exact 3D profile.</p>
-        </div>
-        <a class="hud-card hud-product" href="produkt-mvnano.html">
-          <img src="../assets/hero-mvnano.png" alt="" width="1083" height="727" loading="lazy">
-          <span><small>The machine vision standard</small><b>MVnano line laser</b></span>
-          <svg aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-      </aside>    </div>
+    </div>
+    <span class="c-video__mouse" aria-hidden="true"><i></i></span>
+    <button class="c-video__toggle" type="button" aria-pressed="false" aria-label="Pause video" data-l-pause="Pause video" data-l-play="Play video">
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
+    </button>
+  </section>
+
+  <section class="c-trust" aria-label="Facts about BLAU Optoelektronik">
+    <div class="wrap"><ul><li><b>Since 1987</b><span>Experience in optoelectronics</span></li><li><b>Made in Germany</b><span>Development &amp; production</span></li><li><b>ISO 9001:2015</b><span>certified</span></li><li><b>Own Powell lenses</b><span>made in-house</span></li></ul></div>
+  </section>
+
+  <!-- NEUHEIT -->
+  <section class="c-news-sec" aria-labelledby="news-title">
     <div class="wrap">
-      <ul class="hero-facts" aria-label="Facts about BLAU Optoelektronik">
-        <li><svg aria-hidden="true"><use href="#i-calendar"/></svg><span><strong>Since 1987</strong>Experience in optoelectronics</span></li>
-        <li><svg aria-hidden="true"><use href="#i-factory"/></svg><span><strong>Made in Germany</strong>Development &amp; production</span></li>
-        <li><svg aria-hidden="true"><use href="#i-shield"/></svg><span><strong>ISO 9001:2015</strong>certified</span></li>
-        <li><svg aria-hidden="true"><use href="#i-lens"/></svg><span><strong>In-house optics</strong>Powell lenses made in-house</span></li>
-      </ul>
-    </div>
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        <span><i style="--c:#7b2cff"></i>405 nm</span><span><i style="--c:#2a3cff"></i>445 nm</span><span><i style="--c:#1f4dff"></i>450 nm</span><span><i style="--c:#19b84a"></i>520 nm</span><span><i style="--c:#27c93f"></i>532 nm</span><span><i style="--c:#ff3b1f"></i>640 nm</span><span><i style="--c:#e3121b"></i>660 nm</span><span><i style="--c:#b00d1c"></i>685 nm</span><span><i style="--c:#6b7280"></i>785 nm</span><span><i style="--c:#6b7280"></i>808 nm</span><span><i style="--c:#6b7280"></i>850 nm</span><span>Laser classes 1 to 3R</span><span>Modulation up to 1 MHz</span><span>Fan angles 1°–90°</span><span>Up to 2 W (MVgoldHP)</span><span>Small batches from 10 units</span>
-      </div>
+      <article class="c-news reveal">
+        <div class="c-news__txt">
+          <p class="c-news__tag">New from production</p>
+          <h2 id="news-title">MVpulse – eye safety and high power</h2>
+          <p>Our MVpulse combines two criteria of industrial machine vision: plenty of light with up to 100 mW output power – and eye safety according to laser class 2.</p>
+          <p class="c-news__links"><a class="c-news__more" href="produkt-mvpulse.html">Learn more <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="c-news__ds" href="../assets/downloads/datenblaetter/FP-MVpulse-25_Datasheet_EN.pdf" target="_blank" rel="noopener">Datasheet (PDF)</a></p>
+        </div>
+        <div class="c-news__img"><img src="../assets/products/mvpulse-duo-wide.png" alt="MVpulse laser modules" loading="lazy"></div>
+      </article>
     </div>
   </section>
 
-  <!-- PRODUCT SLIDESHOW -->
-  <section class="section showcase" aria-labelledby="showcase-title">
+  <!-- SORTIMENT -->
+  <section class="c-sec" id="sortiment" aria-labelledby="sortiment-title">
     <div class="wrap">
-      <div class="section-head section-head--row">
-        <div><p class="eyebrow">Product highlights</p><h2 id="showcase-title">Precision you can see</h2></div>
-        <a class="link-arrow" href="produkte.html">All products <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <div class="c-head reveal">
+        <div><p class="c-kicker">Product range</p><h2 class="c-h2" id="sortiment-title">What we make</h2></div>
+        <p>Five product areas – all developed and manufactured in Überlingen. <a class="link-arrow" href="produkte.html">All products <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
-      <div class="slider" role="region" aria-roledescription="carousel" aria-label="Product highlights" data-slider data-interval="6000">
-        <div class="slider__stage">
-          <span class="slider__scan" aria-hidden="true"></span>
-          <figure class="slider__media is-active" data-index="0"><span class="slider__ghost" aria-hidden="true" style="--len:6">MVnano</span><img src="../assets/products/mvnano-duo.png" alt="MVnano line laser, two modules"></figure>
-          <figure class="slider__media" data-index="1"><span class="slider__ghost" aria-hidden="true" style="--len:7">MVpulse</span><img src="../assets/products/mvpulse-duo.webp" alt="MVpulse laser modules with mounting nut" loading="lazy"></figure>
-          <figure class="slider__media" data-index="2"><span class="slider__ghost" aria-hidden="true" style="--len:8">MVsquare</span><img src="../assets/products/mvsquare-duo.png" alt="MVsquare laser modules with rectangular housing" loading="lazy"></figure>
-          <figure class="slider__media" data-index="3"><span class="slider__ghost" aria-hidden="true" style="--len:7">MVfemto</span><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/2/images/FP-MVfemto_2.jpg" alt="MVfemto line laser next to a coin" loading="lazy"></figure>
-          <figure class="slider__media" data-index="4"><span class="slider__ghost" aria-hidden="true" style="--len:6">MVpico</span><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/9/images/MVpico.jpg" alt="MVpico line laser" loading="lazy"></figure>
-          <figure class="slider__media" data-index="5"><span class="slider__ghost" aria-hidden="true" style="--len:8">MVgoldHP</span><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/7/images/zz_FP-MVgoldHP_1.png" alt="MVgoldHP high-power laser module" loading="lazy"></figure>
-          <figure class="slider__media" data-index="6"><span class="slider__ghost" aria-hidden="true" style="--len:16">DOE Laser Module</span><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/13/images/FP-DOE-CX_Abbildung_4.jpeg" alt="DOE laser module projecting a dot pattern" loading="lazy"></figure>
-        </div>
-        <div class="slider__info" aria-live="off">
-          <div class="slider__panel is-active" role="group" aria-roledescription="slide" aria-label="1 of 7" data-index="0">
-            <p class="slider__count"><b>01</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVnano</h3>
-            <p class="slider__text">The standard line laser for industrial machine vision – as a stand-alone device or for integration into sensors and 3D scanners.</p>
-            <ul class="slider__facts"><li><b>Ø 11.5 × 54 mm</b><span>Housing</span></li><li><b>405–850 nm</b><span>Wavelengths</span></li><li><b>up to 100 mW</b><span>Output power</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvnano.html">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVnano">Enquire</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="slide" aria-label="2 of 7" data-index="1" aria-hidden="true">
-            <p class="slider__count"><b>02</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVpulse</h3>
-            <p class="slider__text">Plenty of light for your camera – and still eye-safe: high output power at laser class 2 thanks to pulsed operation.</p>
-            <ul class="slider__facts"><li><b>up to 100 mW</b><span>Output power</span></li><li><b>Class 2</b><span>Laser class</span></li><li><b>0.38–15 ms</b><span>Pulse length</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvpulse.html">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVpulse">Enquire</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="slide" aria-label="3 of 7" data-index="2" aria-hidden="true">
-            <p class="slider__count"><b>03</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVsquare</h3>
-            <p class="slider__text">Screw it in and you're done: factory-aligned to your specifications – no alignment needed in the system. Designed for series production.</p>
-            <ul class="slider__facts"><li><b>65 × 15 × 15 mm</b><span>Housing</span></li><li><b>factory</b><span>aligned</span></li><li><b>straight / 90°</b><span>Beam exit</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvsquare.html">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVsquare">Enquire</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="slide" aria-label="4 of 7" data-index="3" aria-hidden="true">
-            <p class="slider__count"><b>04</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVfemto</h3>
-            <p class="slider__text">Our smallest line laser for machine vision – fits into compact 3D sensors and robots.</p>
-            <ul class="slider__facts"><li><b>Ø 8 × 40 mm</b><span>Housing</span></li><li><b>405–850 nm</b><span>Wavelengths</span></li><li><b>up to 50 mW</b><span>Output power</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvfemto.html">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVfemto">Enquire</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="slide" aria-label="5 of 7" data-index="4" aria-hidden="true">
-            <p class="slider__count"><b>05</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVpico</h3>
-            <p class="slider__text">Small enough for smart 3D vision sensors – with the focusing mechanism of the 2025 edition.</p>
-            <ul class="slider__facts"><li><b>Ø 10 × 50 mm</b><span>Housing</span></li><li><b>up to 100 mW</b><span>Output power</span></li><li><b>1°–90°</b><span>Fan angle</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvpico.html">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVpico">Enquire</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="slide" aria-label="6 of 7" data-index="5" aria-hidden="true">
-            <p class="slider__count"><b>06</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVgoldHP</h3>
-            <p class="slider__text">A uniformly bright laser line for difficult lighting conditions and short cycle times – with integrated cooling.</p>
-            <ul class="slider__facts"><li><b>up to 2 W</b><span>at 445 nm</span></li><li><b>TEC</b><span>active cooling</span></li><li><b>RS-232 / RS-485</b><span>Control</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvgoldhp.html">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVgoldHP">Enquire</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="slide" aria-label="7 of 7" data-index="6" aria-hidden="true">
-            <p class="slider__count"><b>07</b> / 07 · Line lasers · FLEXPOINT®</p>
-            <h3 class="slider__name">DOE Laser Module</h3>
-            <p class="slider__text">One laser, many patterns: diffractive optics create crosses, parallel lines, dot lines or dot matrices.</p>
-            <ul class="slider__facts"><li><b>many patterns</b><span>Beam shapes</span></li><li><b>red & green</b><span>Laser colours</span></li><li><b>fixed / focusable</b><span>Focus</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-doe.html">View details <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=DOE%20Laser%20Module">Enquire</a></div>
-          </div>
-        </div>
-        <div class="slider__nav">
-          <button class="slider__arrow" type="button" data-prev aria-label="Previous product"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
-          <div class="slider__tabs" role="tablist" aria-label="Choose product">
-            <button type="button" role="tab" aria-selected="true" tabindex="0" data-go="0"><span>MVnano</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="1"><span>MVpulse</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="2"><span>MVsquare</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="3"><span>MVfemto</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="4"><span>MVpico</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="5"><span>MVgoldHP</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="6"><span>DOE Laser Module</span><i class="bar" aria-hidden="true"></i></button>
-          </div>
-          <button class="slider__arrow" type="button" data-next aria-label="Next product"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-          <button class="slider__play" type="button" data-toggle aria-label="Pause automatic rotation" aria-pressed="false"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
-        </div>
+      <div class="c-cats reveal-stagger">
+        <a class="c-cat c-cat--wide" href="produkte.html?kategorie=machine-vision">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/15/images/MVpulse1.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>Line lasers for machine vision</h3><p>Fine, evenly bright laser lines for 3D measurement and inspection with camera systems – 8 models.</p><span class="more">View machine vision <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="c-cat" href="produkte.html?kategorie=linienlaser">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/3/images/Linienlaser-main.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>Line lasers for positioning</h3><p>Clearly defined lines and beam patterns (DOE).</p><span class="more">View <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="c-cat" href="produkte.html?kategorie=punktlaser">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/6/images/Punkt-Laser.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>Dot lasers</h3><p>Round beam profile – optics and electronics matched to your task.</p><span class="more">View <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="c-cat" href="produkte.html?kategorie=powell-linsen">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/5/images/powelllinsen1.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>Powell lenses</h3><p>Laser lines with uniform brightness. Made in-house since 2019.</p><span class="more">View <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="c-cat" href="produkte.html?kategorie=oem">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/4/images/Oem-Module.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>OEM modules</h3><p>Built to your specifications – from development to series production.</p><span class="more">View <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCT RANGE -->
-  <section class="section" id="sortiment" aria-labelledby="sortiment-title">
+  <!-- PRODUKTSUCHE-KREIS -->
+  <section class="c-search" aria-labelledby="search-title">
     <div class="wrap">
-      <div class="section-head section-head--row reveal">
-        <div>
-          <p class="eyebrow"><span class="idx">01</span>Our range</p>
-          <h2 id="sortiment-title">What we make</h2>
-          <p class="lead">Five product areas – all developed and manufactured in Überlingen.</p>
+      <div class="c-search__stage reveal">
+        <svg class="c-search__art" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <g class="c-search__ring"><circle cx="600" cy="200" r="150"/><path class="c-search__arc" d="M600 38 A162 162 0 0 1 762 200"/><path class="c-search__arc c-search__arc--2" d="M600 362 A162 162 0 0 1 438 200"/></g>
+          <line class="c-search__line" style="--d:0s" x1="203.3" y1="117.0" x2="453.2" y2="169.3"/><g class="c-search__node" style="--d:0s" transform="translate(170 110)"><circle r="32"/><g class="c-search__ico"><rect x="-15" y="-6" width="14" height="12" rx="2"/><path d="M-1 0l16-9M-1 0l16 9M15-9v18"/></g></g><line class="c-search__line" style="--d:0.2s" x1="153.3" y1="293.1" x2="453.2" y2="230.6"/><g class="c-search__node" style="--d:0.2s" transform="translate(120 300)"><circle r="32"/><g class="c-search__ico"><rect x="-15" y="-6" width="14" height="12" rx="2"/><path d="M-1 0h12"/><circle cx="14" cy="0" r="2.5"/></g></g><line class="c-search__line" style="--d:0.4s" x1="1047.0" y1="311.8" x2="745.5" y2="236.4"/><g class="c-search__node" style="--d:0.4s" transform="translate(1080 320)"><circle r="32"/><g class="c-search__ico"><path d="M-6-14c-4 4-4 24 0 28M6-14c4 4 4 24 0 28M-6-14h12M-6 14h12"/></g></g><line class="c-search__line" style="--d:0.6000000000000001s" x1="1006.9" y1="102.9" x2="745.9" y2="165.2"/><g class="c-search__node" style="--d:0.6000000000000001s" transform="translate(1040 95)"><circle r="32"/><g class="c-search__ico"><path d="M-14 0h28M0-14v28"/><circle cx="0" cy="0" r="4"/></g></g>
+        </svg>
+        <h2 class="c-search__title" id="search-title">You know exactly which product you need?</h2>
+      </div>
+      <form class="c-search__form reveal" action="produkte.html" method="get" role="search">
+        <label class="c-search__label" for="c-search-q">Product search</label>
+        <div class="c-search__row">
+          <input id="c-search-q" name="q" type="search" list="c-search-list" placeholder="Product name, wavelength or application – e.g. MVpico, 660 nm" autocomplete="off">
+          <button type="submit">Search</button>
         </div>
-        <a class="link-arrow" href="produkte.html">View all 13 products <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-
-      <div class="cat-grid reveal-stagger">
-        <a class="cat-card" href="produkte.html?kategorie=machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/15/images/MVpulse1.jpg" alt="" loading="lazy" width="1000" height="456"></div>
-          <div class="body">
-            <h3>Line lasers for machine vision <span class="count">8 models</span></h3>
-            <p>Project a fine, uniformly bright laser line – the basis for 3D measurement and inspection with camera systems.</p>
-            <p class="use"><b>For:</b> machine vision, 3D scanners and vision sensors</p>
-          </div>
-        </a>
-        <a class="cat-card" href="produkte.html?kategorie=linienlaser">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/3/images/Linienlaser-main.jpg" alt="" loading="lazy"></div>
-          <div class="body">
-            <h3>Line lasers for positioning <span class="count">2 products</span></h3>
-            <p>Stable, clearly defined laser lines and beam patterns (DOE) – wavelength, output power and laser class matched to your application.</p>
-            <p class="use"><b>For:</b> patient positioning, positioning systems, welding systems, metrology</p>
-          </div>
-        </a>
-        <a class="cat-card" href="produkte.html?kategorie=punktlaser">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/6/images/Punkt-Laser.jpg" alt="" loading="lazy"></div>
-          <div class="body">
-            <h3>Dot lasers</h3>
-            <p>Laser modules with a round beam profile – optics and electronics tailored to your task.</p>
-            <p class="use"><b>For:</b> alignment, metrology, laboratory and research</p>
-          </div>
-        </a>
-        <a class="cat-card" href="produkte.html?kategorie=powell-linsen">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/5/images/powelllinsen1.jpg" alt="" loading="lazy" width="800" height="800"></div>
-          <div class="body">
-            <h3>Powell lenses</h3>
-            <p>Special optics that turn a laser beam into a line with uniform brightness. Made in-house since 2019.</p>
-            <p class="use"><b>For:</b> your own laser setups and research</p>
-          </div>
-        </a>
-        <a class="cat-card" href="produkte.html?kategorie=oem">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/4/images/Oem-Module.jpg" alt="" loading="lazy"></div>
-          <div class="body">
-            <h3>OEM modules</h3>
-            <p>Mechanics, optics and electronics to your specifications – from development to series production, including small batches.</p>
-            <p class="use"><b>For:</b> device and machine manufacturers</p>
-          </div>
-        </a>
-      </div>
+        <datalist id="c-search-list"><option value="MVnano"><option value="MVfemto"><option value="MVpico"><option value="MVmicro"><option value="MVpulse"><option value="MVpulseHP"><option value="MVgoldHP"><option value="MVsquare"><option value="DOE"><option value="Powell"><option value="405 nm"><option value="450 nm"><option value="520 nm"><option value="532 nm"><option value="640 nm"><option value="660 nm"><option value="685 nm"><option value="785 nm"><option value="808 nm"><option value="830 nm"><option value="850 nm"><option value="M12"></datalist>
+        <p class="c-search__chips"><span>Or go straight to:</span><a href="produkte.html?kategorie=machine-vision#produktfinder">Machine vision</a><a href="produkte.html?kategorie=punktlaser#produktfinder">Dot lasers</a><a href="produkte.html?kategorie=powell-linsen#produktfinder">Powell lenses</a><a href="produkte.html?kategorie=linienlaser#produktfinder">Line lasers</a></p>
+      </form>
     </div>
   </section>
 
-  <!-- SPOTLIGHT MVpulse -->
-  <section class="section section--deep" aria-labelledby="spot-title">
+  <!-- AUSGEWÄHLTE PRODUKTE -->
+  <section class="c-sec c-sec--soft" aria-labelledby="picks-title">
     <div class="wrap">
-      <div class="spotlight reveal">
-        <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/15/images/MVpulse1.jpg" alt="MVpulse laser module by BLAU Optoelektronik" loading="lazy" width="1000" height="456"></div>
-        <div class="content">
-          <p class="eyebrow"><span class="idx">02</span>In focus: MVpulse</p>
-          <h2 id="spot-title">Plenty of light for your camera. Safe for the eyes.</h2>
-          <p>In machine vision, the rule is usually: more laser power, more safety effort. The MVpulse resolves this conflict through pulsed operation – with up to 100&nbsp;mW output power at laser class&nbsp;2.</p>
-          <ul class="spec-row" aria-label="MVpulse key figures">
-            <li><b data-count="100" data-suffix=" mW">100 mW</b><span>Output power up to</span></li>
-            <li><b>Class 2</b><span>Laser class</span></li>
-            <li><b>Pulsed</b><span>variable frequency</span></li>
-          </ul>
-          <div class="btn-row">
-            <a class="btn btn--light" href="produkt-mvpulse.html">View MVpulse <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--outline-light" href="kontakt.html?produkt=MVpulse">Request a sample</a>
-          </div>
-        </div>
+      <div class="c-head reveal"><div><p class="c-kicker">Featured products</p><h2 class="c-h2" id="picks-title">Our most requested line lasers</h2></div></div>
+      <div class="c-picks reveal-stagger">
+        <a class="c-pick" href="produkt-mvnano.html">
+          <div class="c-pick__img"><img src="../assets/products/mvnano-duo.png" alt="MVnano" loading="lazy"></div>
+          <small>Machine vision</small><h3>MVnano</h3><p>The proven standard for industrial machine vision.</p>
+          <dl><div><dt>Housing</dt><dd>Ø 11.5 × 54 mm</dd></div><div><dt>Power</dt><dd>up to 100 mW</dd></div></dl>
+        </a>
+        <a class="c-pick" href="produkt-mvpulse.html">
+          <div class="c-pick__img"><img src="../assets/products/mvpulse-duo.webp" alt="MVpulse" loading="lazy"></div>
+          <small>Machine vision</small><h3>MVpulse</h3><p>Plenty of light for your camera – and still eye-safe.</p>
+          <dl><div><dt>Power</dt><dd>up to 100 mW</dd></div><div><dt>Laser class</dt><dd>2</dd></div></dl>
+        </a>
+        <a class="c-pick" href="produkt-mvsquare.html">
+          <div class="c-pick__img"><img src="../assets/products/mvsquare-duo.png" alt="MVsquare" loading="lazy"></div>
+          <small>Machine vision</small><h3>MVsquare</h3><p>Screw in, done: factory-aligned to your specifications.</p>
+          <dl><div><dt>Housing</dt><dd>65 × 15 × 15 mm</dd></div><div><dt>Alignment</dt><dd>factory</dd></div></dl>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- SELECTION GUIDE -->
-  <section class="section" aria-labelledby="finder-title">
+  <!-- DREI WEGE -->
+  <section class="c-sec" aria-labelledby="paths-title">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow"><span class="idx">03</span>Selection guide</p>
-        <h2 id="finder-title">Which machine vision laser is right for you?</h2>
-        <p class="lead">Start with your most important requirement. We will advise you personally on everything else.</p>
-      </div>
-      <div class="finder reveal-stagger">
-        <a href="produkt-mvnano.html"><span class="q">I need a proven standard</span><span class="a">MVnano <small>· Ø 11.5 × 54 mm</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvpulse.html"><span class="q">Plenty of light, but eye-safe</span><span class="a">MVpulse <small>· up to 100 mW, class 2</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvpulsehp.html"><span class="q">Very high power without active cooling</span><span class="a">MVpulseHP <small>· up to 1 W</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvfemto.html"><span class="q">Very little installation space</span><span class="a">MVfemto <small>· Ø 8 × 40 mm</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvpico.html"><span class="q">Integration into a 3D vision sensor</span><span class="a">MVpico <small>· 10 × 50 mm</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvsquare.html"><span class="q">Fast, simple mounting</span><span class="a">MVsquare <small>· 65 × 15 × 15 mm</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <div class="c-head reveal"><div><p class="c-kicker">Finding your module</p><h2 class="c-h2" id="paths-title">Three ways to the right laser</h2></div></div>
+      <div class="c-paths reveal-stagger">
+        <a class="c-path" href="produktfinder.html"><span class="n">01</span><h3>Product finder</h3><p>A few questions about your application – we show you the matching products.</p><span class="link-arrow">Start finder <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="c-path" href="konfigurator.html"><span class="n">02</span><h3>Configurator</h3><p>Put together wavelength, power, optics and electrics yourself – with datasheet.</p><span class="link-arrow">Configure <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="c-path" href="kontakt.html"><span class="n">03</span><h3>Personal advice</h3><p>Describe your task. We recommend the right module or a customisation.</p><span class="link-arrow">Send inquiry <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       </div>
     </div>
   </section>
 
-  <!-- INSIGHT: real video from development and production -->
-  <section class="section section--deep video-section" aria-labelledby="video-title">
-    <div class="wrap video-grid">
-      <div class="video-text">
-        <p class="eyebrow">Inside BLAU</p>
-        <h2 id="video-title">Developed and manufactured in Überlingen</h2>
-        <p>A look inside our labs and our production facility on Lake Constance – where your laser modules are made.</p>
-        <a class="link-arrow link-arrow--light" href="unternehmen.html">More about us <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="video-frame">
-        <video muted loop playsinline preload="none" data-src="https://blauoptoelektronik.de/Hero.mp4" aria-label="Video: a look inside development and production at BLAU Optoelektronik"></video>
-        <span class="video-scan" aria-hidden="true"></span>
-        <button class="video-toggle" type="button" aria-label="Pause video" aria-pressed="false">
-          <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
-          <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- APPLICATIONS / INDUSTRIES -->  <section class="section section--panel" id="anwendungen" aria-labelledby="branchen-title">
+  <!-- ANWENDUNGEN: Branchen-Abschnitt unverändert aus Website_Redesign -->
+  <section class="section section--panel" id="anwendungen" aria-labelledby="branchen-title">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow"><span class="idx">04</span>Applications</p>
@@ -463,90 +326,18 @@
     </div>
   </section>
 
-  <!-- WHY BLAU -->
-  <section class="section" aria-labelledby="why-title">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow"><span class="idx">05</span>Why BLAU Optoelektronik</p>
-        <h2 id="why-title">One manufacturer. From the optics to the finished module.</h2>
-        <p class="lead">We develop and manufacture at our own site. For you, that means one point of contact, short communication paths and customisation without detours.</p>
+  <!-- KONTAKT -->
+  <section class="c-sec" aria-labelledby="cta-title">
+    <div class="wrap c-cta reveal">
+      <div>
+        <h2 id="cta-title">Do you have a specific application?</h2>
+        <p>Briefly describe your task. We will tell you which module fits – or what we can customise for you.</p>
+        <div class="btn-row" style="margin-top:24px"><a class="btn btn--accent" href="kontakt.html">Send inquiry <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
       </div>
-      <div class="feature-grid reveal-stagger">
-        <div class="feature">
-          <div class="icon"><svg aria-hidden="true"><use href="#i-lens"/></svg></div>
-          <h3>In-house Powell lenses</h3>
-          <p>Several hundred units per week from our own production – for laser lines with uniform brightness.</p>
-        </div>
-        <div class="feature">
-          <div class="icon"><svg aria-hidden="true"><use href="#i-sliders"/></svg></div>
-          <h3>Tailored to your application</h3>
-          <p>Wavelength, output power, optics, housing and modulation – also as a custom solution in small batches.</p>
-        </div>
-        <div class="feature">
-          <div class="icon"><svg aria-hidden="true"><use href="#i-factory"/></svg></div>
-          <h3>Made in Germany</h3>
-          <p>Development, prototypes and series production from a single source in Überlingen on Lake Constance.</p>
-        </div>
-        <div class="feature">
-          <div class="icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></div>
-          <h3>Certified quality</h3>
-          <p>Certified to DIN EN ISO 9001:2015 – in development and production.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section class="section section--navy" aria-labelledby="process-title">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow"><span class="idx">06</span>How we work together</p>
-        <h2 id="process-title">From the first question to series production</h2>
-      </div>
-      <ol class="steps reveal-stagger">
-        <li><h3>Consulting</h3><p>You describe your application. We recommend the right module – or a customisation.</p></li>
-        <li><h3>Development</h3><p>For custom solutions, we develop optics, mechanics and electronics to your specifications.</p></li>
-        <li><h3>Manufacturing</h3><p>Prototypes and series are produced in our manufacturing facility in Überlingen.</p></li>
-        <li><h3>Support</h3><p>We remain your direct point of contact after delivery, too.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- TOOLS -->
-  <section class="section" aria-labelledby="tools-title">
-    <div class="wrap">
-      <div class="section-head section-head--row reveal">
-        <div>
-          <p class="eyebrow"><span class="idx">07</span>Online tools</p>
-          <h2 id="tools-title">Calculate laser parameters yourself</h2>
-          <p class="lead">Free of charge and without registration – ideal for initial design.</p>
-        </div>
-      </div>
-      <div class="tool-grid reveal-stagger">
-        <a class="tool tool--featured" href="konfigurator.html"><span class="tool__tag">New</span><h3>Module configurator</h3><p>Your laser module in 7 steps: series, wavelength, output power, optics, electrical interface – and straight to a quote.</p><span class="link-arrow">Configure now <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        <a class="tool" href="https://blauoptoelektronik.de/tools"><h3>Line width simulation</h3><p>Calculate the line width at different focus distances.</p><span class="link-arrow">Open tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        <a class="tool" href="https://blauoptoelektronik.de/tools"><h3>Maximum power</h3><p>Calculate the maximum laser power for different parameters.</p><span class="link-arrow">Open tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        <a class="tool" href="https://blauoptoelektronik.de/tools"><h3>MTTF forecast</h3><p>Estimate the mean time to failure (MTTF) of laser modules.</p><span class="link-arrow">Open tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section" style="padding-top:0" aria-labelledby="cta-title">
-    <div class="wrap">
-      <div class="cta-band reveal">
-        <div>
-          <h2 id="cta-title">Do you have a specific application?</h2>
-          <p>Briefly describe your task. We will tell you which module fits – or what we can customise for you.</p>
-          <div class="btn-row" style="margin-top:26px">
-            <a class="btn btn--accent" href="kontakt.html">Send inquiry <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
-        <div class="cta-contact">
-          <a class="direct" href="tel:+497551937480"><svg aria-hidden="true"><use href="#i-phone"/></svg>+49 7551 93748-0</a>
-          <a class="direct" href="mailto:info@blauoptoelektronik.de"><svg aria-hidden="true"><use href="#i-mail"/></svg>info@blauoptoelektronik.de</a>
-          <small>Available by phone Mon–Fri, 8:00 am – 5:00 pm</small>
-        </div>
+      <div class="c-cta__box">
+        <a class="direct" href="tel:+497551937480"><svg aria-hidden="true"><use href="#i-phone"/></svg>+49 7551 93748-0</a>
+        <a class="direct" href="mailto:info@blauoptoelektronik.de"><svg aria-hidden="true"><use href="#i-mail"/></svg>info@blauoptoelektronik.de</a>
+        <small>Phone: Mon–Fri, 8:00–17:00 CET</small>
       </div>
     </div>
   </section>
@@ -605,6 +396,6 @@
 </footer>
 
 <script src="../assets/main.js" defer></script>
-<script src="../assets/laser-scene.js" defer></script>
+<script src="../assets/home-video.js" defer></script>
 </body>
 </html>

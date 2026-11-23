@@ -10,26 +10,14 @@
   <meta property="og:title" content="BLAU Optoelektronik – Lasermodule Made in Germany">
   <meta property="og:description" content="Linienlaser, Punktlaser, Powell-Linsen und OEM-Module aus Überlingen am Bodensee.">
   <meta property="og:image" content="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/15/images/MVpulse1.jpg">
-  <meta name="theme-color" content="#003368">
+  <meta name="theme-color" content="#003d74">
   <link rel="icon" href="assets/blau-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://xtuwjizliuthdgytloju.supabase.co">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
-  <script>
-    /* Intro beim ersten Aufruf der Startseite pro Sitzung (?intro=neu spielt es erneut ab) */
-    (function (d) {
-      var play = true;
-      try {
-        if (/intro=neu/.test(location.search)) sessionStorage.removeItem("blau-intro");
-        play = !sessionStorage.getItem("blau-intro");
-      } catch (e) {}
-      d.classList.add(play ? "intro-active" : "no-intro");
-      /* Sicherheitsnetz: falls das Skript nicht lädt, Intro nach 4 s beenden */
-      if (play) setTimeout(function () { d.classList.remove("intro-active"); }, 4000);
-    })(document.documentElement);
-  </script>
+  <link rel="stylesheet" href="assets/home-calm.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,16 +32,7 @@
   }
   </script>
 </head>
-<body class="home dark-top">
-<div class="intro" id="intro">
-  <div class="intro__half intro__top" aria-hidden="true"></div>
-  <div class="intro__half intro__bottom" aria-hidden="true"></div>
-  <div class="intro__center" aria-hidden="true">
-    <img class="intro__logo" src="assets/blau-logo-white.png" alt="" width="372" height="157">
-  </div>
-  <span class="intro__line" aria-hidden="true"></span>
-  <button class="intro__skip" type="button">Intro überspringen</button>
-</div>
+<body class="home calm">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
@@ -115,258 +94,142 @@
 
 <main id="main">
 
-  <!-- HERO: Wer wir sind, was wir machen, für wen -->
-  <section class="hero-dark hero-live" aria-labelledby="hero-title">
-    <div class="hero-dark__bg" aria-hidden="true"></div>
-    <canvas class="laser-scene" aria-hidden="true"></canvas>
-    <div class="hero-live__shade" aria-hidden="true"></div>
-    <div class="wrap hero-dark__grid">
-      <div class="hero-text">
-        <p class="eyebrow">Hersteller von Lasermodulen · Überlingen am Bodensee</p>
-        <h1 id="hero-title">Lasermodule für präzises <span class="glow">Messen, Prüfen und Positionieren.</span></h1>
-        <p class="hero-rotator" aria-live="off">Im Einsatz in der <span class="rot" data-words="industriellen Bildverarbeitung|Medizintechnik|Automatisierung|Mikroelektronik|Forschung">industriellen Bildverarbeitung</span></p>
-        <p class="lead">Wir entwickeln und fertigen Linienlaser, Punktlaser und Powell-Linsen für industrielle Bildverarbeitung, Maschinenbau, Medizintechnik und Forschung – als Standardprodukt oder genau nach Ihren Vorgaben.</p>
-        <div class="btn-row">
-          <a class="btn btn--accent" href="produkte.html">Produkte entdecken <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--outline-light" href="kontakt.html">Beratung anfragen</a>
-        </div>
-      </div>
-      <aside class="hero-hud" aria-label="Live-Darstellung">
-        <div class="hud-card">
-          <p class="hud-live"><span class="dot" aria-hidden="true"></span>Live · Lichtschnittverfahren</p>
-          <p>So arbeitet ein Linienlaser in der 3D-Bildverarbeitung: Die Laserlinie folgt der Kontur jedes Teils – die Kamera macht daraus ein exaktes 3D-Profil.</p>
-        </div>
-        <a class="hud-card hud-product" href="produkt-mvnano.html">
-          <img src="assets/hero-mvnano.png" alt="" width="1083" height="727" loading="lazy">
-          <span><small>Der Standard für Machine Vision</small><b>MVnano Linienlaser</b></span>
-          <svg aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-      </aside>    </div>
-    <div class="wrap">
-      <ul class="hero-facts" aria-label="Fakten über BLAU Optoelektronik">
-        <li><svg aria-hidden="true"><use href="#i-calendar"/></svg><span><strong>Seit 1987</strong>Erfahrung in Optoelektronik</span></li>
-        <li><svg aria-hidden="true"><use href="#i-factory"/></svg><span><strong>Made in Germany</strong>Entwicklung &amp; Fertigung</span></li>
-        <li><svg aria-hidden="true"><use href="#i-shield"/></svg><span><strong>ISO 9001:2015</strong>zertifiziert</span></li>
-        <li><svg aria-hidden="true"><use href="#i-lens"/></svg><span><strong>Eigene Optik</strong>Powell-Linsen aus eigener Fertigung</span></li>
-      </ul>
+  <!-- HERO: BLAU-Video wie auf blauoptoelektronik.de -->
+  <section class="c-video" aria-labelledby="hero-title">
+    <div class="c-video__bg" aria-hidden="true">
+      <video src="https://blauoptoelektronik.de/Hero.mp4" autoplay muted loop playsinline preload="auto"></video>
+      <span class="c-video__shade"></span>
     </div>
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        <span><i style="--c:#7b2cff"></i>405 nm</span><span><i style="--c:#2a3cff"></i>445 nm</span><span><i style="--c:#1f4dff"></i>450 nm</span><span><i style="--c:#19b84a"></i>520 nm</span><span><i style="--c:#27c93f"></i>532 nm</span><span><i style="--c:#ff3b1f"></i>640 nm</span><span><i style="--c:#e3121b"></i>660 nm</span><span><i style="--c:#b00d1c"></i>685 nm</span><span><i style="--c:#6b7280"></i>785 nm</span><span><i style="--c:#6b7280"></i>808 nm</span><span><i style="--c:#6b7280"></i>850 nm</span><span>Laserklassen 1 bis 3R</span><span>Modulation bis 1 MHz</span><span>Öffnungswinkel 1°–90°</span><span>Bis 2 W (MVgoldHP)</span><span>Kleinserien ab 10 Stück</span>
+    <div class="wrap c-video__text">
+      <p class="c-video__pill">Lasermodule · Made in Germany</p>
+      <h1 id="hero-title">Lasermodule für präzises Messen, Prüfen und Ausrichten</h1>
+      <p class="c-video__lead">Wir entwickeln und fertigen Linienlaser, Punktlaser und Powell-Linsen – für Bildverarbeitung, Maschinenbau, Medizintechnik und Forschung. Als Standardprodukt oder genau nach Ihren Vorgaben, seit 1987 in Überlingen am Bodensee.</p>
+      <div class="btn-row">
+        <a class="c-vbtn c-vbtn--fill" href="produkte.html">Produkte entdecken <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="c-vbtn c-vbtn--line" href="kontakt.html">Beratung anfragen</a>
       </div>
     </div>
+    <span class="c-video__mouse" aria-hidden="true"><i></i></span>
+    <button class="c-video__toggle" type="button" aria-pressed="false" aria-label="Video anhalten" data-l-pause="Video anhalten" data-l-play="Video abspielen">
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
+    </button>
   </section>
 
-  <!-- PRODUKT-SLIDESHOW -->
-  <section class="section showcase" aria-labelledby="showcase-title">
+  <section class="c-trust" aria-label="Fakten über BLAU Optoelektronik">
+    <div class="wrap"><ul><li><b>Seit 1987</b><span>Erfahrung in Optoelektronik</span></li><li><b>Made in Germany</b><span>Entwicklung &amp; Fertigung</span></li><li><b>ISO 9001:2015</b><span>zertifiziert</span></li><li><b>Eigene Powell-Linsen</b><span>aus eigener Fertigung</span></li></ul></div>
+  </section>
+
+  <!-- NEUHEIT -->
+  <section class="c-news-sec" aria-labelledby="news-title">
     <div class="wrap">
-      <div class="section-head section-head--row">
-        <div><p class="eyebrow">Produkt-Highlights</p><h2 id="showcase-title">Präzision, die man sieht</h2></div>
-        <a class="link-arrow" href="produkte.html">Alle Produkte <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="slider" role="region" aria-roledescription="Karussell" aria-label="Produkt-Highlights" data-slider data-interval="6000">
-        <div class="slider__stage">
-          <span class="slider__scan" aria-hidden="true"></span>
-          <figure class="slider__media is-active" data-index="0"><span class="slider__ghost" aria-hidden="true" style="--len:6">MVnano</span><img src="assets/products/mvnano-duo.png" alt="MVnano Linienlaser, zwei Module"></figure>
-          <figure class="slider__media" data-index="1"><span class="slider__ghost" aria-hidden="true" style="--len:7">MVpulse</span><img src="assets/products/mvpulse-duo.webp" alt="MVpulse Lasermodule mit Montagemutter" loading="lazy"></figure>
-          <figure class="slider__media" data-index="2"><span class="slider__ghost" aria-hidden="true" style="--len:8">MVsquare</span><img src="assets/products/mvsquare-duo.png" alt="MVsquare Lasermodule mit rechteckigem Gehäuse" loading="lazy"></figure>
-          <figure class="slider__media" data-index="3"><span class="slider__ghost" aria-hidden="true" style="--len:7">MVfemto</span><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/2/images/FP-MVfemto_2.jpg" alt="MVfemto Linienlaser neben einer Münze" loading="lazy"></figure>
-          <figure class="slider__media" data-index="4"><span class="slider__ghost" aria-hidden="true" style="--len:6">MVpico</span><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/9/images/MVpico.jpg" alt="MVpico Linienlaser" loading="lazy"></figure>
-          <figure class="slider__media" data-index="5"><span class="slider__ghost" aria-hidden="true" style="--len:8">MVgoldHP</span><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/7/images/zz_FP-MVgoldHP_1.png" alt="MVgoldHP Hochleistungs-Lasermodul" loading="lazy"></figure>
-          <figure class="slider__media" data-index="6"><span class="slider__ghost" aria-hidden="true" style="--len:16">DOE Laser Module</span><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/13/images/FP-DOE-CX_Abbildung_4.jpeg" alt="DOE Lasermodul projiziert ein Punktmuster" loading="lazy"></figure>
+      <article class="c-news reveal">
+        <div class="c-news__txt">
+          <p class="c-news__tag">Neu aus der Fertigung</p>
+          <h2 id="news-title">MVpulse – Augensicherheit und hohe Leistung</h2>
+          <p>Unser MVpulse verbindet zwei Kriterien der industriellen Bildverarbeitung: viel Licht mit bis zu 100 mW Ausgangsleistung – und Augensicherheit nach Laserklasse 2.</p>
+          <p class="c-news__links"><a class="c-news__more" href="produkt-mvpulse.html">Mehr erfahren <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="c-news__ds" href="assets/downloads/datenblaetter/FP-MVpulse-25_Datenblatt_DE.pdf" target="_blank" rel="noopener">Datenblatt (PDF)</a></p>
         </div>
-        <div class="slider__info" aria-live="off">
-          <div class="slider__panel is-active" role="group" aria-roledescription="Folie" aria-label="1 von 7" data-index="0">
-            <p class="slider__count"><b>01</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVnano</h3>
-            <p class="slider__text">Der Standard-Linienlaser für die industrielle Bildverarbeitung – als eigenständiges Gerät oder zum Einbau in Sensoren und 3D-Scanner.</p>
-            <ul class="slider__facts"><li><b>Ø 11,5 × 54 mm</b><span>Gehäuse</span></li><li><b>405–850 nm</b><span>Wellenlängen</span></li><li><b>bis 100 mW</b><span>Leistung</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvnano.html">Details ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVnano">Anfragen</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="Folie" aria-label="2 von 7" data-index="1" aria-hidden="true">
-            <p class="slider__count"><b>02</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVpulse</h3>
-            <p class="slider__text">Viel Licht für Ihre Kamera – und trotzdem augensicher: hohe Leistung bei Laserklasse 2 durch gepulsten Betrieb.</p>
-            <ul class="slider__facts"><li><b>bis 100 mW</b><span>Leistung</span></li><li><b>Klasse 2</b><span>Laserklasse</span></li><li><b>0,38–15 ms</b><span>Pulslänge</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvpulse.html">Details ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVpulse">Anfragen</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="Folie" aria-label="3 von 7" data-index="2" aria-hidden="true">
-            <p class="slider__count"><b>03</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVsquare</h3>
-            <p class="slider__text">Einschrauben, fertig: ab Werk nach Ihren Vorgaben justiert – ohne Ausrichtung im System. Entwickelt für die Serienfertigung.</p>
-            <ul class="slider__facts"><li><b>65 × 15 × 15 mm</b><span>Gehäuse</span></li><li><b>ab Werk</b><span>justiert</span></li><li><b>gerade / 90°</b><span>Strahlaustritt</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvsquare.html">Details ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVsquare">Anfragen</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="Folie" aria-label="4 von 7" data-index="3" aria-hidden="true">
-            <p class="slider__count"><b>04</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVfemto</h3>
-            <p class="slider__text">Unser kleinster Linienlaser für die Bildverarbeitung – passt in kompakte 3D-Sensoren und Roboter.</p>
-            <ul class="slider__facts"><li><b>Ø 8 × 40 mm</b><span>Gehäuse</span></li><li><b>405–850 nm</b><span>Wellenlängen</span></li><li><b>bis 50 mW</b><span>Leistung</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvfemto.html">Details ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVfemto">Anfragen</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="Folie" aria-label="5 von 7" data-index="4" aria-hidden="true">
-            <p class="slider__count"><b>05</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVpico</h3>
-            <p class="slider__text">Klein genug für intelligente 3D-Vision-Sensoren – mit der Fokussiermechanik der Edition 2025.</p>
-            <ul class="slider__facts"><li><b>Ø 10 × 50 mm</b><span>Gehäuse</span></li><li><b>bis 100 mW</b><span>Leistung</span></li><li><b>1°–90°</b><span>Öffnungswinkel</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvpico.html">Details ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVpico">Anfragen</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="Folie" aria-label="6 von 7" data-index="5" aria-hidden="true">
-            <p class="slider__count"><b>06</b> / 07 · Machine Vision · FLEXPOINT®</p>
-            <h3 class="slider__name">MVgoldHP</h3>
-            <p class="slider__text">Gleichmäßig helle Laserlinie für schwierige Lichtverhältnisse und hohe Taktzeiten – mit integrierter Kühlung.</p>
-            <ul class="slider__facts"><li><b>bis 2 W</b><span>bei 445 nm</span></li><li><b>TEC</b><span>aktive Kühlung</span></li><li><b>RS-232 / RS-485</b><span>Ansteuerung</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-mvgoldhp.html">Details ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=MVgoldHP">Anfragen</a></div>
-          </div>
-          <div class="slider__panel" role="group" aria-roledescription="Folie" aria-label="7 von 7" data-index="6" aria-hidden="true">
-            <p class="slider__count"><b>07</b> / 07 · Linienlaser · FLEXPOINT®</p>
-            <h3 class="slider__name">DOE Laser Module</h3>
-            <p class="slider__text">Ein Laser, viele Muster: Diffraktive Optiken erzeugen Kreuze, parallele Linien, Punktlinien oder Punktmatrizen.</p>
-            <ul class="slider__facts"><li><b>viele Muster</b><span>Strahlformen</span></li><li><b>rot & grün</b><span>Laserfarben</span></li><li><b>fix / fokussierbar</b><span>Fokus</span></li></ul>
-            <div class="btn-row"><a class="btn" href="produkt-doe.html">Details ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="kontakt.html?produkt=DOE%20Laser%20Module">Anfragen</a></div>
-          </div>
-        </div>
-        <div class="slider__nav">
-          <button class="slider__arrow" type="button" data-prev aria-label="Vorheriges Produkt"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
-          <div class="slider__tabs" role="tablist" aria-label="Produkt wählen">
-            <button type="button" role="tab" aria-selected="true" tabindex="0" data-go="0"><span>MVnano</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="1"><span>MVpulse</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="2"><span>MVsquare</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="3"><span>MVfemto</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="4"><span>MVpico</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="5"><span>MVgoldHP</span><i class="bar" aria-hidden="true"></i></button>
-            <button type="button" role="tab" aria-selected="false" tabindex="-1" data-go="6"><span>DOE Laser Module</span><i class="bar" aria-hidden="true"></i></button>
-          </div>
-          <button class="slider__arrow" type="button" data-next aria-label="Nächstes Produkt"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-          <button class="slider__play" type="button" data-toggle aria-label="Automatischen Wechsel anhalten" aria-pressed="false"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
-        </div>
-      </div>
+        <div class="c-news__img"><img src="assets/products/mvpulse-duo-wide.png" alt="MVpulse Lasermodule" loading="lazy"></div>
+      </article>
     </div>
   </section>
 
   <!-- SORTIMENT -->
-  <section class="section" id="sortiment" aria-labelledby="sortiment-title">
+  <section class="c-sec" id="sortiment" aria-labelledby="sortiment-title">
     <div class="wrap">
-      <div class="section-head section-head--row reveal">
-        <div>
-          <p class="eyebrow"><span class="idx">01</span>Unser Sortiment</p>
-          <h2 id="sortiment-title">Was wir herstellen</h2>
-          <p class="lead">Fünf Produktbereiche – alle in Überlingen entwickelt und gefertigt.</p>
-        </div>
-        <a class="link-arrow" href="produkte.html">Alle 13 Produkte ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <div class="c-head reveal">
+        <div><p class="c-kicker">Sortiment</p><h2 class="c-h2" id="sortiment-title">Was wir herstellen</h2></div>
+        <p>Fünf Produktbereiche – alle in Überlingen entwickelt und gefertigt. <a class="link-arrow" href="produkte.html">Alle Produkte <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
-
-      <div class="cat-grid reveal-stagger">
-        <a class="cat-card" href="produkte.html?kategorie=machine-vision">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/15/images/MVpulse1.jpg" alt="" loading="lazy" width="1000" height="456"></div>
-          <div class="body">
-            <h3>Linienlaser für Machine Vision <span class="count">8 Modelle</span></h3>
-            <p>Projizieren eine feine, gleichmäßig helle Laserlinie – die Grundlage für 3D-Messung und Prüfung mit Kamerasystemen.</p>
-            <p class="use"><b>Für:</b> Bildverarbeitung, 3D-Scanner und Vision-Sensoren</p>
-          </div>
+      <div class="c-cats reveal-stagger">
+        <a class="c-cat c-cat--wide" href="produkte.html?kategorie=machine-vision">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/15/images/MVpulse1.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>Linienlaser für Machine Vision</h3><p>Feine, gleichmäßig helle Laserlinien für 3D-Messung und Prüfung mit Kamerasystemen – 8 Modelle.</p><span class="more">Machine Vision ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
         </a>
-        <a class="cat-card" href="produkte.html?kategorie=linienlaser">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/3/images/Linienlaser-main.jpg" alt="" loading="lazy"></div>
-          <div class="body">
-            <h3>Linienlaser für Positionierung <span class="count">2 Produkte</span></h3>
-            <p>Stabile, klar definierte Laserlinien und Strahlmuster (DOE) – Wellenlänge, Leistung und Laserklasse passend zu Ihrer Anwendung.</p>
-            <p class="use"><b>Für:</b> Patientenpositionierung, Positioniersysteme, Schweißanlagen, Messtechnik</p>
-          </div>
+        <a class="c-cat" href="produkte.html?kategorie=linienlaser">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/3/images/Linienlaser-main.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>Linienlaser für Positionierung</h3><p>Klar definierte Linien und Strahlmuster (DOE).</p><span class="more">Ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
         </a>
-        <a class="cat-card" href="produkte.html?kategorie=punktlaser">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/6/images/Punkt-Laser.jpg" alt="" loading="lazy"></div>
-          <div class="body">
-            <h3>Punktlaser</h3>
-            <p>Lasermodule mit rundem Strahlprofil – Optik und Elektronik abgestimmt auf Ihre Aufgabe.</p>
-            <p class="use"><b>Für:</b> Ausrichtung, Messtechnik, Labor und Forschung</p>
-          </div>
+        <a class="c-cat" href="produkte.html?kategorie=punktlaser">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/6/images/Punkt-Laser.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>Punktlaser</h3><p>Rundes Strahlprofil – Optik und Elektronik passend zu Ihrer Aufgabe.</p><span class="more">Ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
         </a>
-        <a class="cat-card" href="produkte.html?kategorie=powell-linsen">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/5/images/powelllinsen1.jpg" alt="" loading="lazy" width="800" height="800"></div>
-          <div class="body">
-            <h3>Powell-Linsen</h3>
-            <p>Spezialoptik, die einen Laserstrahl in eine Linie mit gleichmäßiger Helligkeit verwandelt. Eigenfertigung seit 2019.</p>
-            <p class="use"><b>Für:</b> eigene Laseraufbauten und Forschung</p>
-          </div>
+        <a class="c-cat" href="produkte.html?kategorie=powell-linsen">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/5/images/powelllinsen1.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>Powell-Linsen</h3><p>Laserlinien mit gleichmäßiger Helligkeit. Eigenfertigung seit 2019.</p><span class="more">Ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
         </a>
-        <a class="cat-card" href="produkte.html?kategorie=oem">
-          <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/4/images/Oem-Module.jpg" alt="" loading="lazy"></div>
-          <div class="body">
-            <h3>OEM-Module</h3>
-            <p>Mechanik, Optik und Elektronik nach Ihren Vorgaben – von der Entwicklung bis zur Serie, auch in Kleinserien.</p>
-            <p class="use"><b>Für:</b> Geräte- und Maschinenhersteller</p>
-          </div>
+        <a class="c-cat" href="produkte.html?kategorie=oem">
+          <div class="c-cat__img"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/4/images/Oem-Module.jpg" alt="" loading="lazy"></div>
+          <div class="c-cat__body"><h3>OEM-Module</h3><p>Nach Ihren Vorgaben – von der Entwicklung bis zur Serie.</p><span class="more">Ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- SPOTLIGHT MVpulse -->
-  <section class="section section--deep" aria-labelledby="spot-title">
+  <!-- PRODUKTSUCHE-KREIS -->
+  <section class="c-search" aria-labelledby="search-title">
     <div class="wrap">
-      <div class="spotlight reveal">
-        <div class="media"><img src="https://xtuwjizliuthdgytloju.supabase.co/storage/v1/object/public/uploads/products/15/images/MVpulse1.jpg" alt="MVpulse Lasermodul von BLAU Optoelektronik" loading="lazy" width="1000" height="456"></div>
-        <div class="content">
-          <p class="eyebrow"><span class="idx">02</span>Im Fokus: MVpulse</p>
-          <h2 id="spot-title">Viel Licht für Ihre Kamera. Sicher für die Augen.</h2>
-          <p>In der Bildverarbeitung gilt meist: mehr Laserleistung, mehr Schutzaufwand. Der MVpulse löst diesen Konflikt durch gepulsten Betrieb – mit bis zu 100&nbsp;mW Ausgangsleistung bei Laserklasse&nbsp;2.</p>
-          <ul class="spec-row" aria-label="Kennwerte MVpulse">
-            <li><b data-count="100" data-suffix=" mW">100 mW</b><span>Ausgangsleistung bis</span></li>
-            <li><b>Klasse 2</b><span>Laserklasse</span></li>
-            <li><b>Gepulst</b><span>variable Frequenz</span></li>
-          </ul>
-          <div class="btn-row">
-            <a class="btn btn--light" href="produkt-mvpulse.html">MVpulse ansehen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--outline-light" href="kontakt.html?produkt=MVpulse">Muster anfragen</a>
-          </div>
+      <div class="c-search__stage reveal">
+        <svg class="c-search__art" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <g class="c-search__ring"><circle cx="600" cy="200" r="150"/><path class="c-search__arc" d="M600 38 A162 162 0 0 1 762 200"/><path class="c-search__arc c-search__arc--2" d="M600 362 A162 162 0 0 1 438 200"/></g>
+          <line class="c-search__line" style="--d:0s" x1="203.3" y1="117.0" x2="453.2" y2="169.3"/><g class="c-search__node" style="--d:0s" transform="translate(170 110)"><circle r="32"/><g class="c-search__ico"><rect x="-15" y="-6" width="14" height="12" rx="2"/><path d="M-1 0l16-9M-1 0l16 9M15-9v18"/></g></g><line class="c-search__line" style="--d:0.2s" x1="153.3" y1="293.1" x2="453.2" y2="230.6"/><g class="c-search__node" style="--d:0.2s" transform="translate(120 300)"><circle r="32"/><g class="c-search__ico"><rect x="-15" y="-6" width="14" height="12" rx="2"/><path d="M-1 0h12"/><circle cx="14" cy="0" r="2.5"/></g></g><line class="c-search__line" style="--d:0.4s" x1="1047.0" y1="311.8" x2="745.5" y2="236.4"/><g class="c-search__node" style="--d:0.4s" transform="translate(1080 320)"><circle r="32"/><g class="c-search__ico"><path d="M-6-14c-4 4-4 24 0 28M6-14c4 4 4 24 0 28M-6-14h12M-6 14h12"/></g></g><line class="c-search__line" style="--d:0.6000000000000001s" x1="1006.9" y1="102.9" x2="745.9" y2="165.2"/><g class="c-search__node" style="--d:0.6000000000000001s" transform="translate(1040 95)"><circle r="32"/><g class="c-search__ico"><path d="M-14 0h28M0-14v28"/><circle cx="0" cy="0" r="4"/></g></g>
+        </svg>
+        <h2 class="c-search__title" id="search-title">Sie wissen genau, welches Produkt Sie benötigen?</h2>
+      </div>
+      <form class="c-search__form reveal" action="produkte.html" method="get" role="search">
+        <label class="c-search__label" for="c-search-q">Produktsuche</label>
+        <div class="c-search__row">
+          <input id="c-search-q" name="q" type="search" list="c-search-list" placeholder="Produktname, Wellenlänge oder Anwendung – z. B. MVpico, 660 nm" autocomplete="off">
+          <button type="submit">Suchen</button>
         </div>
+        <datalist id="c-search-list"><option value="MVnano"><option value="MVfemto"><option value="MVpico"><option value="MVmicro"><option value="MVpulse"><option value="MVpulseHP"><option value="MVgoldHP"><option value="MVsquare"><option value="DOE"><option value="Powell"><option value="405 nm"><option value="450 nm"><option value="520 nm"><option value="532 nm"><option value="640 nm"><option value="660 nm"><option value="685 nm"><option value="785 nm"><option value="808 nm"><option value="830 nm"><option value="850 nm"><option value="M12"></datalist>
+        <p class="c-search__chips"><span>Oder direkt zu:</span><a href="produkte.html?kategorie=machine-vision#produktfinder">Machine Vision</a><a href="produkte.html?kategorie=punktlaser#produktfinder">Punktlaser</a><a href="produkte.html?kategorie=powell-linsen#produktfinder">Powell-Linsen</a><a href="produkte.html?kategorie=linienlaser#produktfinder">Linienlaser</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- AUSGEWÄHLTE PRODUKTE -->
+  <section class="c-sec c-sec--soft" aria-labelledby="picks-title">
+    <div class="wrap">
+      <div class="c-head reveal"><div><p class="c-kicker">Ausgewählte Produkte</p><h2 class="c-h2" id="picks-title">Unsere meistgefragten Linienlaser</h2></div></div>
+      <div class="c-picks reveal-stagger">
+        <a class="c-pick" href="produkt-mvnano.html">
+          <div class="c-pick__img"><img src="assets/products/mvnano-duo.png" alt="MVnano" loading="lazy"></div>
+          <small>Machine Vision</small><h3>MVnano</h3><p>Der bewährte Standard für die industrielle Bildverarbeitung.</p>
+          <dl><div><dt>Gehäuse</dt><dd>Ø 11,5 × 54 mm</dd></div><div><dt>Leistung</dt><dd>bis 100 mW</dd></div></dl>
+        </a>
+        <a class="c-pick" href="produkt-mvpulse.html">
+          <div class="c-pick__img"><img src="assets/products/mvpulse-duo.webp" alt="MVpulse" loading="lazy"></div>
+          <small>Machine Vision</small><h3>MVpulse</h3><p>Viel Licht für Ihre Kamera – und trotzdem augensicher.</p>
+          <dl><div><dt>Leistung</dt><dd>bis 100 mW</dd></div><div><dt>Laserklasse</dt><dd>2</dd></div></dl>
+        </a>
+        <a class="c-pick" href="produkt-mvsquare.html">
+          <div class="c-pick__img"><img src="assets/products/mvsquare-duo.png" alt="MVsquare" loading="lazy"></div>
+          <small>Machine Vision</small><h3>MVsquare</h3><p>Einschrauben, fertig: ab Werk nach Ihren Vorgaben justiert.</p>
+          <dl><div><dt>Gehäuse</dt><dd>65 × 15 × 15 mm</dd></div><div><dt>Justage</dt><dd>ab Werk</dd></div></dl>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- AUSWAHLHILFE -->
-  <section class="section" aria-labelledby="finder-title">
+  <!-- DREI WEGE -->
+  <section class="c-sec" aria-labelledby="paths-title">
+    <div class="wrap">
+      <div class="c-head reveal"><div><p class="c-kicker">So finden Sie Ihr Modul</p><h2 class="c-h2" id="paths-title">Drei Wege zum passenden Laser</h2></div></div>
+      <div class="c-paths reveal-stagger">
+        <a class="c-path" href="produktfinder.html"><span class="n">01</span><h3>Produktfinder</h3><p>Ein paar Fragen zu Ihrer Anwendung – wir zeigen die passenden Produkte.</p><span class="link-arrow">Finder starten <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="c-path" href="konfigurator.html"><span class="n">02</span><h3>Konfigurator</h3><p>Wellenlänge, Leistung, Optik und Elektrik selbst zusammenstellen – mit Datenblatt.</p><span class="link-arrow">Konfigurieren <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="c-path" href="kontakt.html"><span class="n">03</span><h3>Persönliche Beratung</h3><p>Beschreiben Sie uns Ihre Aufgabe. Wir empfehlen das passende Modul oder eine Anpassung.</p><span class="link-arrow">Anfrage senden <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANWENDUNGEN: Branchen-Abschnitt unverändert aus Website_Redesign -->
+  <section class="section section--panel" id="anwendungen" aria-labelledby="branchen-title">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow"><span class="idx">03</span>Auswahlhilfe</p>
-        <h2 id="finder-title">Welcher Machine-Vision-Laser passt zu Ihnen?</h2>
-        <p class="lead">Starten Sie mit Ihrer wichtigsten Anforderung. Bei allem Weiteren beraten wir Sie persönlich.</p>
-      </div>
-      <div class="finder reveal-stagger">
-        <a href="produkt-mvnano.html"><span class="q">Ich suche einen bewährten Standard</span><span class="a">MVnano <small>· Ø 11,5 × 54 mm</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvpulse.html"><span class="q">Viel Licht, aber augensicher</span><span class="a">MVpulse <small>· bis 100 mW, Klasse 2</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvpulsehp.html"><span class="q">Sehr hohe Leistung ohne aktive Kühlung</span><span class="a">MVpulseHP <small>· bis 1 W</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvfemto.html"><span class="q">Sehr wenig Einbauraum</span><span class="a">MVfemto <small>· Ø 8 × 40 mm</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvpico.html"><span class="q">Einbau in einen 3D-Vision-Sensor</span><span class="a">MVpico <small>· 10 × 50 mm</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a href="produkt-mvsquare.html"><span class="q">Schnelle, einfache Montage</span><span class="a">MVsquare <small>· 65 × 15 × 15 mm</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EINBLICK: echtes Video aus Entwicklung und Fertigung -->
-  <section class="section section--deep video-section" aria-labelledby="video-title">
-    <div class="wrap video-grid">
-      <div class="video-text">
-        <p class="eyebrow">Einblick</p>
-        <h2 id="video-title">Entwickelt und gefertigt in Überlingen</h2>
-        <p>Ein Blick in unsere Labore und unsere Fertigung am Bodensee – dort, wo Ihre Lasermodule entstehen.</p>
-        <a class="link-arrow link-arrow--light" href="unternehmen.html">Mehr über uns <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="video-frame">
-        <video muted loop playsinline preload="none" data-src="https://blauoptoelektronik.de/Hero.mp4" aria-label="Video: Einblick in Entwicklung und Fertigung bei BLAU Optoelektronik"></video>
-        <span class="video-scan" aria-hidden="true"></span>
-        <button class="video-toggle" type="button" aria-label="Video pausieren" aria-pressed="false">
-          <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
-          <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ANWENDUNGEN / BRANCHEN -->  <section class="section section--panel" id="anwendungen" aria-labelledby="branchen-title">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow"><span class="idx">04</span>Anwendungen</p>
+        <p class="eyebrow">Anwendungen</p>
         <h2 id="branchen-title">Für Ihre Branche gemacht</h2>
         <p class="lead">Unsere Laser stecken in Röntgengeräten, Prüfanlagen, Robotern und Laboraufbauten. Wählen Sie Ihre Branche:</p>
       </div>
@@ -463,90 +326,18 @@
     </div>
   </section>
 
-  <!-- WARUM BLAU -->
-  <section class="section" aria-labelledby="why-title">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow"><span class="idx">05</span>Warum BLAU Optoelektronik</p>
-        <h2 id="why-title">Ein Hersteller. Von der Optik bis zum fertigen Modul.</h2>
-        <p class="lead">Wir entwickeln und fertigen am eigenen Standort. Das heißt für Sie: ein Ansprechpartner, kurze Wege und Anpassungen ohne Umwege.</p>
+  <!-- KONTAKT -->
+  <section class="c-sec" aria-labelledby="cta-title">
+    <div class="wrap c-cta reveal">
+      <div>
+        <h2 id="cta-title">Sie haben eine konkrete Anwendung?</h2>
+        <p>Beschreiben Sie uns kurz Ihre Aufgabe. Wir sagen Ihnen, welches Modul passt – oder was wir für Sie anpassen können.</p>
+        <div class="btn-row" style="margin-top:24px"><a class="btn btn--accent" href="kontakt.html">Anfrage senden <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
       </div>
-      <div class="feature-grid reveal-stagger">
-        <div class="feature">
-          <div class="icon"><svg aria-hidden="true"><use href="#i-lens"/></svg></div>
-          <h3>Eigene Powell-Linsen</h3>
-          <p>Mehrere hundert Stück pro Woche aus eigener Fertigung – für Laserlinien mit gleichmäßiger Helligkeit.</p>
-        </div>
-        <div class="feature">
-          <div class="icon"><svg aria-hidden="true"><use href="#i-sliders"/></svg></div>
-          <h3>Angepasst an Ihre Anwendung</h3>
-          <p>Wellenlänge, Leistung, Optik, Gehäuse und Modulation – auch als Sonderlösung in Kleinserie.</p>
-        </div>
-        <div class="feature">
-          <div class="icon"><svg aria-hidden="true"><use href="#i-factory"/></svg></div>
-          <h3>Made in Germany</h3>
-          <p>Entwicklung, Prototypen und Serienfertigung aus einer Hand in Überlingen am Bodensee.</p>
-        </div>
-        <div class="feature">
-          <div class="icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></div>
-          <h3>Geprüfte Qualität</h3>
-          <p>Zertifiziert nach DIN EN ISO 9001:2015 – in Entwicklung und Fertigung.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROZESS -->
-  <section class="section section--navy" aria-labelledby="process-title">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow"><span class="idx">06</span>So arbeiten wir zusammen</p>
-        <h2 id="process-title">Von der ersten Frage bis zur Serie</h2>
-      </div>
-      <ol class="steps reveal-stagger">
-        <li><h3>Beratung</h3><p>Sie schildern Ihre Anwendung. Wir empfehlen das passende Modul – oder eine Anpassung.</p></li>
-        <li><h3>Entwicklung</h3><p>Für Sonderlösungen entwickeln wir Optik, Mechanik und Elektronik nach Ihren Vorgaben.</p></li>
-        <li><h3>Fertigung</h3><p>Prototypen und Serien entstehen in unserer Fertigung in Überlingen.</p></li>
-        <li><h3>Support</h3><p>Auch nach der Lieferung sind wir Ihr direkter Ansprechpartner.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- TOOLS -->
-  <section class="section" aria-labelledby="tools-title">
-    <div class="wrap">
-      <div class="section-head section-head--row reveal">
-        <div>
-          <p class="eyebrow"><span class="idx">07</span>Online-Tools</p>
-          <h2 id="tools-title">Laserparameter selbst berechnen</h2>
-          <p class="lead">Kostenlos und ohne Anmeldung – ideal für die erste Auslegung.</p>
-        </div>
-      </div>
-      <div class="tool-grid reveal-stagger">
-        <a class="tool tool--featured" href="konfigurator.html"><span class="tool__tag">Neu</span><h3>Modul-Konfigurator</h3><p>In 7 Schritten zu Ihrem Lasermodul: Serie, Wellenlänge, Leistung, Optik, Elektrik – und direkt zum Angebot.</p><span class="link-arrow">Jetzt konfigurieren <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        <a class="tool" href="https://blauoptoelektronik.de/tools"><h3>Liniendicken-Simulation</h3><p>Liniendicke bei verschiedenen Fokusabständen berechnen.</p><span class="link-arrow">Tool öffnen <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        <a class="tool" href="https://blauoptoelektronik.de/tools"><h3>Maximale Leistung</h3><p>Maximale Laserleistung für verschiedene Parameter berechnen.</p><span class="link-arrow">Tool öffnen <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-        <a class="tool" href="https://blauoptoelektronik.de/tools"><h3>MTTF-Prognose</h3><p>Mittlere Lebensdauer (Mean Time to Failure) von Lasermodulen abschätzen.</p><span class="link-arrow">Tool öffnen <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section" style="padding-top:0" aria-labelledby="cta-title">
-    <div class="wrap">
-      <div class="cta-band reveal">
-        <div>
-          <h2 id="cta-title">Sie haben eine konkrete Anwendung?</h2>
-          <p>Beschreiben Sie uns kurz Ihre Aufgabe. Wir sagen Ihnen, welches Modul passt – oder was wir für Sie anpassen können.</p>
-          <div class="btn-row" style="margin-top:26px">
-            <a class="btn btn--accent" href="kontakt.html">Anfrage senden <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
-        <div class="cta-contact">
-          <a class="direct" href="tel:+497551937480"><svg aria-hidden="true"><use href="#i-phone"/></svg>+49 7551 93748-0</a>
-          <a class="direct" href="mailto:info@blauoptoelektronik.de"><svg aria-hidden="true"><use href="#i-mail"/></svg>info@blauoptoelektronik.de</a>
-          <small>Telefonisch erreichbar Mo–Fr, 8:00–17:00 Uhr</small>
-        </div>
+      <div class="c-cta__box">
+        <a class="direct" href="tel:+497551937480"><svg aria-hidden="true"><use href="#i-phone"/></svg>+49 7551 93748-0</a>
+        <a class="direct" href="mailto:info@blauoptoelektronik.de"><svg aria-hidden="true"><use href="#i-mail"/></svg>info@blauoptoelektronik.de</a>
+        <small>Telefonisch erreichbar Mo–Fr, 8:00–17:00 Uhr</small>
       </div>
     </div>
   </section>
@@ -605,6 +396,6 @@
 </footer>
 
 <script src="assets/main.js" defer></script>
-<script src="assets/laser-scene.js" defer></script>
+<script src="assets/home-video.js" defer></script>
 </body>
 </html>
