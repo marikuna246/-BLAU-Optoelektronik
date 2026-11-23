@@ -94,23 +94,25 @@
 
 <main id="main">
 
-  <!-- HERO -->
-  <section class="c-hero" aria-labelledby="hero-title">
-    <div class="wrap c-hero__grid">
-      <div>
-        <h1 id="hero-title">Laser modules.<br><span>Precision-made on Lake Constance.</span></h1>
-        <p class="c-hero__lead">Line lasers, dot lasers and Powell lenses for machine vision, mechanical engineering, medical technology and research – as standard products or built to your specifications.</p>
-        <div class="btn-row">
-          <a class="btn" href="produkte.html">Explore products <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--ghost" href="kontakt.html">Request consultation</a>
-        </div>
-      </div>
-      <div class="c-hero__media">
-        <span class="c-hero__beam" aria-hidden="true"></span>
-        <img src="../assets/hero-mvnano.png" alt="MVnano line laser" width="1083" height="727">
-        <a class="c-hero__tag" href="produkt-mvnano.html"><i aria-hidden="true"></i>MVnano – the standard for machine vision</a>
+  <!-- HERO: BLAU-Video wie auf blauoptoelektronik.de -->
+  <section class="c-video" aria-labelledby="hero-title">
+    <div class="c-video__bg" aria-hidden="true">
+      <video src="https://blauoptoelektronik.de/Hero.mp4" autoplay muted loop playsinline preload="auto"></video>
+      <span class="c-video__shade"></span>
+    </div>
+    <div class="wrap c-video__text">
+      <p class="c-video__pill">Precision in light and optics</p>
+      <h1 id="hero-title">Optoelectronic solutions for the highest demands</h1>
+      <p class="c-video__lead">For more than 30 years we have been developing and manufacturing high-precision laser modules, optical sensors and custom optoelectronics for industry, medical technology and research.</p>
+      <div class="btn-row">
+        <a class="btn btn--accent" href="produkte.html">Explore products <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--outline-light" href="kontakt.html">Get in touch</a>
       </div>
     </div>
+    <button class="c-video__toggle" type="button" aria-pressed="false" aria-label="Pause video" data-l-pause="Pause video" data-l-play="Play video">
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
+    </button>
   </section>
 
   <section class="c-trust" aria-label="Facts about BLAU Optoelektronik">
@@ -263,5 +265,6 @@
 </footer>
 
 <script src="../assets/main.js" defer></script>
+<script src="../assets/home-video.js" defer></script>
 </body>
 </html>

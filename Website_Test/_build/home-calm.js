@@ -12,6 +12,9 @@ const T = {
     lead: "Linienlaser, Punktlaser und Powell-Linsen für Bildverarbeitung, Maschinenbau, Medizintechnik und Forschung – als Standardprodukt oder genau nach Ihren Vorgaben.",
     b1: "Produkte entdecken", b2: "Beratung anfragen",
     tag: "MVnano – der Standard für Machine Vision", imgAlt: "MVnano Linienlaser",
+    vPill: "Präzision in Licht und Optik", vH1: "Optoelektronische Lösungen für höchste Ansprüche",
+    vLead: "Seit über 30 Jahren entwickeln und fertigen wir hochpräzise Lasermodule, optische Sensoren und kundenspezifische Optoelektronik für Industrie, Medizintechnik und Forschung.",
+    vB2: "Kontakt aufnehmen", vPause: "Video anhalten", vPlay: "Video abspielen",
     trust: [["Seit 1987", "Erfahrung in Optoelektronik"], ["Made in Germany", "Entwicklung &amp; Fertigung"], ["ISO 9001:2015", "zertifiziert"], ["Eigene Powell-Linsen", "aus eigener Fertigung"]],
     trustLabel: "Fakten über BLAU Optoelektronik",
     catK: "Sortiment", catH: "Was wir herstellen", catP: "Fünf Produktbereiche – alle in Überlingen entwickelt und gefertigt.", catAll: "Alle Produkte",
@@ -49,6 +52,9 @@ const T = {
     lead: "Line lasers, dot lasers and Powell lenses for machine vision, mechanical engineering, medical technology and research – as standard products or built to your specifications.",
     b1: "Explore products", b2: "Request consultation",
     tag: "MVnano – the standard for machine vision", imgAlt: "MVnano line laser",
+    vPill: "Precision in light and optics", vH1: "Optoelectronic solutions for the highest demands",
+    vLead: "For more than 30 years we have been developing and manufacturing high-precision laser modules, optical sensors and custom optoelectronics for industry, medical technology and research.",
+    vB2: "Get in touch", vPause: "Pause video", vPlay: "Play video",
     trust: [["Since 1987", "Experience in optoelectronics"], ["Made in Germany", "Development &amp; production"], ["ISO 9001:2015", "certified"], ["Own Powell lenses", "made in-house"]],
     trustLabel: "Facts about BLAU Optoelektronik",
     catK: "Product range", catH: "What we make", catP: "Five product areas – all developed and manufactured in Überlingen.", catAll: "All products",
@@ -92,23 +98,25 @@ function main(t, A) {
         </a>`;
   return `<main id="main">
 
-  <!-- HERO -->
-  <section class="c-hero" aria-labelledby="hero-title">
-    <div class="wrap c-hero__grid">
-      <div>
-        <h1 id="hero-title">${t.h1}</h1>
-        <p class="c-hero__lead">${t.lead}</p>
-        <div class="btn-row">
-          <a class="btn" href="produkte.html">${t.b1} ${arrow}</a>
-          <a class="btn btn--ghost" href="kontakt.html">${t.b2}</a>
-        </div>
-      </div>
-      <div class="c-hero__media">
-        <span class="c-hero__beam" aria-hidden="true"></span>
-        <img src="${A}hero-mvnano.png" alt="${t.imgAlt}" width="1083" height="727">
-        <a class="c-hero__tag" href="produkt-mvnano.html"><i aria-hidden="true"></i>${t.tag}</a>
+  <!-- HERO: BLAU-Video wie auf blauoptoelektronik.de -->
+  <section class="c-video" aria-labelledby="hero-title">
+    <div class="c-video__bg" aria-hidden="true">
+      <video src="https://blauoptoelektronik.de/Hero.mp4" autoplay muted loop playsinline preload="auto"></video>
+      <span class="c-video__shade"></span>
+    </div>
+    <div class="wrap c-video__text">
+      <p class="c-video__pill">${t.vPill}</p>
+      <h1 id="hero-title">${t.vH1}</h1>
+      <p class="c-video__lead">${t.vLead}</p>
+      <div class="btn-row">
+        <a class="btn btn--accent" href="produkte.html">${t.b1} ${arrow}</a>
+        <a class="btn btn--outline-light" href="kontakt.html">${t.vB2}</a>
       </div>
     </div>
+    <button class="c-video__toggle" type="button" aria-pressed="false" aria-label="${t.vPause}" data-l-pause="${t.vPause}" data-l-play="${t.vPlay}">
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
+    </button>
   </section>
 
   <section class="c-trust" aria-label="${t.trustLabel}">
@@ -187,6 +195,7 @@ for (const lang of ["de", "en"]) {
   h = h.replace(/\s*<script>\s*\/\*[^]*?intro[^]*?<\/script>/, "");
   h = h.replace(/<div class="intro" id="intro">[\s\S]*?<button class="intro__skip"[^>]*>[^<]*<\/button>\s*<\/div>\s*/, "");
   h = h.replace(/\s*<script src="[^"]*laser-scene\.js" defer><\/script>/, "");
+  if (!h.includes("home-video.js")) h = h.replace(/(<script src="[^"]*main\.js" defer><\/script>)/, `$1\n<script src="${A}home-video.js" defer></script>`);
   if (!h.includes("home-calm.css")) h = h.replace(/(<link rel="stylesheet" href="[^"]*styles\.css">)/, `$1\n  <link rel="stylesheet" href="${A}home-calm.css">`);
   fs.writeFileSync(file, h);
   console.log("Startseite neu:", path.relative(root, file));
