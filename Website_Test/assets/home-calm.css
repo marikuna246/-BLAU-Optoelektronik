@@ -1,0 +1,99 @@
+/* Startseite "Hell & ruhig" (Testordner) – nur auf index.html geladen */
+.calm { --calm-bg: #f6f7f9; --calm-line: #e3e8ee; }
+.calm main { background: #fff; }
+.calm .site-header { background: rgba(255,255,255,.92); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--calm-line); }
+
+/* Abschnitte: viel Luft */
+.c-sec { padding: clamp(64px, 9vw, 128px) 0; }
+.c-sec--soft { background: var(--calm-bg); }
+.c-kicker { font-family: var(--font-head); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); margin: 0 0 14px; }
+.c-h2 { font-size: clamp(1.8rem, 1.3rem + 2vw, 2.8rem); font-weight: 650; letter-spacing: -.03em; max-width: 22ch; }
+.c-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 40px; margin-bottom: clamp(32px, 4vw, 56px); }
+.c-head p { color: var(--muted); max-width: 46ch; margin: 0; }
+
+/* HERO */
+.c-hero { padding: clamp(48px, 7vw, 104px) 0 clamp(40px, 6vw, 80px); }
+.c-hero__grid { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 900px) { .c-hero__grid { grid-template-columns: 1fr 1.1fr; gap: 64px; } }
+.c-hero h1 { font-size: clamp(2.4rem, 1.4rem + 4.2vw, 4.6rem); font-weight: 650; letter-spacing: -.045em; line-height: 1.02; margin-bottom: 24px; }
+.c-hero h1 span { color: var(--muted); font-weight: 500; }
+.c-hero__lead { font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem); color: var(--text); max-width: 44ch; margin: 0 0 32px; }
+.c-hero .btn-row { gap: 12px; }
+.c-hero__media { position: relative; background: var(--calm-bg); border-radius: 28px; aspect-ratio: 5 / 4; display: grid; place-items: center; overflow: hidden; }
+.c-hero__media img { width: 86%; height: auto; object-fit: contain; filter: drop-shadow(0 30px 40px rgba(0, 26, 53, .18)); }
+.c-hero__beam { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: linear-gradient(90deg, transparent, rgba(229, 24, 55, .55), transparent); opacity: .6; }
+.c-hero__tag { position: absolute; left: 20px; bottom: 20px; background: #fff; border-radius: 999px; padding: 8px 16px 8px 12px; font-size: .9rem; font-weight: 600; color: var(--ink); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; box-shadow: var(--shadow-sm); }
+@media (max-width: 599px) { .c-hero__tag { left: 12px; right: 12px; bottom: 12px; font-size: .8rem; } .c-hero__media img { width: 78%; margin-bottom: 28px; } }
+.c-hero__tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
+.c-hero__tag:hover { color: var(--navy); }
+
+/* Vertrauensleiste */
+.c-trust { border-top: 1px solid var(--calm-line); border-bottom: 1px solid var(--calm-line); }
+.c-trust ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 768px) { .c-trust ul { grid-template-columns: repeat(4, 1fr); } }
+.c-trust li { padding: 24px 0; display: flex; flex-direction: column; gap: 2px; }
+@media (min-width: 768px) { .c-trust li + li { padding-left: 28px; border-left: 1px solid var(--calm-line); } }
+.c-trust b { font-family: var(--font-head); font-size: 1.15rem; color: var(--ink); font-weight: 650; }
+.c-trust span { color: var(--muted); font-size: .92rem; }
+
+/* Produktbereiche */
+.c-cats { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .c-cats { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .c-cats { grid-template-columns: repeat(4, 1fr); } }
+.c-cat { display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 20px; background: #fff; border: 1px solid var(--calm-line); overflow: hidden; transition: border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease); }
+.c-cat:hover { border-color: #c5d1de; transform: translateY(-3px); box-shadow: var(--shadow); color: inherit; }
+.c-cat__img { aspect-ratio: 4 / 3; background: var(--calm-bg); overflow: hidden; }
+.c-cat__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.c-cat:hover .c-cat__img img { transform: scale(1.04); }
+.c-cat__body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.c-cat h3 { font-size: 1.15rem; font-weight: 650; margin: 0; }
+.c-cat p { color: var(--muted); font-size: .95rem; margin: 0; }
+.c-cat .more { margin-top: auto; padding-top: 12px; font-family: var(--font-head); font-weight: 650; font-size: .92rem; color: var(--navy); display: inline-flex; gap: 6px; align-items: center; }
+.c-cat .more svg { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+.c-cat:hover .more svg { transform: translateX(3px); }
+.c-cat--wide { grid-column: 1 / -1; display: grid; }
+@media (min-width: 768px) { .c-cat--wide { grid-template-columns: 1.2fr 1fr; } .c-cat--wide .c-cat__img { aspect-ratio: auto; min-height: 260px; } .c-cat--wide .c-cat__body { padding: 40px; justify-content: center; } .c-cat--wide h3 { font-size: 1.6rem; } }
+
+/* Ausgewählte Produkte */
+.c-picks { display: grid; gap: 16px; }
+@media (min-width: 900px) { .c-picks { grid-template-columns: repeat(3, 1fr); } }
+.c-pick { background: #fff; border-radius: 20px; padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; border: 1px solid transparent; transition: border-color .25s var(--ease); }
+.c-pick:hover { border-color: #c5d1de; color: inherit; }
+.c-pick__img { height: 200px; margin-bottom: 8px; background: var(--calm-bg); border-radius: 14px; overflow: hidden; }
+.c-pick__img img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
+.c-pick small { color: var(--muted); font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 600; }
+.c-pick h3 { font-size: 1.4rem; margin: 0; font-weight: 650; }
+.c-pick p { color: var(--muted); margin: 0; font-size: .95rem; }
+.c-pick dl { display: flex; gap: 24px; margin: 8px 0 0; padding-top: 16px; border-top: 1px solid var(--calm-line); }
+.c-pick dt { font-size: .78rem; color: var(--muted); }
+.c-pick dd { margin: 0; font-family: var(--font-head); font-weight: 650; color: var(--ink); }
+
+/* Drei Wege */
+.c-paths { display: grid; gap: 0; border-top: 1px solid var(--calm-line); }
+@media (min-width: 900px) { .c-paths { grid-template-columns: repeat(3, 1fr); } }
+.c-path { padding: 32px 0; text-decoration: none; color: inherit; border-bottom: 1px solid var(--calm-line); display: flex; flex-direction: column; gap: 8px; }
+@media (min-width: 900px) { .c-path { padding: 40px 32px 40px 0; border-bottom: 0; } .c-path + .c-path { padding-left: 32px; border-left: 1px solid var(--calm-line); } }
+.c-path .n { font-family: var(--font-head); font-size: .85rem; color: var(--red); font-weight: 700; }
+.c-path h3 { font-size: 1.35rem; margin: 0; font-weight: 650; }
+.c-path p { color: var(--muted); margin: 0 0 8px; }
+.c-path .link-arrow { margin-top: auto; }
+.c-path:hover h3 { color: var(--navy); }
+
+/* Branchen */
+.c-ind { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+@media (min-width: 640px) { .c-ind { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .c-ind { grid-template-columns: repeat(5, 1fr); } }
+.c-ind li { background: #fff; border-radius: 16px; padding: 22px; }
+.c-ind h3 { font-size: 1.05rem; margin: 0 0 6px; font-weight: 650; }
+.c-ind p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+/* Kontakt */
+.c-cta { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 900px) { .c-cta { grid-template-columns: 1.3fr 1fr; } }
+.c-cta h2 { font-size: clamp(1.9rem, 1.3rem + 2.2vw, 3rem); font-weight: 650; letter-spacing: -.035em; margin-bottom: 16px; }
+.c-cta p { color: var(--muted); max-width: 46ch; }
+.c-cta__box { background: var(--calm-bg); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+.c-cta__box a.direct { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-head); font-weight: 650; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+.c-cta__box a.direct svg { width: 20px; height: 20px; color: var(--navy); }
+.c-cta__box a.direct:hover { color: var(--navy); }
+.c-cta__box small { color: var(--muted); }
