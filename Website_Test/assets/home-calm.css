@@ -113,3 +113,41 @@
 .c-video__toggle .i-play, .c-video.is-paused .c-video__toggle .i-pause { display: none; }
 .c-video.is-paused .c-video__toggle .i-play { display: block; }
 .c-video__toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* ===== Anfang wie blauoptoelektronik.de: schwebende Kopfleiste über dem Vollbild-Video ===== */
+.calm { --blau-primary: oklch(35% .12 245); --blau-teal: oklch(65% .15 210); }
+.calm .site-header, .calm .site-header.is-scrolled { position: fixed; left: 0; right: 0; top: 8px; height: 64px; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border: 0; box-shadow: none; }
+@media (min-width: 768px) { .calm .site-header, .calm .site-header.is-scrolled { top: 16px; } }
+.calm .header-inner { max-width: min(1280px, calc(100% - 2 * var(--gutter))); padding: 0 20px; background: rgba(255,255,255,.96); border-radius: 10px; box-shadow: 0 10px 30px -14px rgba(0, 20, 45, .45); }
+.calm .main-nav a { text-transform: uppercase; font-family: var(--font); font-size: .875rem; font-weight: 500; letter-spacing: .01em; padding: 8px 9px; }
+.calm .header-actions .btn--accent { background: var(--blau-teal); border-color: var(--blau-teal); text-transform: uppercase; font-size: .8rem; border-radius: 6px; }
+.calm .header-actions .btn--accent:hover { filter: brightness(.92); }
+.calm .lang span { background: var(--blau-primary); color: #fff; }
+.calm .mobile-nav { inset: 0; padding-top: 96px; }
+
+.calm .c-video { min-height: 100svh; align-items: flex-end; }
+.calm .c-video__shade { background: linear-gradient(90deg, oklch(35% .12 245 / .95), oklch(35% .12 245 / .8), oklch(35% .12 245 / .6)); }
+.calm .c-video__text { padding-bottom: clamp(64px, 6vw, 96px); }
+.calm .c-video__text > * { max-width: 672px; }
+.calm .c-video__pill { background: oklch(65% .15 210 / .2); font-size: .75rem; font-weight: 500; padding: 6px 12px; margin-bottom: 16px; }
+.calm .c-video h1 { font-family: var(--font); font-size: 1.5rem; font-weight: 700; letter-spacing: 0; line-height: 1.25; margin-bottom: 12px; }
+@media (min-width: 768px) { .calm .c-video h1 { font-size: 1.875rem; } }
+.calm .c-video__lead { font-size: .875rem; line-height: 1.65; margin-bottom: 24px; }
+@media (min-width: 768px) { .calm .c-video__lead { font-size: 1rem; } }
+.calm .c-video .btn-row { gap: 12px; }
+.c-vbtn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 24px; border-radius: 6px; font-size: .875rem; font-weight: 500; text-decoration: none; border: 1px solid transparent; transition: background .2s, color .2s; }
+.c-vbtn svg { width: 16px; height: 16px; }
+.c-vbtn--fill { background: var(--blau-teal); color: #fff; }
+.c-vbtn--fill:hover { background: oklch(65% .15 210 / .9); color: #fff; }
+.c-vbtn--line { border-color: #fafafa; color: #fafafa; }
+.c-vbtn--line:hover { background: #fafafa; color: var(--blau-primary); }
+@media (max-width: 639px) { .calm .c-video .btn-row { flex-direction: column; align-items: stretch; } }
+
+/* Maus-Symbol "nach unten scrollen" */
+.c-video__mouse { display: none; position: absolute; z-index: 1; left: 50%; bottom: 32px; width: 24px; height: 40px; margin-left: -12px; border: 2px solid rgba(250,250,250,.5); border-radius: 999px; justify-content: center; padding-top: 8px; animation: c-bounce 1s infinite; }
+.c-video__mouse i { width: 4px; height: 12px; border-radius: 999px; background: rgba(250,250,250,.5); }
+@media (min-width: 640px) { .c-video__mouse { display: flex; } }
+@keyframes c-bounce { 0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(.8,0,1,1); } 50% { transform: none; animation-timing-function: cubic-bezier(0,0,.2,1); } }
+.calm .brand img { height: 34px; } @media (min-width: 768px) { .calm .brand img { height: 38px; } }
+@media (max-width: 639px) { .calm .c-video__toggle { bottom: auto; top: 88px; } }
+.calm .mobile-nav .btn--accent { background: var(--blau-teal); border-color: var(--blau-teal); }

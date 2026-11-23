@@ -109,10 +109,11 @@ function main(t, A) {
       <h1 id="hero-title">${t.vH1}</h1>
       <p class="c-video__lead">${t.vLead}</p>
       <div class="btn-row">
-        <a class="btn btn--accent" href="produkte.html">${t.b1} ${arrow}</a>
-        <a class="btn btn--outline-light" href="kontakt.html">${t.vB2}</a>
+        <a class="c-vbtn c-vbtn--fill" href="produkte.html">${t.b1} ${arrow}</a>
+        <a class="c-vbtn c-vbtn--line" href="kontakt.html">${t.vB2}</a>
       </div>
     </div>
+    <span class="c-video__mouse" aria-hidden="true"><i></i></span>
     <button class="c-video__toggle" type="button" aria-pressed="false" aria-label="${t.vPause}" data-l-pause="${t.vPause}" data-l-play="${t.vPlay}">
       <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></svg>
       <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
