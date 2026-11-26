@@ -1,4 +1,4 @@
-/* Produktfinder auf der Produktseite (Testordner) */
+/* Produktfinder auf der Produktseite */
 .pf-sec { background: #f3f5f8; padding: clamp(40px, 6vw, 72px) 0 clamp(56px, 7vw, 96px); }
 .pf-head { margin-bottom: 28px; }
 .pf-head h2 { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.3rem); text-transform: uppercase; letter-spacing: .01em; font-weight: 600; margin: 0 0 6px; color: var(--navy); }
@@ -82,3 +82,29 @@
 .pf-more { text-align: center; margin-top: 28px; }
 .pf-more__btn { height: 42px; padding: 0 28px; border-radius: 999px; border: 1px solid var(--navy); background: #fff; color: var(--navy); font: inherit; font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; cursor: pointer; }
 .pf-more__btn:hover { background: var(--navy); color: #fff; }
+
+/* Suche oben als große Suchleiste, Filter in einer weißen Karte (BLAU-Farben) */
+.pf-searchbar { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+.pf-search { flex: 1 1 320px; position: relative; display: flex; align-items: center; background: #fff; border: 2px solid #00a6c1; border-radius: 999px; box-shadow: 0 10px 28px -18px rgba(0, 61, 116, .55); transition: box-shadow .2s, border-color .2s; }
+.pf-search:focus-within { border-color: #003d74; box-shadow: 0 0 0 4px rgba(0, 166, 193, .18), 0 10px 28px -18px rgba(0, 61, 116, .55); }
+.pf-search svg { position: absolute; left: 20px; width: 22px; height: 22px; color: #00829a; pointer-events: none; }
+.pf-search input { width: 100%; height: 56px; border: 0; outline: 0; background: none; padding: 0 22px 0 54px; font: inherit; font-size: 1.05rem; color: #10171c; border-radius: 999px; }
+.pf-search input::placeholder { color: #7c8790; }
+.pf-panel .pf-reset { justify-self: auto; height: auto; min-height: 56px; display: inline-flex; align-items: center; gap: 8px; padding: 0 22px; border: 1.5px solid #d9dfe4; background: #fff; color: #003d74; text-transform: none; letter-spacing: 0; font-size: .92rem; }
+.pf-panel .pf-reset svg { width: 17px; height: 17px; }
+.pf-panel .pf-reset:hover { background: #003d74; border-color: #003d74; color: #fff; }
+.pf-filters { display: grid; gap: 24px; background: #fff; border: 1px solid #d9dfe4; border-radius: 16px; padding: clamp(18px, 2.5vw, 28px); box-shadow: 0 12px 32px -24px rgba(0, 61, 116, .45); }
+@media (min-width: 900px) { .pf-filters .pf-row--bottom { grid-template-columns: 1fr; } }
+.pf-filters .pf-row + .pf-row { border-top: 1px solid #eceff2; padding-top: 22px; }
+.pf-filters .pf-f select, .pf-filters .pf-num, .pf-filters .pf-chips button { border-color: #d9dfe4; background: #f7f9fa; }
+.pf-filters .pf-chips button { border-radius: 999px; padding: 0 16px; }
+.pf-filters .pf-chips button:hover { border-color: #00a6c1; }
+.pf-filters .pf-chips button[aria-pressed="true"] { background: #003d74; border-color: #003d74; color: #fff; }
+.pf-filters .pf-feats button { background: #f7f9fa; border-color: #eceff2; width: 104px; padding: 10px 4px; }
+.pf-filters .pf-feats button:hover { border-color: #00a6c1; background: #e6f6fa; }
+.pf-filters .pf-feats button[aria-pressed="true"] { background: #e6f6fa; border-color: #003d74; }
+.pf-filters .pf-feats svg { color: #00829a; }
+.pf-slider__fill { background: #00a6c1; }
+.pf-bar { border-top: 0; margin-top: 22px; padding-top: 0; }
+.pf-count { font-weight: 600; color: #003d74; }
+@media (max-width: 640px) { .pf-search input { height: 52px; font-size: 1rem; } .pf-panel .pf-reset { min-height: 44px; width: 100%; justify-content: center; } }

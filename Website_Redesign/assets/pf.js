@@ -59,6 +59,10 @@
   var names = {}; items.forEach(function (i) { names[i.slug] = i.name; });
   root.innerHTML =
     '<form class="pf-panel" data-pf-form onsubmit="return false">' +
+      '<div class="pf-searchbar"><label class="pf-search"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>' +
+        '<span class="sr-only">' + t("Produkte durchsuchen", "Search products") + '</span><input type="search" data-q placeholder="' + t("Produkt, Wellenlänge oder Merkmal suchen – z. B. MVpico, 660 nm, M12", "Search product, wavelength or feature – e.g. MVpico, 660 nm, M12") + '"></label>' +
+        '<button type="button" class="pf-reset" data-reset><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>' + t("Filter zurücksetzen", "Reset filters") + "</button></div>" +
+      '<div class="pf-filters">' +
       '<div class="pf-row pf-row--top">' +
         '<fieldset class="pf-f pf-f--wl"><legend>' + t("Wellenlänge", "Wavelength") + '</legend>' +
           '<div class="pf-range"><label class="pf-num"><input type="number" min="' + WMIN + '" max="' + WMAX + '" step="1" value="' + WMIN + '" data-wl-min aria-label="' + t("Wellenlänge von", "Wavelength from") + '"><span>nm</span></label>' +
@@ -74,8 +78,7 @@
       "</div>" +
       '<div class="pf-row pf-row--bottom">' +
         '<fieldset class="pf-f"><legend>' + t("Ausstattung wählen", "Select features") + '</legend><div class="pf-feats">' + Object.keys(FEATS).map(function (k) { return '<button type="button" aria-pressed="false" data-feat="' + k + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + FEATS[k][1] + "</svg><span>" + FEATS[k][0] + "</span></button>"; }).join("") + "</div></fieldset>" +
-        '<label class="pf-f pf-f--search"><span class="pf-l">' + t("Suche", "Search") + '</span><input type="search" data-q placeholder="' + t("z. B. MVpico, 660 nm, M12", "e.g. MVpico, 660 nm, M12") + '"></label>' +
-        '<button type="button" class="pf-reset" data-reset>' + t("Zurücksetzen", "Reset") + "</button>" +
+      "</div>" +
       "</div>" +
     "</form>" +
     '<div class="pf-bar"><p class="pf-count" aria-live="polite" data-count></p></div>' +
