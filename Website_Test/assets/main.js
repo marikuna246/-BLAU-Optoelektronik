@@ -17,7 +17,7 @@
       doc.classList.remove("intro-active");
       setTimeout(function () { intro.remove(); }, 950);
     };
-    var timer = setTimeout(open, 1550);
+    var timer = setTimeout(open, 2800);
     intro.querySelector(".intro__skip").addEventListener("click", function () { clearTimeout(timer); open(); });
     intro.addEventListener("click", function () { clearTimeout(timer); open(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" || e.key === "Enter" || e.key === " ") { clearTimeout(timer); open(); } });

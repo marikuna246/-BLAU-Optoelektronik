@@ -257,10 +257,35 @@ for (const lang of ["de", "en"]) {
   const A = lang === "en" ? "../assets/" : "assets/";
   let h = fs.readFileSync(file, "utf8");
   h = h.replace(/<main id="main">[\s\S]*?<\/main>/, () => main(T[lang], A, lang));
-  // kein dunkler Kopf, kein Intro, keine Laser-Animation
+  // kein dunkler Kopf, keine Laser-Animation – aber das BLAU-Logo-Intro beim ersten Aufruf
+  // (einmal pro Sitzung; ?intro=neu spielt es erneut ab). Alte Fassung erst entfernen, dann neu einsetzen.
   h = h.replace(/<body class="home dark-top">/, '<body class="home calm">');
   h = h.replace(/\s*<script>\s*\/\*[^]*?intro[^]*?<\/script>/, "");
   h = h.replace(/<div class="intro" id="intro">[\s\S]*?<button class="intro__skip"[^>]*>[^<]*<\/button>\s*<\/div>\s*/, "");
+  h = h.replace(/(\n\s*<link rel="stylesheet" href="[^"]*styles\.css">)/, `
+  <script>
+    /* Intro beim ersten Aufruf der Startseite pro Sitzung (?intro=neu spielt es erneut ab) */
+    (function (d) {
+      var play = true;
+      try {
+        if (/intro=neu/.test(location.search)) sessionStorage.removeItem("blau-intro");
+        play = !sessionStorage.getItem("blau-intro");
+      } catch (e) {}
+      d.classList.add(play ? "intro-active" : "no-intro");
+      /* Sicherheitsnetz: falls das Skript nicht lädt, Intro nach 5 s beenden */
+      if (play) setTimeout(function () { d.classList.remove("intro-active"); }, 5000);
+    })(document.documentElement);
+  </script>$1`);
+  h = h.replace(/(<body class="home calm">)/, `$1
+<div class="intro" id="intro">
+  <div class="intro__half intro__top" aria-hidden="true"></div>
+  <div class="intro__half intro__bottom" aria-hidden="true"></div>
+  <div class="intro__center" aria-hidden="true">
+    <img class="intro__logo" src="${A}blau-logo-white.png" alt="" width="372" height="157">
+  </div>
+  <span class="intro__line" aria-hidden="true"></span>
+  <button class="intro__skip" type="button">${lang === "en" ? "Skip intro" : "Intro überspringen"}</button>
+</div>`);
   h = h.replace(/\s*<script src="[^"]*laser-scene\.js" defer><\/script>/, "");
   if (!h.includes("home-video.js")) h = h.replace(/(<script src="[^"]*main\.js" defer><\/script>)/, `$1\n<script src="${A}home-video.js" defer></script>`);
   if (!h.includes("home-calm.css")) h = h.replace(/(<link rel="stylesheet" href="[^"]*styles\.css">)/, `$1\n  <link rel="stylesheet" href="${A}home-calm.css">`);

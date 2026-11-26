@@ -16,6 +16,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://xtuwjizliuthdgytloju.supabase.co">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    /* Intro beim ersten Aufruf der Startseite pro Sitzung (?intro=neu spielt es erneut ab) */
+    (function (d) {
+      var play = true;
+      try {
+        if (/intro=neu/.test(location.search)) sessionStorage.removeItem("blau-intro");
+        play = !sessionStorage.getItem("blau-intro");
+      } catch (e) {}
+      d.classList.add(play ? "intro-active" : "no-intro");
+      /* Sicherheitsnetz: falls das Skript nicht lädt, Intro nach 5 s beenden */
+      if (play) setTimeout(function () { d.classList.remove("intro-active"); }, 5000);
+    })(document.documentElement);
+  </script>
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/home-calm.css">
   <script type="application/ld+json">
@@ -33,6 +46,15 @@
   </script>
 </head>
 <body class="home calm">
+<div class="intro" id="intro">
+  <div class="intro__half intro__top" aria-hidden="true"></div>
+  <div class="intro__half intro__bottom" aria-hidden="true"></div>
+  <div class="intro__center" aria-hidden="true">
+    <img class="intro__logo" src="assets/blau-logo-white.png" alt="" width="372" height="157">
+  </div>
+  <span class="intro__line" aria-hidden="true"></span>
+  <button class="intro__skip" type="button">Intro überspringen</button>
+</div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>

@@ -1340,3 +1340,10 @@ html body.dark-top .breadcrumb [aria-current] { color: #fff; }
 /* Filter- und Zwischenflächen in BLAU-Hellgrau */
 html body .filter-bar, html body .section--panel { background: #eceff2; }
 html body .pf-sec { background: #eceff2; }
+
+/* ===== Intro in BLAU-Farben: Dunkelblau #003d74, türkis-cyane Laserlinie (ohne Rot, ohne Gitter) ===== */
+html .intro__half { background-color: #003d74; background-size: auto; }
+html .intro__top { background-image: radial-gradient(700px 320px at 50% 100%, rgba(0, 205, 218, .18), transparent 70%), linear-gradient(180deg, #002a52, #003d74); }
+html .intro__bottom { background-image: radial-gradient(700px 320px at 50% 0%, rgba(0, 205, 218, .18), transparent 70%), linear-gradient(0deg, #002a52, #003d74); }
+html .intro__line { background: linear-gradient(90deg, transparent, #00a6c1 15%, #00cdda 50%, #00a6c1 85%, transparent); box-shadow: 0 0 12px 2px rgba(0, 205, 218, .8), 0 0 40px 8px rgba(0, 166, 193, .35); }
+html .intro__skip { color: #d4e1ee; border-color: rgba(255, 255, 255, .35); }
