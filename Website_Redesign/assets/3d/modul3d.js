@@ -59,11 +59,11 @@
         }
       } else {
         cyl(r, 0, L - cap, M.blue); ring(r * 1.001, (L - cap) * .72, .2, M.groove); front(r, L - cap, L); frontX = L + .3;
-        if (D.m12) m12(0); else cable(0, 0, Math.max(1.2, r * .25), Math.max(40, L * .8), 1);
+        if (D.m12) m12(0); else cable(0, 0, Math.max(1.2, r * .25), Math.max(18, L * .4), 1);
       }
     }
     // Laserfächer in Wellenlängenfarbe (IR unsichtbar: grau-transparent)
-    var col = WL[cfg.wl] || (cfg.wl > 700 ? 0x9aa4b0 : 0x00cdda), fan = Math.max(1, Math.min(90, cfg.fan || 45)) * Math.PI / 180, FL = Math.max(30, frontX * .8);
+    var col = WL[cfg.wl] || (cfg.wl > 700 ? 0x9aa4b0 : 0x00cdda), fan = Math.max(1, Math.min(90, cfg.fan || 45)) * Math.PI / 180, FL = Math.max(22, frontX * .55);
     var shape = new T.Shape(); shape.moveTo(0, 0); shape.lineTo(FL, -Math.tan(fan / 2) * FL); shape.lineTo(FL, Math.tan(fan / 2) * FL); shape.closePath();
     var fanMesh = new T.Mesh(new T.ShapeGeometry(shape), new T.MeshBasicMaterial({ color: col, transparent: true, opacity: cfg.wl > 700 ? .12 : .22, side: T.DoubleSide, depthWrite: false }));
     fanMesh.position.x = frontX; fanMesh.userData.beam = true; root.add(fanMesh);
@@ -86,10 +86,13 @@
       var model = build(cfg); scene.add(model);
       var box = new T.Box3().setFromObject(model), size = box.getSize(new T.Vector3()), ctr = box.getCenter(new T.Vector3());
       model.position.sub(ctr);
-      var cam = new T.PerspectiveCamera(30, w / h, 1, 5000), dist = Math.max(size.x, size.y * 1.8, size.z * 1.8) * 1.25;
-      if (w / h < 1.6) dist *= 1.6 / (w / h); // schmale Ansicht (Handy): weiter weg, damit alles hineinpasst
-      cam.position.set(dist * .35, dist * .45, dist); cam.lookAt(0, 0, 0);
-      var ctl = new T.OrbitControls(cam, renderer.domElement); ctl.enableDamping = true; ctl.enablePan = false; ctl.autoRotate = true; ctl.autoRotateSpeed = 1.2;
+      // Abstand so wählen, dass das Modell in jeder Drehlage das Bild füllt (umhüllende Kugel, engere Bildachse)
+      var sph = new T.Box3().setFromObject(model).getBoundingSphere(new T.Sphere()), cam = new T.PerspectiveCamera(30, w / h, 1, 5000);
+      var vf = cam.fov * Math.PI / 180, hf = 2 * Math.atan(Math.tan(vf / 2) * cam.aspect), bb = new T.Box3().setFromObject(model).getSize(new T.Vector3());
+      // Drehung um die senkrechte Achse: waagerecht höchstens die Diagonale aus Länge und Tiefe, senkrecht die Höhe
+      var halfW = Math.hypot(bb.x, bb.z) / 2, halfH = bb.y / 2 + Math.hypot(bb.x, bb.z) * .12, dist = Math.max(halfW / Math.tan(hf / 2), halfH / Math.tan(vf / 2)) * 1.08 + halfW * .3;
+      var dir = new T.Vector3(.35, .32, 1).normalize(); cam.position.copy(dir.multiplyScalar(dist)); cam.lookAt(0, 0, 0);
+      var ctl = new T.OrbitControls(cam, renderer.domElement); ctl.enableDamping = true; ctl.enablePan = false; ctl.enableZoom = false; ctl.autoRotate = true; ctl.autoRotateSpeed = 1.2; // kein Mausrad-Zoom: Seite scrollt normal weiter, Modell bleibt gross
       renderer.domElement.addEventListener("pointerdown", function () { ctl.autoRotate = false; });
       var alive = true;
       (function loop() { if (!alive) return; ctl.update(); renderer.render(scene, cam); requestAnimationFrame(loop); })();

@@ -1363,7 +1363,7 @@ html .intro__skip { color: #d4e1ee; border-color: rgba(255, 255, 255, .35); }
 .adapt p { color: var(--muted); margin: 0; }
 /* ===== Konfigurator: 3D-Modell des konfigurierten Moduls + Daten zum Mitnehmen ===== */
 .cfg-3d { margin: 22px 0 26px; border-radius: 18px; overflow: hidden; border: 1px solid #d9dfe4; background: #fff; }
-.cfg-3d__view { position: relative; height: clamp(260px, 42vw, 400px); background: radial-gradient(120% 90% at 50% 40%, #ffffff 0%, #eef3f8 70%, #e3eaf2 100%); cursor: grab; touch-action: pan-y; }
+.cfg-3d__view { position: relative; height: clamp(300px, 48vw, 460px); background: radial-gradient(120% 90% at 50% 40%, #ffffff 0%, #eef3f8 70%, #e3eaf2 100%); cursor: grab; touch-action: pan-y; }
 .cfg-3d__view:active { cursor: grabbing; }
 .cfg-3d__view canvas { display: block; width: 100% !important; height: 100% !important; }
 .cfg-3d__load { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--muted); font-size: .92rem; }

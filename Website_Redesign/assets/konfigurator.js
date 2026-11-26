@@ -323,7 +323,7 @@
       /* 3D-Ansicht des konfigurierten Moduls + Daten zum Mitnehmen */
       "<div class='cfg-3d'><div class='cfg-3d__view' id='cfg-3d' aria-label='" + (EN ? "3D view of your configured module" : "3D-Ansicht Ihres konfigurierten Moduls") + "'><p class='cfg-3d__load'>" + (EN ? "Loading 3D view …" : "3D-Ansicht wird geladen …") + "</p></div>" +
       "<img class='cfg-3d__print' id='cfg-3d-print' alt=''>" +
-      "<div class='cfg-3d__bar'><p><b>" + (EN ? "Your module in 3D" : "Ihr Modul in 3D") + "</b> · " + (EN ? "drag to rotate, scroll to zoom" : "ziehen zum Drehen, scrollen zum Zoomen") + "</p>" +
+      "<div class='cfg-3d__bar'><p><b>" + (EN ? "Your module in 3D" : "Ihr Modul in 3D") + "</b> · " + (EN ? "drag to rotate" : "zum Drehen ziehen") + "</p>" +
       "<div class='cfg-3d__btns'><button type='button' class='btn btn--ghost btn--sm' data-dl='pdf'>" + (EN ? "Data sheet (PDF / print)" : "Datenblatt (PDF / Drucken)") + "</button>" +
       "<button type='button' class='btn btn--ghost btn--sm' data-dl='stl'>" + (EN ? "3D model (STL)" : "3D-Modell (STL)") + "</button>" +
       "<button type='button' class='btn btn--ghost btn--sm' data-dl='png'>" + (EN ? "Image (PNG)" : "Bild (PNG)") + "</button></div></div>" +
