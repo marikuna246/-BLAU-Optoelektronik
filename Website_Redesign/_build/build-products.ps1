@@ -40,7 +40,7 @@ foreach ($p in $data.products) {
   A "  <meta property=`"og:title`" content=`"$(Enc $p.title)`">"
   A "  <meta property=`"og:image`" content=`"$first`">"
   A '  <meta name="theme-color" content="#003368">'
-  A '  <link rel="icon" href="assets/blau-logo.png">'
+  A '  <link rel="icon" type="image/png" href="assets/favicon.png"><link rel="apple-touch-icon" href="assets/favicon.png">'
   A '  <link rel="preconnect" href="https://fonts.googleapis.com">'
   A '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
   A '  <link rel="preconnect" href="https://xtuwjizliuthdgytloju.supabase.co">'
