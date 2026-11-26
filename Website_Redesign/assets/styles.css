@@ -1442,3 +1442,7 @@ html body .search-toggle:hover svg { color: #fff; }
 @media (max-width: 1119px) { html body .search-toggle { width: 46px; height: 46px; padding: 0; justify-content: center; border-radius: 12px; background: #00a6c1; border-color: #00a6c1; } html body .search-toggle svg { color: #fff; width: 21px; height: 21px; } }
 @media (min-width: 1120px) { .search-toggle__t { display: inline; } html body .search-toggle { min-width: 118px; } }
 @media (min-width: 1280px) { .search-toggle kbd { display: inline-block; } }
+/* Suchfenster: Schließen als X */
+html body .ss__x { width: 38px; height: 38px; padding: 0; display: inline-grid; place-items: center; border-radius: 50%; border: 1px solid #d9dfe4; background: #fff; color: #003d74; cursor: pointer; flex: none; }
+html body .ss__x svg { width: 18px; height: 18px; }
+html body .ss__x:hover { background: #003d74; border-color: #003d74; color: #fff; }

@@ -34,7 +34,7 @@
       '<div class="ss__box">' +
         '<div class="ss__bar"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>' +
         '<input type="search" autocomplete="off" spellcheck="false" placeholder="' + esc(T.ph) + '" aria-label="' + esc(T.ph) + '" aria-controls="ss-list">' +
-        '<button type="button" class="ss__x" data-close aria-label="' + esc(T.close) + '"><span>Esc</span></button></div>' +
+        '<button type="button" class="ss__x" data-close aria-label="' + esc(T.close) + '"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>' +
         '<div class="ss__body"><ul class="ss__list" id="ss-list" role="listbox"></ul></div>' +
       "</div>";
     document.body.appendChild(dlg);
