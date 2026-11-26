@@ -1386,3 +1386,7 @@ html .intro__skip { color: #d4e1ee; border-color: rgba(255, 255, 255, .35); }
   .cfg-printing .cfg-3d { border: 1px solid #ccc; }
   .cfg-printing #cfg-main::before { content: "BLAU Optoelektronik GmbH · Askaniaweg 4c · 88662 Überlingen · +49 7551 93748-0 · info@blauoptoelektronik.de"; display: block; font-size: 9pt; color: #003d74; margin-bottom: 6mm; border-bottom: 2px solid #00a6c1; padding-bottom: 2mm; visibility: visible; }
 }
+/* Tools-Seite */
+@media (min-width: 760px) { .tools-own { grid-template-columns: repeat(2, 1fr); } .tools-calc { grid-template-columns: repeat(3, 1fr); } }
+.tool--featured { background: #003d74; }
+.tool__ext { color: var(--muted); font-size: .8rem; }

@@ -280,4 +280,5 @@ if (-not $node) { $node = Join-Path $env:LOCALAPPDATA 'nodejs/node.exe' }
 if (Test-Path $node) { & $node (Join-Path $root '_build/add-explorer.js') }
 if (Test-Path $node) { & $node (Join-Path $root '_build/add-spin.js') }
 if (Test-Path $node) { & $node (Join-Path $root '_build/no-tables.js') }
+if (Test-Path $node) { & $node (Join-Path $root '_build/tools-page.js') }
 if (Test-Path $node) { & $node (Join-Path $root '_build/pd-style.js') }
