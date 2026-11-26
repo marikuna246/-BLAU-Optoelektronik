@@ -320,6 +320,14 @@
     var sr = series(), rows = summaryRows();
     return "<h2 class='cfg-h'>" + (EN ? "Your configuration" : "Ihre Konfiguration") + "</h2><div class='cfg-sumhead'><p class='label'>" + (EN ? "Configuration code" : "Konfigurationsschlüssel") + "</p><div class='cfg-code'><code>" + esc(code()) + "</code><button type='button' class='cfg-copy' data-copy aria-label='" + (EN ? "Copy code" : "Schlüssel kopieren") + "'>" + (EN ? "Copy" : "Kopieren") + "</button></div>" +
       "<p class='cfg-hint'>" + (EN ? "You will receive the binding order code with the quote." : "Die verbindliche Bestellbezeichnung erhalten Sie mit dem Angebot.") + "</p></div>" +
+      /* 3D-Ansicht des konfigurierten Moduls + Daten zum Mitnehmen */
+      "<div class='cfg-3d'><div class='cfg-3d__view' id='cfg-3d' aria-label='" + (EN ? "3D view of your configured module" : "3D-Ansicht Ihres konfigurierten Moduls") + "'><p class='cfg-3d__load'>" + (EN ? "Loading 3D view …" : "3D-Ansicht wird geladen …") + "</p></div>" +
+      "<img class='cfg-3d__print' id='cfg-3d-print' alt=''>" +
+      "<div class='cfg-3d__bar'><p><b>" + (EN ? "Your module in 3D" : "Ihr Modul in 3D") + "</b> · " + (EN ? "drag to rotate, scroll to zoom" : "ziehen zum Drehen, scrollen zum Zoomen") + "</p>" +
+      "<div class='cfg-3d__btns'><button type='button' class='btn btn--ghost btn--sm' data-dl='pdf'>" + (EN ? "Data sheet (PDF / print)" : "Datenblatt (PDF / Drucken)") + "</button>" +
+      "<button type='button' class='btn btn--ghost btn--sm' data-dl='stl'>" + (EN ? "3D model (STL)" : "3D-Modell (STL)") + "</button>" +
+      "<button type='button' class='btn btn--ghost btn--sm' data-dl='png'>" + (EN ? "Image (PNG)" : "Bild (PNG)") + "</button></div></div>" +
+      "<p class='cfg-hint'>" + (EN ? "Simplified model for orientation (dimensions from the product data). Binding CAD data (STEP) are available on request." : "Vereinfachtes Modell zur Orientierung (Maße aus den Produktdaten). Verbindliche CAD-Daten (STEP) erhalten Sie auf Anfrage.") + "</p></div>" +
       "<div class='table-wrap'><table class='matrix spec'><tbody>" + rows.map(function (r) { return "<tr><th scope='row'>" + esc(r[0]) + "</th><td>" + esc(r[1]) + "</td></tr>"; }).join("") + "</tbody></table></div>" +
       "<div class='cfg-order'><label class='cfg-field'><span>" + (EN ? "Quantity" : "Menge") + "</span><input type='number' min='1' max='100000' value='" + S.qty + "' data-input='qty'> <em>" + (EN ? "pcs" : "Stück") + "</em></label>" +
       "<a class='btn btn--accent' id='cfg-request' href='" + requestHref() + "'>" + (EN ? "Request a quote" : "Angebot anfordern") + " <svg aria-hidden='true'><use href='#i-arrow'/></svg></a>" +
@@ -380,11 +388,41 @@
     });
   }
 
+  /* ---------- 3D-Modell im letzten Schritt ---------- */
+  var BASE3D = (EN ? "../" : "") + "assets/3d/", view3d = null;
+  function mount3d() {
+    var el = document.getElementById("cfg-3d"); if (!el) return;
+    var go3d = function () {
+      window.BlauModul3D.mount(el, { series: S.s, housing: (series() && series().housings) ? S.h : "ST", focus: S.f, wl: S.wl, fan: S.fan, base: BASE3D })
+        .then(function (v) { view3d = v; })
+        .catch(function () { el.innerHTML = "<p class='cfg-3d__load'>" + (EN ? "3D view not available in this browser." : "3D-Ansicht in diesem Browser nicht verfügbar.") + "</p>"; });
+    };
+    if (window.BlauModul3D) go3d();
+    else { var s = document.createElement("script"); s.src = BASE3D + "modul3d.js"; s.onload = go3d; document.head.appendChild(s); }
+  }
+  function download(blob, name) { var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  function fileBase() { return code().replace(/[^\w.-]+/g, "_"); }
+  main.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-dl]"); if (!b) return;
+    var kind = b.dataset.dl;
+    if (kind === "pdf") {
+      var img = document.getElementById("cfg-3d-print"); if (img && view3d) img.src = view3d.png();
+      document.documentElement.classList.add("cfg-printing");
+      setTimeout(function () { window.print(); document.documentElement.classList.remove("cfg-printing"); }, 80);
+      return;
+    }
+    if (!view3d) return;
+    if (kind === "stl") download(view3d.stl(fileBase()), fileBase() + "_3D.stl");
+    if (kind === "png") fetch(view3d.png()).then(function (r) { return r.blob(); }).then(function (bl) { download(bl, fileBase() + "_3D.png"); });
+  });
+
   function render(focus) {
     sanitize();
+    if (view3d) { view3d.dispose(); view3d = null; }
     main.classList.remove("is-in"); void main.offsetWidth;
     main.innerHTML = R[S.step]();
     main.classList.add("is-in");
+    if (S.step === "summary" && series() && !series().request) mount3d();
     updateAside(); saveUrl();
     if (focus) { main.focus({ preventScroll: true }); var top = main.getBoundingClientRect().top + window.scrollY - 150; if (window.scrollY > top) window.scrollTo({ top: top, behavior: "smooth" }); }
   }

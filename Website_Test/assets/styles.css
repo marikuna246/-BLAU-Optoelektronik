@@ -1361,3 +1361,28 @@ html .intro__skip { color: #d4e1ee; border-color: rgba(255, 255, 255, .35); }
 .adapt__icon svg { width: 32px; height: 32px; fill: none; stroke: #fff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .adapt h3 { color: #003d74; font-size: 1.15rem; margin: 0 0 8px; }
 .adapt p { color: var(--muted); margin: 0; }
+/* ===== Konfigurator: 3D-Modell des konfigurierten Moduls + Daten zum Mitnehmen ===== */
+.cfg-3d { margin: 22px 0 26px; border-radius: 18px; overflow: hidden; border: 1px solid #d9dfe4; background: #fff; }
+.cfg-3d__view { position: relative; height: clamp(260px, 42vw, 400px); background: radial-gradient(120% 90% at 50% 40%, #ffffff 0%, #eef3f8 70%, #e3eaf2 100%); cursor: grab; touch-action: pan-y; }
+.cfg-3d__view:active { cursor: grabbing; }
+.cfg-3d__view canvas { display: block; width: 100% !important; height: 100% !important; }
+.cfg-3d__load { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--muted); font-size: .92rem; }
+.cfg-3d__print { display: none; }
+.cfg-3d__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 18px; padding: 14px 18px; border-top: 1px solid #d9dfe4; background: #eceff2; }
+.cfg-3d__bar p { margin: 0; font-size: .9rem; color: var(--muted); }
+.cfg-3d__bar b { color: #003d74; }
+.cfg-3d__btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.cfg-3d__btns .btn { --fg: #003d74; --bd: #b9c6d6; background: #fff; }
+.cfg-3d__btns .btn:hover { --bd: #00a6c1; color: #00a6c1; }
+.cfg-3d + .cfg-hint { margin-top: -14px; }
+
+/* Datenblatt drucken / als PDF speichern: nur Konfiguration, Bild statt 3D-Fläche */
+@media print {
+  .cfg-printing body * { visibility: hidden; }
+  .cfg-printing #cfg-main, .cfg-printing #cfg-main * { visibility: visible; }
+  .cfg-printing #cfg-main { position: absolute; left: 0; top: 0; width: 100%; padding: 0 8mm; }
+  .cfg-printing .cfg-3d__view, .cfg-printing .cfg-3d__btns, .cfg-printing .cfg-order, .cfg-printing .cfg-copy, .cfg-printing .cfg-callout { display: none !important; }
+  .cfg-printing .cfg-3d__print { display: block; width: 100%; max-height: 90mm; object-fit: contain; }
+  .cfg-printing .cfg-3d { border: 1px solid #ccc; }
+  .cfg-printing #cfg-main::before { content: "BLAU Optoelektronik GmbH · Askaniaweg 4c · 88662 Überlingen · +49 7551 93748-0 · info@blauoptoelektronik.de"; display: block; font-size: 9pt; color: #003d74; margin-bottom: 6mm; border-bottom: 2px solid #00a6c1; padding-bottom: 2mm; visibility: visible; }
+}
