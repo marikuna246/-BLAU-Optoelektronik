@@ -1432,3 +1432,13 @@ html.ss-open { overflow: hidden; }
   .ss__hit { grid-template-columns: 1fr; }
   .ss__type { grid-row: auto; justify-self: start; min-width: 0; }
 }
+/* Such-Button deutlich sichtbar: Pille mit Text (Desktop), gefülltes Symbol (Handy) */
+html body .search-toggle { width: auto; height: 42px; padding: 0 12px; gap: 8px; display: inline-flex; align-items: center; border: 1.5px solid #00a6c1; background: #e6f6fa; color: #003d74; border-radius: 999px; font: inherit; font-size: .9rem; font-weight: 600; }
+html body .search-toggle svg { width: 19px; height: 19px; color: #00829a; }
+html body .search-toggle:hover { background: #00a6c1; color: #fff; }
+html body .search-toggle:hover svg { color: #fff; }
+.search-toggle__t, .search-toggle kbd { display: none; }
+.search-toggle kbd { font: inherit; font-size: .72rem; line-height: 1; padding: 3px 6px; border-radius: 4px; background: #fff; border: 1px solid #b9e6ee; color: #5a656e; }
+@media (max-width: 1119px) { html body .search-toggle { width: 46px; height: 46px; padding: 0; justify-content: center; border-radius: 12px; background: #00a6c1; border-color: #00a6c1; } html body .search-toggle svg { color: #fff; width: 21px; height: 21px; } }
+@media (min-width: 1120px) { .search-toggle__t { display: inline; } html body .search-toggle { min-width: 118px; } }
+@media (min-width: 1280px) { .search-toggle kbd { display: inline-block; } }

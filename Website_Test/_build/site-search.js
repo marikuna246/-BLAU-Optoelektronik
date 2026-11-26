@@ -63,8 +63,8 @@ for (const lang of ["de", "en"]) {
 
 // Such-Button in alle Header + Skript einbinden
 const L = {
-  de: { open: "Suche öffnen" },
-  en: { open: "Open search" },
+  de: { open: "Suche öffnen", t: "Suchen" },
+  en: { open: "Open search", t: "Search" },
 };
 const ICON = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>';
 let n = 0;
@@ -73,8 +73,9 @@ for (const dir of [root, path.join(root, "en")]) {
   for (const f of fs.readdirSync(dir).filter((f) => f.endsWith(".html"))) {
     const file = path.join(dir, f);
     let h = fs.readFileSync(file, "utf8"); const before = h;
-    if (!h.includes('class="search-toggle"'))
-      h = h.replace(/(<div class="header-actions">\s*)/, `$1<button class="search-toggle" type="button" aria-label="${L[en ? "en" : "de"].open}" aria-haspopup="dialog">${ICON}</button>\n      `);
+    const l = L[en ? "en" : "de"];
+    h = h.replace(/<button class="search-toggle"[\s\S]*?<\/button>\s*/, ""); // vorhandenen Button ersetzen
+    h = h.replace(/(<div class="header-actions">\s*)/, `$1<button class="search-toggle" type="button" aria-label="${l.open}" aria-haspopup="dialog">${ICON}<span class="search-toggle__t">${l.t}</span><kbd>/</kbd></button>\n      `);
     if (h.includes('class="search-toggle"') && !h.includes("assets/search.js"))
       h = h.replace(/(<script src="[^"]*assets\/main\.js" defer><\/script>)/, `$1\n<script src="${pre}assets/search.js" defer></script>`);
     if (h !== before) { fs.writeFileSync(file, h); n++; }
