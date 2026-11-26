@@ -79,6 +79,22 @@
     if (o.band) { var b = new THREE.Mesh(new THREE.CylinderGeometry(R + .01, R + .01, o.band[1], 128), M.gold); b.position.y = y0 + (L - cap) * o.band[0]; mod.add(b); }
     if (o.m12) m12(y0); else cable(y0, o.cableR || Math.max(.1, R * .28), o.cable || M.white, o.bend);
   }
+  var pending = 0;
+  function fpl() {
+    var R = .6, L = 4.1, y0 = -L / 2, y1 = L / 2, c = .05, body = mat(0x1c3a72, .4, .36);
+    mod.add(lathe([[0, y0], [R - c, y0], [R, y0 + c], [R, y1 - c], [R - c, y1], [R * .78, y1]], body));
+    mod.add(lathe([[R * .78, y1 + .002], [0, y1 + .002]], M.silver));                                   // silberne Frontscheibe
+    var slit = new THREE.Mesh(new THREE.BoxGeometry(.16, .02, .07), M.bore); slit.position.set(0, y1 + .004, 0); mod.add(slit); // Linienschlitz
+    var bz = new THREE.Mesh(new THREE.TorusGeometry(R * .79, .012, 8, 96), mat(0x0d1d3a, .3, .5)); bz.rotation.x = Math.PI / 2; bz.position.y = y1 + .002; mod.add(bz);
+    cable(y0, .2, mat(0x8a908c, 0, .55), 1);
+    pending++;
+    new THREE.TextureLoader().load("tex/fpl-engrave.png", function (t) {
+      t.encoding = THREE.sRGBEncoding; t.anisotropy = 8;
+      var band = new THREE.Mesh(new THREE.CylinderGeometry(R + .003, R + .003, L * .995, 256, 1, true, 0, Math.PI * 2),
+        new THREE.MeshStandardMaterial({ map: t, transparent: true, depthWrite: false, roughness: .45, metalness: .3 }));
+      mod.add(band); pending--; if (!pending) finish();
+    });
+  }
   var MODELS = {
     mvnano: function () { cyl({ d: 11.5, l: 54 }); },
     mvfemto: function () { cyl({ d: 8, l: 40, cableR: .1 }); },
@@ -87,7 +103,7 @@
     mvpulse: function () { cyl({ d: 12, l: 60, m12: true }); },
     mvpulsehp: function () { cyl({ d: 16, l: 70, cableR: .18 }); },
     mvgoldhp: function () { cyl({ d: 48, l: 146, cap: 2.2, lens: 1.2, band: [.55, .9], cableR: .5, bend: 2.5 }); },
-    linienlaser: function () { cyl({ d: 11.5, l: 55, body: M.black, front: M.silver, cable: M.grey, engrave: false }); },
+    linienlaser: function () { fpl(); }, // FP-L nach Foto: blaues Gehäuse, echte Gravur (abgewickelt aus Foto), flache Front mit Schlitz
     punktlaser: function () { cyl({ d: 11.5, l: 55, body: M.black, front: M.brass, cable: M.grey, engrave: false, lens: .25 }); },
     doe: function () { cyl({ d: 11.5, l: 55 }); },
     mvsquare: function () {
@@ -113,9 +129,10 @@
     sh.rotation.x = -Math.PI / 2; sh.position.y = -size.y * s / 2 - .12; scene.add(sh);
   })();
 
-  var START = -0.55; // Bild 1: Schrägansicht von vorn
+  var START = -0.55 + (P === "linienlaser" ? Math.PI + .25 : 0); // Bild 1: Schrägansicht von vorn (FP-L: wie Foto, Logo lesbar)
   window.frame = function (i, n) { pivot.rotation.y = START - i / n * Math.PI * 2; renderer.render(scene, camera); return ALPHA ? renderer.domElement.toDataURL("image/webp", .9) : renderer.domElement.toDataURL("image/jpeg", .9); };
-  window.frame(0, 36); window.ready = true;
+  function finish() { window.frame(0, 36); window.ready = true; }
+  if (!pending) finish();
 })();
 </script>
 </body>
