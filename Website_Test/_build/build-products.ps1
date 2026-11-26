@@ -282,3 +282,4 @@ if (Test-Path $node) { & $node (Join-Path $root '_build/add-spin.js') }
 if (Test-Path $node) { & $node (Join-Path $root '_build/no-tables.js') }
 if (Test-Path $node) { & $node (Join-Path $root '_build/tools-page.js') }
 if (Test-Path $node) { & $node (Join-Path $root '_build/pd-style.js') }
+if (Test-Path $node) { & $node (Join-Path $root '_build/site-search.js') }
