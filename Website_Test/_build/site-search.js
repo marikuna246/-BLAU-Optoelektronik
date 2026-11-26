@@ -75,7 +75,7 @@ for (const dir of [root, path.join(root, "en")]) {
     let h = fs.readFileSync(file, "utf8"); const before = h;
     const l = L[en ? "en" : "de"];
     h = h.replace(/<button class="search-toggle"[\s\S]*?<\/button>\s*/, ""); // vorhandenen Button ersetzen
-    h = h.replace(/(<div class="header-actions">\s*)/, `$1<button class="search-toggle" type="button" aria-label="${l.open}" aria-haspopup="dialog">${ICON}<span class="search-toggle__t">${l.t}</span><kbd>/</kbd></button>\n      `);
+    h = h.replace(/(<div class="header-actions">\s*)/, `$1<button class="search-toggle" type="button" aria-label="${l.open}" aria-haspopup="dialog">${ICON}<span class="search-toggle__t">${l.t}</span></button>\n      `);
     if (h.includes('class="search-toggle"') && !h.includes("assets/search.js"))
       h = h.replace(/(<script src="[^"]*assets\/main\.js" defer><\/script>)/, `$1\n<script src="${pre}assets/search.js" defer></script>`);
     if (h !== before) { fs.writeFileSync(file, h); n++; }
